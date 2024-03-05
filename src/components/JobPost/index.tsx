@@ -71,11 +71,6 @@ const JobPostMain = () => {
 
     async function fetchData() {
       let result = await jobPostStatus()
-
-      console.log("jobPostStatus");
-      console.log("prevValue", value);
-      console.log("result", result);
-
       setValue(prevValue => ({ ...prevValue, ...result }));
     }
     fetchData()
