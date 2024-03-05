@@ -18,7 +18,6 @@ const JobList = () => {
             {jobs.map((item, index) => (
               <JobCard
                 key={index}
-                logoUrl={item.logo}
                 companyUrl={item.company}
                 companyName={item.company}
                 companyDescription={item.description}
