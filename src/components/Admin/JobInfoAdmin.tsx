@@ -23,8 +23,8 @@ const JobInfoAdmin = ({
       />
       <CurrencyType
       />
-      {/* <ProductionList
-      /> */}
+      <ProductionList
+      />
     </div>
   );
 };

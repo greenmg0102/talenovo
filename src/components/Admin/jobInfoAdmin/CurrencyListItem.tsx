@@ -1,7 +1,7 @@
 
 const CurrencyListItem = ({index, item }: any ) => {
   return (
-    <div className="w-full mb-2 flex justify-between p-1">
+    <div className="w-full mb-2 flex justify-between p-1 border border-white hover:border-dashed hover:border-gray-200 transition-all">
       <p className="w-[40px]">
         {index + 1}
       </p>

@@ -1,13 +1,11 @@
 'use client'
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import NextPrevious from '@/components/JobPost/NextPrevious'
 import Milestone from '@/components/JobPost/milestone'
 import CompoanyInfo from "@/components/JobPost/compoanyInfo";
 import JobDetail from "@/components/JobPost/jobDetail";
 import Payment from "@/components/JobPost/payment";
-
-import { companyDatilPost, jobDatilPost } from "@/store/action/admin/jobPost"
+import { companyDatilPost, jobDatilPost, jobPostStatus } from "@/store/action/admin/jobPost"
 import { JobPostingMileston } from '@/data/jobPost'
 
 const JobPostMain = () => {
@@ -19,15 +17,15 @@ const JobPostMain = () => {
     companyName: "",
     companyLink: "",
     jobTitle: "",
-    jobType: undefined,
-    jobCategory: undefined,
+    type: undefined,
+    category: undefined,
     location: undefined,
     tag: [],
     description: undefined,
     minimumPay: undefined,
     maximumPay: undefined,
-    payCurrency: undefined,
-    payType: undefined,
+    currency: undefined,
+    currencyType: undefined,
     applyBy: undefined,
     contactInfo: undefined,
     premiumType: undefined
@@ -37,15 +35,15 @@ const JobPostMain = () => {
     companyName: "",
     companyLink: "",
     jobTitle: "",
-    jobType: "",
-    jobCategory: "",
+    type: "",
+    category: "",
     location: "",
     tag: [],
     description: "",
     minimumPay: "",
     maximumPay: "",
-    payCurrency: "",
-    payType: "",
+    currency: "",
+    currencyType: "",
     applyBy: "",
     contactInfo: "",
     premiumType: ""
@@ -68,52 +66,74 @@ const JobPostMain = () => {
       setValue={(eachValue: any) => setValue(eachValue)} />
   }
 
+  useEffect(() => {
+
+    async function fetchData() {
+      let result = await jobPostStatus()
+      setValue({ ...value, ...result })
+    }
+    fetchData()
+  }, [])
+
   const saveValue = async (Nextcategory: number) => {
 
-    setCategory(Nextcategory)
     let companyDetailInfo: any = {}
     companyDetailInfo = { ...value }
     let result = {}
 
     if (category === 0) {
-      if (value.companyName.length > 0 && value.companyLink.length > 0) result = await companyDatilPost(companyDetailInfo)
-    } else if (category === 1) {
-      if (
-        value.jobTitle.length > 0 && value.jobType !== undefined &&
-        value.jobCategory !== undefined && value.location !== undefined &&
-        value.tag.length > 0 && value.description !== undefined &&
-        value.minimumPay !== undefined && value.maximumPay !== undefined &&
-        value.payCurrency !== undefined && value.payType !== undefined &&
-        value.applyBy !== undefined
-      ) {
-        result = await jobDatilPost(companyDetailInfo)
+
+      if (value.companyName.length > 0 && value.companyLink.length > 0) {
+        setLoading(true)
+        result = await companyDatilPost(companyDetailInfo)
+        setValue({ ...value, ...result })
+        setLoading(false)
+        setCategory(Nextcategory)
+      } else {
+        console.log('validation error in step 1!');
       }
+    } else if (category === 1 && Nextcategory === 0) {
+
+      setCategory(Nextcategory)
+
+    } else if (category === 1 && Nextcategory === 2) {
+
+      if (
+        value.jobTitle.length > 0 && value.type !== undefined &&
+        value.category !== undefined && value.location !== undefined &&
+        // value.tag.length > 0 && 
+        value.description !== undefined &&
+        value.minimumPay !== undefined && value.maximumPay !== undefined &&
+        value.currency !== undefined && value.currencyType !== undefined
+        // value.applyBy !== undefined
+      ) {
+        setLoading(true)
+        result = await jobDatilPost(companyDetailInfo)
+        setValue({ ...value, ...result })
+        setLoading(false)
+        setCategory(Nextcategory)
+      } else {
+        console.log('validation error in step 2!');
+      }
+    } else if (category === 2) {
+      setCategory(Nextcategory)
     }
-
-    setValue({ ...value, ...result })
-
   }
-
 
   return (
     <div className="max-w-2xl mx-auto">
-
       <Milestone
         category={category}
       />
-
       <div className="bg-gray-50 shadow-2xl rounded-[4px] p-4 mt-12">
-
-        <div className="py-4">
-          {list[category]}
-        </div>
+        <div className="py-4"> {list[category]} </div>
 
         <NextPrevious
           category={category}
+          loading={loading}
           JobPostingMileston={JobPostingMileston}
           setCategory={(previous: any) => saveValue(previous)}
         />
-
       </div >
     </div >
   );

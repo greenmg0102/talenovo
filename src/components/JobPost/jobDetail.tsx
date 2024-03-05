@@ -1,9 +1,46 @@
+import { useState, useEffect } from 'react'
 import TestInput from '@/components/Input/TextInput'
 import SelectInput from '@/components/Input/SelectInput'
 import SearchInput from '@/components/Input/SearchInput'
 import TagInput from '@/components/Input/TagInput'
 
+import { jobTypeGet } from "@/store/action/admin/jobInfo/jobType"
+import { jobCategoryGet } from "@/store/action/admin/jobInfo/jobCategory"
+import { jobLocationGet } from "@/store/action/admin/jobInfo/jobLocation"
+import { jobTagGet } from "@/store/action/admin/jobInfo/jobTag"
+import { currencyGet } from "@/store/action/admin/jobInfo/currency"
+import { currencyTypeGet } from "@/store/action/admin/jobInfo/currencyType"
+
 const JobDetail = ({ value, warn, setValue }: any) => {
+
+  const [jobType, setJobType] = useState([])
+  const [jobCategory, setJobCategory] = useState([])
+  const [jobLocation, setJobLocation] = useState([])
+  const [jobTag, setJobTag] = useState([])
+  const [jobCurrency, setJobCurrency] = useState([])
+  const [jobCurrencyType, setJobCurrencyType] = useState([])
+
+  useEffect(() => {
+
+    async function fetchData() {
+      let reslutJobType = await jobTypeGet()
+      let reslutJobCategory = await jobCategoryGet()
+      let reslutJobLocation = await jobLocationGet()
+      let reslutJobTag = await jobTagGet()
+      let reslutCurrency = await currencyGet()
+      let reslutCurrencyType = await currencyTypeGet()
+
+      setJobType(reslutJobType)
+      setJobCategory(reslutJobCategory)
+      setJobLocation(reslutJobLocation)
+      setJobTag(reslutJobTag)
+      setJobCurrency(reslutCurrency)
+      setJobCurrencyType(reslutCurrencyType)
+
+    }
+    fetchData()
+
+  }, [])
 
   return (
     <div>
@@ -23,14 +60,9 @@ const JobDetail = ({ value, warn, setValue }: any) => {
           <SelectInput
             warn={warn}
             value={value}
-            type={'jobType'}
+            type={'type'}
             title={"Job Types"}
-            list={[
-              { _id: '0', title: 'Full-Time' },
-              { _id: '1', title: 'Part-Time' },
-              { _id: '2', title: 'Contract' },
-              { _id: '3', title: 'Internship' }
-            ]}
+            list={jobType}
             onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
           />
         </div>
@@ -48,18 +80,10 @@ const JobDetail = ({ value, warn, setValue }: any) => {
         <div className='mb-6 w-[48%]'>
           <SelectInput
             value={value}
-            type={'jobCategory'}
+            type={'category'}
             warn={warn}
             title={"Category"}
-            list={[
-              { _id: '0', title: 'Software Development' },
-              { _id: '1', title: 'Quality Assurance(QA)' },
-              { _id: '2', title: 'Data Science' },
-              { _id: '3', title: 'Product Manager' },
-              { _id: '4', title: 'Marketing & Sales' },
-              { _id: '5', title: 'Network Administration' },
-              { _id: '6', title: 'other' },
-            ]}
+            list={jobCategory}
             onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
           />
         </div>
@@ -105,28 +129,20 @@ const JobDetail = ({ value, warn, setValue }: any) => {
         <div className='mb-12 w-[22%]'>
           <SelectInput
             value={value}
-            type={'payCurrency'}
+            type={'currency'}
             warn={warn}
             title={"Currency"}
-            list={[
-              { _id: '0', title: 'USD' },
-              { _id: '1', title: 'EUR' },
-            ]}
+            list={jobCurrency}
             onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
           />
         </div>
         <div className='mb-12 w-[22%]'>
           <SelectInput
             value={value}
-            type={'payType'}
+            type={'currencyType'}
             warn={warn}
             title={"Pay Period"}
-            list={[
-              { _id: '0', title: 'Annually' },
-              { _id: '1', title: 'Monthly' },
-              { _id: '2', title: 'Weekly' },
-              { _id: '3', title: 'Hourly' }
-            ]}
+            list={jobCurrencyType}
             onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
           />
         </div>

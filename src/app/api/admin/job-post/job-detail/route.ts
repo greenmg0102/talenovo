@@ -11,42 +11,18 @@ export async function POST(req: any, res: any) {
   let data = await req.json()
   const user = await currentUser();
 
-  let isExist = await db
-    .collection("ourjobs")
-    .findOne({ _id: data._id, recruiterId: user.id })
-    .then((result: any) => {
-      if (result !== null) {
-        return result
-      } else {
-        return undefined
-      }
-    })
+  data.recruiterId = user.id
 
-  if (isExist !== undefined) {
+  let updateData = { $set: {} };
 
-    let buffer = { ...data, ...isExist }
-    insertedId = await db
-      .collection("ourjobs")
-      .insertOne(buffer)
-      .then((result: any) => {
-        return result.insertedId
-      })
+  Object.keys(data).filter((key: any) => key !== "_id").forEach((element: any) => {
+    updateData.$set[element] = data[element];
+  });
 
-  } else {
-
-    data.recruiterId = user.id
-    insertedId = await db
-      .collection("ourjobs")
-      .insertOne(data)
-      .then((result: any) => {
-        return result.insertedId
-      })
-
-  }
-
+  await db.collection("myjobposts").findOneAndUpdate({ _id: data._id }, updateData);
 
   let result = await db
-    .collection('ourjobs')
+    .collection('myjobposts')
     .findOne({ _id: insertedId });
 
   return NextResponse.json(result);

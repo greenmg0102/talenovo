@@ -1,4 +1,14 @@
 
+export async function jobPostStatus() {
+
+  const res = await fetch('http://195.35.32.163:3000/api/admin/job-post/job-post-status', {
+    method: 'GET'
+  });
+
+  return await res.json();
+}
+
+
 export async function companyDatilPost(companyDetailInfo: any) {
 
   const res = await fetch('http://195.35.32.163:3000/api/admin/job-post/company-detail', {
