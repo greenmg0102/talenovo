@@ -7,7 +7,8 @@ import CompoanyInfo from "@/components/JobPost/compoanyInfo";
 import JobDetail from "@/components/JobPost/jobDetail";
 import Payment from "@/components/JobPost/payment";
 
-import { companyDatilPost } from "@/store/action/admin/jobPost"
+import { companyDatilPost, jobDatilPost } from "@/store/action/admin/jobPost"
+import { JobPostingMileston } from '@/data/jobPost'
 
 const JobPostMain = () => {
 
@@ -18,17 +19,17 @@ const JobPostMain = () => {
     companyName: "",
     companyLink: "",
     jobTitle: "",
-    jobType: "",
-    jobCategory: "",
-    location: "",
+    jobType: undefined,
+    jobCategory: undefined,
+    location: undefined,
     tag: [],
-    description: "",
+    description: undefined,
     minimumPay: undefined,
     maximumPay: undefined,
-    payCurrency: "",
-    payType: "",
-    applyBy: "",
-    contactInfo: "",
+    payCurrency: undefined,
+    payType: undefined,
+    applyBy: undefined,
+    contactInfo: undefined,
     premiumType: undefined
   })
 
@@ -69,21 +70,28 @@ const JobPostMain = () => {
 
   const saveValue = async (Nextcategory: number) => {
 
-    let companyName = value.companyName
-    let companyLink = value.companyLink
+    setCategory(Nextcategory)
+    let companyDetailInfo: any = {}
+    companyDetailInfo = { ...value }
+    let result = {}
 
-    if (companyName.length > 0 && companyLink.length > 0) {
-
-      let companyDetailInfo: any = {}
-      companyDetailInfo.companyName = value.companyName
-      companyDetailInfo.companyLink = value.companyLink
-
-      let result = await companyDatilPost(companyDetailInfo)
-
-
-      // setCategory(category)
-
+    if (category === 0) {
+      if (value.companyName.length > 0 && value.companyLink.length > 0) result = await companyDatilPost(companyDetailInfo)
+    } else if (category === 1) {
+      if (
+        value.jobTitle.length > 0 && value.jobType !== undefined &&
+        value.jobCategory !== undefined && value.location !== undefined &&
+        value.tag.length > 0 && value.description !== undefined &&
+        value.minimumPay !== undefined && value.maximumPay !== undefined &&
+        value.payCurrency !== undefined && value.payType !== undefined &&
+        value.applyBy !== undefined
+      ) {
+        result = await jobDatilPost(companyDetailInfo)
+      }
     }
+
+    setValue({ ...value, ...result })
+
   }
 
 
@@ -102,6 +110,7 @@ const JobPostMain = () => {
 
         <NextPrevious
           category={category}
+          JobPostingMileston={JobPostingMileston}
           setCategory={(previous: any) => saveValue(previous)}
         />
 

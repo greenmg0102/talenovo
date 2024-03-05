@@ -15,6 +15,10 @@ const categoryData: Category[] = [
   },
   {
     id: 3,
+    title: "Job Info",
+  },
+  {
+    id: 4,
     title: "Payment Log",
   },
   // {

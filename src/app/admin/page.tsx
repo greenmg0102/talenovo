@@ -1,10 +1,11 @@
 "use client"
 import { useState } from "react";
+import UserAdmin from "@/components/Admin/UserAdmin";
 import Category from "@/components/Admin/category/Category";
 import OurJobPostAdmin from "@/components/Admin/OurJobPostAdmin";
 import OtherJobPostAdmin from "@/components/Admin/OtherJobPostAdmin";
+import JobInfoAdmin from "@/components/Admin/JobInfoAdmin";
 import Paylog from "@/components/Admin/Paylog";
-import UserAdmin from "@/components/Admin/UserAdmin";
 // import BusinessAnalyze from "@/components/Admin/BusinessAnalyze";
 import categoryData from '@/components/Admin/categoryData'
 
@@ -26,7 +27,8 @@ const Admin = () => {
     0: <UserAdmin />,
     1: <OurJobPostAdmin />,
     2: <OtherJobPostAdmin />,
-    3: <Paylog />,
+    3: <JobInfoAdmin />,
+    4: <Paylog />,
     // 4: <BusinessAnalyze />
   }
 

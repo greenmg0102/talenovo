@@ -12,3 +12,16 @@ export const JobPostingMileston = [
     content: 'Payment'
   },
 ];
+
+
+export const PaymentWay = [
+  {
+    title: 'Single Job Posting',
+    price: "$99.00",
+    amount: '1',
+    detail: {
+            
+    }
+  },
+
+];

@@ -1,15 +1,12 @@
 
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
-import { currentUser } from '@clerk/nextjs';
 
 export async function POST(req: any, res: any) {
 
   let { db } = await connectToDatabase();
-  let data = await req.json()
-  const user = await currentUser();
 
-  data.recruiterId = user.id
+  const data = await req.json()
 
   let insertedId = await db
     .collection("ourjobs")

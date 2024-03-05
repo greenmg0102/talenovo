@@ -5,11 +5,11 @@ const Milestone = ({ category }: any) => {
 
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-between items-center">
       {JobPostingMileston.map((item: any, index: any) =>
         <div
           key={index}
-          className='w-1/3 pr-4'
+          className='w-[31%]'
         >
           <div className=''>
             <div className={clsx("w-full h-[4px] rounded-[1px] transition-all", category >= index ? "bg-green-500" : "bg-gray-200")} />
