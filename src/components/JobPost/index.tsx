@@ -20,7 +20,8 @@ const JobPostMain = () => {
     type: undefined,
     category: undefined,
     location: undefined,
-    tag: [],
+    isRmote: false,
+    tag: ["React.js, Vue.js"],
     description: undefined,
     minimumPay: undefined,
     maximumPay: undefined,
@@ -70,10 +71,15 @@ const JobPostMain = () => {
 
     async function fetchData() {
       let result = await jobPostStatus()
-      setValue({ ...value, ...result })
+
+      console.log("jobPostStatus");
+      console.log("prevValue", value);
+      console.log("result", result);
+
+      setValue(prevValue => ({ ...prevValue, ...result }));
     }
     fetchData()
-  }, [])
+  }, [setValue])
 
   const saveValue = async (Nextcategory: number) => {
 
@@ -86,6 +92,11 @@ const JobPostMain = () => {
       if (value.companyName.length > 0 && value.companyLink.length > 0) {
         setLoading(true)
         result = await companyDatilPost(companyDetailInfo)
+
+        console.log("jobdetil");
+        console.log("prevValue", value);
+        console.log("result", result);
+
         setValue({ ...value, ...result })
         setLoading(false)
         setCategory(Nextcategory)

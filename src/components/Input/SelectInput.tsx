@@ -8,7 +8,7 @@ const SelectInput = ({ value, title, warningText, warn, type, list, onchange }: 
       <div
         className={
           clsx(
-            'relative flex justify-between items-center transition-all rounded-[0px] px-2 border py-1',
+            'relative flex justify-between items-center transition-all rounded-[6px] px-2 border py-1',
             warn[type].length === 0 ? "border-gray-200" : "border-red-500 bg-red-100"
           )
         }

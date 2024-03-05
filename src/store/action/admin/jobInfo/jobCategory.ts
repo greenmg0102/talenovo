@@ -1,7 +1,7 @@
 
 export async function jobCategoryGet() {
 
-  const res = await fetch('http://195.35.32.163:3000/api/admin/job-info/job-category', {
+  const res = await fetch('http://localhost:3000/api/admin/job-info/job-category', {
     method: 'GET',
   });
 
@@ -11,7 +11,7 @@ export async function jobCategoryGet() {
 
 export async function jobCategoryPost(jobCategory: any) {
 
-  const res = await fetch('http://195.35.32.163:3000/api/admin/job-info/job-category', {
+  const res = await fetch('http://localhost:3000/api/admin/job-info/job-category', {
     method: 'POST',
     body: JSON.stringify(jobCategory)
   });

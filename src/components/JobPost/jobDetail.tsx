@@ -10,6 +10,7 @@ import { jobLocationGet } from "@/store/action/admin/jobInfo/jobLocation"
 import { jobTagGet } from "@/store/action/admin/jobInfo/jobTag"
 import { currencyGet } from "@/store/action/admin/jobInfo/currency"
 import { currencyTypeGet } from "@/store/action/admin/jobInfo/currencyType"
+import { isReadable } from 'stream'
 
 const JobDetail = ({ value, warn, setValue }: any) => {
 
@@ -74,7 +75,15 @@ const JobDetail = ({ value, warn, setValue }: any) => {
             title={"Location *"}
             onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
           />
-          <p>This job is remote</p>
+          <p className='flex justify-start items-center text-[12px] mt-1'>
+            <input
+              checked={value.isRmote}
+              type="checkbox"
+              className='mr-1'
+              onChange={(e: any) => setValue({ ...value, isRmote: e.target.checked })}
+            />
+            This job is remote
+          </p>
         </div>
 
         <div className='mb-6 w-[48%]'>
