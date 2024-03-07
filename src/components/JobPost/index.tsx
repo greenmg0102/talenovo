@@ -50,6 +50,17 @@ const JobPostMain = () => {
     premiumType: ""
   })
 
+  const [params, setParams] = useState<any>(JSON.parse(JSON.stringify({
+    id: null,
+    title: '',
+    description: '',
+    descriptionText: '',
+    assignee: '',
+    path: '',
+    tag: '',
+    priority: 'low',
+  })));
+
   const list = {
     0: <CompoanyInfo
       warn={warn}
@@ -59,6 +70,8 @@ const JobPostMain = () => {
     1: <JobDetail
       warn={warn}
       value={value}
+      params={params}
+      setParams={(totla: any) => setParams(totla)}
       setValue={(eachValue: any) => setValue(eachValue)} />,
 
     2: <Payment
@@ -87,10 +100,6 @@ const JobPostMain = () => {
       if (value.companyName.length > 0 && value.companyLink.length > 0) {
         setLoading(true)
         result = await companyDatilPost(companyDetailInfo)
-
-        console.log("jobdetil");
-        console.log("prevValue", value);
-        console.log("result", result);
 
         setValue({ ...value, ...result })
         setLoading(false)

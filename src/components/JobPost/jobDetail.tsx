@@ -10,12 +10,17 @@ import { jobLocationGet } from "@/store/action/admin/jobInfo/jobLocation"
 import { jobTagGet } from "@/store/action/admin/jobInfo/jobTag"
 import { currencyGet } from "@/store/action/admin/jobInfo/currency"
 import { currencyTypeGet } from "@/store/action/admin/jobInfo/currencyType"
-import { isReadable } from 'stream'
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
-const JobDetail = ({ value, warn, setValue }: any) => {
+const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
 
   const [jobType, setJobType] = useState([])
   const [jobCategory, setJobCategory] = useState([])
+  const [searchHint, setSearchHint] = useState({
+    location: "",
+    tag: ""
+  })
   const [jobLocation, setJobLocation] = useState([])
   const [jobTag, setJobTag] = useState([])
   const [jobCurrency, setJobCurrency] = useState([])
@@ -23,18 +28,40 @@ const JobDetail = ({ value, warn, setValue }: any) => {
 
   useEffect(() => {
 
+    async function tagFetchData(hint: any) {
+
+      const data = {
+        tagHint: hint
+      }
+      let reslutJobTag = await jobTagGet(data)
+      setJobTag(reslutJobTag)
+    }
+
+    async function locationFetchData(hint: any) {
+
+      const data = {
+        locationHint: hint
+      }
+      let reslutJobLocation = await jobLocationGet(data)
+      setJobLocation(reslutJobLocation)
+    }
+
+    if (searchHint.location !== "") locationFetchData(searchHint.location)
+    if (searchHint.tag !== "") tagFetchData(searchHint.tag)
+
+  }, [searchHint])
+
+  useEffect(() => {
+
     async function fetchData() {
       let reslutJobType = await jobTypeGet()
       let reslutJobCategory = await jobCategoryGet()
-      let reslutJobLocation = await jobLocationGet()
-      let reslutJobTag = await jobTagGet()
       let reslutCurrency = await currencyGet()
       let reslutCurrencyType = await currencyTypeGet()
 
       setJobType(reslutJobType)
       setJobCategory(reslutJobCategory)
-      setJobLocation(reslutJobLocation)
-      setJobTag(reslutJobTag)
+
       setJobCurrency(reslutCurrency)
       setJobCurrencyType(reslutCurrencyType)
 
@@ -73,7 +100,9 @@ const JobDetail = ({ value, warn, setValue }: any) => {
             type={'location'}
             warn={warn}
             title={"Location *"}
-            onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
+            list={jobLocation}
+            formatList={() => setJobLocation([])}
+            onchange={(type: any, eachvalue: any) => setSearchHint({ ...searchHint, [type]: eachvalue })}
           />
           <p className='flex justify-start items-center text-[12px] mt-1'>
             <input
@@ -85,7 +114,6 @@ const JobDetail = ({ value, warn, setValue }: any) => {
             This job is remote
           </p>
         </div>
-
         <div className='mb-6 w-[48%]'>
           <SelectInput
             value={value}
@@ -102,16 +130,32 @@ const JobDetail = ({ value, warn, setValue }: any) => {
             type={'tag'}
             warn={warn}
             title={"Tag"}
-            onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
+            list={jobTag}
+            formatList={() => setJobTag([])}
+            pushList={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
+            onchange={(type: any, eachvalue: any) => setSearchHint({ ...searchHint, [type]: eachvalue })}
           />
         </div>
-        <div className='mb-12 w-[100%]'>
-          <TestInput
+        <div className='mb-4 w-[100%]'>
+          {/* <TestInput
             value={value}
             type={'description'}
             warn={warn}
             title={"Description *"}
             onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
+          /> */}
+          <ReactQuill
+            theme="snow"
+            value={params.description}
+            defaultValue={params.description}
+            onChange={(content, delta, source, editor) => {
+              params.description = content;
+              params.descriptionText = editor.getText();
+              setParams({
+                ...params,
+              });
+            }}
+            style={{ minHeight: '200px' }}
           />
         </div>
 

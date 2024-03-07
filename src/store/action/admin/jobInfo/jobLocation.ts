@@ -1,8 +1,9 @@
 
-export async function jobLocationGet() {
+export async function jobLocationGet(data: any) {
 
   const res = await fetch('http://195.35.32.163:3000/api/admin/job-info/job-location', {
-    method: 'GET',
+    method: 'PUT',
+    body: JSON.stringify(data)
   });
 
   return await res.json();

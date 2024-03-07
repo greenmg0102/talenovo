@@ -1,15 +1,19 @@
 
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
+import { log } from "console";
 
+export async function PUT(req: any, res: any) {
 
-export async function GET(req: any, res: any) {
+  let data = await req.json()
 
   let { db } = await connectToDatabase();
-
   let locationResult = await db
     .collection('joblocations')
-    .find().toArray();
+    .find({ location: { $regex: new RegExp(data.locationHint, 'i') } })
+    .skip(0)
+    .limit(5)
+    .toArray();
 
   return NextResponse.json(locationResult);
 }
