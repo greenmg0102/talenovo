@@ -18,3 +18,24 @@ export async function jobTypePost(jobType: any) {
 
   return await res.json();
 }
+
+export async function jobTypeDelete(data: any) {
+
+  const res = await fetch('http://195.35.32.163:3000/api/admin/job-info/job-type', {
+    method: 'DELETE',
+    body: JSON.stringify(data)
+  });
+
+  return await res.json();
+}
+
+export async function jobTypePut(data: any) {
+
+  const res = await fetch('http://195.35.32.163:3000/api/admin/job-info/job-type', {
+    method: 'PUT',
+    body: JSON.stringify(data)
+  });
+
+  return await res.json();
+}
+

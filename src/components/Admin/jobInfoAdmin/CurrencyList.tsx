@@ -31,7 +31,7 @@ const CurrencyList = ( ) => {
   }
 
   return (
-    <div className='w-1/3 h-[400px] border rounded-[4px] p-1 mb-4'>
+    <div className='w-1/2 h-[400px] border rounded-[4px] p-1 mb-4'>
       <p className='text-center mb-2'>Currency</p>
       <div className="flex justify-between items-end mb-2">
         <TestInput

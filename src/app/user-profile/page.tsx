@@ -2,7 +2,6 @@ import Breadcrumb from "@/components/Common/Breadcrumb";
 import UserInitialInfo from "@/components/UserProfile/UserInitialInfo";
 import UserDashboard from "@/components/UserProfile/UserDashboard";
 
-
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

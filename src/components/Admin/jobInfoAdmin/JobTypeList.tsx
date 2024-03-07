@@ -30,8 +30,20 @@ const JobTypeList = () => {
     }
   }
 
+  const updateList = (order: any, updateValue: any) => {
+    let real = []
+    if (updateValue === null) real = tyepList.filter((item: any, index: any) => index !== order)
+    else {
+      tyepList.forEach((item: any, index: any) => {
+        if (index === order) real.push({ ...item, type: updateValue })
+        else real.push(item)
+      })
+    }
+    setTyepList(real)
+  }
+
   return (
-    <div className='w-1/3 h-[400px] border rounded-[4px] p-1 mb-4'>
+    <div className='w-1/2 h-[400px] border rounded-[4px] p-1 mb-4'>
       <p className='text-center mb-2'>Job Type</p>
       <div className="flex justify-between items-end mb-2">
         <TestInput
@@ -43,7 +55,6 @@ const JobTypeList = () => {
           onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
         />
         <div className='ml-2'>
-
           <RegistButton
             title={"Regist"}
             regist={regist}
@@ -64,6 +75,7 @@ const JobTypeList = () => {
           key={index}
           index={index}
           item={item}
+          setTyepList={(order: any, updateValue: any) => updateList(order, updateValue)}
         />
       )}
     </div>
