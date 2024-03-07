@@ -1,7 +1,17 @@
 
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
-import { log } from "console";
+
+export async function GET(req: any, res: any) {
+
+  let { db } = await connectToDatabase();
+  let locationResult = await db
+    .collection('joblocations')
+    .find()
+    .toArray();
+
+  return NextResponse.json(locationResult);
+}
 
 export async function PUT(req: any, res: any) {
 

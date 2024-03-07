@@ -1,9 +1,19 @@
 
-export async function jobTagGet(data: any) {
+export async function jobTagPut(data: any) {
 
   const res = await fetch('http://195.35.32.163:3000/api/admin/job-info/job-tag', {
     method: 'PUT',
     body: JSON.stringify(data)
+  });
+
+  return await res.json();
+}
+
+
+export async function jobTagGet() {
+
+  const res = await fetch('http://195.35.32.163:3000/api/admin/job-info/job-tag', {
+    method: 'GET',
   });
 
   return await res.json();

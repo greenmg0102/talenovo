@@ -2,6 +2,19 @@
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
 
+
+export async function GET(req: any, res: any) {
+
+  let { db } = await connectToDatabase();
+
+  let currencyResult = await db
+    .collection('currencys')
+    .find()
+    .toArray();
+
+  return NextResponse.json(currencyResult);
+}
+
 export async function PUT(req: any, res: any) {
 
   let data = await req.json()

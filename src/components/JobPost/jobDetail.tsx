@@ -6,8 +6,8 @@ import TagInput from '@/components/Input/TagInput'
 
 import { jobTypeGet } from "@/store/action/admin/jobInfo/jobType"
 import { jobCategoryGet } from "@/store/action/admin/jobInfo/jobCategory"
-import { jobLocationGet } from "@/store/action/admin/jobInfo/jobLocation"
-import { jobTagGet } from "@/store/action/admin/jobInfo/jobTag"
+import { jobLocationPut } from "@/store/action/admin/jobInfo/jobLocation"
+import { jobTagPut } from "@/store/action/admin/jobInfo/jobTag"
 import { currencyGet } from "@/store/action/admin/jobInfo/currency"
 import { currencyTypeGet } from "@/store/action/admin/jobInfo/currencyType"
 import ReactQuill from 'react-quill';
@@ -33,7 +33,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
       const data = {
         tagHint: hint
       }
-      let reslutJobTag = await jobTagGet(data)
+      let reslutJobTag = await jobTagPut(data)
       setJobTag(reslutJobTag)
     }
 
@@ -42,7 +42,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
       const data = {
         locationHint: hint
       }
-      let reslutJobLocation = await jobLocationGet(data)
+      let reslutJobLocation = await jobLocationPut(data)
       setJobLocation(reslutJobLocation)
     }
 

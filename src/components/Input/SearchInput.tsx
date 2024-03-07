@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import _ from 'lodash';
 import clsx from 'clsx'
 
@@ -8,21 +8,22 @@ const SearchInput = ({ value, title, warningText, warn, type, onchange, list, fo
 
   const [isLoading, setIsLoading] = useState(false)
 
+  const handleRefChange = useCallback(() => {
+    if (inputRef.current && inputRef.current.value === '') {
+      onchange(type, "");
+      formatList();
+      setIsLoading(false);
+    }
+  }, [onchange, formatList, type]);
+
   useEffect(() => {
-    const handleRefChange = () => {
-
-      if (inputRef.current && inputRef.current.value === '') {
-        onchange(type, "");
-        formatList()
-        setIsLoading(false)
-      }
-    };
-
-    inputRef.current.addEventListener('input', handleRefChange);
+    const handleRefChangeCopy = handleRefChange; // Copy the function to a variable
+    const inputRefCurrent = inputRef.current; // Copy the ref value to a variable
+    inputRefCurrent.addEventListener('input', handleRefChangeCopy);
     return () => {
-      inputRef.current.removeEventListener('input', handleRefChange);
+      inputRefCurrent.removeEventListener('input', handleRefChangeCopy); // Use the variable in the cleanup function
     };
-  }, []);
+  }, [handleRefChange]);
 
   const handleKeyDown = (event: any) => {
     if (event.key === 'Enter') {
