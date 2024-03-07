@@ -21,6 +21,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
     location: "",
     tag: ""
   })
+
   const [jobLocation, setJobLocation] = useState([])
   const [jobTag, setJobTag] = useState([])
   const [jobCurrency, setJobCurrency] = useState([])
@@ -29,19 +30,13 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
   useEffect(() => {
 
     async function tagFetchData(hint: any) {
-
-      const data = {
-        tagHint: hint
-      }
+      const data = { tagHint: hint }
       let reslutJobTag = await jobTagPut(data)
       setJobTag(reslutJobTag)
     }
 
     async function locationFetchData(hint: any) {
-
-      const data = {
-        locationHint: hint
-      }
+      const data = { locationHint: hint }
       let reslutJobLocation = await jobLocationPut(data)
       setJobLocation(reslutJobLocation)
     }
@@ -61,7 +56,6 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
 
       setJobType(reslutJobType)
       setJobCategory(reslutJobCategory)
-
       setJobCurrency(reslutCurrency)
       setJobCurrencyType(reslutCurrencyType)
 
@@ -76,6 +70,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
         <p className="w-full mb-4">General Information</p>
         <div className='mb-6 w-[48%]'>
           <TestInput
+            textType={'text'}
             value={value}
             type={'jobTitle'}
             warn={warn}
@@ -102,6 +97,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
             title={"Location *"}
             list={jobLocation}
             formatList={() => setJobLocation([])}
+            pushList={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
             onchange={(type: any, eachvalue: any) => setSearchHint({ ...searchHint, [type]: eachvalue })}
           />
           <p className='flex justify-start items-center text-[12px] mt-1'>
@@ -163,6 +159,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
 
         <div className='mb-12 w-[22%]'>
           <TestInput
+            textType={'number'}
             value={value}
             type={'minimumPay'}
             warn={warn}
@@ -172,6 +169,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
         </div>
         <div className='mb-12 w-[22%]'>
           <TestInput
+            textType={'number'}
             value={value}
             type={'maximumPay'}
             warn={warn}
@@ -199,7 +197,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
             onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
           />
         </div>
-
+        {/* 
         <p className="w-full mb-4 pt-8 border border-dashed border-t-[1px] border-l-0 border-r-0 border-b-0">How to apply</p>
 
         <div className='mb-0 w-[100%]'>
@@ -216,7 +214,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
             ]}
             onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
           />
-        </div>
+        </div> */}
 
       </div>
     </div>

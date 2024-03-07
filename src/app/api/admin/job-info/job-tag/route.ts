@@ -20,6 +20,9 @@ export async function PUT(req: any, res: any) {
   let data = await req.json()
   let { db } = await connectToDatabase();
 
+  console.log("data", data);
+  
+
   let currencyResult = await db
     .collection('currencys')
     .find({ tag: { $regex: new RegExp(data.tagHint, 'i') } })

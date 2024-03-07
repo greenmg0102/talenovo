@@ -8,7 +8,7 @@ const SelectInput = ({ value, title, warningText, warn, type, list, onchange }: 
       <div
         className={
           clsx(
-            'relative flex justify-between items-center transition-all rounded-[6px] px-2 border py-1',
+            'relative flex justify-between items-center transition-all border py-1',
             warn[type].length === 0 ? "border-gray-200" : "border-red-500 bg-red-100"
           )
         }
@@ -18,7 +18,7 @@ const SelectInput = ({ value, title, warningText, warn, type, list, onchange }: 
           className='w-full bg-transparent focus:outline-none text-gray-800'
           onChange={(e: any) => onchange(type, e.target.value)}
         >
-          <option value="" disabled>Choose a {title}</option>
+          <option value="" disabled>{title}</option>
           {list.map((item: any, index: any) =>
             <option key={index} value={item._id}>{item[type]}</option>
           )}

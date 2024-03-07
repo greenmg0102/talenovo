@@ -9,11 +9,6 @@ export const metadata: Metadata = {
 };
 
 const JobPost = () => {
-  // Check if the code is running in the browser environment
-  if (typeof window === 'undefined') {
-    return null; // Return null during server-side rendering
-  }
-
   return (
     <>
       <Breadcrumb

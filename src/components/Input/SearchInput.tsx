@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import _ from 'lodash';
 import clsx from 'clsx'
 
-const SearchInput = ({ value, title, warningText, warn, type, onchange, list, formatList }: any) => {
+const SearchInput = ({ value, title, warningText, warn, type, onchange, list, formatList, pushList }: any) => {
 
   const inputRef = useRef(null);
 
@@ -11,7 +11,7 @@ const SearchInput = ({ value, title, warningText, warn, type, onchange, list, fo
   const handleRefChange = useCallback(() => {
     if (inputRef.current && inputRef.current.value === '') {
       onchange(type, "");
-      formatList();
+      formatList([]);
       setIsLoading(false);
     }
   }, [onchange, formatList, type]);
@@ -29,8 +29,10 @@ const SearchInput = ({ value, title, warningText, warn, type, onchange, list, fo
     if (event.key === 'Enter') {
       inputRef.current.value = event.target.value;
       onchange(type, "");
-      formatList()
+      pushList(type, event.target.value)
+      formatList([])
       setIsLoading(false)
+
     }
     // Add your logic for specific key presses here
   };
@@ -38,8 +40,10 @@ const SearchInput = ({ value, title, warningText, warn, type, onchange, list, fo
   const selsctValue = (selectingValue: any) => {
     inputRef.current.value = selectingValue;
     onchange(type, "");
-    formatList()
+     pushList(type, selectingValue)
+    formatList([])
     setIsLoading(false)
+
   }
 
   const delayedOnchange = _.debounce((value: any) => {
@@ -74,13 +78,13 @@ const SearchInput = ({ value, title, warningText, warn, type, onchange, list, fo
         }
 
       </div>
-      <div className='relative'>
-        <div className={clsx(list.length > 0 ? 'absolute w-full left-[0px] -bottom-[-0px] bg-gray-100 border border-gray-500 rounded-[4px]' : '')}>
+      <div className='relative z-[999]'>
+        <div className={clsx(list.length > 0 ? 'absolute bottom-0 transform translate-y-full w-full left-[0px] bg-gray-100 border border-gray-500 rounded-[4px]' : '')}>
           {list.length > 0 ?
             list.map((item: any, index: any) =>
               <p
                 key={index}
-                className='pb-1 mb-1 p-4 border border-dashed border-t-0 border-l-0 border-r-0  rounded-[4px] hover:bg-gray-200 transition-all'
+                className='pb-1 p-4 border border-dashed border-t-0 border-l-0 border-r-0 cursor-pointer rounded-[4px] hover:bg-gray-200 transition-all'
                 onClick={() => selsctValue(item.location)}
               >
                 {item[type]}

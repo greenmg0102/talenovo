@@ -13,6 +13,7 @@ const CompoanyInfo = ({ value, warn, setValue }: any) => {
           <div className="h-[200px]">
             <div className='mb-6'>
               <TestInput
+                textType={'text'}
                 value={value}
                 type={'companyName'}
                 warn={warn}
@@ -24,6 +25,7 @@ const CompoanyInfo = ({ value, warn, setValue }: any) => {
             <p></p>
             <div className=''>
               <TestInput
+                textType={'text'}
                 value={value}
                 type={'companyLink'}
                 warn={warn}

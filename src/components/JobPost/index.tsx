@@ -21,7 +21,7 @@ const JobPostMain = () => {
     category: undefined,
     location: undefined,
     isRmote: false,
-    tag: ["React.js, Vue.js"],
+    tag: [],
     description: undefined,
     minimumPay: undefined,
     maximumPay: undefined,
@@ -61,6 +61,9 @@ const JobPostMain = () => {
     priority: 'low',
   })));
 
+  console.log("params", params);
+
+
   const list = {
     0: <CompoanyInfo
       warn={warn}
@@ -87,6 +90,7 @@ const JobPostMain = () => {
       setValue(prevValue => ({ ...prevValue, ...result }));
     }
     fetchData()
+
   }, [setValue])
 
   const saveValue = async (Nextcategory: number) => {
@@ -113,13 +117,18 @@ const JobPostMain = () => {
 
     } else if (category === 1 && Nextcategory === 2) {
 
+      let real: any = value
+      real.description = params.description,
+        real.descriptionText = params.descriptionText
+
       if (
-        value.jobTitle.length > 0 && value.type !== undefined &&
-        value.category !== undefined && value.location !== undefined &&
-        // value.tag.length > 0 && 
-        value.description !== undefined &&
-        value.minimumPay !== undefined && value.maximumPay !== undefined &&
-        value.currency !== undefined && value.currencyType !== undefined
+        real.jobTitle.length > 0 && real.type !== undefined &&
+        real.category !== undefined && real.location !== undefined &&
+        real.tag.length > 0 &&
+        real.description !== undefined &&
+        real.minimumPay !== undefined && real.maximumPay !== undefined &&
+        real.description !== "" && real.descriptionText !== "" &&
+        real.currency !== undefined && real.currencyType !== undefined
         // value.applyBy !== undefined
       ) {
         setLoading(true)
@@ -140,6 +149,7 @@ const JobPostMain = () => {
       <Milestone
         category={category}
       />
+
       <div className="bg-gray-50 shadow-2xl rounded-[4px] p-4 mt-12">
         <div className="py-4"> {list[category]} </div>
 

@@ -87,17 +87,15 @@ const TagInput = ({ value, title, warningText, warn, type, onchange, list, forma
           }
         </div>
 
-
-
         {warn[type].length === 0 ? null : <svg viewBox="64 64 896 896" focusable="false" data-icon="info-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true" className='text-red-500'><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"></path></svg>}
       </div>
-      <div className='relative'>
-        <div className={clsx(list.length > 0 ? 'absolute w-full left-[0px] -bottom-[-0px] bg-gray-100 border border-gray-500 rounded-[4px]' : '')}>
+      <div className='relative z-[9999]'>
+        <div className={clsx(list.length > 0 ? 'absolute bottom-0 transform translate-y-full w-full left-[0px] bg-gray-100 border border-gray-500 rounded-[4px]' : '')}>
           {list.length > 0 ?
             list.map((item: any, index: any) =>
               <p
                 key={index}
-                className='pb-1 mb-1 p-4 border border-dashed border-t-0 border-l-0 border-r-0  rounded-[4px] hover:bg-gray-200 transition-all'
+                className='pb-1 p-4 border border-dashed border-t-0 border-l-0 border-r-0 cursor-pointer rounded-[4px] hover:bg-gray-200 transition-all'
                 onClick={() => selsctValue(item.tag)}
               >
                 {item[type]}
