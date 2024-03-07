@@ -3,7 +3,7 @@ import { Db, MongoClient } from "mongodb";
 
 const MONGODB_DB = "talenovo";
 // const uri = "mongodb+srv://greenmg0102:ZnrVFGLqb8q6iv5E@cluster0.wj0ebxi.mongodb.net/?retryWrites=true&w=majority"
-const uri = "mongodb+srv://greenmg0102:ZnrVFGLqb8q6iv5E@cluster0.wj0ebxi.mongodb.net/?retryWrites=true&w=majority&ssl=false&sslCAPath=path-to-ca-file.pem"
+const uri = "mongodb+srv://greenmg0102:ZnrVFGLqb8q6iv5E@cluster0.wj0ebxi.mongodb.net/?retryWrites=true&w=majority&ssl=false"
 
 let cachedClient: MongoClient;
 let cachedDb: Db;
