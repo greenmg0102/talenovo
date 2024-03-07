@@ -12,6 +12,9 @@ const CurrencyType = () => {
 
   const [currencyTypeList, setCurrencyTypeList] = useState([])
 
+  console.log("currencyTypeList", currencyTypeList);
+  
+
   useEffect(() => {
     async function fetchData() {
       let result = await currencyTypeGet()
