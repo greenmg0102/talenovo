@@ -1,8 +1,8 @@
 
 'use client'
 import { useState, useEffect } from 'react';
-import TestInput from '@/components/Input/TextInput'
-import RegistButton from '@/components/Button/RegistButton'
+import TestInput from '@/components/Common/Input/TextInput'
+import RegistButton from '@/components/Common/Button/RegistButton'
 import { jobCategoryGet, jobCategoryPost } from '@/store/action/admin/jobInfo/jobCategory'
 import JobCategoryItem from '@/components/Admin/jobInfoAdmin/JobCategoryItem'
 
@@ -29,6 +29,18 @@ const JobCategoryList = () => {
       setCategoryList(result)
       setValue({ ...value, category: "" })
     }
+  }
+
+  const updateList = (order: any, updateValue: any) => {
+    let real = []
+    if (updateValue === null) real = categoryList.filter((item: any, index: any) => index !== order)
+    else {
+      categoryList.forEach((item: any, index: any) => {
+        if (index === order) real.push({ ...item, category: updateValue })
+        else real.push(item)
+      })
+    }
+    setCategoryList(real)
   }
 
   return (
@@ -64,6 +76,7 @@ const JobCategoryList = () => {
           key={index}
           index={index}
           item={item}
+          setTyepList={(order: any, updateValue: any) => updateList(order, updateValue)}
         />
       )}
     </div>

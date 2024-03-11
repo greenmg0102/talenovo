@@ -2,15 +2,19 @@
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
 import { currentUser } from '@clerk/nextjs';
+import { adminAPIMiddleware } from '../../middleware';
+
 
 export async function POST(req: any, res: any) {
 
+  await adminAPIMiddleware(req, res)
   let { db } = await connectToDatabase();
   let data = await req.json()
   const user = await currentUser();
 
   data.recruiterId = user.id
   data.isComplete = false
+  data.isComfirm = false
 
   if (data._id) {
 

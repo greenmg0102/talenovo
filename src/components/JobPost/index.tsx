@@ -5,7 +5,7 @@ import Milestone from '@/components/JobPost/milestone'
 import CompoanyInfo from "@/components/JobPost/compoanyInfo";
 import JobDetail from "@/components/JobPost/jobDetail";
 import Payment from "@/components/JobPost/payment";
-import { companyDatilPost, jobDatilPost, jobPostStatus } from "@/store/action/admin/jobPost"
+import { companyDatilPost, jobDatilPost, jobPostStatus } from "@/store/action/user/jobPost"
 import { JobPostingMileston } from '@/data/jobPost'
 
 const JobPostMain = () => {
@@ -61,9 +61,6 @@ const JobPostMain = () => {
     priority: 'low',
   })));
 
-  console.log("params", params);
-
-
   const list = {
     0: <CompoanyInfo
       warn={warn}
@@ -118,8 +115,11 @@ const JobPostMain = () => {
     } else if (category === 1 && Nextcategory === 2) {
 
       let real: any = value
-      real.description = params.description,
-        real.descriptionText = params.descriptionText
+      real.description = params.description
+      real.descriptionText = params.descriptionText
+
+      console.log('real', real);
+
 
       if (
         real.jobTitle.length > 0 && real.type !== undefined &&

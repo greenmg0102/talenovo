@@ -2,9 +2,12 @@
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
 import { ObjectId } from 'mongodb';
+import { adminAPIMiddleware } from '../../middleware';
+
 
 export async function DELETE(req: any, res: any) {
 
+  await adminAPIMiddleware(req, res)
   let data = await req.json()
   let { db } = await connectToDatabase();
 
@@ -24,6 +27,7 @@ export async function DELETE(req: any, res: any) {
 
 export async function PUT(req: any, res: any) {
 
+  await adminAPIMiddleware(req, res)
   let data = await req.json()
   let { db } = await connectToDatabase();
 
@@ -46,6 +50,7 @@ export async function PUT(req: any, res: any) {
 
 export async function GET(req: any, res: any) {
 
+  await adminAPIMiddleware(req, res)
   let { db } = await connectToDatabase();
 
   let typeResult = await db
@@ -57,6 +62,7 @@ export async function GET(req: any, res: any) {
 
 export async function POST(req: any, res: any) {
 
+  await adminAPIMiddleware(req, res)
   let { db } = await connectToDatabase();
   let data = await req.json()
 

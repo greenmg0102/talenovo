@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
-import TestInput from '@/components/Input/TextInput'
-import RegistButton from '@/components/Button/RegistButton'
+import TestInput from '@/components/Common/Input/TextInput'
+import RegistButton from '@/components/Common/Button/RegistButton'
 import { currencyTypeGet, currencyTypePost } from '@/store/action/admin/jobInfo/currencyType'
 import CurrencyTypeItem from '@/components/Admin/jobInfoAdmin/CurrencyTypeItem'
 
@@ -28,6 +28,18 @@ const CurrencyType = () => {
       setCurrencyTypeList(result)
       setValue({ ...value, currencyType: "" })
     }
+  }
+
+  const updateList = (order: any, updateValue: any) => {
+    let real = []
+    if (updateValue === null) real = currencyTypeList.filter((item: any, index: any) => index !== order)
+    else {
+      currencyTypeList.forEach((item: any, index: any) => {
+        if (index === order) real.push({ ...item, currencyType: updateValue })
+        else real.push(item)
+      })
+    }
+    setCurrencyTypeList(real)
   }
 
   return (
@@ -64,6 +76,7 @@ const CurrencyType = () => {
           key={index}
           index={index}
           item={item}
+          setTyepList={(order: any, updateValue: any) => updateList(order, updateValue)}
         />
       )}
     </div>

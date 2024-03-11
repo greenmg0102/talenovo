@@ -1,21 +1,21 @@
 'use client'
 import { useState, useEffect } from 'react';
-import TestInput from '@/components/Input/TextInput'
-import RegistButton from '@/components/Button/RegistButton'
+import TestInput from '@/components/Common/Input/TextInput'
+import RegistButton from '@/components/Common/Button/RegistButton'
 import { currencyGet, currencyPost } from '@/store/action/admin/jobInfo/currency'
 import CurrencyListItem from '@/components/Admin/jobInfoAdmin/CurrencyListItem'
 
-const CurrencyList = ( ) => {
+const CurrencyList = () => {
 
   const [value, setValue] = useState({ currency: "" })
   const [warn, setWarn] = useState({ currency: "" })
 
-  const [currencyList, CetcurrencyList] = useState([])
+  const [currencyList, SetcurrencyList] = useState([])
 
   useEffect(() => {
     async function fetchData() {
       let result = await currencyGet()
-      CetcurrencyList(result)
+      SetcurrencyList(result)
     }
     fetchData()
   }, [])
@@ -25,9 +25,21 @@ const CurrencyList = ( ) => {
       console.log("regist error");
     } else {
       let result = await currencyPost(value)
-      CetcurrencyList(result)
+      SetcurrencyList(result)
       setValue({ ...value, currency: "" })
     }
+  }
+
+  const updateList = (order: any, updateValue: any) => {
+    let real = []
+    if (updateValue === null) real = currencyList.filter((item: any, index: any) => index !== order)
+    else {
+      currencyList.forEach((item: any, index: any) => {
+        if (index === order) real.push({ ...item, currency: updateValue })
+        else real.push(item)
+      })
+    }
+    SetcurrencyList(real)
   }
 
   return (
@@ -64,6 +76,7 @@ const CurrencyList = ( ) => {
           key={index}
           index={index}
           item={item}
+          setTyepList={(order: any, updateValue: any) => updateList(order, updateValue)}
         />
       )}
     </div>

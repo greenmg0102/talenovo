@@ -10,9 +10,6 @@ export async function POST(req: any, res: any) {
   
   const blogs = await db.collection("tests").find().toArray();
   
-  console.log("data", data)
-  console.log("blogs", blogs)
-
   return NextResponse.json({
     users: blogs,
   });

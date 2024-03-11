@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
-import TestInput from '@/components/Input/TextInput'
-import SelectInput from '@/components/Input/SelectInput'
-import SearchInput from '@/components/Input/SearchInput'
-import TagInput from '@/components/Input/TagInput'
+import TestInput from '@/components/Common/Input/TextInput'
+import SelectInput from '@/components/Common/Input/SelectInput'
+import SearchInput from '@/components/Common/Input/SearchInput'
+import TagInput from '@/components/Common/Input/TagInput'
 
 import { jobTypeGet } from "@/store/action/admin/jobInfo/jobType"
 import { jobCategoryGet } from "@/store/action/admin/jobInfo/jobCategory"
-import { jobLocationPut } from "@/store/action/admin/jobInfo/jobLocation"
-import { jobTagPut } from "@/store/action/admin/jobInfo/jobTag"
+import { jobLocationPut } from "@/store/action/user/jobInfo/jobLocation"
+import { jobTagPut } from "@/store/action/user/jobInfo/jobTag"
 import { currencyGet } from "@/store/action/admin/jobInfo/currency"
 import { currencyTypeGet } from "@/store/action/admin/jobInfo/currencyType"
 import ReactQuill from 'react-quill';
@@ -133,13 +133,6 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
           />
         </div>
         <div className='mb-4 w-[100%]'>
-          {/* <TestInput
-            value={value}
-            type={'description'}
-            warn={warn}
-            title={"Description *"}
-            onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
-          /> */}
           <ReactQuill
             theme="snow"
             value={params.description}

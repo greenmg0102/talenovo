@@ -2,8 +2,6 @@
 
 import { Tab } from '@headlessui/react';
 import { Fragment } from 'react';
-import OnlineMembers from "@/components/UserProfile/OnlineMembers";
-import BestMatch from "@/components/UserProfile/BestMatch";
 import Resume from "@/components/UserProfile/AboutMe/Resume";
 import Education from "@/components/UserProfile/AboutMe/Education";
 import WorkHistory from "@/components/UserProfile/AboutMe/WorkHistory";
@@ -15,7 +13,7 @@ import MyJobs from "@/components/UserProfile/MyJobs";
 const UserDashboard = () => {
   return (
     <div className="flex justify-between items-start border">
-      <div className="w-4/5 border">
+      <div className="w-full border">
         <Tab.Group>
           <Tab.List className="mt-3 flex flex-wrap border-b border-gray-200">
             <Tab as={Fragment}>
@@ -86,21 +84,21 @@ const UserDashboard = () => {
                 <MyBookmark />
               </Tab.Panel>
               <Tab.Panel>
-                <MyBookmark />
+                <MyPostingJob />
               </Tab.Panel>
             </div>
           </Tab.Panels>
         </Tab.Group>
 
       </div>
-      <div className="w-1/5 border">
+      {/* <div className="w-1/5 border">
         <div>
           <OnlineMembers />
         </div>
         <div>
           <BestMatch />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

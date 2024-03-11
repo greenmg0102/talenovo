@@ -7,24 +7,24 @@ const categoryData: Category[] = [
   },
   {
     id: 1,
-    title: "Our Job Admin",
+    title: "Role Admin",
   },
   {
     id: 2,
-    title: "Other Job Admin",
+    title: "Our Job Admin",
   },
   {
     id: 3,
-    title: "Job Info",
+    title: "Other Job Admin",
   },
   {
     id: 4,
+    title: "Job Info",
+  },
+  {
+    id: 5,
     title: "Payment Log",
   },
-  // {
-  //   id: 4,
-  //   title: "Business Analyze",
-  // }
 ];
 export default categoryData;
 

@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react';
-import { TempoaryUserData } from '@/components/Admin/categoryData'
 import UserAdminItem from '@/components/Admin/userAdmin/UserAdminItem'
 
 

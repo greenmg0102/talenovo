@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
-import TestInput from '@/components/Input/TextInput'
-import RegistButton from '@/components/Button/RegistButton'
+import TestInput from '@/components/Common/Input/TextInput'
+import RegistButton from '@/components/Common/Button/RegistButton'
 import { jobProductionGet, jobProductionPost } from '@/store/action/admin/jobInfo/jobProduction'
 import ProductionItem from '@/components/Admin/jobInfoAdmin/ProductionItem'
 
@@ -22,7 +22,6 @@ const ProductionList = () => {
 
   const regist = async () => {
     if (value.title.length === 0 && value.price.length === 0 && value.amount.length === 0) {
-      console.log("regist error");
     } else {
       let result = await jobProductionPost(value)
       setProductionList(result)
@@ -73,10 +72,10 @@ const ProductionList = () => {
           No
         </p>
         <div className="w-[calc(100%-40px)] flex justify-between items-center">
-          <p className=''>Title</p>
-          <p className=''>Price</p>
-          <p className=''>Amount</p>
-          <p className=''>Other Info</p>
+          <p className='w-[30%]'>Title</p>
+          <p className='w-[100px]'>Price</p>
+          <p className='w-[100px]'>Amount</p>
+          <p className='w-full text-center'>Other Info</p>
           <p className=''>Action</p>
         </div>
       </div>

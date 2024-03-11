@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
-import TestInput from '@/components/Input/TextInput'
-import RegistButton from '@/components/Button/RegistButton'
+import TestInput from '@/components/Common/Input/TextInput'
+import RegistButton from '@/components/Common/Button/RegistButton'
 import { jobTypeGet, jobTypePost } from '@/store/action/admin/jobInfo/jobType'
 import JobTypeListItem from '@/components/Admin/jobInfoAdmin/JobTypeListItem'
 

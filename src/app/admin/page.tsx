@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
 import UserAdmin from "@/components/Admin/UserAdmin";
+import RoleAdmin from "@/components/Admin/RoleAdmin";
 import Category from "@/components/Admin/category/Category";
 import OurJobPostAdmin from "@/components/Admin/OurJobPostAdmin";
 import OtherJobPostAdmin from "@/components/Admin/OtherJobPostAdmin";
@@ -25,11 +26,11 @@ const Admin = () => {
 
   const categoryObject = {
     0: <UserAdmin />,
-    1: <OurJobPostAdmin />,
-    2: <OtherJobPostAdmin />,
-    3: <JobInfoAdmin />,
-    4: <Paylog />,
-    // 4: <BusinessAnalyze />
+    1: <RoleAdmin />,
+    2: <OurJobPostAdmin />,
+    3: <OtherJobPostAdmin />,
+    4: <JobInfoAdmin />,
+    5: <Paylog />
   }
 
   return (

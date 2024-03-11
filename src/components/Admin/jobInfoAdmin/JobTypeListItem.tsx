@@ -44,7 +44,7 @@ const JobTypeListItem = ({ index, item, setTyepList }: any) => {
       </p>
       <div className="w-[calc(100%-40px)] flex justify-between items-center">
         {active ?
-          <input type='text' value={value} onChange={(e: any) => setValue(e.target.value)} className="border border-gray-300"/>
+          <input type='text' value={value} onChange={(e: any) => setValue(e.target.value)} className="border border-gray-300" />
           :
           <p className=''>{item.type}</p>
         }
@@ -73,10 +73,8 @@ const JobTypeListItem = ({ index, item, setTyepList }: any) => {
           </div>
         }
       </div>
-    </div >
+    </div>
   )
 };
 
 export default JobTypeListItem;
-
-

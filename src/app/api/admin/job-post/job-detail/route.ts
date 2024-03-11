@@ -2,9 +2,12 @@
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
 import { currentUser } from '@clerk/nextjs';
+import { adminAPIMiddleware } from '../../middleware';
+
 
 export async function POST(req: any, res: any) {
 
+  await adminAPIMiddleware(req, res)
   let insertedId = null
   let { db } = await connectToDatabase();
 

@@ -1,9 +1,12 @@
 
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
+import { adminAPIMiddleware } from '../../middleware';
+
 
 export async function GET(req: any, res: any) {
 
+  await adminAPIMiddleware(req, res)
   let { db } = await connectToDatabase();
 
   let productionResult = await db
@@ -15,6 +18,7 @@ export async function GET(req: any, res: any) {
 
 export async function POST(req: any, res: any) {
 
+  await adminAPIMiddleware(req, res)
   let { db } = await connectToDatabase();
   let data = await req.json()
 

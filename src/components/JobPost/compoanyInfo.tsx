@@ -1,4 +1,4 @@
-import TestInput from '@/components/Input/TextInput'
+import TestInput from '@/components/Common/Input/TextInput'
 
 const CompoanyInfo = ({ value, warn, setValue }: any) => {
 

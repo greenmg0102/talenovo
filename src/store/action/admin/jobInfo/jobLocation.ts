@@ -18,7 +18,6 @@ export async function jobLocationGet() {
   return await res.json();
 }
 
-
 export async function jobLocationPost(jobLocation: any) {
 
   const res = await fetch('http://195.35.32.163:3000/api/admin/job-info/job-location', {
@@ -28,3 +27,15 @@ export async function jobLocationPost(jobLocation: any) {
 
   return await res.json();
 }
+
+
+export async function jobLocationDelete(data: any) {
+
+  const res = await fetch('http://195.35.32.163:3000/api/admin/job-info/job-location', {
+    method: 'DELETE',
+    body: JSON.stringify(data)
+  });
+
+  return await res.json();
+}
+

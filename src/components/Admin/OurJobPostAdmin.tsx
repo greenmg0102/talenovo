@@ -1,25 +1,28 @@
+'use client'
 import { useState, useEffect } from 'react';
 import JobItem from '@/components/Admin/jobManaging/JobItem'
-import { TempoaryPostlogData } from '@/components/Admin/categoryData'
 
 const OurJobPostAdmin = () => {
+
+  const [list, setList] = useState([])
 
   useEffect(() => {
 
     async function fetchData() {
-      const res = await fetch('http://195.35.32.163:3000/api/admin/job-post', {
+      const res = await fetch('http://195.35.32.163:3000/api/admin/my-job-post', {
         method: 'POST',
         body: JSON.stringify({
-          title: "title",
-          content: "content",
         })
       });
-
       const data = await res.json();
+      setList(data.myjobposts)
     }
     fetchData()
 
   }, []);
+
+  console.log("list", list);
+
 
   return (
     <div>
@@ -28,19 +31,21 @@ const OurJobPostAdmin = () => {
           No
         </p>
         <div className="w-[calc(100%-40px)] flex justify-between items-center">
-          <p className='w-[15%]'>Full Name</p>
-          <p className='w-[25%]'>Contact Information</p>
-          <p className='w-[10%]'>Stack</p>
-          <p className='w-[10%]'>Type</p>
-          <p className='w-[15%]'>Level</p>
-          <p className='w-[15%]'>Postion</p>
-          <p className='w-[15%]'>Post Date</p>
+          <p className='w-[15%] text-center'>Company</p>
+          <p className='w-[25%] text-center'>Title</p>
+          <p className='w-[10%] text-center'>Stack</p>
+          <p className='w-[20%] text-center'>Location</p>
+          <p className='w-[5%] text-center'>Min</p>
+          <p className='w-[5%] text-center'>Max</p>
+          <p className='w-[12%] text-center'>Post Date</p>
+          <p className='w-[13%] text-center'>Confirm</p>
         </div>
       </div>
-      {TempoaryPostlogData.map((item: any, index: any) =>
+      {list.map((item: any, index: any) =>
         <JobItem
           key={index}
           item={item}
+          order={index}
         />
       )}
     </div>

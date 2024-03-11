@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
-import TestInput from '@/components/Input/TextInput'
-import RegistButton from '@/components/Button/RegistButton'
+import TestInput from '@/components/Common/Input/TextInput'
+import RegistButton from '@/components/Common/Button/RegistButton'
 import { jobLocationGet, jobLocationPost } from '@/store/action/admin/jobInfo/jobLocation'
 import LocationListItem from '@/components/Admin/jobInfoAdmin/LocationListItem'
 
@@ -19,6 +19,18 @@ const LocationList = () => {
     }
     fetchData()
   }, [])
+
+  const updateList = (order: any, updateValue: any) => {
+    let real = []
+    if (updateValue === null) real = locationList.filter((item: any, index: any) => index !== order)
+    else {
+      locationList.forEach((item: any, index: any) => {
+        if (index === order) real.push({ ...item, location: updateValue })
+        else real.push(item)
+      })
+    }
+    setLocationList(real)
+  }
 
   const regist = async () => {
     if (value.location.length === 0) {
@@ -63,6 +75,7 @@ const LocationList = () => {
           key={index}
           index={index}
           item={item}
+          setTyepList={(order: any, updateValue: any) => updateList(order, updateValue)}
         />
       )}
     </div>
