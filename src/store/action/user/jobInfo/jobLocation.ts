@@ -1,7 +1,7 @@
 
 export async function jobLocationPut(data: any) {
 
-  const res = await fetch('http://l195.35.32.163:3000/api/user/job-info/job-location', {
+  const res = await fetch('http://195.35.32.163:3000/api/user/job-info/job-location', {
     method: 'PUT',
     body: JSON.stringify(data)
   });
