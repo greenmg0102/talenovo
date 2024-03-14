@@ -10,13 +10,13 @@ export async function GET(req: any, res: any) {
 
   let { db } = await connectToDatabase();
 
-  // schedule.scheduleJob('0 */12 * * *', async () => {
+  schedule.scheduleJob('0 */12 * * *', async () => {
     let linkedin = await linkedinScrapping();
     let kadoa = await KadoaScrapping();
 
     let real = [...linkedin, ...kadoa]
     await db.collection("otherjobs").insertMany(real).then(async (result: any) => { return });
-  // });
+  });
 
   return NextResponse.json({
     result: true,
