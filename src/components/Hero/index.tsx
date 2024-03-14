@@ -1,12 +1,23 @@
 "use client";
-import Link from "next/link";
 import Search from "./search";
-import { useState } from "react";
-import JobCard from "./job/jobCard";
+import { useState, useEffect } from "react";
 import JobList from "./job";
+import { landingJob } from '@/store/action/user/jobget/landingJob'
 
 const Hero = () => {
   const [searchList, setSearchList] = useState([]);
+  const [databaseJobList, setDatabaseJobList] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    async function landingJobGetting() {
+      let result = await landingJob({})
+      setTotal(result.total)
+      setDatabaseJobList(result.jobList)
+    }
+    landingJobGetting()
+  }, [])
+
   return (
     <>
       <section
@@ -17,21 +28,41 @@ const Hero = () => {
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
               <div className="mx-auto max-w-[1200px] text-center">
-                <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  46350 software engineer jobs
+                <h1 className="mb-5 text-2xl font-bold leading-tight text-black dark:text-white sm:text-3xl sm:leading-tight md:text-4xl md:leading-tight">
+                  Trusted by over 8000+ customers
                 </h1>
                 <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
                   Search by location, skills, seniority, focus, and industry.
                 </p>
-                <Search
-                  searchList={searchList}
-                  setSearchList={(list) => setSearchList(list)}
-                />
-              </div>
-              <div className="mx-auto max-w-[1000px] text-center">
-                <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                  <JobList />
+                <div className="flex justify-around items-center mb-12">
+                  <div>
+                    <p className="text-blue-500 font-bold text-[40px] text-center">{total}+</p>
+                    <p className="text-gray-600 font-bold text-[20px] text-center">Total Jobs</p>
+                  </div>
+                  <div>
+                    <p className="text-blue-500 font-bold text-[40px] text-center">1224+</p>
+                    <p className="text-gray-600 font-bold text-[20px] text-center">Today's Jobs</p>
+                  </div>
+                  <div>
+                    <p className="text-blue-500 font-bold text-[40px] text-center">150+</p>
+                    <p className="text-gray-600 font-bold text-[20px] text-center">Companys</p>
+                  </div>
+                  <div>
+                    <p className="text-blue-500 font-bold text-[40px] text-center">23+</p>
+                    <p className="text-gray-600 font-bold text-[20px] text-center">Industries</p>
+                  </div>
                 </div>
+
+              </div>
+              <div className="mx-auto max-w-[1000px] text-center bg-white border-spacing-3 rounded-xl">
+                  <Search
+                    searchList={searchList}
+                    setSearchList={(list: any) => setSearchList(list)}
+                  />
+                  
+                  <JobList
+                    list={databaseJobList}
+                  />
               </div>
             </div>
           </div>

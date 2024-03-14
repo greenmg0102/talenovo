@@ -30,7 +30,8 @@ const Admin = () => {
     2: <OurJobPostAdmin />,
     3: <OtherJobPostAdmin />,
     4: <JobInfoAdmin />,
-    5: <Paylog />
+    5: <Paylog />,
+    // 6: <BusinessAnalyze />
   }
 
   return (

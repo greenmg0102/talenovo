@@ -11,7 +11,7 @@
 }
 
 @layer components {
-  input[type="checkbox"]:checked ~ label span svg {
+  input[type="checkbox"]:checked~label span svg {
     @apply inline-flex;
   }
 
@@ -23,17 +23,35 @@
     @apply opacity-70;
   }
 
-  input#togglePlan:checked ~ .dot {
+  input#togglePlan:checked~.dot {
     @apply translate-x-full;
   }
 
-  input#checkboxLabel:checked ~ .box span {
+  input#checkboxLabel:checked~.box span {
     @apply opacity-100;
   }
 }
 
 .ql-container.ql-snow {
-  background-color: #f9fafb; /* Example: Change the background color */
-  border: 1px solid #ccc; /* Example: Add a border */
+  background-color: #f9fafb;
+  /* Example: Change the background color */
+  border: 1px solid #ccc;
+  /* Example: Add a border */
   height: 200px;
+}
+
+.ant-btn-default {
+  background-color: #f9fafb;
+  /* Example: Change the background color */
+  border: 1px solid #ccc;
+  /* Example: Add a border */
+  color: red !important;
+}
+
+.ant-btn-primary {
+  background-color: #f9fafb;
+  /* Example: Change the background color */
+  border: 1px solid #ccc;
+  /* Example: Add a border */
+  color: blue !important;
 }

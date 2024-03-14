@@ -30,7 +30,7 @@ const ToggleSort = () => {
         </div>
       </label>
       <span className="font-semibold">
-        985 jobs added in the past 24 hours
+        985 jobs added in the past 12 hours
       </span>
       <div className="flex h-9 w-80">
         <input

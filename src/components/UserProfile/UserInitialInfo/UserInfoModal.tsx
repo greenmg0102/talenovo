@@ -1,31 +1,27 @@
 import { useState } from 'react';
 import { DatePicker, Space, Modal, Select, Input } from 'antd';
 import { PhoneOutlined, HomeOutlined } from '@ant-design/icons';
+import { userOtherRegist } from '@/store/action/user/userProfile/userInfo'
 
 // Create a functional component to demonstrate the usage of the Modal
-function UserInfoModal({ isModalVisible, setIsModalVisible }: any) {
+function UserInfoModal({ isModalVisible, setIsModalVisible, userInfo, onchange }: any) {
 
-    const [value, setValue] = useState('');
 
-    const handleChange = (value: string) => {
-        console.log(`selected ${value}`);
+    const handleOk = async () => {
+        let result = await userOtherRegist({
+            locatedin: userInfo.locatedin,
+            gender: userInfo.gender
+        })
+        if (result.isOkay) {
+            setIsModalVisible(false);
+        } else {
+
+        }
     };
 
-    // State to control the visibility of the modal
-
-    // Function to handle the visibility of the modal
-    const showModal = () => {
-        setIsModalVisible(true);
-    };
-
-    // Function to handle the closing of the modal
-    const handleOk = () => {
-        setIsModalVisible(false);
-    };
-
-    // Function to handle the cancel action of the modal
     const handleCancel = () => {
         setIsModalVisible(false);
+        onchange({ ...userInfo, locatedin: "", gender: "Male" })
     };
 
     return (
@@ -39,30 +35,23 @@ function UserInfoModal({ isModalVisible, setIsModalVisible }: any) {
                 <div className=''>
                     <div className='flex justify-between items-center flex-wrap'>
                         <div className='w-1/2 p-2'>
-                            <p>Phone Number</p>
-                        </div>
-                        <div className='w-1/2 p-2'>
-                            <Input placeholder="default size" prefix={<PhoneOutlined />} className='w-full' />
-                        </div>
-                        <div className='w-1/2 p-2'>
                             <p>I am located in</p>
                         </div>
                         <div className='w-1/2 p-2'>
-                            <Input placeholder="Florida, United State" prefix={<HomeOutlined />} className='w-full' />
+                            <Input value={userInfo.locatedin} placeholder="Your position" prefix={<HomeOutlined />} className='w-full' onChange={(e: any) => onchange({ ...userInfo, locatedin: e.target.value })} />
                         </div>
                         <div className='w-1/2 p-2'>
                             <p>Gender</p>
                         </div>
                         <div className='w-1/2 p-2'>
                             <Select
-                                defaultValue="Male"
+                                defaultValue={userInfo.gender}
                                 style={{ width: '100%' }}
-                                onChange={handleChange}
+                                onChange={(e: any) => onchange({ ...userInfo, gender: e })}
                                 options={[
                                     { value: 'Male', label: 'Male' },
                                     { value: 'Female', label: 'Female' },
-                                    { value: 'They', label: 'He/They or She/They' },
-                                    { value: 'no', label: 'Don"t wanna show' },
+                                    { value: 'Agency', label: 'Agency' }
                                 ]}
                             />
                         </div>

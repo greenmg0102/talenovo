@@ -3,7 +3,7 @@ import { useState } from 'react';
 import EditButton from '@/components/Common/Button/EditButton'
 import UserBannerModal from '@/components/UserProfile/UserInitialInfo/UserBannerModal'
 
-const UserBanner = () => {
+const UserBanner = ({ userInfo, onchange }: any) => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -14,8 +14,10 @@ const UserBanner = () => {
   return (
     <div className="relative p-2 px-4">
       <UserBannerModal
+        userInfo={userInfo}
         isModalVisible={isModalVisible}
         setIsModalVisible={(bool: any) => setIsModalVisible(bool)}
+        onchange={(total: any) => onchange(total)}
       />
       <EditButton add={add} />
       <div className="flex justify-center py-4">
@@ -25,9 +27,13 @@ const UserBanner = () => {
       </div>
       <p className="text-center mb-6">Galen Bowles</p>
       <p className="text-[12px]">Mail address</p>
-      <p className="mb-6">greenmeansg0102@outlook.com</p>
+      <div className='mb-6'>
+        {userInfo.mail.map((item: any, index: any) =>
+          <p key={index} className="">{item}</p>
+        )}
+      </div>
       <p className="text-[12px]">Profile link</p>
-      <p className="mb-6">https://www.linkedin.com/in/galen-bowles-21bbb47a/</p>
+      <p className="mb-6">{userInfo.profile}</p>
       <p className="text-[12px]">Profile Level</p>
       <p className="">Premium</p>
     </div>

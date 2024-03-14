@@ -11,7 +11,7 @@ const TotalSearch = ({ searchList, deleteItem }) => {
                 {
                     searchList !== undefined &&
                     searchList.length !== 0 &&
-                    searchList.map((item, index) =>
+                    searchList.map((item: any, index: any) =>
                         <div
                             key={index}
                             className="flex justify-start items-center mx-1 border rounded-full px-[8px] py-0 mb-1 mx-2 cursor-pointer"
@@ -24,8 +24,8 @@ const TotalSearch = ({ searchList, deleteItem }) => {
                 <input
                     type='text'
                     value={value}
-                    placeholder="Please type your dream!"
-                    className="!max-w-full text-gray-600 bg-custom-gray outline-non focus:outline-none ml-2"
+                    placeholder="What are you looking for?"
+                    className="!max-w-full text-gray-600 bg-white outline-non focus:outline-none ml-2"
                     onChange={e => setValue(e.target.value)}
                 />
             </div>

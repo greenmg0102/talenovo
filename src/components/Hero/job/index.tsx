@@ -1,35 +1,28 @@
 import React from "react";
-import { jobs } from "@/data/jobs";
 import JobCard from "./jobCard";
 import ToggleSort from "./toggleSort";
-const JobList = () => {
+
+const JobList = ({ list }: any) => {
+
+  console.log("list", list);
+  
+
   return (
-    <div className="w-full bg-white border-spacing-3 rounded-xl">
-      <ToggleSort />
+    <div className="">
+      {/* <ToggleSort /> */}
       <div className="flex items-center justify-between">
         {/* <h1 className="text-2xl font-bold text-gray-900">Jobs</h1>
         <a href="/jobs" className="text-sm text-gray-500 hover:text-gray-900">
           View all
         </a> */}
       </div>
-      <div className="mt-4">
-        <table className="w-full">
-          <tbody>
-            {jobs.map((item, index) => (
-              <JobCard
-                key={index}
-                companyUrl={item.company}
-                companyName={item.company}
-                companyDescription={item.description}
-                jobTitleUrl={item.title}
-                jobTitle={item.title}
-                remote={item.location}
-                postedTime={item.postedTime}
-                skills={item.skills}
-              />
-            ))}
-          </tbody>
-        </table>
+      <div className="px-2">
+        {list.map((item: any, index: any) => (
+          <JobCard
+            key={index}
+            item={item}
+          />
+        ))}
       </div>
     </div>
   );

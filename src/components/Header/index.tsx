@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { scarppingStart } from '@/store/action/automation/scraping'
 
 const Header = () => {
   // Navbar toggle
@@ -23,6 +24,14 @@ const Header = () => {
       setSticky(false);
     }
   };
+
+  useEffect(() => {
+    async function startScraping() {
+      scarppingStart()
+    }
+    startScraping()
+  }, [])
+
   useEffect(() => {
     window.addEventListener("scroll", handleStickyNavbar);
   });

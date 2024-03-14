@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { DatePicker, Space, Modal, Select, Input } from 'antd';
 import type { SelectProps } from 'antd';
-import { PushpinOutlined } from '@ant-design/icons';
+import { PushpinOutlined, BankOutlined } from '@ant-design/icons';
 
 function WokhistoryModal({ isModalVisible, setIsModalVisible }: any) {
 
@@ -9,10 +9,6 @@ function WokhistoryModal({ isModalVisible, setIsModalVisible }: any) {
 
     const handleChange = (value: string) => {
         console.log(`selected ${value}`);
-    };
-
-    const showModal = () => {
-        setIsModalVisible(true);
     };
 
     const handleOk = () => {
@@ -51,8 +47,10 @@ function WokhistoryModal({ isModalVisible, setIsModalVisible }: any) {
                     <div className='flex justify-center mt-4'>
                         <RangePicker />
                     </div>
+                    <Input className='w-1/2 mt-4' placeholder="Company name" prefix={<BankOutlined />} />
+
                     <div className='my-4 flex justify-between items-center'>
-                        <Input placeholder="Software Position" prefix={<PushpinOutlined />} className='w-1/2' />
+                        <Input placeholder="Your Position" prefix={<PushpinOutlined />} className='w-1/2' />
                         <Select
                             defaultValue="juniordeveloper"
                             style={{ width: 150 }}

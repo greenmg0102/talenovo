@@ -9,7 +9,7 @@ const OurJobPostAdmin = () => {
   useEffect(() => {
 
     async function fetchData() {
-      const res = await fetch('http://195.35.32.163:3000/api/admin/my-job-post', {
+      const res = await fetch('http://l195.35.32.163:3000/api/admin/my-job-post', {
         method: 'POST',
         body: JSON.stringify({
         })
@@ -20,9 +20,6 @@ const OurJobPostAdmin = () => {
     fetchData()
 
   }, []);
-
-  console.log("list", list);
-
 
   return (
     <div>

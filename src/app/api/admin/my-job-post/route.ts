@@ -1,15 +1,15 @@
 
 import { NextResponse } from "next/server";
-import { connectToDatabase } from "@/lib/mongodb";
 import { adminAPIMiddleware } from '../middleware';
-
+import { connectToDatabase } from "@/lib/mongodb";
 
 export async function POST(req: any, res: any) {
 
-  await adminAPIMiddleware(req, res)
-  let { db } = await connectToDatabase();
+  let data = await req.json()
 
-  const data = await req.json()
+  await adminAPIMiddleware(req, res)
+
+  let { db } = await connectToDatabase();
 
   const myjobposts = await db.collection("myjobposts")
     .find({ isComplete: false, isComfirm: true })

@@ -4,13 +4,13 @@ import { MailOutlined, ProfileOutlined } from '@ant-design/icons';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { message, Upload } from 'antd';
 import type { GetProp, UploadProps } from 'antd';
+import { userBannerRegist } from '@/store/action/user/userProfile/userInfo'
+
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
-// Create a functional component to demonstrate the usage of the Modal
-function UserBannerModal({ isModalVisible, setIsModalVisible }: any) {
+function UserBannerModal({ isModalVisible, setIsModalVisible, userInfo, onchange }: any) {
 
-    const [value, setValue] = useState('');
     const [loading, setLoading] = useState(false);
     const [imageUrl, setImageUrl] = useState<string>();
 
@@ -19,7 +19,6 @@ function UserBannerModal({ isModalVisible, setIsModalVisible }: any) {
         reader.addEventListener('load', () => callback(reader.result as string));
         reader.readAsDataURL(img);
     };
-
     const beforeUpload = (file: FileType) => {
         const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
         if (!isJpgOrPng) {
@@ -31,21 +30,18 @@ function UserBannerModal({ isModalVisible, setIsModalVisible }: any) {
         }
         return isJpgOrPng && isLt2M;
     };
-
     const handleChange: UploadProps['onChange'] = (info) => {
         if (info.file.status === 'uploading') {
             setLoading(true);
             return;
         }
         if (info.file.status === 'done') {
-            // Get this url from response in real world.
             getBase64(info.file.originFileObj as FileType, (url) => {
                 setLoading(false);
                 setImageUrl(url);
             });
         }
     };
-
     const uploadButton = (
         <button style={{ border: 0, background: 'none' }} type="button">
             {loading ? <LoadingOutlined /> : <PlusOutlined />}
@@ -53,21 +49,20 @@ function UserBannerModal({ isModalVisible, setIsModalVisible }: any) {
         </button>
     );
 
-    // State to control the visibility of the modal
+    const handleOk = async () => {
+        let result = await userBannerRegist({
+            profile: userInfo.profile
+        })
+        if (result.isOkay) {
+            setIsModalVisible(false);
+        } else {
 
-    // Function to handle the visibility of the modal
-    const showModal = () => {
-        setIsModalVisible(true);
+        }
     };
 
-    // Function to handle the closing of the modal
-    const handleOk = () => {
-        setIsModalVisible(false);
-    };
-
-    // Function to handle the cancel action of the modal
     const handleCancel = () => {
         setIsModalVisible(false);
+        onchange({ ...userInfo, profile: "" })
     };
 
     return (
@@ -92,8 +87,7 @@ function UserBannerModal({ isModalVisible, setIsModalVisible }: any) {
                             {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
                         </Upload>
                     </div>
-                    <Input placeholder="Mail address" prefix={<MailOutlined />} className='w-full my-8' />
-                    <Input placeholder="Profile Link" prefix={<ProfileOutlined />} className='w-full' />
+                    <Input value={userInfo.profile} placeholder="Profile Link" prefix={<ProfileOutlined />} className='w-full' onChange={(e: any) => onchange({ ...userInfo, profile: e.target.value })} />
                 </div>
             </Modal>
         </div>

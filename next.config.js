@@ -3,7 +3,8 @@ const nextConfig = {
   images: {
     domains: [
       "localhost",
-      'img.clerk.com'
+      'img.clerk.com',
+      'media.licdn.com',
     ],
     remotePatterns: [
       {

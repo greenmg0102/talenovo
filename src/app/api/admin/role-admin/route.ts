@@ -5,6 +5,7 @@ import { adminAPIMiddleware } from '../middleware';
 import { connectToDatabase } from "@/lib/mongodb";
 import { ObjectId } from 'mongodb';
 
+
 export async function GET(req: any, res: any) {
 
   await adminAPIMiddleware(req, res);
