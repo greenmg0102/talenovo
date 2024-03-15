@@ -4,9 +4,6 @@ import ToggleSort from "./toggleSort";
 
 const JobList = ({ list }: any) => {
 
-  console.log("list", list);
-  
-
   return (
     <div className="">
       {/* <ToggleSort /> */}
@@ -16,14 +13,12 @@ const JobList = ({ list }: any) => {
           View all
         </a> */}
       </div>
-      <div className="px-2">
-        {list.map((item: any, index: any) => (
-          <JobCard
-            key={index}
-            item={item}
-          />
-        ))}
-      </div>
+      {list.map((item: any, index: any) => (
+        <JobCard
+          key={index}
+          item={item}
+        />
+      ))}
     </div>
   );
 };

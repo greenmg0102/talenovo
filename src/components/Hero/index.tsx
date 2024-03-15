@@ -3,6 +3,8 @@ import Search from "./search";
 import { useState, useEffect } from "react";
 import JobList from "./job";
 import { landingJob } from '@/store/action/user/jobget/landingJob'
+import SuggestedJobCard from '@/components/Hero/job/SuggestedJobCard'
+import Filter from '@/components/Hero/filter'
 
 const Hero = () => {
   const [searchList, setSearchList] = useState([]);
@@ -11,12 +13,17 @@ const Hero = () => {
 
   useEffect(() => {
     async function landingJobGetting() {
-      let result = await landingJob({})
+      let result = await landingJob()
+      console.log("result", result);
+
       setTotal(result.total)
       setDatabaseJobList(result.jobList)
     }
     landingJobGetting()
   }, [])
+
+
+  console.log("databaseJobList", databaseJobList);
 
   return (
     <>
@@ -34,35 +41,50 @@ const Hero = () => {
                 <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
                   Search by location, skills, seniority, focus, and industry.
                 </p>
-                <div className="flex justify-around items-center mb-12">
+                <div className="flex justify-around items-center flex-wrap mb-12">
                   <div>
-                    <p className="text-blue-500 font-bold text-[40px] text-center">{total}+</p>
-                    <p className="text-gray-600 font-bold text-[20px] text-center">Total Jobs</p>
+                    <p className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center">{total}+</p>
+                    <p className="text-gray-600 font-bold text-[14px] sm:text-[20px] text-center">Total Jobs</p>
                   </div>
                   <div>
-                    <p className="text-blue-500 font-bold text-[40px] text-center">1224+</p>
-                    <p className="text-gray-600 font-bold text-[20px] text-center">Today's Jobs</p>
+                    <p className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center">1224+</p>
+                    <p className="text-gray-600 font-bold text-[14px] sm:text-[20px] text-center">Today's Jobs</p>
                   </div>
                   <div>
-                    <p className="text-blue-500 font-bold text-[40px] text-center">150+</p>
-                    <p className="text-gray-600 font-bold text-[20px] text-center">Companys</p>
+                    <p className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center">150+</p>
+                    <p className="text-gray-600 font-bold text-[14px] sm:text-[20px] text-center">Companys</p>
                   </div>
                   <div>
-                    <p className="text-blue-500 font-bold text-[40px] text-center">23+</p>
-                    <p className="text-gray-600 font-bold text-[20px] text-center">Industries</p>
+                    <p className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center">23+</p>
+                    <p className="text-gray-600 font-bold text-[14px] sm:text-[20px] text-center">Industries</p>
                   </div>
                 </div>
 
               </div>
-              <div className="mx-auto max-w-[1000px] text-center bg-white border-spacing-3 rounded-xl">
+              <div className="mx-auto max-w-[1368px] flex justify-between items-start flex-wrap">
+                <div className="w-full sm:w-[30%] md:w-[25%] lg:w-[20%] border border-gray-300 bg-gray-50 rounded-md p-4 mb-4">
+                  <Filter />
+                </div>
+                <div className="w-full sm:w-[70%] md:w-[75%] lg:w-[80%] xl:w-[55%] px-0 sm:px-2">
                   <Search
                     searchList={searchList}
                     setSearchList={(list: any) => setSearchList(list)}
                   />
-                  
                   <JobList
                     list={databaseJobList}
                   />
+                </div>
+
+                <div className="w-full xl:w-[25%]">
+                  <div className=" border border-blue-600 bg-gray-50 rounded-md p-2 flex justify-between items-center mb-4">
+                    <p className="font-bold text-[16px]">Suggeted Job</p>
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="exclamation-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path d="M464 688a48 48 0 1096 0 48 48 0 10-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z"></path></svg>
+                  </div>
+
+                  {databaseJobList.slice(11, 30).map((item: any, index: any) =>
+                    <SuggestedJobCard key={index} item={item} />
+                  )}
+                </div>
               </div>
             </div>
           </div>

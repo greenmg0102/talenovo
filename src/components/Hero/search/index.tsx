@@ -39,7 +39,7 @@ const Search = ({ searchList, setSearchList }) => {
     (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
 
   return (
-    <div className="p-2 pb-20">
+    <div className="border border-gray-300 bg-gray-50 rounded-md px-2 pt-8 pb-6 mb-4">
       <div
         className={clsx(
           isExpend
@@ -47,11 +47,12 @@ const Search = ({ searchList, setSearchList }) => {
             : "invisible mx-auto max-w-[968px]",
         )}
       >
+        <p className="text-blue-500 text-[24px]"> Find your dream job here!</p>
+        <p className="text-blue-400 py-6"> Search by skill and title</p>
         <TotalSearch
           searchList={searchList}
           deleteItem={(index: any) => deleteItem(index)}
         />
-        <p className="text-gray-300"> Search by skill and industry, location, and etc ...</p>
 
         {/* <div className="flex justify-around">
 

@@ -14,6 +14,7 @@ export async function GET(req: any, res: any) {
     let linkedin = await linkedinScrapping();
     let kadoa = await KadoaScrapping();
 
+    // let real = linkedin
     let real = [...linkedin, ...kadoa]
     await db.collection("otherjobs").insertMany(real).then(async (result: any) => { return });
   });

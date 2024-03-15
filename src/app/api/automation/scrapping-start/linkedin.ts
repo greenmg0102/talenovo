@@ -4,7 +4,7 @@ export async function linkedinScrapping(): Promise<any> {
 
     let real = []
 
-    const response = await fetch("https://api.apify.com/v2/datasets/VFcc5gIb5wLvEZAgr/items?token=apify_api_pgD0hi7CqXuisJAxdvUuhEAg1BIqrX4nWOcg", {
+    const response = await fetch("https://api.apify.com/v2/datasets/CcscIqlEmAbnVDz8f/items?token=apify_api_pgD0hi7CqXuisJAxdvUuhEAg1BIqrX4nWOcg", {
         method: 'GET'
     });
 

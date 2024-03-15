@@ -4,7 +4,7 @@ import LinkedinJobItem from '@/components/Hero/job/LinkedinJobItem'
 
 const JobCard = ({ item }: any) => {
   return (
-    <div className="border border-dashed border-gray-200 rounded-[8px] rounded-tl-none rounded-tr-none mb-2 transition-all hover:shadow-lg">
+    <div className="border border-gray-300 bg-gray-50 rounded-md px-2 mb-2 cursor-pointer transition-all hover:shadow-lg hover:border-blue-500">
       {item.platform === "apify" && item.subType === "linkedin" ?
         <LinkedinJobItem item={item} /> : null
       }
