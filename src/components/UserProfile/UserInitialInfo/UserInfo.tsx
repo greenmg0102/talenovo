@@ -45,7 +45,7 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
           <p className='text-center text-[32px] text-blue-500'>{userInfo.appliedJob}</p>
         </div>
         <div className='w-1/3'>
-          <p className='text-center'>Jb posted</p>
+          <p className='text-center'>Job posted</p>
           <p className='text-center text-[32px] text-blue-500'>{userInfo.postedJob}</p>
         </div>
         <div className='w-1/3'>

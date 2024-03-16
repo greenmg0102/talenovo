@@ -14,16 +14,11 @@ const Hero = () => {
   useEffect(() => {
     async function landingJobGetting() {
       let result = await landingJob()
-      console.log("result", result);
-
       setTotal(result.total)
       setDatabaseJobList(result.jobList)
     }
     landingJobGetting()
   }, [])
-
-
-  console.log("databaseJobList", databaseJobList);
 
   return (
     <>
