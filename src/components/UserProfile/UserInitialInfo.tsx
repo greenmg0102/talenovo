@@ -14,6 +14,7 @@ const UserInitialInfo = () => {
     gender: "",
     postedJob: 0,
     appliedJob: 0,
+    bookmark: 0,
     profileViews: 0
   })
 
@@ -32,6 +33,7 @@ const UserInitialInfo = () => {
         gender: result.gender,
         postedJob: result.postedJob,
         appliedJob: 0,
+        bookmark: result.bookmark,
         profileViews: 0
       })
     }

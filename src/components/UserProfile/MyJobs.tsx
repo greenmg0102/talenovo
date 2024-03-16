@@ -1,9 +1,22 @@
 'use client '
 import { useState, useEffect } from 'react';
+import { myJobApply } from '@/store/action/user/userProfile/myjobpost'
+import MyJobApplyItem from '@/components/UserProfile/MyJobApply/MyJobApplyItem'
 
 const MyJobs = () => {
 
-  const [loading, setLoading] = useState(true)
+  const [list, setList] = useState([])
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    setLoading(true)
+    async function fetchData() {
+      const res = await myJobApply()
+      setList(res.result)
+      setLoading(false)
+    }
+    fetchData()
+  }, []);
 
   return (
     <div>
@@ -16,7 +29,12 @@ const MyJobs = () => {
           <div>
             {true ?
               <>
-                MyJobs
+                {list.map((item: any, index: any) =>
+                  <MyJobApplyItem
+                    key={index}
+                    item={item}
+                  />
+                )}
               </>
               :
               <p className='text-center'>There is no appied job</p>

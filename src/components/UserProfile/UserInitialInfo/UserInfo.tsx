@@ -40,10 +40,15 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
       </div>
 
       <div className='flex justify-between items-center pt-8'>
+
         <div className='w-1/3'>
+          <p className='text-center'>Bookmarked Job</p>
+          <p className='text-center text-[32px] text-blue-500'>{userInfo.bookmark}</p>
+        </div>
+        {/* <div className='w-1/3'>
           <p className='text-center'>Job applied</p>
           <p className='text-center text-[32px] text-blue-500'>{userInfo.appliedJob}</p>
-        </div>
+        </div> */}
         <div className='w-1/3'>
           <p className='text-center'>Job posted</p>
           <p className='text-center text-[32px] text-blue-500'>{userInfo.postedJob}</p>

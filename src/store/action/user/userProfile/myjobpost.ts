@@ -7,3 +7,13 @@ export async function myJobPost() {
     });
     return await res.json();
 }
+
+
+export async function myJobApply() {
+    const res = await fetch('http://195.35.32.163:3000/api/user/user-profile/my-job-apply', {
+        method: 'POST',
+        body: JSON.stringify({
+        })
+    });
+    return await res.json();
+}

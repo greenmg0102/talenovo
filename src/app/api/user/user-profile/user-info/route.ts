@@ -10,8 +10,8 @@ export async function GET(req: any, res: any) {
 
   let isMe = await db.collection("userinfos").findOne({ userId: user.id });
 
-
   let myjobpostCount = await db.collection("myjobposts").countDocuments({ recruiterId: user.id, isComplete: false, isComfirm: false });
+  let mybookmarkjobCount = await db.collection("bookmarks").countDocuments({ userId: user.id });
 
   if (isMe === null) {
     return NextResponse.json({
@@ -22,6 +22,7 @@ export async function GET(req: any, res: any) {
       gender: "",
       postedJob: myjobpostCount,
       appliedJob: 0,
+      bookmark: mybookmarkjobCount,
       viewed: []
     });
   } else {
@@ -33,6 +34,7 @@ export async function GET(req: any, res: any) {
       gender: isMe.gender,
       postedJob: myjobpostCount,
       appliedJob: 0,
+      bookmark: mybookmarkjobCount,
       viewed: []
     });
   }

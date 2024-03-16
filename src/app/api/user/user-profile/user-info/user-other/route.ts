@@ -20,6 +20,7 @@ export async function POST(req: any, res: any) {
       locatedin: reqData.locatedin,
       postedJob: 0,
       appliedJob: 0,
+      bookmark: 0,
       viewed: []
     };
     await db.collection("userinfos").insertOne(data);
