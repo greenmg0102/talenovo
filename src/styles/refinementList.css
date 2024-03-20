@@ -1,0 +1,72 @@
+.ais-SearchBox-form {
+    box-shadow: 0 0 5px 2px rgb(43, 73, 245);
+    padding: 0px 12px;
+    border-radius: 12px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.ais-SearchBox {
+    width: 100%;
+}
+
+.ais-SearchBox-input {
+    padding: 12px;
+    background-color: #f3f4f6;
+    width: calc(100% - 50px);
+}
+
+.ais-SearchBox-input:focus {
+    outline: none;
+}
+
+.ais-SearchBox-resetIcon {
+    display: none;
+}
+
+.ais-SearchBox-submit {
+    margin-left: 10px;
+    padding: 10px;
+    background-color: rgb(105, 126, 245);
+    border-radius: 100%;
+}
+
+.ais-SearchBox-submitIcon {
+    color: white;
+    fill: white;
+}
+
+.ais-RefinementList-labelText {
+    color: rgb(31, 28, 28) !important;
+    font-size: 12px !important;
+    padding-left: 4px !important;
+}
+
+.ais-RefinementList-count {
+    font-size: 12px !important;
+}
+
+.ais-ClearRefinements-button {
+    background-color: rgb(48, 111, 228) !important;
+    border-radius: 4px !important;
+    width: 100% !important;
+    color: antiquewhite;
+    transition: all;
+    margin-bottom: 24px !important;
+}
+
+.ais-ClearRefinements-button:hover {
+    background-color: rgb(15, 89, 228) !important;
+    cursor: pointer;
+    color: white;
+}
+
+.ais-RefinementList-showMore {
+    background-color: rgb(48, 111, 228) !important;
+    border-radius: 4px !important;
+    padding: 4px !important;
+    margin-top: 10px !important;
+    color: antiquewhite;
+    transition: all;
+    font-size: 12px !important;
+}

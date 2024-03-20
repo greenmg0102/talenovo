@@ -1,54 +1,47 @@
 import { Divider } from "antd";
+import clsx from 'clsx'
 
 const LinkedinJobDetail = ({ detail }: any) => {
 
     return (
-        <div className="flex justify-between items-start">
-            <div className="w-full mb-2 md:w-3/4 md:mb-0 px-4">
+        <div className="flex justify-between items-start flex-wrap">
+            <div className="w-full mb-2 lg:w-3/4 lg:mb-0 px-4">
                 <div className="border border-gray-200 rounded-[8px] shadow-2xl p-12">
-                    <p className="text-center text-[24px] font-bold pb-6">{detail.title}</p>
+                    <p className="text-center text-[24px] font-bold pb-12">{detail.title}</p>
+                    <div className="flex justify-start items-center flex-wrap mb-4">
+                        {detail.location !== "" ? <p className="mr-2 mb-1 text-[12px] px-2 bg-green-200 rounded-[4px] text-green-900">{detail.location}</p> : null}
+                        {detail.tertiaryDescription !== "" ? <p className="mr-2 mb-1 text-[12px] px-2 bg-blue-200 rounded-[4px] text-blue-900">{detail.tertiaryDescription}</p> : null}
+                        {detail.insightsV2[0] !== "" ? <p className="mr-2 mb-1 text-[12px] px-2 bg-red-200 rounded-[4px] text-red-900">{detail.insightsV2[0]}</p> : null}
+                    </div>
                     <p className="pb-4">Skill</p>
                     <div className="flex justify-start flex-wrap items-center pb-4">
                         {detail.skills.map((item: any, index: any) =>
-                            <p key={index} className="mr-2 mb-1 text-[12px] text-gray-600 border border-dashed px-2">{item}</p>
+                            <p key={index} className="mr-2 mb-1 text-[12px] font-bold !text-gray-900 border border-dashed border-gray-300 px-2">{item}</p>
                         )}
                     </div>
-                    <div className="flex justify-center items-start flex-wrap">
-                        <div className="w-full sm:w-1/3 pb-4 flex justify-center flex-col items-center">
-                            <p className="pb-2">Salary</p>
-                            <p className="mr-2 text-[12px] text-gray-500">{detail.tertiaryDescription}</p>
-                        </div>
-                        
-                        <div className="w-full sm:w-1/3 pb-4 flex justify-center flex-col items-center">
-                            <p className="pb-2">Location</p>
-                            <p className="mr-2 text-[12px] text-gray-500">{detail.location}</p>
-                        </div>
-                        
-                        <div className="w-full sm:w-1/3 pb-4 flex justify-center flex-col items-center">
-                            <p className="pb-2">Apply Status</p>
-                            <p className="mr-2 text-[12px] text-gray-500">{detail.applicantsCount} Applied</p>
-                        </div>
-                    </div>
-
-                    
                     <Divider />
                     <div className="flex justify-between items-center pb-4">
                         <p className="font-semibold text-[20px]">Job Description</p>
                         <p className="font-semibold">Posted on: <span className="font-normal">{detail.postedAt.slice(0, 10)}</span></p>
                     </div>
-                    <p className="text-gray-500">{detail.descriptionText}</p>
+                    {detail.descriptionText.split(".").map((item: any, index: any) =>
+                        <p key={index} className="text-gray-500 pt-2">{item}.</p>
+                    )}
                 </div>
             </div>
-            <div className="w-full md:w-1/4 pl-4">
+            <div className="w-full lg:w-1/4 pl-4">
                 <div className=" border border-gray-200 rounded-[8px] shadow-2xl p-4 mb-12">
-                    <svg viewBox="64 64 896 896" focusable="false" data-icon="check-square" width="3em" height="3em" fill="#2b6cb0" aria-hidden="true"><path d="M433.1 657.7a31.8 31.8 0 0051.7 0l210.6-292c3.8-5.3 0-12.7-6.5-12.7H642c-10.2 0-19.9 4.9-25.9 13.3L459 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H315c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8z"></path><path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path></svg>
-                    <p className="text-gray-700 font-bold my-4">Apply now</p>
+                    <div className="flex justify-start items-start items-center flex-wrap mb-4">
+                        <svg viewBox="64 64 896 896" focusable="false" data-icon="check-square" width="3em" height="3em" fill="#2b6cb0" aria-hidden="true"><path d="M433.1 657.7a31.8 31.8 0 0051.7 0l210.6-292c3.8-5.3 0-12.7-6.5-12.7H642c-10.2 0-19.9 4.9-25.9 13.3L459 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H315c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8z"></path><path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path></svg>
+                        <p className="text-gray-700 font-bold ml-2">Apply now</p>
+                    </div>
                     <p className="text-gray-700 text-[14px]">Please let <span className="font-bold">{detail.companyName}</span> know that you found this position on our job board, as that is a great way to support us, so we can keep posting cool jobs every day </p>
 
-                    <div className="flex justify-center items-center my-4">
-                        <a href={detail.link} target="_blank">
+                    <div className="flex justify-center items-center flex-col mt-4 mb-2">
+                        <a href={detail.applyUrl} target="_blank">
                             <p className="px-8 py-2 bg-blue-600 rounded-full text-center text-white text-[14px]">Apply Now</p>
                         </a>
+                        <p className="mt-4 px-0 py-2 bg-blue-600 w-full rounded-[4px] text-center text-white text-[14px]">Share this job</p>
                     </div>
                 </div>
 

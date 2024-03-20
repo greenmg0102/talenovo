@@ -1,10 +1,35 @@
 "use client";
-import Search from "./search";
+import '@/styles/landing.css'
+import '@/styles/refinementList.css'
 import { useState, useEffect } from "react";
 import JobList from "./job";
+import { Divider } from 'antd';
+import CountUp from 'react-countup';
 import { landingJob } from '@/store/action/user/jobget/landingJob'
 import SuggestedJobCard from '@/components/Hero/job/SuggestedJobCard'
 import Filter from '@/components/Hero/filter'
+import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
+import JobCard from "@/components/Hero/job/jobCard";
+import {
+  InstantSearch,
+  Hits,
+  SortBy,
+  SearchBox,
+  Pagination,
+  Highlight,
+  ClearRefinements,
+  RefinementList,
+  Configure,
+  Snippet
+} from "react-instantsearch-dom";
+
+const searchClient = instantMeiliSearch(
+  "https://ms-25a464fc2474-8311.nyc.meilisearch.io",
+  "a9af493c2f5076aad794cab8b668828cb8f1835f",
+  {
+    finitePagination: true
+  }
+);
 
 const Hero = () => {
   const [searchList, setSearchList] = useState([]);
@@ -12,13 +37,24 @@ const Hero = () => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
+
+    let total = localStorage.getItem('talenovo-job-total')
+    setTotal(Number(total))
+
     async function landingJobGetting() {
-      let result = await landingJob()
+      let result: any = await landingJob()
+      localStorage.setItem('talenovo-job-total', result.total)
       setTotal(result.total)
       setDatabaseJobList(result.jobList)
     }
     landingJobGetting()
   }, [])
+
+  const Hit = ({ hit }: any) => (
+    <div key={hit.jobId}>
+      <JobCard item={hit} />
+    </div>
+  );
 
   return (
     <>
@@ -38,48 +74,101 @@ const Hero = () => {
                 </p>
                 <div className="flex justify-around items-center flex-wrap mb-12">
                   <div>
-                    <p className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center">{total}+</p>
+                    <p className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center">
+                      <CountUp start={0} end={total} duration={2} className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center"></CountUp>+</p>
                     <p className="text-gray-600 font-bold text-[14px] sm:text-[20px] text-center">Total Jobs</p>
                   </div>
                   <div>
-                    <p className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center">1224+</p>
+                    <p className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center">
+                      <CountUp start={0} end={total} duration={2} className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center"></CountUp>+
+                    </p>
                     <p className="text-gray-600 font-bold text-[14px] sm:text-[20px] text-center">Today's Jobs</p>
                   </div>
                   <div>
-                    <p className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center">150+</p>
+                    <p className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center">
+                      <CountUp start={0} end={total} duration={2} className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center"></CountUp>+
+                    </p>
                     <p className="text-gray-600 font-bold text-[14px] sm:text-[20px] text-center">Companys</p>
                   </div>
                   <div>
-                    <p className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center">23+</p>
+                    <p className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center">
+                      <CountUp start={0} end={total} duration={2} className="text-blue-500 font-bold text-[24px] sm:text-[40px] text-center"></CountUp>+
+                    </p>
                     <p className="text-gray-600 font-bold text-[14px] sm:text-[20px] text-center">Industries</p>
                   </div>
                 </div>
 
               </div>
-              <div className="mx-auto max-w-[1368px] flex justify-between items-start flex-wrap">
-                <div className="w-full sm:w-[30%] md:w-[25%] lg:w-[20%] border border-gray-300 bg-gray-50 rounded-md p-4 mb-4">
-                  <Filter />
-                </div>
-                <div className="w-full sm:w-[70%] md:w-[75%] lg:w-[80%] xl:w-[55%] px-0 sm:px-2">
-                  <Search
-                    searchList={searchList}
-                    setSearchList={(list: any) => setSearchList(list)}
-                  />
-                  <JobList
-                    list={databaseJobList}
-                  />
-                </div>
 
-                <div className="w-full xl:w-[25%]">
-                  <div className=" border border-blue-600 bg-gray-50 rounded-md p-2 flex justify-between items-center mb-4">
-                    <p className="font-bold text-[16px]">Suggeted Job</p>
-                    <svg viewBox="64 64 896 896" focusable="false" data-icon="exclamation-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path d="M464 688a48 48 0 1096 0 48 48 0 10-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z"></path></svg>
+              <div className="w-full">
+                <InstantSearch
+                  indexName="title"
+                  searchClient={searchClient}
+                >
+
+                  <div className="mx-auto max-w-[1368px] flex justify-between items-start flex-wrap">
+                    <div className="w-full sm:w-[30%] md:w-[25%] lg:w-[20%] border border-gray-300 bg-gray-50 rounded-md p-4 mt-[130px]">
+                      <ClearRefinements />
+                      {/* <SortBy
+                            defaultRefinement="title"
+                            items={[
+                                { value: "title", label: "Relevant" },
+                                {
+                                    value: "title:recommendationCount:desc",
+                                    label: "Most Recommended"
+                                },
+                                {
+                                    value: "title:recommendationCount:asc",
+                                    label: "Least Recommended"
+                                }
+                            ]}
+                        /> */}
+
+                      <h2 className='text-gray-700p pb-2'>Location</h2>
+                      {/* <RefinementList attribute="location" /> */}
+                      <RefinementList
+                        attribute="location"
+                        limit={10}
+                        showMore={true}
+                        showMoreLimit={20}
+                      />
+                      <Divider />
+                      <h2 className='text-gray-700p pb-2'>Company Name</h2>
+                      <RefinementList
+                        attribute="companyName"
+                        limit={10}
+                        showMore={true}
+                        showMoreLimit={20}
+                      />
+                      {/* <Configure
+                        hitsPerPage={6}
+                        attributesToSnippet={["description:50"]}
+                        snippetEllipsisText={"..."}
+                        /> */}
+                    </div>
+                    <div className="w-full sm:w-[70%] md:w-[75%] lg:w-[80%] xl:w-[55%] px-0 sm:px-2">
+                      <div className="flex justify-center items-center mb-[40px]">
+                        <SearchBox />
+                      </div>
+                      <div className="mb-4">
+                        <Hits hitComponent={Hit} />
+                      </div>
+                      <Pagination showLast={true} />
+                    </div>
+
+                    <div className="w-full xl:w-[25%] mt-[130px]">
+                      <div className=" border border-blue-600 bg-gray-50 rounded-md p-2 flex justify-between items-center mb-4">
+                        <p className="font-bold text-[16px]">Suggeted Job</p>
+                        <svg viewBox="64 64 896 896" focusable="false" data-icon="exclamation-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path d="M464 688a48 48 0 1096 0 48 48 0 10-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z"></path></svg>
+                      </div>
+
+                      {databaseJobList.slice(11, 30).map((item: any, index: any) =>
+                        <SuggestedJobCard key={index} item={item} />
+                      )}
+                    </div>
                   </div>
+                </InstantSearch>
 
-                  {databaseJobList.slice(11, 30).map((item: any, index: any) =>
-                    <SuggestedJobCard key={index} item={item} />
-                  )}
-                </div>
               </div>
             </div>
           </div>
@@ -331,3 +420,5 @@ const Hero = () => {
 };
 
 export default Hero;
+
+

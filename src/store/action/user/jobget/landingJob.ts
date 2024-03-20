@@ -8,7 +8,6 @@ export async function landingJob() {
   return await res.json();
 }
 
-
 export async function registBookmark(data: any) {
 
   const res = await fetch('http://195.35.32.163:3000/api/user/job-action/bookmark', {

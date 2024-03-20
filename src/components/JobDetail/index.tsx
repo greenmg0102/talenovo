@@ -3,15 +3,21 @@ import { useState, useEffect } from "react";
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import LinkedinJobDetail from '@/components/JobDetail/Linkedin'
 import { jobDetail } from '@/store/action/user/jobDetail'
+import { message } from 'antd';
 
 function JobDetail({ id }: any) {
 
+    const [messageApi, contextHolder] = message.useMessage();
     const [detail, setDetail] = useState<any>({})
 
     useEffect(() => {
         async function fetchData() {
             let result = await jobDetail({ id: id })
-            setDetail(result)
+            if (result.isOkay) {
+                setDetail(result.result)
+            } else {
+                messageApi.error(result.message);
+            }
         }
         fetchData()
     }, [id])
@@ -21,7 +27,7 @@ function JobDetail({ id }: any) {
                 pageName="Job Detail Page"
                 description="Please check all information"
             />
-
+            {contextHolder}
             <section className="pb-[120px] pt-[12px]">
                 <div className="container">
                     {detail.platform === "apify" && detail.subType === "linkedin" ?

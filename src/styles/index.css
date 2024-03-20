@@ -55,3 +55,7 @@
   /* Example: Add a border */
   color: blue !important;
 }
+
+.ant-message {
+  z-index: 9999; /* Set your desired z-index value */
+}

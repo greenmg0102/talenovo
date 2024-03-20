@@ -12,21 +12,36 @@ export async function POST(req: any, res: any) {
 
   let bookmarkdata = {
     userId: user.id,
-    jobId: data.id
+    jobId: data.jobId
   }
 
-  let isOkay = await db
+  let isThere = await db
     .collection("bookmarks")
-    .insertOne(bookmarkdata)
-    .then((result: any) => {
-      return true
-    })
-    .catch((erro: any) => {
-      return false
-    })
+    .findOne({ userId: bookmarkdata.userId, jobId: bookmarkdata.jobId })
 
-  return NextResponse.json({
-    isOkay: isOkay
-  });
-  
+  if (isThere === null) {
+    let isOkay = await db
+      .collection("bookmarks")
+      .insertOne(bookmarkdata)
+      .then((result: any) => {
+        return true
+      })
+      .catch((erro: any) => {
+        return false
+      })
+
+    return NextResponse.json({
+      isOkay: isOkay,
+      message: isOkay ? "Correctly registered!" : 'Registration failed'
+    });
+
+  } else {
+    return NextResponse.json({
+      isOkay: true,
+      message: "Already registered"
+    });
+  }
+
+
+
 }

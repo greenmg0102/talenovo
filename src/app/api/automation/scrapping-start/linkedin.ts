@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import { v4 as uuidv4 } from 'uuid';
 
 export async function linkedinScrapping(): Promise<any> {
 
@@ -11,7 +12,10 @@ export async function linkedinScrapping(): Promise<any> {
     const data: any = await response.json();
 
     data.forEach((element: any) => {
+        let randomId = uuidv4();
+
         real.push({
+            jobId: randomId,
             platform: "apify",
             subType: "linkedin",
             ...element,

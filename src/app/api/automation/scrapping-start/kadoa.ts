@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import { v4 as uuidv4 } from 'uuid';
 
 export async function KadoaScrapping(): Promise<any> {
 
@@ -17,7 +18,10 @@ export async function KadoaScrapping(): Promise<any> {
     const data: any = await response.json();
 
     data.forEach((element: any) => {
+        let randomId = uuidv4();
         real.push({
+            jobId: randomId,
+            title: element.directoryPageEntryData.title,
             platform: "kadoa",
             subType: "portalprocomservices",
             ...element,

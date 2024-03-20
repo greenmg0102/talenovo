@@ -15,7 +15,7 @@ const UserDashboard = () => {
       <div className="w-full border">
         <Tab.Group>
           <Tab.List className="mt-3 flex flex-wrap border-b border-gray-200">
-            <Tab as={Fragment}>
+            {/* <Tab as={Fragment}>
               {({ selected }) => (
                 <button
                   className={`${selected ? '!border-gray-200 !border-b-white text-danger dark:!border-b-black' : ''} p-3.5 py-2 -mb-[1px] flex items-center border border-transparent hover:text-danger !outline-none transition duration-300`}
@@ -24,7 +24,7 @@ const UserDashboard = () => {
                   About Me
                 </button>
               )}
-            </Tab>
+            </Tab> */}
             <Tab as={Fragment}>
               {({ selected }) => (
                 <button
@@ -58,11 +58,11 @@ const UserDashboard = () => {
           </Tab.List>
           <Tab.Panels>
             <div className="active p-4 pt-5">
-              <Tab.Panel>
+              {/* <Tab.Panel>
                 <Resume />
                 <WorkHistory />
                 <Education />
-              </Tab.Panel>
+              </Tab.Panel> */}
               <Tab.Panel>
                 <MyJobs />
               </Tab.Panel>
