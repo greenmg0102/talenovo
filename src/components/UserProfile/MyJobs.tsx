@@ -27,7 +27,7 @@ const MyJobs = () => {
           </div>
           :
           <div>
-            {true ?
+            {list.length > 0 ?
               <>
                 {list.map((item: any, index: any) =>
                   <MyJobApplyItem
@@ -37,7 +37,7 @@ const MyJobs = () => {
                 )}
               </>
               :
-              <p className='text-center'>There is no appied job</p>
+              <p className='text-center py-12'>There is no appied job</p>
             }
           </div>
         }

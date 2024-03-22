@@ -1,18 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Modal, Input } from 'antd';
-import { MailOutlined, ProfileOutlined } from '@ant-design/icons';
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import { LoadingOutlined, PlusOutlined, ProfileOutlined, CrownOutlined } from '@ant-design/icons';
 import { message, Upload } from 'antd';
 import type { GetProp, UploadProps } from 'antd';
 import { userBannerRegist } from '@/store/action/user/userProfile/userInfo'
 
-
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
+const { TextArea } = Input;
 
 function UserBannerModal({ isModalVisible, setIsModalVisible, userInfo, onchange }: any) {
 
     const [loading, setLoading] = useState(false);
     const [imageUrl, setImageUrl] = useState<string>();
+    useEffect(() => {
+        if (userInfo.avatar !== "") setImageUrl(userInfo.avatar)
+    }, [userInfo])
 
     const getBase64 = (img: FileType, callback: (url: string) => void) => {
         const reader = new FileReader();
@@ -39,6 +41,7 @@ function UserBannerModal({ isModalVisible, setIsModalVisible, userInfo, onchange
             getBase64(info.file.originFileObj as FileType, (url) => {
                 setLoading(false);
                 setImageUrl(url);
+                onchange({ ...userInfo, avatar: url })
             });
         }
     };
@@ -51,7 +54,9 @@ function UserBannerModal({ isModalVisible, setIsModalVisible, userInfo, onchange
 
     const handleOk = async () => {
         let result = await userBannerRegist({
-            profile: userInfo.profile
+            profile: userInfo.profile,
+            jobTitle: userInfo.jobTitle,
+            summary: userInfo.summary
         })
         if (result.isOkay) {
             setIsModalVisible(false);
@@ -62,7 +67,7 @@ function UserBannerModal({ isModalVisible, setIsModalVisible, userInfo, onchange
 
     const handleCancel = () => {
         setIsModalVisible(false);
-        onchange({ ...userInfo, profile: "" })
+        onchange({ ...userInfo, profile: "", jobTitle: "", summary: "" })
     };
 
     return (
@@ -84,10 +89,41 @@ function UserBannerModal({ isModalVisible, setIsModalVisible, userInfo, onchange
                             beforeUpload={beforeUpload}
                             onChange={handleChange}
                         >
-                            {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
+                            {imageUrl ? <img src={imageUrl} className='rounded-full' alt="avatar" style={{ width: '100%' }} /> : uploadButton}
                         </Upload>
                     </div>
-                    <Input value={userInfo.profile} placeholder="Profile Link" prefix={<ProfileOutlined />} className='w-full' onChange={(e: any) => onchange({ ...userInfo, profile: e.target.value })} />
+
+                    <p className='text-center text-blue-500 my-2'>{userInfo.name}</p>
+
+                    <p className='text-gray-400 my-2'>Your Job Title</p>
+                    <Input
+                        value={userInfo.jobTitle}
+                        placeholder="Job Title"
+                        prefix={<CrownOutlined />}
+                        className='w-full my-2'
+                        onChange={(e: any) => onchange({ ...userInfo, jobTitle: e.target.value })}
+                    />
+
+                    <p className='text-gray-400 my-2'>Your Profile Link (Linkedin or Facebook, Portfolio, etc)</p>
+                    <Input
+                        value={userInfo.profile}
+                        placeholder="Profile Link"
+                        prefix={<ProfileOutlined />}
+                        className='w-full my-2'
+                        onChange={(e: any) => onchange({ ...userInfo, profile: e.target.value })}
+                    />
+
+                    <p className='text-gray-400 my-2'>Summary about you</p>
+                    <TextArea
+                        value={userInfo.summary}
+                        rows={4}
+                        placeholder="Please let us know about you (The minLength is 100 and the maxLength is 1000)"
+                        onChange={(e: any) => onchange({ ...userInfo, summary: e.target.value })}
+                        maxLength={1000}
+                        minLength={100}
+                    />
+                    <p className='text-gray-400 my-2'>your skill set </p>
+
                 </div>
             </Modal>
         </div>

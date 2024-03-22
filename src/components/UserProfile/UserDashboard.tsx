@@ -2,17 +2,17 @@
 
 import { Tab } from '@headlessui/react';
 import { Fragment } from 'react';
-import Resume from "@/components/UserProfile/AboutMe/Resume";
-import Education from "@/components/UserProfile/AboutMe/Education";
-import WorkHistory from "@/components/UserProfile/AboutMe/WorkHistory";
+// import Resume from "@/components/UserProfile/AboutMe/Resume";
+// import Education from "@/components/UserProfile/AboutMe/Education";
+// import WorkHistory from "@/components/UserProfile/AboutMe/WorkHistory";
 import JobAlert from "@/components/UserProfile/JobAlert";
 import MyPostingJob from "@/components/UserProfile/MyPostingJob";
 import MyJobs from "@/components/UserProfile/MyJobs";
 
 const UserDashboard = () => {
   return (
-    <div className="flex justify-between items-start border">
-      <div className="w-full border">
+    <div className="flex justify-between items-start">
+      <div className="w-full">
         <Tab.Group>
           <Tab.List className="mt-3 flex flex-wrap border-b border-gray-200">
             {/* <Tab as={Fragment}>
@@ -57,7 +57,7 @@ const UserDashboard = () => {
             </Tab>
           </Tab.List>
           <Tab.Panels>
-            <div className="active p-4 pt-5">
+            <div className="active pt-5">
               {/* <Tab.Panel>
                 <Resume />
                 <WorkHistory />

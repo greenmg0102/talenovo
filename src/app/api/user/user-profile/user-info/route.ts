@@ -15,21 +15,40 @@ export async function GET(req: any, res: any) {
 
   if (isMe === null) {
     return NextResponse.json({
+      avatar: user.imageUrl,
+      name: (user.firstName === null ? "" : user.firstName) + (user.lastName === null ? "" : user.lastName),
       mail: user.emailAddresses,
       phone: user.phoneNumbers,
       profile: "",
-      locatedin: "",
+      jobTitle: "",
+      summary: "",
+
+      birthday: "",
+      experience: 0,
+      ctc: 0,
+
+      locatedin: "checking on",
       gender: "",
       postedJob: myjobpostCount,
       appliedJob: 0,
       bookmark: mybookmarkjobCount,
       viewed: []
     });
+
   } else {
     return NextResponse.json({
+      avatar: isMe.avatar,
+      name: (user.firstName === null ? "" : user.firstName) + (user.lastName === null ? "" : user.lastName),
       mail: user.emailAddresses,
       phone: user.phoneNumbers,
       profile: isMe.profile,
+      jobTitle: isMe.jobTitle,
+      summary: isMe.summary,
+
+      birthday: isMe.birthday,
+      experience: isMe.experience,
+      ctc: isMe.ctc,
+
       locatedin: isMe.locatedin,
       gender: isMe.gender,
       postedJob: myjobpostCount,

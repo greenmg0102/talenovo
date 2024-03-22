@@ -13,9 +13,12 @@ export async function POST(req: any, res: any) {
 
   if (isMe === null) {
     const data = {
+      avatar: reqData.avatar,
       userId: user.id,
+      name: (user.firstName === null ? "" : user.firstName) + (user.lastName === null ? "" : user.lastName),
       profile: reqData.profile,
-      avatar: "",
+      jobTitle: reqData.jobTitle,
+      summary: reqData.summary,
       gender: "",
       locatedin: "",
       postedJob: 0,
@@ -34,6 +37,9 @@ export async function POST(req: any, res: any) {
       updateData.$set[element] = isMe[element];
     });
     updateData.$set["profile"] = reqData.profile;
+    updateData.$set["jobTitle"] = reqData.jobTitle;
+    updateData.$set["summary"] = reqData.summary;
+    updateData.$set["avatar"] = reqData.avatar;
 
     await db.collection("userinfos").findOneAndUpdate({ _id: isMe._id }, updateData);
     return NextResponse.json({

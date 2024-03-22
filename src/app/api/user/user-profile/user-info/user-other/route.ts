@@ -15,6 +15,13 @@ export async function POST(req: any, res: any) {
     const data = {
       userId: user.id,
       profile: "",
+      jobTitle: "",
+      summary: "",
+
+      birthday: reqData.birthday,
+      experience: reqData.experience,
+      ctc: reqData.ctc,
+
       avatar: "",
       gender: reqData.gender,
       locatedin: reqData.locatedin,
@@ -33,8 +40,9 @@ export async function POST(req: any, res: any) {
     Object.keys(isMe).filter((key: any) => key !== "_id").forEach((element: any) => {
       updateData.$set[element] = isMe[element];
     });
-    updateData.$set["locatedin"] = reqData.locatedin;
-    updateData.$set["gender"] = reqData.gender;
+    updateData.$set["birthday"] = reqData.birthday;
+    updateData.$set["experience"] = reqData.experience;
+    updateData.$set["ctc"] = reqData.ctc;
 
     await db.collection("userinfos").findOneAndUpdate({ _id: isMe._id }, updateData);
     return NextResponse.json({
