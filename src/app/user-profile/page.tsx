@@ -3,7 +3,7 @@ import UserBannerMain from '@/components/UserProfile/UserBannerMain';
 import UserInfoMain from '@/components/UserProfile/UserInfoMain';
 
 import { Metadata } from "next";
-
++9
 export const metadata: Metadata = {
   title: "User Profile Page | User Profile Page",
   description: "This is User Profile Page  Page for the user",

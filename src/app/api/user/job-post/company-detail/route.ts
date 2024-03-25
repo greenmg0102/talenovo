@@ -35,9 +35,6 @@ export async function POST(req: any, res: any) {
     .collection('myjobposts')
     .findOne({ recruiterId: user.id, isComplete: false });
 
-  console.log("result", result);
-
-
   return NextResponse.json(result);
 
 }

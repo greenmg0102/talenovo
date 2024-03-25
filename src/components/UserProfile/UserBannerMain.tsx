@@ -2,6 +2,10 @@
 import { useState, useEffect } from "react";
 import UserBanner from "@/components/UserProfile/UserInitialInfo/UserBanner";
 import { userInitialInfo } from '@/store/action/user/userProfile/userInfo'
+import { jobTagGet } from '@/store/action/admin/jobInfo/jobTag'
+import type { SelectProps } from 'antd';
+
+const options: SelectProps['options'] = [];
 
 const UserBannerMain = () => {
 
@@ -23,9 +27,29 @@ const UserBannerMain = () => {
     profileViews: 0
   })
 
+  const [tagList, setTagList] = useState([])
+
+  useEffect(() => {
+    async function fetchData() {
+      let result = await jobTagGet()
+      let options: any = []
+      for (let i = 10; i < result.length; i++) {
+        options.push({
+          value: result[i].tag,
+          label: result[i].tag,
+        });
+      }
+      setTagList(options)
+    }
+    fetchData()
+  }, [])
+
   useEffect(() => {
     async function userInfoGet() {
       let result = await userInitialInfo()
+
+      console.log('result', result);
+
 
       let mail = result.mail.map((item: any) => item.emailAddress)
       let phone = result.phone.map((item: any) => item.phoneNumber)
@@ -39,6 +63,7 @@ const UserBannerMain = () => {
         profile: result.profile,
         jobTitle: result.jobTitle,
         summary: result.summary,
+        skill: result.skill,
         locatedin: result.locatedin,
         gender: result.gender,
         postedJob: result.postedJob,
@@ -58,6 +83,7 @@ const UserBannerMain = () => {
         </div>
         :
         <UserBanner
+          tagList={tagList}
           userInfo={userInfo}
           onchange={(total: any) => setUserInfo(total)}
         />}

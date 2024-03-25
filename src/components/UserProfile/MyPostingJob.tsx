@@ -1,6 +1,7 @@
 'use client '
 import { useState, useEffect } from 'react';
 import { myJobPost } from '@/store/action/user/userProfile/myjobpost'
+import { Alert } from 'antd';
 import MyJobPostItem from '@/components/UserProfile/MyJobPost/MyJobPostItem'
 
 const MyPostingJob = () => {
@@ -36,7 +37,7 @@ const MyPostingJob = () => {
               )}
             </>
             :
-            <p className='text-center'>There is no posted job</p>
+            <Alert message="There is no posted job" type="info" />
           }
         </div>
       }

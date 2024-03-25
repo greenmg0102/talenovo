@@ -1,9 +1,31 @@
 'use client '
 import { useState, useEffect } from 'react';
+import { suggestJobs } from '@/store/action/user/landing/suggestion'
+import { Alert } from 'antd';
+import MyJobAlerttem from '@/components/UserProfile/MyJobAlert/MyJobAlerttem'
 
-const MyAlert = () => {
+const MyAlert = ({ skill, locatedin }: any) => {
 
   const [loading, setLoading] = useState(true)
+  const [suggestList, setSuggestList] = useState(undefined);
+
+  useEffect(() => {
+    async function fetchSuggestJobs() {
+
+      if (locatedin !== null && skill !== null) {
+
+        let data = {
+          skill: skill,
+          locatedin: locatedin
+        }
+
+        let result: any = await suggestJobs(data)
+        setSuggestList(result)
+        setLoading(false)
+      }
+    }
+    fetchSuggestJobs()
+  }, [locatedin, skill])
 
   return (
     <div>
@@ -14,12 +36,20 @@ const MyAlert = () => {
           </div>
           :
           <div>
-            {true ?
-              <>
-                MyAlert
-              </>
+            {suggestList === undefined ?
+              null
               :
-              <p className='text-center'>There is no new job</p>
+              <div>
+                {suggestList.length > 0 ?
+                  <div>
+                    {suggestList.map((item: any, index: any) =>
+                      <MyJobAlerttem key={index} item={item} />
+                    )}
+                  </div>
+                  :
+                  <Alert message="No jobs available, please check back again" type="info" />
+                }
+              </div>
             }
           </div>
         }

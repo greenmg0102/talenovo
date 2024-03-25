@@ -17,6 +17,7 @@ export async function POST(req: any, res: any) {
       profile: "",
       jobTitle: "",
       summary: "",
+      skill: [],
 
       birthday: reqData.birthday,
       experience: reqData.experience,
@@ -43,7 +44,7 @@ export async function POST(req: any, res: any) {
     updateData.$set["birthday"] = reqData.birthday;
     updateData.$set["experience"] = reqData.experience;
     updateData.$set["ctc"] = reqData.ctc;
-
+    
     await db.collection("userinfos").findOneAndUpdate({ _id: isMe._id }, updateData);
     return NextResponse.json({
       isOkay: true,

@@ -1,9 +1,13 @@
 
-import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
 import { currentUser } from '@clerk/nextjs';
+import axios from 'axios';
+import { NextRequest, NextResponse } from 'next/server'
 
-export async function GET(req: any, res: any) {
+export async function GET(req: NextRequest, res: NextResponse) {
+
+  const ip = (req.headers.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0]
+  const localInfo: any = await axios.get(`https://api.findip.net/${ip === "::1" ? "8.230.6.196" : ip}/?token=988e48d25e534484b591149ce6a32c74`);
 
   let { db } = await connectToDatabase();
   const user = await currentUser();
@@ -22,12 +26,12 @@ export async function GET(req: any, res: any) {
       profile: "",
       jobTitle: "",
       summary: "",
-
+      skill: [],
       birthday: "",
       experience: 0,
       ctc: 0,
 
-      locatedin: "checking on",
+      locatedin: localInfo.data.city.names.en + ", " + localInfo.data.country.names.en,
       gender: "",
       postedJob: myjobpostCount,
       appliedJob: 0,
@@ -45,11 +49,12 @@ export async function GET(req: any, res: any) {
       jobTitle: isMe.jobTitle,
       summary: isMe.summary,
 
+      skill: isMe.skill,
       birthday: isMe.birthday,
       experience: isMe.experience,
       ctc: isMe.ctc,
 
-      locatedin: isMe.locatedin,
+      locatedin: localInfo.data.city.names.en + ", " + localInfo.data.country.names.en,
       gender: isMe.gender,
       postedJob: myjobpostCount,
       appliedJob: 0,

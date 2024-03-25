@@ -9,7 +9,8 @@ import JobAlert from "@/components/UserProfile/JobAlert";
 import MyPostingJob from "@/components/UserProfile/MyPostingJob";
 import MyJobs from "@/components/UserProfile/MyJobs";
 
-const UserDashboard = () => {
+const UserDashboard = ({ skill, locatedin }: any) => {
+
   return (
     <div className="flex justify-between items-start">
       <div className="w-full">
@@ -67,7 +68,10 @@ const UserDashboard = () => {
                 <MyJobs />
               </Tab.Panel>
               <Tab.Panel>
-                <JobAlert />
+                <JobAlert
+                  skill={skill}
+                  locatedin={locatedin}
+                />
               </Tab.Panel>
               <Tab.Panel>
                 <MyPostingJob />

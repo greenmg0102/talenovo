@@ -1,6 +1,7 @@
 'use client '
 import { useState, useEffect } from 'react';
 import { myJobApply } from '@/store/action/user/userProfile/myjobpost'
+import { Alert } from 'antd';
 import MyJobApplyItem from '@/components/UserProfile/MyJobApply/MyJobApplyItem'
 
 const MyJobs = () => {
@@ -37,7 +38,7 @@ const MyJobs = () => {
                 )}
               </>
               :
-              <p className='text-center py-12'>There is no appied job</p>
+              <Alert message="There is no appied job" type="info" />
             }
           </div>
         }

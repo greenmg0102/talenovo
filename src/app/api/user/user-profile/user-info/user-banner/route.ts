@@ -19,6 +19,7 @@ export async function POST(req: any, res: any) {
       profile: reqData.profile,
       jobTitle: reqData.jobTitle,
       summary: reqData.summary,
+      skill: reqData.skill,
       gender: "",
       locatedin: "",
       postedJob: 0,
@@ -32,6 +33,7 @@ export async function POST(req: any, res: any) {
     });
 
   } else {
+
     let updateData = { $set: {} };
     Object.keys(isMe).filter((key: any) => key !== "_id").forEach((element: any) => {
       updateData.$set[element] = isMe[element];
@@ -40,6 +42,7 @@ export async function POST(req: any, res: any) {
     updateData.$set["jobTitle"] = reqData.jobTitle;
     updateData.$set["summary"] = reqData.summary;
     updateData.$set["avatar"] = reqData.avatar;
+    updateData.$set["skill"] = reqData.skill;
 
     await db.collection("userinfos").findOneAndUpdate({ _id: isMe._id }, updateData);
     return NextResponse.json({

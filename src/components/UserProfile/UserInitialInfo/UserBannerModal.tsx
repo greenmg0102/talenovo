@@ -2,19 +2,26 @@ import { useState, useEffect } from 'react';
 import { Modal, Input } from 'antd';
 import { LoadingOutlined, PlusOutlined, ProfileOutlined, CrownOutlined } from '@ant-design/icons';
 import { message, Upload } from 'antd';
-import type { GetProp, UploadProps } from 'antd';
+import { GetProp, UploadProps, Select } from 'antd';
+
 import { userBannerRegist } from '@/store/action/user/userProfile/userInfo'
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 const { TextArea } = Input;
 
-function UserBannerModal({ isModalVisible, setIsModalVisible, userInfo, onchange }: any) {
+function UserBannerModal({ tagList, isModalVisible, setIsModalVisible, userInfo, onchange }: any) {
 
     const [loading, setLoading] = useState(false);
     const [imageUrl, setImageUrl] = useState<string>();
-    useEffect(() => {
-        if (userInfo.avatar !== "") setImageUrl(userInfo.avatar)
-    }, [userInfo])
+
+    const handleSelectChange = (value: string) => {
+        onchange({ ...userInfo, skill: value })
+    };
+
+    // useEffect(() => {
+    //     console.log("UserBannerModal", userInfo);
+    //     if (userInfo.avatar !== "") setImageUrl(userInfo.avatar)
+    // }, [userInfo])
 
     const getBase64 = (img: FileType, callback: (url: string) => void) => {
         const reader = new FileReader();
@@ -41,7 +48,10 @@ function UserBannerModal({ isModalVisible, setIsModalVisible, userInfo, onchange
             getBase64(info.file.originFileObj as FileType, (url) => {
                 setLoading(false);
                 setImageUrl(url);
-                onchange({ ...userInfo, avatar: url })
+
+                console.log("url", url);
+
+                // onchange({ ...userInfo, avatar: url })
             });
         }
     };
@@ -54,9 +64,11 @@ function UserBannerModal({ isModalVisible, setIsModalVisible, userInfo, onchange
 
     const handleOk = async () => {
         let result = await userBannerRegist({
+            avatar: userInfo.avatar,
             profile: userInfo.profile,
             jobTitle: userInfo.jobTitle,
-            summary: userInfo.summary
+            summary: userInfo.summary,
+            skill: userInfo.skill
         })
         if (result.isOkay) {
             setIsModalVisible(false);
@@ -123,6 +135,14 @@ function UserBannerModal({ isModalVisible, setIsModalVisible, userInfo, onchange
                         minLength={100}
                     />
                     <p className='text-gray-400 my-2'>your skill set </p>
+
+                    <Select
+                        mode="tags"
+                        style={{ width: '100%' }}
+                        placeholder="Tags Mode"
+                        onChange={handleSelectChange}
+                        options={tagList}
+                    />
 
                 </div>
             </Modal>

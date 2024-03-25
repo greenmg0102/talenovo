@@ -19,6 +19,10 @@ export async function linkedinScrapping(): Promise<any> {
             platform: "apify",
             subType: "linkedin",
             ...element,
+            city: element.location.split(" (")[0].split(", ")[0],
+            country: element.location.split(" (")[0].split(", ")[1],
+            occupationType: element.location.split(" (")[element.location.split(" (").length - 1].slice(0, -1),
+            insightsV2: element.insightsV2.map((item: any) => item.split("·")[1]),
             isComplete: true,
             isComfirm: true
         })

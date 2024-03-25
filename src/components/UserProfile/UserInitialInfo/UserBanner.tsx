@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import EditButton from '@/components/Common/Button/EditButton'
 import UserBannerModal from '@/components/UserProfile/UserInitialInfo/UserBannerModal'
 
-const UserBanner = ({ userInfo, onchange }: any) => {
+const UserBanner = ({ userInfo, tagList, onchange }: any) => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -15,6 +15,7 @@ const UserBanner = ({ userInfo, onchange }: any) => {
   return (
     <div className="relative p-2">
       <UserBannerModal
+        tagList={tagList}
         userInfo={userInfo}
         isModalVisible={isModalVisible}
         setIsModalVisible={(bool: any) => setIsModalVisible(bool)}
@@ -73,7 +74,7 @@ const UserBanner = ({ userInfo, onchange }: any) => {
         :
         <div className='flex justify-start items-center flex-wrap'>
           {userInfo.skill.map((item: any, index: any) =>
-            <p key={index} className="text-center mb-1 mr-2 font-bold text-gray-500 border border-gray-300 rounded-[3px]" >
+            <p key={index} className="text-center mb-1 mr-2 px-2 text-[12px] font-bold text-gray-500 border border-gray-300 rounded-[3px]" >
               {item}
             </p>
           )}

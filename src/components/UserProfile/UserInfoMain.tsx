@@ -11,8 +11,6 @@ const UserInfoMain = () => {
     experience: 0,
     ctc: 0,
 
-
-
     name: "",
     jobTitle: "",
     summary: "",
@@ -60,6 +58,7 @@ const UserInfoMain = () => {
     userInfoGet()
   }, [])
 
+
   return (
     <div>
       {userInfo.name === "" ?
@@ -72,7 +71,10 @@ const UserInfoMain = () => {
             userInfo={userInfo}
             onchange={(total: any) => setUserInfo(total)}
           />
-          <UserDashboard />
+          <UserDashboard
+            skill={userInfo.skill}
+            locatedin={userInfo.locatedin}
+          />
         </div>
       }
     </div>
