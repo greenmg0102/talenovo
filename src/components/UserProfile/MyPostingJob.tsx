@@ -37,7 +37,17 @@ const MyPostingJob = () => {
               )}
             </>
             :
-            <Alert message="There is no posted job" type="info" />
+            <Alert
+              message={
+                <p>
+                  There are no posted job, if you like to post a job, please click
+                  <a href="http://195.35.32.163:3000/job-post"  target="_blank" className='text-bold text-blue-500 hover:underline px-1'>here</a>
+                  to post a job
+                </p>
+              }
+              type="info"
+            />
+
           }
         </div>
       }

@@ -15,7 +15,7 @@ export async function POST(req: any, res: any) {
     const data = {
       avatar: reqData.avatar,
       userId: user.id,
-      name: (user.firstName === null ? "" : user.firstName) + (user.lastName === null ? "" : user.lastName),
+      name: (user.firstName === null ? "" : user.firstName) + " " + (user.lastName === null ? "" : user.lastName),
       profile: reqData.profile,
       jobTitle: reqData.jobTitle,
       summary: reqData.summary,

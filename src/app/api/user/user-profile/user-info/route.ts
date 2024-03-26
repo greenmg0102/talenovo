@@ -16,17 +16,19 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
   let myjobpostCount = await db.collection("myjobposts").countDocuments({ recruiterId: user.id, isComplete: false, isComfirm: false });
   let mybookmarkjobCount = await db.collection("bookmarks").countDocuments({ userId: user.id });
+  let mybookmarkjob = []
 
   if (isMe === null) {
     return NextResponse.json({
       avatar: user.imageUrl,
-      name: (user.firstName === null ? "" : user.firstName) + (user.lastName === null ? "" : user.lastName),
+      name: (user.firstName === null ? "" : user.firstName) + " " + (user.lastName === null ? "" : user.lastName),
       mail: user.emailAddresses,
       phone: user.phoneNumbers,
       profile: "",
       jobTitle: "",
       summary: "",
       skill: [],
+      mybookmarkjob: [],
       birthday: "",
       experience: 0,
       ctc: 0,
@@ -42,13 +44,14 @@ export async function GET(req: NextRequest, res: NextResponse) {
   } else {
     return NextResponse.json({
       avatar: isMe.avatar,
-      name: (user.firstName === null ? "" : user.firstName) + (user.lastName === null ? "" : user.lastName),
+      name: (user.firstName === null ? "" : user.firstName) + " " + (user.lastName === null ? "" : user.lastName),
       mail: user.emailAddresses,
       phone: user.phoneNumbers,
       profile: isMe.profile,
       jobTitle: isMe.jobTitle,
       summary: isMe.summary,
 
+      mybookmarkjob: mybookmarkjob,
       skill: isMe.skill,
       birthday: isMe.birthday,
       experience: isMe.experience,

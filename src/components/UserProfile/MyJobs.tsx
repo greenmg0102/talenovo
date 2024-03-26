@@ -4,7 +4,7 @@ import { myJobApply } from '@/store/action/user/userProfile/myjobpost'
 import { Alert } from 'antd';
 import MyJobApplyItem from '@/components/UserProfile/MyJobApply/MyJobApplyItem'
 
-const MyJobs = () => {
+const MyJobs = ({ mybookmarkjob }: any) => {
 
   const [list, setList] = useState([])
   const [loading, setLoading] = useState(false)
@@ -28,9 +28,9 @@ const MyJobs = () => {
           </div>
           :
           <div>
-            {list.length > 0 ?
+            {mybookmarkjob.length > 0 ?
               <>
-                {list.map((item: any, index: any) =>
+                {mybookmarkjob.map((item: any, index: any) =>
                   <MyJobApplyItem
                     key={index}
                     item={item}

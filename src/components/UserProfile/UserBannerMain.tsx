@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import UserBanner from "@/components/UserProfile/UserInitialInfo/UserBanner";
 import { userInitialInfo } from '@/store/action/user/userProfile/userInfo'
 import { jobTagGet } from '@/store/action/admin/jobInfo/jobTag'
+import { Spin } from 'antd';
 import type { SelectProps } from 'antd';
 
 const options: SelectProps['options'] = [];
@@ -48,9 +49,6 @@ const UserBannerMain = () => {
     async function userInfoGet() {
       let result = await userInitialInfo()
 
-      console.log('result', result);
-
-
       let mail = result.mail.map((item: any) => item.emailAddress)
       let phone = result.phone.map((item: any) => item.phoneNumber)
 
@@ -78,8 +76,9 @@ const UserBannerMain = () => {
   return (
     <div>
       {userInfo.name === "" ?
-        <div className="w-full h-[400px] flex justify-center items-center text-gray-300">
-          Please wait ...
+        <div className="w-full h-[400px] flex justify-center items-center flex-col text-gray-300">
+          <Spin size="large" />
+          <p className="mt-2 text-blue-500">Please wait ...</p>
         </div>
         :
         <UserBanner

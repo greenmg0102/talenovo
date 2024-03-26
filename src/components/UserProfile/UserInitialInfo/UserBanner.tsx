@@ -34,7 +34,7 @@ const UserBanner = ({ userInfo, tagList, onchange }: any) => {
       </p>
       {userInfo.jobTitle === "" ?
         <p className="text-center mb-6 font-bold text-gray-300 text-[14px]">
-          You did n't register <span className='text-gray-400'> Job Title </span>yet
+           Add a <span className='text-gray-400 pb-4'> Job Title </span>
         </p>
         :
         <p className="text-center mb-6 font-bold text-gray-600 text-[14px]" >
@@ -42,7 +42,7 @@ const UserBanner = ({ userInfo, tagList, onchange }: any) => {
         </p>
       }
 
-      <p className="text-center text-[12px]">Profile link</p>
+      <p className="text-center text-[12px] pb-4">Profile link</p>
       {userInfo.profile === "" ?
         <p className="text-center mb-6 font-bold text-gray-300 text-[14px]" >
           You did n't register <span className='text-gray-400'> profile link </span>yet
@@ -55,10 +55,10 @@ const UserBanner = ({ userInfo, tagList, onchange }: any) => {
         </a>
       }
 
-      <p className="text-center text-[12px]">Summary</p>
+      <p className="text-center text-[12px] pb-4">Summary</p>
       {userInfo.summary === "" ?
         <p className="text-center mb-6 font-bold text-gray-300 text-[14px]" >
-          You did n't register <span className='text-gray-400'> summary </span>yet
+          Add  <span className='text-gray-400'> your job </span>
         </p>
         :
         <p className="mb-6 text-gray-600 p-2 border border-gray-100 break-words text-[14px]" >
@@ -66,10 +66,10 @@ const UserBanner = ({ userInfo, tagList, onchange }: any) => {
         </p>
       }
 
-      <p className="text-center text-[12px]">Skill</p>
+      <p className="text-center text-[12px] pb-4">Skill</p>
       {userInfo.skill.length === 0 ?
         <p className="text-center mb-6 font-bold text-gray-300" >
-          You did n't register <span className='text-gray-400'> Skill </span>yet
+          Add a  <span className='text-gray-400'> Skill </span>
         </p>
         :
         <div className='flex justify-start items-center flex-wrap'>

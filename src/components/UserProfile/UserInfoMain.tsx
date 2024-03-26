@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import UserInfo from "@/components/UserProfile/UserInitialInfo/UserInfo";
 import { userInitialInfo } from '@/store/action/user/userProfile/userInfo';
 import UserDashboard from '@/components/UserProfile/UserDashboard';
+import { Spin } from 'antd';
 
 const UserInfoMain = () => {
 
@@ -24,7 +25,8 @@ const UserInfoMain = () => {
     postedJob: 0,
     appliedJob: 0,
     bookmark: 0,
-    profileViews: 0
+    profileViews: 0,
+    mybookmarkjob: []
   })
 
   useEffect(() => {
@@ -40,6 +42,7 @@ const UserInfoMain = () => {
         birthday: result.birthday,
         experience: result.experience,
         ctc: result.ctc,
+        mybookmarkjob: result.mybookmarkjob,
 
         name: result.name,
         mail: mail,
@@ -62,8 +65,9 @@ const UserInfoMain = () => {
   return (
     <div>
       {userInfo.name === "" ?
-        <div className="w-full h-[400px] flex justify-center items-center text-gray-300">
-          Please wait ...
+        <div className="w-full h-[400px] flex justify-center items-center flex-col text-gray-300">
+          <Spin size="large" />
+          <p className="mt-2 text-blue-500">Please wait ...</p>
         </div>
         :
         <div>
@@ -74,6 +78,10 @@ const UserInfoMain = () => {
           <UserDashboard
             skill={userInfo.skill}
             locatedin={userInfo.locatedin}
+            postedJob={userInfo.postedJob}
+            appliedJob={userInfo.appliedJob}
+            bookmark={userInfo.bookmark}
+            mybookmarkjob={userInfo.mybookmarkjob}
           />
         </div>
       }

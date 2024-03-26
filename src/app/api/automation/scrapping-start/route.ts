@@ -13,43 +13,44 @@ const indexName = 'title';
 
 export async function GET(req: any, res: any) {
   await adminAPIMiddleware(req, res);
-  let { db } = await connectToDatabase();
+  // let { db } = await connectToDatabase();
 
-  schedule.scheduleJob('0 */12 * * *', async () => {
+  // schedule.scheduleJob('0 */12 * * *', async () => {
 
-    const client = new MeiliSearch({
-      host: host,
-      apiKey: apiKey,
-    });
-    
-    let linkedin = await linkedinScrapping();
-    // let kadoa = await KadoaScrapping();
-    let real = linkedin
-    // let real = [...linkedin, ...kadoa]
-    console.log(1);
-    await client.index(indexName).addDocuments(real, { primaryKey: 'jobId' });
-    console.log(2);
-    await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2"]);
-    console.log(3);
+  // const client = new MeiliSearch({
+  //   host: host,
+  //   apiKey: apiKey,
+  // });
 
-    const response = await axios.post(
-      `${host}/indexes/${indexName}/search`,
-      { attributesToRetrieve: [], facets: ['*'] },
-      { headers: { 'Authorization': `Bearer ${apiKey}` } }
-    );
-    const { facetDistribution } = response.data;
-    console.log(4);
+  // let linkedin = await linkedinScrapping();
+  // // let kadoa = await KadoaScrapping();
+  // let real = linkedin
+  // // let real = [...linkedin, ...kadoa]
+  // console.log(1);
+  // await client.index(indexName).addDocuments(real, { primaryKey: 'jobId' });
+  // console.log(2);
+  // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2"]);
+  // await client.index(indexName).updateDistinctAttribute("companyName");
+  // console.log(3);
 
-    const skillsList = Object.keys(facetDistribution.skills)
+  // const response = await axios.post(
+  //   `${host}/indexes/${indexName}/search`,
+  //   { attributesToRetrieve: [], facets: ['*'] },
+  //   { headers: { 'Authorization': `Bearer ${apiKey}` } }
+  // );
+  // const { facetDistribution } = response.data;
+  // console.log(4);
 
-    await db
-      .collection("jobtags")
-      .insertMany(skillsList.map(skill => ({ tag: skill })))
-      .then(async (result: any) => {
-        return
-      })
+  // const skillsList = Object.keys(facetDistribution.skills)
 
-  });
+  // await db
+  //   .collection("jobtags")
+  //   .insertMany(skillsList.map(skill => ({ tag: skill })))
+  //   .then(async (result: any) => {
+  //     return
+  //   })
+
+  // });
 
   return NextResponse.json({
     result: true,
