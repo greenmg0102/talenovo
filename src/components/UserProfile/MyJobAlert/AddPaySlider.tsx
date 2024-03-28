@@ -12,14 +12,14 @@ const AddPaySlider = () => {
 
   return (
     <div className="">
-      <div className='flex justify-start items-center pb-4'>
+      <div className='flex justify-start items-center pb-4 px-4 sm:px-16'>
         <DollarOutlined className='text-gray-500' />
-        <p className='text-[14px] text-gray-600 flex justify-start items-center pl-2'>
+        <p className='text-[16px] text-gray-600 flex justify-start items-center pl-2'>
           Payment Range
         </p>
       </div>
       {/* <p className='text-center text-[14px] text-gray-400'>Hourly</p> */}
-      <div className='flex justify-center items-center'>
+      <div className='flex justify-center items-center px-4 sm:px-16'>
         <Slider
           min={1}
           max={200000}

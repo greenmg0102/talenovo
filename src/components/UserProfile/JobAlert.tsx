@@ -31,9 +31,6 @@ const MyAlert = ({ }: any) => {
 
   return (
     <div className=''>
-      <p className='text-gray-600 pb-2 text-center'>Tell us the job details your are interested in to get better recommecdations across indeed.</p>
-      <p className='text-gray-400 text-[12px] text-center'>Emplyers may see these preferences when your resume is set to searchable.</p>
-      <Divider />
       <AddJobTitle />
       <Divider />
       <AddJobType />

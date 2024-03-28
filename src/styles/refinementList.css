@@ -71,6 +71,36 @@
     font-size: 12px !important;
 }
 
+.ais-Pagination-list {
+    display: flex;
+}
+
+.ais-Pagination-item {
+    padding: 3px 6px 3px 6px;
+    border-radius: 2px;
+    background-color: rgb(79, 184, 79);
+    margin-right: 2px;
+    color: white;
+    font-size: 12px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #cce0f1d8;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 1px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
 /* .ais-RefinementList-count {
     display: none !important;
 } */

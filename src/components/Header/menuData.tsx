@@ -27,6 +27,12 @@ const menuData: Menu[] = [
   },
   {
     id: 4,
+    title: "My Profile",
+    path: "/user-profile",
+    newTab: false,
+  },
+  {
+    id: 5,
     title: "Admin",
     path: "/admin",
     newTab: false,

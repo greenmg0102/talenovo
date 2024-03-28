@@ -38,7 +38,7 @@ const MyJobs = ({ mybookmarkjob }: any) => {
                 )}
               </>
               :
-              <Alert message="There is no appied job" type="info" />
+              <Alert message="No bookmarked jobs" type="info" />
             }
           </div>
         }

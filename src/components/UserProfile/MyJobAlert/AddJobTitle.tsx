@@ -21,13 +21,13 @@ const AddJobTitle = () => {
 
   return (
     <div className="">
-      <div className='flex justify-start items-center pb-4'>
+      <div className='flex justify-start items-center pb-4 px-4 sm:px-16'>
         <EditOutlined className='text-gray-500' />
-        <p className='text-[14px] text-gray-600 flex justify-start items-center pl-2'>
+        <p className='text-[16px] text-gray-600 flex justify-start items-center pl-2'>
           Job Title
         </p>
       </div>
-      <div className='flex justify-between items-center px-24'>
+      <div className='flex justify-between items-center px-4 sm:px-16'>
         <Space.Compact style={{ width: '100%' }}>
           <Input
             placeholder="Please insert the job title which you wanna search"

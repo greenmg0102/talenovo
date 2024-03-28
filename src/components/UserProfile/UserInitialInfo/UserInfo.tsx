@@ -20,30 +20,35 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
         setIsModalVisible={(bool: any) => setIsModalVisible(bool)}
       /> */}
       {/* <EditButton add={add} /> */}
-      <p className='text-center py-6 text-[32px]'>User Information</p>
+      <p className='text-center py-6 text-[20px]'>Profile information</p>
 
       <div className='flex justify-between items-start flex-wrap py-8 pb-0 border border-dashed border-r-0 border-l-0'>
 
-        <div className='w-full sm:w-1/3 mb-12'>
-          <p className='text-center'>Phone Number</p>
+        <div className='w-full sm:w-1/2 mb-8'>
+          <p className='text-center text-[16px]'>Phone Number</p>
           {userInfo.phone.map((item: any, index: any) =>
             <p key={index} className='text-center text-blue-500'>{item}</p>
           )}
         </div>
 
-        <div className='w-full sm:w-1/3 mb-12'>
-          <p className='text-center'>Mail Address</p>
+        <div className='w-full sm:w-1/2 mb-8'>
+          <p className='text-center'>E-mail</p>
           {userInfo.mail.map((item: any, index: any) =>
             <p key={index} className='text-center text-blue-500'>{item}</p>
           )}
         </div>
 
-        <div className='w-full sm:w-1/3 mb-12'>
-          <p className='text-center'>located in</p>
+        <div className='w-full sm:w-1/2 mb-8'>
+          <p className='text-center'>Location</p>
           <p className='text-center text-blue-500'>{userInfo.locatedin}</p>
         </div>
 
-        {/* <div className='w-full sm:w-1/3 mb-12'>
+        <div className='w-full sm:w-1/2 mb-8'>
+          <p className='text-center'>Subscription</p>
+          <p className='text-center text-blue-500'>* * *</p>
+        </div>
+
+        {/* <div className='w-full sm:w-1/3 mb-8'>
           <p className='text-center'>Age</p>
           {userInfo.birthday === "" ?
             <p className="text-center text-gray-300 text-[14px]">
@@ -82,15 +87,15 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
           }
         </div> */}
 
-        <div className='w-full sm:w-1/3 mb-12'>
+        {/* <div className='w-full sm:w-1/3 mb-12'>
           <p className='text-center'>Profile views</p>
           <p className='text-center text-[32px] text-blue-500'>{userInfo.profileViews}</p>
-        </div>
+        </div> */}
 
-        <div className='w-full sm:w-1/3 mb-12'>
+        {/* <div className='w-full sm:w-1/3 mb-12'>
           <p className='text-center'>Bookmarked Job</p>
           <p className='text-center text-[32px] text-blue-500'>{userInfo.bookmark}</p>
-        </div>
+        </div> */}
 
         {/*<div className='w-full sm:w-1/3 mb-12'>
           <p className='text-center'>Job applied</p>

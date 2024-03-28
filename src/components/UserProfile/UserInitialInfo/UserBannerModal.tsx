@@ -107,7 +107,7 @@ function UserBannerModal({ tagList, isModalVisible, setIsModalVisible, userInfo,
 
                     <p className='text-center text-blue-500 my-2'>{userInfo.name}</p>
 
-                    <p className='text-gray-400 my-2'>Your Job Title</p>
+                    <p className='text-gray-400 my-2'>My Job Title</p>
                     <Input
                         value={userInfo.jobTitle}
                         placeholder="Job Title"
@@ -116,7 +116,7 @@ function UserBannerModal({ tagList, isModalVisible, setIsModalVisible, userInfo,
                         onChange={(e: any) => onchange({ ...userInfo, jobTitle: e.target.value })}
                     />
 
-                    <p className='text-gray-400 my-2'>Your Profile Link (Linkedin or Facebook, Portfolio, etc)</p>
+                    <p className='text-gray-400 my-2 text-[14px]'>My Profile Link (Add your profile link such as Linkedin, Facebook, twitter etc...)</p>
                     <Input
                         value={userInfo.profile}
                         placeholder="Profile Link"
@@ -125,21 +125,21 @@ function UserBannerModal({ tagList, isModalVisible, setIsModalVisible, userInfo,
                         onChange={(e: any) => onchange({ ...userInfo, profile: e.target.value })}
                     />
 
-                    <p className='text-gray-400 my-2'>Summary about you</p>
+                    <p className='text-gray-400 my-2'>Headline</p>
                     <TextArea
                         value={userInfo.summary}
                         rows={4}
-                        placeholder="Please let us know about you (The minLength is 100 and the maxLength is 1000)"
+                        placeholder="Add your headlines"
                         onChange={(e: any) => onchange({ ...userInfo, summary: e.target.value })}
                         maxLength={1000}
                         minLength={100}
                     />
-                    <p className='text-gray-400 my-2'>your skill set </p>
+                    <p className='text-gray-400 my-2'>My skill set </p>
 
                     <Select
                         mode="tags"
                         style={{ width: '100%' }}
-                        placeholder="Tags Mode"
+                        placeholder="Add skill sets to get customized job suggestions"
                         onChange={handleSelectChange}
                         options={tagList}
                     />

@@ -14,12 +14,12 @@ const UserProfile = () => {
   return (
     <>
       <Breadcrumb
-        pageName="User Profile"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
+        pageName="My Profile"
+        description=""
       />
       <section className="pb-[120px] pt-[30px]">
         <div className="container flex justify-between items-start flex-wrap">
-          <div className="w-full lg:w-[35%] pr-0 lg:pr-4">
+          <div className="w-full lg:w-[35%] pr-0 lg:pr-4 mb-12">
             <div className="border border-gray-200 rounded-[16px] p-4 shadow-2xl">
               <UserBannerMain />
             </div>

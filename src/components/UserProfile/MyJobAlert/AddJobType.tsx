@@ -14,13 +14,13 @@ const AddJobType = () => {
 
   return (
     <div>
-      <div className='flex justify-start items-center pb-4'>
+      <div className='flex justify-start items-center pb-4 px-4 sm:px-16'>
         <GlobalOutlined className='text-gray-500' />
-        <p className='text-[14px] text-gray-600 flex justify-start items-center pl-2'>
+        <p className='text-[16px] text-gray-600 flex justify-start items-center pl-2'>
           Job Type
         </p>
       </div>
-      <div className="flex justify-center items-center flex-wrap">
+      <div className="flex justify-center items-center flex-wrap px-4 sm:px-16">
         <Radio.Group onChange={onChange} value={value}>
           <Radio value={1}>On-Site</Radio>
           <Radio value={2}>Hybrid</Radio>

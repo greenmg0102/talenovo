@@ -1,16 +1,22 @@
 import { useState } from 'react';
 import { FieldStringOutlined } from '@ant-design/icons';
 import { Select, Button } from 'antd';
+import { Alert } from 'antd';
 import type { SelectProps } from 'antd';
 
 const AddIndustry = ({ industryList }: any) => {
 
   const [buffer, setBuffer] = useState([])
   const [realIndustry, setRealIndustry] = useState([])
+  const [validation, setValidaion] = useState(false)
 
   const handleChange = (value: string[]) => {
-    console.log(`selected ${value}`);
-    setBuffer(value)
+    if (value.length > 5) {
+      setValidaion(true)
+    } else {
+      setValidaion(false)
+      setBuffer(value)
+    }
   };
 
   const save = () => {
@@ -20,13 +26,13 @@ const AddIndustry = ({ industryList }: any) => {
 
   return (
     <div className="">
-      <div className='flex justify-start items-center pb-4'>
+      <div className='flex justify-start items-center pb-4 px-4 sm:px-16'>
         <FieldStringOutlined className='text-gray-500' />
-        <p className='text-[14px] text-gray-600 flex justify-start items-center pl-2'>
+        <p className='text-[16px] text-gray-600 flex justify-start items-center pl-2'>
           Add Industry
         </p>
       </div>
-      <div className='flex justify-between items-center px-24'>
+      <div className='flex justify-between items-start px-4 sm:px-16'>
         <Select
           value={buffer}
           mode="multiple"
@@ -37,7 +43,11 @@ const AddIndustry = ({ industryList }: any) => {
           onChange={handleChange}
           options={industryList}
         />
-        <Button onClick={save}>Save</Button>
+        <Button onClick={save} className='ml-2'>Save</Button>
+      </div>
+
+      <div className='mt-2 px-4 sm:px-16'>
+        {validation ? <Alert message="You can select up to 5" type="error" /> : null}
       </div>
 
       <div className='flex justify-start items-center flex-wrap mt-4'>

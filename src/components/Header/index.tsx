@@ -4,11 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
+import clsx from 'clsx'
+import { useUser } from '@clerk/nextjs';
 import menuData from "./menuData";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { scarppingStart } from '@/store/action/automation/scraping'
 
 const Header = () => {
+  const { user } = useUser();
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
   const navbarToggleHandler = () => {
@@ -109,15 +112,16 @@ const Header = () => {
                     }`}
                 >
                   <ul className="block lg:flex lg:space-x-12">
-                    {menuData.map((menuItem, index) => (
+                    {menuData.slice(0, user && user.primaryEmailAddress && user && user.primaryEmailAddress.emailAddress === "mohammad.patel@gmail.com" ? 6 : 5).map((menuItem, index) => (
                       <li key={index} className="group relative">
                         {menuItem.path ? (
                           <Link
                             href={menuItem.path}
-                            className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${usePathName === menuItem.path
-                              ? "text-primary dark:text-white"
-                              : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white"
-                              }`}
+                            className={clsx(
+                              'flex py-[8px] px-[16px] hover:py-[6px] hover:px-[14px] text-base lg:inline-flex transition-all hover:border hover:border-gray-300 hover:shadow-lg',
+                              usePathName === menuItem.path ? "text-primary dark:text-white" : "",
+                              usePathName !== menuItem.path ? "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white" : "",
+                            )}
                           >
                             {menuItem.title}
                           </Link>
@@ -125,7 +129,9 @@ const Header = () => {
                           <>
                             <p
                               onClick={() => handleSubmenu(index)}
-                              className="flex cursor-pointer items-center justify-between py-2 text-base text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white lg:mr-0 lg:inline-flex lg:px-0 lg:py-6"
+                              className={clsx(
+                                "flex cursor-pointer items-center justify-between py-2 text-base text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white lg:mr-0 lg:inline-flex lg:px-0 lg:py-6",
+                              )}
                             >
                               {menuItem.title}
                               <span className="pl-3">
@@ -172,7 +178,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-      </header>
+      </header >
     </>
   );
 };

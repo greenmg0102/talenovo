@@ -55,18 +55,18 @@ const UserBanner = ({ userInfo, tagList, onchange }: any) => {
         </a>
       }
 
-      <p className="text-center text-[12px] pb-4">Summary</p>
+      <p className="text-center text-[12px] pb-4">Headlines</p>
       {userInfo.summary === "" ?
         <p className="text-center mb-6 font-bold text-gray-300 text-[14px]" >
           Add  <span className='text-gray-400'> your job </span>
         </p>
         :
-        <p className="mb-6 text-gray-600 p-2 border border-gray-100 break-words text-[14px]" >
+        <p className="mb-6 text-gray-600 p-2 border border-gray-100 rounded-[4px] break-words text-[12px]" >
           {userInfo.summary}
         </p>
       }
 
-      <p className="text-center text-[12px] pb-4">Skill</p>
+      <p className="text-center text-[12px] pb-4">Skills</p>
       {userInfo.skill.length === 0 ?
         <p className="text-center mb-6 font-bold text-gray-300" >
           Add a  <span className='text-gray-400'> Skill </span>
@@ -74,7 +74,7 @@ const UserBanner = ({ userInfo, tagList, onchange }: any) => {
         :
         <div className='flex justify-start items-center flex-wrap'>
           {userInfo.skill.map((item: any, index: any) =>
-            <p key={index} className="text-center mb-1 mr-2 px-2 text-[12px] font-bold text-gray-500 border border-gray-300 rounded-[3px]" >
+            <p key={index} className="shadow-md rounded-full text-center mb-1 mr-2 px-2 text-[12px] font-bold text-gray-500 border border-gray-300" >
               {item}
             </p>
           )}
