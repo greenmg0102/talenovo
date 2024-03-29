@@ -18,11 +18,11 @@ export default function LandingDetail({ isDetail, setIsDetail }: any) {
             }
         >
             <div
-                className='w-[10%] h-screen z-[10000] sm:w-[30%] 2xl:w-2/3 bg-gray-900 opacity-[60%]'
+                className='w-[10%] h-screen z-[10000] sm:w-[30%] lg:w-1/2 bg-gray-900 opacity-[60%]'
                 onClick={() => setIsDetail(undefined)}
             >
             </div>
-            <div className={clsx('w-[90%] h-screen z-[10000] sm:w-[70%] 2xl:w-1/3 bg-white overflow-y-scroll overflow-x-hidde p-8')}>
+            <div className={clsx('w-[90%] h-screen z-[10000] sm:w-[70%] lg:w-1/2 bg-white overflow-y-scroll overflow-x-hidde p-8')}>
                 {isDetail !== undefined ?
                     <div className="flex justify-between items-start flex-wrap">
                         <div className="w-full mb-2 lg:w-3/4 lg:mb-0 px-4">
