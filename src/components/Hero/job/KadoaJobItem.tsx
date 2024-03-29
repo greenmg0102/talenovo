@@ -1,6 +1,6 @@
 import React from "react";
 
-const KadoaJobItem = ({ item }: any) => {
+const KadoaJobItem = ({ item, isDetail, setIsDetail }: any) => {
   return (
     <div className="flex justify-between items-center p-2">
       <div className="w-[70px] h-[70px] flex-grow-0 rounded-full flex justify-center items-center">

@@ -13,14 +13,14 @@ var settings = {
 export default function CarouselItem({ subResult }: any) {
 
     return (
-        <div className="mb-4 px-2">
+        <div className="mb-4 px-4">
             <Slider {...settings}>
                 <div className="flex justify-between items-center">
                     <div className="flex justify-center items-start">
                         {subResult.map((item: any, index: any) =>
                             <div
                                 key={index}
-                                className="border border-gray-100 w-1/4 flex justify-center items-center flex-col"
+                                className="w-1/4 flex justify-center items-center flex-col"
                             >
                                 <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={60} height={60} />
                                 <p className="text-center text-gray-500 text-[12px]">{item.companyName}</p>
@@ -34,7 +34,7 @@ export default function CarouselItem({ subResult }: any) {
                         {subResult.map((item: any, index: any) =>
                             <div
                                 key={index}
-                                className="border border-gray-100 w-1/4 flex justify-center items-center flex-col"
+                                className="w-1/4 flex justify-center items-center flex-col"
                             >
                                 <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={60} height={60} />
                                 <p className="text-center text-gray-500 text-[12px]">{item.companyName}</p>
@@ -48,7 +48,7 @@ export default function CarouselItem({ subResult }: any) {
                         {subResult.map((item: any, index: any) =>
                             <div
                                 key={index}
-                                className="border border-gray-100 w-1/4 flex justify-center items-center flex-col"
+                                className="w-1/4 flex justify-center items-center flex-col"
                             >
                                 <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={60} height={60} />
                                 <p className="text-center text-gray-500 text-[12px]">{item.companyName}</p>

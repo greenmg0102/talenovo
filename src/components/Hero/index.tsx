@@ -2,18 +2,17 @@
 import '@/styles/landing.css'
 import '@/styles/refinementList.css'
 import { useState, useEffect } from "react";
-import JobList from "./job";
 import { Divider } from 'antd';
 import CountUp from 'react-countup';
 import { landingJob } from '@/store/action/user/jobget/landingJob'
 import SuggestedJobCard from '@/components/Hero/job/SuggestedJobCard'
 import Carousel from '@/components/Hero/carousel/Carousel'
-import Filter from '@/components/Hero/filter'
 import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
 import JobCard from "@/components/Hero/job/jobCard";
 import { suggestJobs } from '@/store/action/user/landing/suggestion'
 import { landingInfo } from '@/store/action/user/landing/landingInfo'
-import { message, Alert, Button, Tooltip, ConfigProvider } from 'antd';
+import { message, Alert, Tooltip } from 'antd';
+
 import {
   InstantSearch,
   Hits,
@@ -37,7 +36,7 @@ const searchClient = instantMeiliSearch(
 
 const text = <span>For accurate job suggestion, please update your location and add your skills in your profile</span>;
 
-const Hero = () => {
+const Hero = ({ setIsDetail }: any) => {
 
   const [suggestList, setSuggestList] = useState(undefined);
 
@@ -48,7 +47,6 @@ const Hero = () => {
   const [locatedin, setLocatedin] = useState(null);
   const [skil, setSkil] = useState(null);
   const [messageApi, contextHolder] = message.useMessage();
-  const [toggleFilter, setToggleFilter] = useState(false)
 
   useEffect(() => {
 
@@ -112,7 +110,10 @@ const Hero = () => {
 
   const Hit = ({ hit }: any) => (
     <div key={hit.jobId} className='shadow-lg'>
-      <JobCard item={hit} />
+      <JobCard
+        item={hit}
+        setIsDetail={(data: any) => setIsDetail(data)}
+      />
     </div>
   );
 
@@ -122,6 +123,7 @@ const Hero = () => {
         id="home"
         className="relative z-10 overflow-hidden bg-custom-gray pb-16 pt-[120px] dark:bg-gray-dark md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
       >
+
         {contextHolder}
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
@@ -133,31 +135,7 @@ const Hero = () => {
                 <h4 className="mb-5 text-center text-md font-bold leading-tight text-black dark:text-white sm:text-sm sm:leading-tight md:text-4xl md:leading-tight">
                   Your Gateway to Success
                 </h4>
-                <div className="flex justify-around items-center flex-wrap my-12">
-                  <div>
-                    <p className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center">
-                      <CountUp start={0} end={total} duration={3} className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center"></CountUp>+</p>
-                    <p className="text-gray-600 font-bold text-[12px] sm:text-[14px] text-center">Total Jobs</p>
-                  </div>
-                  <div>
-                    <p className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center">
-                      <CountUp start={0} end={today} duration={2} className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center"></CountUp>+
-                    </p>
-                    <p className="text-gray-600 font-bold text-[12px] sm:text-[14px] text-center">Today's Jobs</p>
-                  </div>
-                  <div>
-                    <p className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center">
-                      <CountUp start={0} end={companyCount} duration={1} className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center"></CountUp>+
-                    </p>
-                    <p className="text-gray-600 font-bold text-[12px] sm:text-[14px] text-center">Companys</p>
-                  </div>
-                  <div>
-                    <p className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center">
-                      <CountUp start={0} end={industry} duration={2} className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center"></CountUp>+
-                    </p>
-                    <p className="text-gray-600 font-bold text-[12px] sm:text-[14px] text-center">Industries</p>
-                  </div>
-                </div>
+
               </div>
 
               <div className="w-full">
@@ -166,16 +144,44 @@ const Hero = () => {
                   searchClient={searchClient}
                 >
 
-                  <div className="mx-auto max-w-[1368px] flex justify-between items-start flex-wrap mt-[60px] mb-[10px]">
+                  <div className="mx-auto max-w-[1368px] flex justify-between items-start flex-wrap mt-[60px]">
                     <div className="w-full sm:w-[30%] md:w-[25%] lg:w-[20%]" />
                     <div className="w-full sm:w-[70%] md:w-[75%] lg:w-[80%] xl:w-[55%] px-0 sm:px-2">
-                      <SearchBox translations={{ placeholder: "Search by Job title, keywords, company, location" }} />
+                      <SearchBox translations={{ placeholder: "Search by Job Title, Keywords, Company in Canada" }} />
                     </div>
                     <div className="w-full xl:w-[25%]" />
                   </div>
 
+                  <div className='flex justify-center items-center'>
+                    <div className="flex justify-around items-center flex-wrap mt-2 mb-6 w-full sm:w-4/5">
+                      <div>
+                        <p className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center">
+                          <CountUp start={0} end={total} duration={3} className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center"></CountUp>+</p>
+                        <p className="text-gray-600 font-bold text-[12px] sm:text-[14px] text-center">Total Jobs</p>
+                      </div>
+                      <div>
+                        <p className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center">
+                          <CountUp start={0} end={today} duration={2} className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center"></CountUp>+
+                        </p>
+                        <p className="text-gray-600 font-bold text-[12px] sm:text-[14px] text-center">Today's Jobs</p>
+                      </div>
+                      <div>
+                        <p className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center">
+                          <CountUp start={0} end={companyCount} duration={1} className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center"></CountUp>+
+                        </p>
+                        <p className="text-gray-600 font-bold text-[12px] sm:text-[14px] text-center">Companys</p>
+                      </div>
+                      <div>
+                        <p className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center">
+                          <CountUp start={0} end={industry} duration={2} className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center"></CountUp>+
+                        </p>
+                        <p className="text-gray-600 font-bold text-[12px] sm:text-[14px] text-center">Industries</p>
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="mx-auto max-w-[1368px] flex justify-between items-start flex-wrap">
-                    <div className="w-full sm:w-[30%] md:w-[25%] lg:w-[20%] border border-gray-300 bg-gray-50 rounded-md p-4 shadow-lg h-[300px] sm:h-full overflow-y-scroll sm:overflow-y-auto mb-4">
+                    <div className="w-full sm:w-[30%] md:w-[25%] lg:w-[20%] border border-gray-300 bg-white rounded-md p-4 shadow-lg h-[300px] sm:h-full overflow-y-scroll sm:overflow-y-auto mb-4">
                       <ClearRefinements />
                       {/* <SortBy
                             defaultRefinement="title"
@@ -206,14 +212,14 @@ const Hero = () => {
                       <RefinementList
                         attribute="country"
                         limit={10}
-                        showMore={false}
+                        showMore={true}
                       />
                       <Divider />
 
                       <h2 className='text-gray-700p pb-2'>City</h2>
                       <RefinementList
                         attribute="city"
-                        limit={10}
+                        limit={3}
                         showMore={true}
                         showMoreLimit={20}
                       />
@@ -222,7 +228,7 @@ const Hero = () => {
                       <h2 className='text-gray-700p pb-2'>Company Name</h2>
                       <RefinementList
                         attribute="companyName"
-                        limit={10}
+                        limit={3}
                         showMore={true}
                         showMoreLimit={20}
                       />
@@ -231,7 +237,7 @@ const Hero = () => {
                       <h2 className='text-gray-700p pb-2'>Skill</h2>
                       <RefinementList
                         attribute="skills"
-                        limit={10}
+                        limit={3}
                         showMore={true}
                         showMoreLimit={20}
                       />
@@ -240,7 +246,7 @@ const Hero = () => {
                       <h2 className='text-gray-700p pb-2'>Industry</h2>
                       <RefinementList
                         attribute="insightsV2"
-                        limit={10}
+                        limit={3}
                         showMore={true}
                         showMoreLimit={20}
                       />
@@ -249,7 +255,7 @@ const Hero = () => {
                       <h2 className='text-gray-700p pb-2'>Salary</h2>
                       <RefinementList
                         attribute="tertiaryDescription"
-                        limit={10}
+                        limit={3}
                         showMore={true}
                         showMoreLimit={20}
                       />
@@ -267,12 +273,12 @@ const Hero = () => {
                         <Hits hitComponent={Hit} />
                       </div>
                       <div className='flex justify-center mb-12'>
-                        <Pagination showLast={true} />
+                        <Pagination showLast={true} limit={3} offset={0} />
                       </div>
                     </div>
 
                     <div className="w-full xl:w-[25%]">
-                      <div className=" border border-blue-600 bg-gray-50 rounded-md p-2 flex justify-between items-center mb-4 shadow-lg">
+                      <div className=" border border-blue-600 bg-white rounded-md p-2 flex justify-between items-center mb-4 shadow-lg">
                         <p className="font-bold text-[16px]">Suggeted Jobs</p>
                         <Tooltip placement="topLeft" title={text}>
                           <svg viewBox="64 64 896 896" focusable="false" data-icon="exclamation-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path d="M464 688a48 48 0 1096 0 48 48 0 10-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z"></path></svg>

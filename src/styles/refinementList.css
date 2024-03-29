@@ -8,12 +8,19 @@
 
 .ais-SearchBox {
     width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.ais-SearchBox:hover {
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: 0.3s ease-in-out;
 }
 
 .ais-SearchBox-input {
     padding: 12px;
-    background-color: #f3f4f6;
     width: calc(100% - 50px);
+    box-shadow: #555;
 }
 
 .ais-SearchBox-input:focus {

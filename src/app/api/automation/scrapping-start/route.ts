@@ -12,10 +12,10 @@ const apiKey = 'a9af493c2f5076aad794cab8b668828cb8f1835f';
 const indexName = 'title';
 
 export async function GET(req: any, res: any) {
-  await adminAPIMiddleware(req, res);
+  // await adminAPIMiddleware(req, res);
   // let { db } = await connectToDatabase();
 
-  // schedule.scheduleJob('0 */12 * * *', async () => {
+  // // schedule.scheduleJob('0 */12 * * *', async () => {
 
   // const client = new MeiliSearch({
   //   host: host,
@@ -23,9 +23,9 @@ export async function GET(req: any, res: any) {
   // });
 
   // let linkedin = await linkedinScrapping();
-  // // let kadoa = await KadoaScrapping();
+  // // // let kadoa = await KadoaScrapping();
   // let real = linkedin
-  // // let real = [...linkedin, ...kadoa]
+  // // // let real = [...linkedin, ...kadoa]
   // console.log(1);
   // await client.index(indexName).addDocuments(real, { primaryKey: 'jobId' });
   // console.log(2);
@@ -49,8 +49,6 @@ export async function GET(req: any, res: any) {
   //   .then(async (result: any) => {
   //     return
   //   })
-
-  // });
 
   return NextResponse.json({
     result: true,
