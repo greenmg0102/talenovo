@@ -144,15 +144,13 @@ const Hero = ({ setIsDetail }: any) => {
                   searchClient={searchClient}
                 >
 
-                  <div className="mx-auto max-w-[1368px] flex justify-between items-start flex-wrap mt-[60px]">
-                    <div className="w-full sm:w-[30%] md:w-[25%] lg:w-[20%]" />
-                    <div className="w-full sm:w-[70%] md:w-[75%] lg:w-[80%] xl:w-[55%] px-0 sm:px-2">
+                  <div className="mx-auto max-w-[998px] mt-[60px]">
+                    
                       <SearchBox translations={{ placeholder: "Search by Job Title, Keywords, Company in Canada" }} />
-                    </div>
-                    <div className="w-full xl:w-[25%]" />
+                    
                   </div>
 
-                  <div className='flex justify-center items-center'>
+                  <div className='flex justify-center items-center pb-8'>
                     <div className="flex justify-around items-center flex-wrap mt-2 mb-6 w-full sm:w-4/5">
                       <div>
                         <p className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center">
@@ -279,7 +277,7 @@ const Hero = ({ setIsDetail }: any) => {
 
                     <div className="w-full xl:w-[25%]">
                       <div className=" border border-blue-600 bg-white rounded-md p-2 flex justify-between items-center mb-4 shadow-lg">
-                        <p className="font-bold text-[16px]">Suggeted Jobs</p>
+                        <p className="font-bold text-[16px]">Suggested Jobs</p>
                         <Tooltip placement="topLeft" title={text}>
                           <svg viewBox="64 64 896 896" focusable="false" data-icon="exclamation-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path d="M464 688a48 48 0 1096 0 48 48 0 10-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z"></path></svg>
                         </Tooltip>
