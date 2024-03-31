@@ -121,9 +121,8 @@ const Hero = ({ setIsDetail }: any) => {
     <>
       <section
         id="home"
-        className="relative z-10 overflow-hidden bg-custom-gray pb-16 pt-[100px] dark:bg-gray-dark md:pb-[120px] md:pt-[120px] xl:pb-[160px] xl:pt-[140px] 2xl:pb-[200px] 2xl:pt-[160px]"
+        className="relative z-10 overflow-hidden bg-white pb-16 pt-[100px] md:pb-[120px] md:pt-[120px] xl:pb-[160px] xl:pt-[140px] 2xl:pb-[200px] 2xl:pt-[160px]"
       >
-
         {contextHolder}
         <div className="container">
           <div className="-mx-4 flex flex-wrap">

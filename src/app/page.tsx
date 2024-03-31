@@ -22,7 +22,6 @@ export default function Home() {
         isDetail={isDetail}
         setIsDetail={(data: any) => setIsDetail(data)}
       />
-
       <ScrollUp />
       <Hero
         setIsDetail={(data: any) => setIsDetail(data)}

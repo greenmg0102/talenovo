@@ -118,7 +118,7 @@ const Header = () => {
                           <Link
                             href={menuItem.path}
                             className={clsx(
-                              'flex py-[8px] px-[16px] hover:bg-gray-200 hover:runded-[4px] text-base lg:inline-flex transition-all hover:shadow-lg',
+                              'flex py-[8px] px-[16px] hover:bg-gray-200 hover:rounded-[4px] text-base lg:inline-flex transition-all hover:shadow-lg',
                               usePathName === menuItem.path ? "text-primary dark:text-white" : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white",
                             )}
                           >
