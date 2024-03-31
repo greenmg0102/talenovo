@@ -12,7 +12,7 @@ const SuggestedJobCard = ({ item }: any) => {
   }
 
   return (
-    <div className="p-2 border border-blue-200 hover:border-blue-500 cursor-pointer rounded-md mb-4 shadow-lg bg-white">
+    <div className="p-2 border border-gray-300 hover:border-blue-500 cursor-pointer rounded-md mb-4 shadow-lg bg-white">
       <div className="flex justify-between items-center">
         <div className="flex justify-start items-center">
           <a href={item.companyLinkedinUrl} target="_blank">

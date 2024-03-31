@@ -121,7 +121,7 @@ const Hero = ({ setIsDetail }: any) => {
     <>
       <section
         id="home"
-        className="relative z-10 overflow-hidden bg-custom-gray pb-16 pt-[120px] dark:bg-gray-dark md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
+        className="relative z-10 overflow-hidden bg-custom-gray pb-16 pt-[100px] dark:bg-gray-dark md:pb-[120px] md:pt-[120px] xl:pb-[160px] xl:pt-[140px] 2xl:pb-[200px] 2xl:pt-[160px]"
       >
 
         {contextHolder}
@@ -135,7 +135,6 @@ const Hero = ({ setIsDetail }: any) => {
                 <h4 className="mb-5 text-center text-md font-bold leading-tight text-black dark:text-white sm:text-sm sm:leading-tight md:text-4xl md:leading-tight">
                   Your Gateway to Success
                 </h4>
-
               </div>
 
               <div className="w-full">
@@ -276,7 +275,7 @@ const Hero = ({ setIsDetail }: any) => {
                     </div>
 
                     <div className="w-full xl:w-[25%]">
-                      <div className=" border border-blue-600 bg-white rounded-md p-2 flex justify-between items-center mb-4 shadow-lg">
+                      <div className="border border-gray-300 bg-white rounded-md p-2 flex justify-between items-center mb-4 shadow-lg">
                         <p className="font-bold text-[16px]">Suggested Jobs</p>
                         <Tooltip placement="topLeft" title={text}>
                           <svg viewBox="64 64 896 896" focusable="false" data-icon="exclamation-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path d="M464 688a48 48 0 1096 0 48 48 0 10-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z"></path></svg>

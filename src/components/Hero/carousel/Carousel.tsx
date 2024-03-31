@@ -48,7 +48,7 @@ export default function Carousel() {
     })
 
     return (
-        <div className="shadow-lg rounded-[8px] mb-4 bg-white">
+        <div className="shadow-lg rounded-[8px] mb-4 bg-white border border-gray-300">
             <div className="px-4 pb-2">
                 <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
             </div>
