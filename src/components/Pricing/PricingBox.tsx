@@ -1,11 +1,16 @@
+import Link from "next/link";
+
 const PricingBox = (props: {
   price: string;
   duration: string;
   packageName: string;
+  priceId: any,
   subtitle: string;
   children: React.ReactNode;
+  isSectionTitle: any;
+  handleSubscription: any
 }) => {
-  const { price, duration, packageName, subtitle, children } = props;
+  const { price, duration, packageName, subtitle, children, isSectionTitle, handleSubscription, priceId } = props;
 
   return (
     <div className="w-full">
@@ -23,9 +28,27 @@ const PricingBox = (props: {
         </div>
         <p className="mb-7 text-base text-body-color">{subtitle}</p>
         <div className="mb-8 border-b border-body-color border-opacity-10 pb-8 dark:border-white dark:border-opacity-10">
-          <button className="flex w-full items-center justify-center rounded-sm bg-primary p-3 text-base font-semibold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
-            Start Free Trial
-          </button>
+          {isSectionTitle ?
+            <Link
+              href="/price"
+              className="flex w-full items-center justify-center rounded-sm bg-primary p-3 text-base font-semibold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
+            >
+              <button >
+                Start {packageName}
+              </button>
+            </Link>
+            :
+            <button
+              className="flex w-full items-center justify-center rounded-sm bg-primary p-3 text-base font-semibold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
+              onClick={() => handleSubscription({
+                packageName: packageName,
+                priceId: priceId
+              })}
+            >
+              Start {packageName}
+            </button>
+          }
+
         </div>
         <div>{children}</div>
         <div className="absolute bottom-0 right-0 z-[-1]">

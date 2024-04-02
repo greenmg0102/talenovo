@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .ais-SearchBox-form {
     box-shadow: 0 0 5px 2px rgb(43, 73, 245);
     padding: 0px 12px;
@@ -93,20 +97,20 @@
 
 ::-webkit-scrollbar {
     width: 5px;
-  }
-  
-  ::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-track {
     background: #cce0f1d8;
-  }
-  
-  ::-webkit-scrollbar-thumb {
+}
+
+::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 1px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+::-webkit-scrollbar-thumb:hover {
     background: #555;
-  }
+}
 
 /* .ais-RefinementList-count {
     display: none !important;

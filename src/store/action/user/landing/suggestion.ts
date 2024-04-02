@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const host = 'https://ms-25a464fc2474-8311.nyc.meilisearch.io';
-const apiKey = 'a9af493c2f5076aad794cab8b668828cb8f1835f';
+const host = 'https://ms-d932cad3594f-8320.sfo.meilisearch.io';
+const apiKey = '45679470fdc94d8c90ef03712354389f8d209067';
 const indexName = 'title';
 
 export async function suggestJobs(data: any) {
@@ -10,10 +10,10 @@ export async function suggestJobs(data: any) {
     // const locationInfo = data.locatedin; // Array of skills
     // const countryInfo = locationInfo.split(", ")[1]
     // const cityInfo = locationInfo.split(", ")[0]
-    
-    const skillSet = ["Food Packaging"]
-    const countryInfo = "MO"
-    const cityInfo = "St Louis"
+
+    const skillSet = ["Communication"]
+    const countryInfo = "    FL"
+    const cityInfo = "Miami"
 
     // console.log("skillSet", skillSet);
     // console.log("locationInfo", locationInfo);
@@ -33,5 +33,6 @@ export async function suggestJobs(data: any) {
         { headers: { 'Authorization': `Bearer ${apiKey}` } }
     );
 
+    // return []
     return response.data.hits
 }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const host = 'https://ms-25a464fc2474-8311.nyc.meilisearch.io';
-const apiKey = 'a9af493c2f5076aad794cab8b668828cb8f1835f';
+const host = 'https://ms-d932cad3594f-8320.sfo.meilisearch.io';
+const apiKey = '45679470fdc94d8c90ef03712354389f8d209067';
 const indexName = 'title';
 
 export async function carouselIndustry({ list }: any) {

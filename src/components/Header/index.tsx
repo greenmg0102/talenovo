@@ -111,13 +111,18 @@ const Header = () => {
                     : "invisible top-[120%] opacity-0"
                     }`}
                 >
-                  <ul className="block lg:flex lg:space-x-12">
-                    {menuData.slice(0, user && user.primaryEmailAddress && user && user.primaryEmailAddress.emailAddress === "mohammad.patel@gmail.com" ? 6 : 5).map((menuItem, index) => (
+                  <ul className="block lg:flex lg:space-x-4">
+                    {menuData.slice(
+                      0,
+                      user === null ? 3 :
+                        user && user.primaryEmailAddress && user && user.primaryEmailAddress.emailAddress === "mohammad.patel@gmail.com" ? 5 : 4
+                    ).map((menuItem, index) => (
                       <li key={index} className="group relative">
                         {menuItem.path ? (
                           <Link
                             href={menuItem.path}
                             className={clsx(
+                              menuItem.id === 3 ? "hidden" : "",
                               'flex py-[8px] px-[16px] hover:bg-gray-200 hover:rounded-[4px] text-base lg:inline-flex transition-all hover:shadow-lg',
                               usePathName === menuItem.path ? "text-primary dark:text-white" : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white",
                             )}
@@ -126,7 +131,7 @@ const Header = () => {
                           </Link>
                         ) : (
                           <>
-                            <p
+                            {/* <p
                               onClick={() => handleSubmenu(index)}
                               className={clsx(
                                 "flex cursor-pointer items-center justify-between py-2 text-base text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white lg:mr-0 lg:inline-flex lg:px-0 lg:py-6",
@@ -143,11 +148,24 @@ const Header = () => {
                                   />
                                 </svg>
                               </span>
-                            </p>
+                            </p> */}
                           </>
                         )}
                       </li>
                     ))}
+                    {usePathName === '/price' ?
+                      null :
+                      < li className="group relative">
+                        <a
+                          href="/#price"
+                          className={clsx(
+                            'flex py-[8px] px-[16px] hover:bg-gray-200 hover:rounded-[4px] text-base lg:inline-flex transition-all hover:shadow-lg',
+                          )}
+                        >
+                          Price
+                        </a>
+                      </li>
+                    }
                   </ul>
                 </nav>
               </div>

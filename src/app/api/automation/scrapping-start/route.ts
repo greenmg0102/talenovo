@@ -3,12 +3,14 @@ import schedule from 'node-schedule';
 import axios from 'axios';
 import { KadoaScrapping } from '@/app/api/automation/scrapping-start/kadoa'
 import { linkedinScrapping } from '@/app/api/automation/scrapping-start/linkedin'
+import { indeedScrapping } from '@/app/api/automation/scrapping-start/indeed'
+
 import { connectToDatabase } from "@/lib/mongodb";
 import { adminAPIMiddleware } from '@/app/api/admin/middleware';
 import { MeiliSearch } from 'meilisearch';
 
-const host = 'https://ms-25a464fc2474-8311.nyc.meilisearch.io';
-const apiKey = 'a9af493c2f5076aad794cab8b668828cb8f1835f';
+const host = 'https://ms-d932cad3594f-8320.sfo.meilisearch.io';
+const apiKey = '45679470fdc94d8c90ef03712354389f8d209067';
 const indexName = 'title';
 
 export async function GET(req: any, res: any) {
@@ -23,9 +25,10 @@ export async function GET(req: any, res: any) {
   // });
 
   // let linkedin = await linkedinScrapping();
-  // // // let kadoa = await KadoaScrapping();
+  // // let indeed = await indeedScrapping();
+  // // // // let kadoa = await KadoaScrapping();
   // let real = linkedin
-  // // // let real = [...linkedin, ...kadoa]
+  // // // // // let real = [...linkedin, ...kadoa]
   // console.log(1);
   // await client.index(indexName).addDocuments(real, { primaryKey: 'jobId' });
   // console.log(2);
@@ -49,6 +52,8 @@ export async function GET(req: any, res: any) {
   //   .then(async (result: any) => {
   //     return
   //   })
+
+  // })
 
   return NextResponse.json({
     result: true,

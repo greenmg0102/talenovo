@@ -22,8 +22,8 @@
 <circle cx="380.809" cy="176.853" r="15.4412" fill="white"/>
 </g>
 </g>
-<path d="M342.034 231.847C324.964 262.749 277.939 313.186 226.394 267.718" stroke="url(#paint2_linear_1028_964)" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 2"/>
-<path d="M339.077 230.867L343.973 228.971L344.562 233.656" stroke="url(#paint3_linear_1028_964)" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 2"/>
+<path d="M342.034 231.847C324.964 262.749 277.939 313.186 226.394 267.718" stroke="url(#paint2_linear_1028_964)" strokeLinecap="round" stroke-linejoin="round" strokeDasharray="2 2"/>
+<path d="M339.077 230.867L343.973 228.971L344.562 233.656" stroke="url(#paint3_linear_1028_964)" strokeLinecap="round" stroke-linejoin="round" strokeDasharray="2 2"/>
 <defs>
 <filter id="filter0_f_1028_964" x="344.368" y="140.412" width="72.8823" height="72.8828" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
@@ -31,20 +31,20 @@
 <feGaussianBlur stdDeviation="10.5" result="effect1_foregroundBlur_1028_964"/>
 </filter>
 <linearGradient id="paint0_linear_1028_964" x1="434.5" y1="210" x2="48.2226" y2="58.8072" gradientUnits="userSpaceOnUse">
-<stop stop-color="white" stop-opacity="0"/>
-<stop offset="1" stop-color="#F0F2F9"/>
+<stop stopColor="white" stopOpacity="0"/>
+<stop offset="1" stopColor="#F0F2F9"/>
 </linearGradient>
 <radialGradient id="paint1_radial_1028_964" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(377.5 194.5) rotate(90) scale(40.2574)">
-<stop stop-opacity="0.47"/>
-<stop offset="1" stop-opacity="0"/>
+<stop stopOpacity="0.47"/>
+<stop offset="1" stopOpacity="0"/>
 </radialGradient>
 <linearGradient id="paint2_linear_1028_964" x1="358.554" y1="226.723" x2="242.956" y2="282.349" gradientUnits="userSpaceOnUse">
-<stop stop-color="white" stop-opacity="0.48"/>
-<stop offset="1" stop-color="white" stop-opacity="0"/>
+<stop stopColor="white" stopOpacity="0.48"/>
+<stop offset="1" stopColor="white" stopOpacity="0"/>
 </linearGradient>
 <linearGradient id="paint3_linear_1028_964" x1="343.992" y1="228.548" x2="340.23" y2="234.571" gradientUnits="userSpaceOnUse">
-<stop stop-color="white" stop-opacity="0.48"/>
-<stop offset="1" stop-color="white" stop-opacity="0"/>
+<stop stopColor="white" stopOpacity="0.48"/>
+<stop offset="1" stopColor="white" stopOpacity="0"/>
 </linearGradient>
 </defs>
 </svg>

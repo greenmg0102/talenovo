@@ -1,15 +1,51 @@
 'use client'
 import { useState, useEffect } from 'react';
-import EditButton from '@/components/Common/Button/EditButton'
-import UserInfoModal from '@/components/UserProfile/UserInitialInfo/UserInfoModal'
+import { useUser } from "@clerk/nextjs";
 
 const UserInitialInfo = ({ userInfo, onchange }: any) => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [userData, setUserData] = useState<any>({});
+
+  const { user } = useUser();
+
+  const email = user?.primaryEmailAddress?.emailAddress;
+  const clerkId = user?.id;
+
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/get-user`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add any additional headers if needed
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Parse the response body as JSON
+      })
+      .then(data => {
+        // Handle the response data
+        //redirect to checkout page
+        setUserData(data.user);
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  }, [email])
 
   const add = () => {
     setIsModalVisible(!isModalVisible)
   }
+
+  console.log("userData", userData);
+
 
   return (
     <div className="relative">
@@ -44,8 +80,14 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
         </div>
 
         <div className='w-full sm:w-1/2 mb-8'>
-          <p className='text-center'>Subscription</p>
-          <p className='text-center text-blue-500'>* * *</p>
+          <p className='text-center'>Subscriptions</p>
+          {Object.keys(userData).length > 0 ?
+            <div>
+              <p className='text-center text-blue-500'>{userData.planName}</p>
+            </div>
+            :
+            <p className='text-center text-blue-500'>Free</p>
+          }
         </div>
 
         {/* <div className='w-full sm:w-1/3 mb-8'>

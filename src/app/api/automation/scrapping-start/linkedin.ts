@@ -1,17 +1,22 @@
 import fetch from 'node-fetch';
 import { v4 as uuidv4 } from 'uuid';
+import { connectToDatabase } from "@/lib/mongodb";
 
 export async function linkedinScrapping(): Promise<any> {
 
-    let real = []
+    let { db } = await connectToDatabase();
 
-    const response = await fetch("https://api.apify.com/v2/datasets/CcscIqlEmAbnVDz8f/items?token=apify_api_pgD0hi7CqXuisJAxdvUuhEAg1BIqrX4nWOcg", {
-        method: 'GET'
-    });
+    let real: any = []
 
-    const data: any = await response.json();
+    // const response = await fetch("https://api.apify.com/v2/datasets/CcscIqlEmAbnVDz8f/items?token=apify_api_pgD0hi7CqXuisJAxdvUuhEAg1BIqrX4nWOcg", {
+    //     method: 'GET'
+    // });
 
-    data.forEach((element: any) => {
+
+    let data = await db.collection("otherjobs").find().toArray();
+    // const data: any = await response.json();
+
+    data.slice(0, 568).forEach((element: any) => {
         let randomId = uuidv4();
 
         real.push({
