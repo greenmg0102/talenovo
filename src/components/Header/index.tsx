@@ -123,7 +123,7 @@ const Header = () => {
                             href={menuItem.path}
                             className={clsx(
                               menuItem.id === 3 ? "hidden" : "",
-                              'flex py-[8px] px-[16px] hover:bg-gray-200 hover:rounded-[4px] text-base lg:inline-flex transition-all hover:shadow-lg',
+                              'flex py-[8px] px-[16px] hover:bg-gray-200 hover:rounded-[4px] text-base lg:inline-flex transition-all hover:shadow-md',
                               usePathName === menuItem.path ? "text-primary dark:text-white" : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white",
                             )}
                           >
@@ -159,10 +159,10 @@ const Header = () => {
                         <a
                           href="/#price"
                           className={clsx(
-                            'flex py-[8px] px-[16px] hover:bg-gray-200 hover:rounded-[4px] text-base lg:inline-flex transition-all hover:shadow-lg',
+                            'flex py-[8px] px-[16px] hover:bg-gray-200 hover:rounded-[4px] text-base lg:inline-flex transition-all hover:shadow-md hover:text-primary',
                           )}
                         >
-                          Price
+                          Pricing
                         </a>
                       </li>
                     }

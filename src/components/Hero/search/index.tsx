@@ -26,17 +26,6 @@ const Search = ({ searchList, setSearchList }) => {
     setSearchList(order === undefined ? [] : real);
   };
 
-  const onChange = (value: string) => {
-    console.log(`selected ${value}`);
-  };
-
-  const onSearch = (value: string) => {
-    console.log('search:', value);
-  };
-
-  // Filter `option.label` match the user type `input`
-  const filterOption = (input: string, option?: { label: string; value: string }) =>
-    (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
 
   return (
     <div className="border border-gray-300 bg-gray-50 rounded-md px-2 pt-8 pb-6 mb-4">

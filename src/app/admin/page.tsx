@@ -7,7 +7,7 @@ import OurJobPostAdmin from "@/components/Admin/OurJobPostAdmin";
 import OtherJobPostAdmin from "@/components/Admin/OtherJobPostAdmin";
 import JobInfoAdmin from "@/components/Admin/JobInfoAdmin";
 import Paylog from "@/components/Admin/Paylog";
-// import BusinessAnalyze from "@/components/Admin/BusinessAnalyze";
+import Subscription from "@/components/Admin/Subscription/Subscription";
 import categoryData from '@/components/Admin/categoryData'
 
 import Breadcrumb from "@/components/Common/Breadcrumb";
@@ -31,7 +31,7 @@ const Admin = () => {
     3: <OtherJobPostAdmin />,
     4: <JobInfoAdmin />,
     5: <Paylog />,
-    // 6: <BusinessAnalyze />
+    6: <Subscription />
   }
 
   return (

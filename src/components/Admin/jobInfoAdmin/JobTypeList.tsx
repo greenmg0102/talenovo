@@ -31,7 +31,7 @@ const JobTypeList = () => {
   }
 
   const updateList = (order: any, updateValue: any) => {
-    let real = []
+    let real: any = []
     if (updateValue === null) real = tyepList.filter((item: any, index: any) => index !== order)
     else {
       tyepList.forEach((item: any, index: any) => {

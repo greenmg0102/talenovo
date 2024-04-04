@@ -2,6 +2,7 @@
 import '@/styles/landing.css'
 import '@/styles/refinementList.css'
 import { useState, useEffect } from "react";
+import { useUser } from "@clerk/nextjs";
 import { Divider } from 'antd';
 import CountUp from 'react-countup';
 import { landingJob } from '@/store/action/user/jobget/landingJob'
@@ -14,6 +15,7 @@ import { landingInfo } from '@/store/action/user/landing/landingInfo'
 import { message, Alert, Tooltip } from 'antd';
 import PriceCard from '@/components/Hero/priceCard'
 import Pricing from '@/components/Pricing'
+import Testimonials from '@/components/Testimonials'
 
 import {
   InstantSearch,
@@ -40,7 +42,7 @@ const text = <span>For accurate job suggestion, please update your location and 
 
 const Hero = ({ setIsDetail }: any) => {
 
-  const [suggestList, setSuggestList] = useState(undefined);
+  const [suggestList, setSuggestList] = useState<any>(undefined);
 
   const [total, setTotal] = useState(0);
   const [today, setToday] = useState(0);
@@ -49,6 +51,44 @@ const Hero = ({ setIsDetail }: any) => {
   const [locatedin, setLocatedin] = useState(null);
   const [skil, setSkil] = useState(null);
   const [messageApi, contextHolder] = message.useMessage();
+
+  const [userData, setUserData] = useState<any>({});
+  const { user } = useUser();
+
+  const email = user?.primaryEmailAddress?.emailAddress;
+  const clerkId = user?.id;
+
+  useEffect(() => {
+
+    if (email) {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/get-user`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any additional headers if needed
+        },
+        body: JSON.stringify({
+          email,
+        }),
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json(); // Parse the response body as JSON
+        })
+        .then(data => {
+          // Handle the response data
+          console.log("setUserData", data.user);
+          //redirect to checkout page
+          setUserData(data.user);
+        })
+        .catch(error => {
+          // Handle errors
+          console.error('There was a problem with the fetch operation:', error);
+        });
+    }
+  }, [email])
 
   useEffect(() => {
 
@@ -81,7 +121,6 @@ const Hero = ({ setIsDetail }: any) => {
       localStorage.setItem('talenovo-job-total', result.total)
       localStorage.setItem('talenovo-job-todayJob', result.todayJob)
 
-
       setTotal(result.total)
       setToday(result.todayJob)
       setLocatedin(result.locatedin)
@@ -104,8 +143,6 @@ const Hero = ({ setIsDetail }: any) => {
         }
 
         let result: any = await suggestJobs(data)
-
-        console.log("result", result);
 
         setSuggestList(result)
       }
@@ -275,7 +312,11 @@ const Hero = ({ setIsDetail }: any) => {
                         <Hits hitComponent={Hit} />
                       </div>
                       <div className='flex justify-center mb-12'>
-                        <Pagination showLast={true} limit={3} offset={0} />
+                        {userData && Object.keys(userData).length > 0 ?
+                          <Pagination showLast={true} limit={3} offset={0} />
+                          :
+                          null
+                        }
                       </div>
                     </div>
 
@@ -309,6 +350,8 @@ const Hero = ({ setIsDetail }: any) => {
               </div>
 
               {/* <PriceCard /> */}
+              <Testimonials />
+              <section id="price"></section>
               <Pricing isSectionTitle={true} />
             </div>
           </div>

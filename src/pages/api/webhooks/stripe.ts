@@ -27,6 +27,10 @@ export default async function handler(
             webhookSecret,
         );
 
+        console.log("event", event);
+        console.log("stripe", stripe);
+        console.log("webhookSecret", webhookSecret);
+        
         // Connect to the MongoDB database
         const { db } = await connectToDatabase();
 

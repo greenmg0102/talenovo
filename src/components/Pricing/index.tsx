@@ -36,7 +36,6 @@ const Pricing = ({ isSectionTitle }: any) => {
       })
       .then(data => {
         // Handle the response data
-        console.log(data);
         //redirect to checkout page
         window.location.href = data.url;
       })
@@ -46,93 +45,11 @@ const Pricing = ({ isSectionTitle }: any) => {
       });
   }
 
-  const handleCancel = async () => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/cancel-subscription`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // Add any additional headers if needed
-      },
-      body: JSON.stringify({
-        subscriptionId: userData.subscriptionId,
-      }),
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json(); // Parse the response body as JSON
-      })
-      .then(data => {
-        window.alert(data.message);
-      })
-      .catch(error => {
-        // Handle errors
-        console.error('There was a problem with the fetch operation:', error);
-      });
-  };
-
-  const handleResume = async () => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/re-active-subscription`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // Add any additional headers if needed
-      },
-      body: JSON.stringify({
-        subscriptionId: userData.subscriptionId,
-      }),
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json(); // Parse the response body as JSON
-      })
-      .then(data => {
-        window.alert(data.message);
-      })
-      .catch(error => {
-        // Handle errors
-        console.error('There was a problem with the fetch operation:', error);
-      });
-
-  };
-
-  const handleDelete = async () => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/delete-subscription`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // Add any additional headers if needed
-      },
-      body: JSON.stringify({
-        subscriptionId: userData.subscriptionId,
-      }),
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json(); // Parse the response body as JSON
-      })
-      .then(data => {
-        window.alert(data.message);
-      })
-      .catch(error => {
-        // Handle errors
-        console.error('There was a problem with the fetch operation:', error);
-      });
-  };
-
-
-
   return (
-    <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28">
+    <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28 px-auto">
       <div className="container">
-        <section id="price"></section>
 
-        {
+        {/* {
           userData?.subscriptionId && isSectionTitle === false &&
           <div className="">
             <div className="flex flex-col justify-center items-center bg-green-400">
@@ -158,21 +75,55 @@ const Pricing = ({ isSectionTitle }: any) => {
               </button>
             </div>
           </div>
-        }
-
-        {isSectionTitle === true ?
-          <SectionTitle
-            title="Simple and Affordable Pricing"
-            paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
-            center
-            width="665px"
-          />
-          :
-          null
-        }
+        } */}
 
 
-        <div className="w-full">
+        <div className="flex justify-center flex-col items-center mb-24 shadow-2xl border border-gray-300 border-t-[5px] rounded-[12px] w-full max-w-[650px] p-4 mx-auto">
+          <p className="text-center text-gray-900 font-bold text-[16px] md:text-[24px]">Simple & Affordable Membership Priciing</p>
+          <p className="text-center text-gray-900 font-bold text-[16px] md:text-[24px] mb-8">Unlock Your Career Potential</p>
+          <div className="flex justify-start items-start w-full max-w-[650px] mb-2">
+            <span className="mr-3 mt-2 flex h-[18px] w-full max-w-[18px] items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary">
+              <svg width="8" height="6" viewBox="0 0 8 6" className="fill-current">
+                <path d="M2.90567 6.00024C2.68031 6.00024 2.48715 5.92812 2.294 5.74764L0.169254 3.43784C-0.0560926 3.18523 -0.0560926 2.78827 0.169254 2.53566C0.39461 2.28298 0.74873 2.28298 0.974086 2.53566L2.90567 4.66497L7.02642 0.189715C7.25175 -0.062913 7.60585 -0.062913 7.83118 0.189715C8.0566 0.442354 8.0566 0.839355 7.83118 1.09198L3.54957 5.78375C3.32415 5.92812 3.09882 6.00024 2.90567 6.00024Z" />
+              </svg>
+            </span>
+            <p className="w-[calc(100%-1em)] text-[12px] md:text-[16px] font-medium text-gray-500 ml-2">
+              <span className="font-bold text-[13px] md:text-[17px]">Advanced AI-powered search engine</span>: Streamline your job search with intelligent technology that brings you the best-matched jobs, saving you time and effort.
+            </p>
+          </div>
+          <div className="flex justify-start items-start w-full max-w-[650px] mb-2">
+            <span className="mr-3 mt-2 flex h-[18px] w-full max-w-[18px] items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary">
+              <svg width="8" height="6" viewBox="0 0 8 6" className="fill-current">
+                <path d="M2.90567 6.00024C2.68031 6.00024 2.48715 5.92812 2.294 5.74764L0.169254 3.43784C-0.0560926 3.18523 -0.0560926 2.78827 0.169254 2.53566C0.39461 2.28298 0.74873 2.28298 0.974086 2.53566L2.90567 4.66497L7.02642 0.189715C7.25175 -0.062913 7.60585 -0.062913 7.83118 0.189715C8.0566 0.442354 8.0566 0.839355 7.83118 1.09198L3.54957 5.78375C3.32415 5.92812 3.09882 6.00024 2.90567 6.00024Z" />
+              </svg>
+            </span>
+            <p className="w-[calc(100%-1em)] text-[12px] md:text-[16px] font-medium text-gray-500 ml-2">
+              <span className="font-bold text-[13px] md:text-[17px]">Real-time job postings</span>: Stay updated with the latest job opportunities as they arise.
+            </p>
+          </div>
+          <div className="flex justify-start items-start w-full max-w-[650px] mb-2">
+            <span className="mr-3 mt-2 flex h-[18px] w-full max-w-[18px] items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary">
+              <svg width="8" height="6" viewBox="0 0 8 6" className="fill-current">
+                <path d="M2.90567 6.00024C2.68031 6.00024 2.48715 5.92812 2.294 5.74764L0.169254 3.43784C-0.0560926 3.18523 -0.0560926 2.78827 0.169254 2.53566C0.39461 2.28298 0.74873 2.28298 0.974086 2.53566L2.90567 4.66497L7.02642 0.189715C7.25175 -0.062913 7.60585 -0.062913 7.83118 0.189715C8.0566 0.442354 8.0566 0.839355 7.83118 1.09198L3.54957 5.78375C3.32415 5.92812 3.09882 6.00024 2.90567 6.00024Z" />
+              </svg>
+            </span>
+            <p className="w-[calc(100%-1em)] text-[12px] md:text-[16px] font-medium text-gray-500 ml-2">
+              <span className="font-bold text-[13px] md:text-[17px]">Personalized alerts</span>: Receive tailored notifications based on your preferences and criteria.
+            </p>
+          </div>
+          <div className="flex justify-start items-start w-full max-w-[650px] mb-2">
+            <span className="mr-3 mt-2 flex h-[18px] w-full max-w-[18px] items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary">
+              <svg width="8" height="6" viewBox="0 0 8 6" className="fill-current">
+                <path d="M2.90567 6.00024C2.68031 6.00024 2.48715 5.92812 2.294 5.74764L0.169254 3.43784C-0.0560926 3.18523 -0.0560926 2.78827 0.169254 2.53566C0.39461 2.28298 0.74873 2.28298 0.974086 2.53566L2.90567 4.66497L7.02642 0.189715C7.25175 -0.062913 7.60585 -0.062913 7.83118 0.189715C8.0566 0.442354 8.0566 0.839355 7.83118 1.09198L3.54957 5.78375C3.32415 5.92812 3.09882 6.00024 2.90567 6.00024Z" />
+              </svg>
+            </span>
+            <p className="w-[calc(100%-1em)] text-[12px] md:text-[16px] font-medium text-gray-500 ml-2">
+              <span className="font-bold text-[13px] md:text-[17px]">Exclusive benefits</span>: Gain access to immediate X job updates, proactive alerts, and a sophisticated search tool designed to elevate your job search experience.
+            </p>
+          </div>
+        </div>
+
+        {/* <div className="w-full">
           <div className="mb-8 flex justify-center md:mb-12 lg:mb-16">
             <span
               onClick={() => setIsMonthly(true)}
@@ -190,7 +141,7 @@ const Pricing = ({ isSectionTitle }: any) => {
               <div className="relative">
                 <div className="h-5 w-14 rounded-full bg-[#1D2144] shadow-inner"></div>
                 <div
-                  className={`${isMonthly ? "" : "translate-x-full"
+                  className={`${"" : "translate-x-full"
                     } shadow-switch-1 absolute left-0 top-[-4px] flex h-7 w-7 items-center justify-center rounded-full bg-primary transition`}
                 >
                   <span className="active h-4 w-4 rounded-full bg-white"></span>
@@ -207,59 +158,43 @@ const Pricing = ({ isSectionTitle }: any) => {
               Yearly
             </span>
           </div>
-        </div>
+        </div> */}
 
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
           <PricingBox
-            packageName="Basic Plan"
-            price={isMonthly ? "10" : "80"}
-            duration={isMonthly ? "mo" : "yr"}
-            priceId={isMonthly ? process.env.NEXT_PUBLIC_BASIC_MO : process.env.NEXT_PUBLIC_BASIC_YEAR}
-            subtitle="Lorem ipsum dolor sit amet adiscing elit Mauris egestas enim."
+            packageName="Monthly"
+            price={"13"}
+            duration={"mo"}
+            priceId={process.env.NEXT_PUBLIC_ONE_MONTH}
+            subtitle="1 day trial – Cancel anytime"
             isSectionTitle={isSectionTitle}
             handleSubscription={(total: any) => handleSubscription(total)}
-          >
-            <OfferList text="All UI Components" status="active" />
-            <OfferList text="Use with Unlimited Projects" status="active" />
-            <OfferList text="Commercial Use" status="inactive" />
-            <OfferList text="Lifetime Access" status="inactive" />
-            <OfferList text="Free Lifetime Updates" status="inactive" />
-          </PricingBox>
-
-          {/* name:'Basic Plan',
-          priceId: process.env.NEXT_PUBLIC_BASIC,
-          price:"20$ Monthly" */}
+          />
 
           <PricingBox
-            packageName="Pro Plan"
-            price={isMonthly ? "15" : "120"}
-            duration={isMonthly ? "mo" : "yr"}
-            priceId={isMonthly ? process.env.NEXT_PUBLIC_PRO_MO : process.env.NEXT_PUBLIC_PRO_YEAR}
-            subtitle="Lorem ipsum dolor sit amet adiscing elit Mauris egestas enim."
+            packageName="6 Months"
+            price={"10"}
+            duration={"mo"}
+            priceId={process.env.NEXT_PUBLIC_SIX_MONTH}
+            subtitle="Billed 60 dollars at once"
             isSectionTitle={isSectionTitle}
             handleSubscription={(total: any) => handleSubscription(total)}
-          >
-            <OfferList text="All UI Components" status="active" />
-            <OfferList text="Use with Unlimited Projects" status="active" />
-            <OfferList text="Commercial Use" status="active" />
-            <OfferList text="Lifetime Access" status="inactive" />
-            <OfferList text="Free Lifetime Updates" status="inactive" />
-          </PricingBox>
+          />
 
           <PricingBox
-            packageName="Premium Plan"
-            price={isMonthly ? "20" : "180"}
-            duration={isMonthly ? "mo" : "yr"}
-            priceId={isMonthly ? process.env.NEXT_PUBLIC_PREMIUM_MO : process.env.NEXT_PUBLIC_PREMIUM_YEAR}
-            subtitle="Lorem ipsum dolor sit amet adiscing elit Mauris egestas enim."
+            packageName="12 Months"
+            price={"8"}
+            duration={"mo"}
+            priceId={process.env.NEXT_PUBLIC_ONE_YEAR}
+            subtitle="Billed 96 dollars at once"
             isSectionTitle={isSectionTitle}
             handleSubscription={(total: any) => handleSubscription(total)}
           >
-            <OfferList text="All UI Components" status="active" />
+            {/* <OfferList text="All UI Components" status="active" />
             <OfferList text="Use with Unlimited Projects" status="active" />
             <OfferList text="Commercial Use" status="active" />
             <OfferList text="Lifetime Access" status="active" />
-            <OfferList text="Free Lifetime Updates" status="active" />
+            <OfferList text="Free Lifetime Updates" status="active" /> */}
           </PricingBox>
         </div>
       </div>

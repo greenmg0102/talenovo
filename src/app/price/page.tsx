@@ -16,7 +16,7 @@ const PricePage = () => {
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
       /> */}
       <section className="pb-[120px] pt-[30px]">
-        <div className="container flex justify-between items-start flex-wrap">
+        <div className="container flex justify-center items-start flex-wrap">
           <Pricing isSectionTitle={false} />
         </div>
       </section>

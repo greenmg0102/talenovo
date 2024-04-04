@@ -8,7 +8,6 @@ function WokhistoryModal({ isModalVisible, setIsModalVisible }: any) {
     const [value, setValue] = useState('');
 
     const handleChange = (value: string) => {
-        console.log(`selected ${value}`);
     };
 
     const handleOk = () => {

@@ -35,10 +35,6 @@ export default function Carousel() {
         fetchData()
     }, [])
 
-    const onChange = (key: string) => {
-        console.log(key);
-    };
-
     const items: TabsProps['items'] = industryList.map((item: any, index: any) => {
         return {
             key: index.toString(),
@@ -50,7 +46,7 @@ export default function Carousel() {
     return (
         <div className="shadow-lg rounded-[8px] mb-4 bg-white border border-gray-300">
             <div className="px-4 pb-2">
-                <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+                <Tabs defaultActiveKey="1" items={items} />
             </div>
         </div>
     )

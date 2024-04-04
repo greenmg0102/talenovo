@@ -49,8 +49,6 @@ function UserBannerModal({ tagList, isModalVisible, setIsModalVisible, userInfo,
                 setLoading(false);
                 setImageUrl(url);
 
-                console.log("url", url);
-
                 // onchange({ ...userInfo, avatar: url })
             });
         }

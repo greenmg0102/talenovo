@@ -7,11 +7,6 @@ function EducationModal({ isModalVisible, setIsModalVisible }: any) {
     const [value, setValue] = useState('');
 
     const handleChange = (value: string) => {
-        console.log(`selected ${value}`);
-    };
-
-    const showModal = () => {
-        setIsModalVisible(true);
     };
 
     const handleOk = () => {

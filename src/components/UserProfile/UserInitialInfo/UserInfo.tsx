@@ -1,6 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { useUser } from "@clerk/nextjs";
+import Link from "next/link";
+import { Switch, Button } from 'antd';
 
 const UserInitialInfo = ({ userInfo, onchange }: any) => {
 
@@ -13,6 +15,100 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
   const clerkId = user?.id;
 
   useEffect(() => {
+    fectData()
+  }, [email])
+
+  const handleCancel = async () => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/cancel-subscription`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add any additional headers if needed
+      },
+      body: JSON.stringify({
+        subscriptionId: userData.subscriptionId,
+      }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Parse the response body as JSON
+      })
+      .then(data => {
+
+        fectData()
+        window.alert(data.message);
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  };
+
+  const handleResume = async () => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/re-active-subscription`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add any additional headers if needed
+      },
+      body: JSON.stringify({
+        subscriptionId: userData.subscriptionId,
+      }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Parse the response body as JSON
+      })
+      .then(data => {
+
+        fectData()
+        window.alert(data.message);
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('There was a problem with the fetch operation:', error);
+      });
+
+  };
+
+  const handleDelete = async () => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/delete-subscription`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add any additional headers if needed
+      },
+      body: JSON.stringify({
+        subscriptionId: userData.subscriptionId,
+      }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Parse the response body as JSON
+      })
+      .then(data => {
+
+        fectData()
+        window.alert(data.message);
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  };
+
+
+  const add = () => {
+    setIsModalVisible(!isModalVisible)
+  }
+
+  const fectData = () => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/get-user`, {
       method: 'POST',
       headers: {
@@ -31,6 +127,7 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
       })
       .then(data => {
         // Handle the response data
+        console.log("Handle", data);
         //redirect to checkout page
         setUserData(data.user);
       })
@@ -38,14 +135,7 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
         // Handle errors
         console.error('There was a problem with the fetch operation:', error);
       });
-  }, [email])
-
-  const add = () => {
-    setIsModalVisible(!isModalVisible)
   }
-
-  console.log("userData", userData);
-
 
   return (
     <div className="relative">
@@ -81,12 +171,32 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
 
         <div className='w-full sm:w-1/2 mb-8'>
           <p className='text-center'>Subscriptions</p>
-          {Object.keys(userData).length > 0 ?
+          {userData !== null && Object.keys(userData).length > 0 ?
             <div>
               <p className='text-center text-blue-500'>{userData.planName}</p>
+              <div className='flex justify-around items-center'>
+                <Button type="primary" size="small" danger onClick={handleDelete} >
+                  Delete
+                </Button>
+                <p className='text-[12px]'>Active Button(required)</p>
+                {/* <Switch checkedChildren="Enable" unCheckedChildren="Disable" checked={userData.status === "active"} /> */}
+              </div>
             </div>
             :
-            <p className='text-center text-blue-500'>Free</p>
+            <div>
+              <p className='text-center text-blue-500'>Free</p>
+
+              <p className='text-center text-blue-500 text-[13px]'>
+                You can start
+                <Link
+                  href="/price"
+                  className="hover:underline text-red-500 hover:text-green-500 cursor-pointer ml-2"
+                >
+                  Here
+                </Link>
+              </p>
+
+            </div>
           }
         </div>
 

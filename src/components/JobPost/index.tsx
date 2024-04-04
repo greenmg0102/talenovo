@@ -106,7 +106,6 @@ const JobPostMain = () => {
         setLoading(false)
         setCategory(Nextcategory)
       } else {
-        console.log('validation error in step 1!');
       }
     } else if (category === 1 && Nextcategory === 0) {
 
@@ -117,8 +116,6 @@ const JobPostMain = () => {
       let real: any = value
       real.description = params.description
       real.descriptionText = params.descriptionText
-
-      console.log('real', real);
 
 
       if (
@@ -137,7 +134,6 @@ const JobPostMain = () => {
         setLoading(false)
         setCategory(Nextcategory)
       } else {
-        console.log('validation error in step 2!');
       }
     } else if (category === 2) {
       setCategory(Nextcategory)

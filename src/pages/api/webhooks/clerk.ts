@@ -59,11 +59,11 @@ export default async function handler(
     const eventType = evt.type;
 
     switch (eventType) {
-        case "user.created": 
-        console.log({
-            id:data.id,
-            email: data.email_addresses[0].email_address
-        })
+        case "user.created":
+            console.log({
+                id: data.id,
+                email: data.email_addresses[0].email_address
+            })
 
             // Define the user details
             const clerkId = data.id;
@@ -81,8 +81,7 @@ export default async function handler(
 
             // Create user on users collection
 
-        
-        break;
+            break;
 
         default: {
             console.error(`The event type: ${eventType} is not configured`);
