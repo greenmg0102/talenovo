@@ -33,7 +33,7 @@ const PricingBox = (props: {
               className="flex w-full items-center justify-center rounded-sm bg-primary p-3 text-base font-semibold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
             >
               <button >
-                Start {packageName}
+                Get Started
               </button>
             </Link>
             :
@@ -44,7 +44,7 @@ const PricingBox = (props: {
                 priceId: priceId
               })}
             >
-              Start {packageName}
+              Get Started
             </button>
           }
 

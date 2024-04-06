@@ -12,9 +12,12 @@ const featuresData: Feature[] = [
         <path d="M23.2222 0C22.6699 0 22.2222 0.447715 22.2222 1V12.3333C22.2222 12.8856 22.6699 13.3333 23.2222 13.3333H39C39.5523 13.3333 40 12.8856 40 12.3333V0.999999C40 0.447714 39.5523 0 39 0H23.2222ZM0 39C0 39.5523 0.447715 40 1 40H16.7778C17.3301 40 17.7778 39.5523 17.7778 39V27.6667C17.7778 27.1144 17.3301 26.6667 16.7778 26.6667H1C0.447716 26.6667 0 27.1144 0 27.6667V39ZM0 21.2222C0 21.7745 0.447715 22.2222 1 22.2222H16.7778C17.3301 22.2222 17.7778 21.7745 17.7778 21.2222V0.999999C17.7778 0.447714 17.3301 0 16.7778 0H1C0.447716 0 0 0.447715 0 1V21.2222Z" />
       </svg>
     ),
-    title: "Advanced AI-powered search engine",
-    paragraph:
-      "Streamline your job search with intelligent technology that brings you the best-matched jobs, saving you time and effort.",
+    title: "Advanced AI Job Search Engin",
+    paragraph: (
+      <p>
+        Streamline your job search with intelligent technology that brings you the best-matched jobs, saving you time and effort.
+      </p>
+    ),
   },
   {
     id: 1,
@@ -28,8 +31,11 @@ const featuresData: Feature[] = [
       </svg>
     ),
     title: "Real-time job postings",
-    paragraph:
-      "Stay updated with the latest job opportunities as they arise.",
+    paragraph: (
+      <p>
+        Stay updated with the latest job opportunities as they arise.
+      </p>
+    ),
   },
   {
     id: 1,
@@ -43,8 +49,11 @@ const featuresData: Feature[] = [
       </svg>
     ),
     title: "Personalized alerts",
-    paragraph:
-      "Receive tailored notifications based on your preferences and criteria.",
+    paragraph: (
+      <p>
+        Receive tailored notifications based on your preferences and criteria.
+      </p>
+    ),
   },
   {
     id: 1,
@@ -58,8 +67,11 @@ const featuresData: Feature[] = [
       </svg>
     ),
     title: "Exclusive benefits",
-    paragraph:
-      " Gain access to immediate ADDDD TOTAL JOB COUNT! job updates, proactive alerts, and a sophisticated search tool designed to elevate your job search experience.",
+    paragraph: (
+      <p>
+        Gain access to immediate <span className="font-bold text-red-500">50,000+ </span>job updates, proactive alerts, and a sophisticated search tool designed to elevate your job search experience.
+      </p>
+    ),
   },
   {
     id: 1,
@@ -73,8 +85,11 @@ const featuresData: Feature[] = [
       </svg>
     ),
     title: "Comprehensive Job Aggregator",
-    paragraph:
-      "Discover job opportunities from every corner of the internet with our comprehensive job aggregator. Our advanced search engine scours the web to bring you the best-matched jobs, saving you valuable time and effort in your job search process.",
+    paragraph: (
+      <p>
+        Discover job opportunities from every corner of the internet with our comprehensive job aggregator. Our advanced search engine scours the web to bring you the best-matched jobs, saving you valuable time and effort in your job search process.
+      </p>
+    ),
   },
   {
     id: 1,
@@ -87,9 +102,12 @@ const featuresData: Feature[] = [
         <path d="M18.9474 32.6316C18.9474 35.4705 19.8099 38.0969 21.2941 40.2796C21.7904 41.0094 21.3054 42.1053 20.4229 42.1053H4.21053C1.87368 42.1053 0 40.2316 0 37.8947V4.21053C0 1.89474 1.87368 0 4.21053 0H6.31579H16.8421H29.4737C31.7895 0 33.6842 1.87368 33.6842 4.21053V17.9544C33.6842 18.5032 33.1804 18.9474 32.6316 18.9474C25.0737 18.9474 18.9474 25.0737 18.9474 32.6316Z" />
       </svg>
     ),
-    title: "AI-Powered Profile Feedback: Coming soon",
-    paragraph:
-      "receive personalized feedback on your resume and LinkedIn profile. Developed by top recruiters and powered by AI technology, our platform instantly provides tailored suggestions to optimize your profiles, helping you land 5 times more interviews, opportunities, and job offers.",
+    title: "AI-Powered Profile Feedback",
+    paragraph: (
+      <p>
+        <span className="font-bold text-red-500">Coming soon</span>, Receive personalized feedback on your resume and LinkedIn profile. Developed by top recruiters and powered by AI technology, our platform instantly provides tailored suggestions to optimize your profiles, helping you land 5 times more interviews, opportunities, and job offers."
+      </p>
+    ),
   },
 ];
 export default featuresData;

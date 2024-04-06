@@ -355,15 +355,21 @@ const Hero = ({ setIsDetail }: any) => {
               <Testimonials />
               <section id="price"></section>
 
-              <div
-                className={`w-full mx-auto text-center mt-[60px]`}
-                style={{ maxWidth: "570px", marginBottom: "30px" }}
-              >
-                <h2 className="text-3xl font-bold !leading-tight text-black dark:text-white sm:text-4xl md:text-[45px]">
-                  Pricing
-                </h2>
+              <div className='dark:bg-bg-color-dark bg-gray-light pt-12'>
+                <div
+                  className={`w-full mx-auto text-center mt-[60px]`}
+                  style={{ maxWidth: "570px", marginBottom: "30px" }}
+                >
+
+                  <h2 className="mb-2 text-3xl font-bold !leading-tight text-black dark:text-white sm:text-4xl md:text-[45px] text-center">
+                    Pricing
+                  </h2>
+                  <h4 className="mb-2 text-lg !leading-tight text-black dark:text-white sm:text-xl md:text-[20px] text-center px-2 text-gray-500">
+                    Subscribe to membership and unlock all jobs
+                  </h4>
+                </div>
+                <Pricing isSectionTitle={true} />
               </div>
-              <Pricing isSectionTitle={true} />
             </div>
           </div>
         </div>
