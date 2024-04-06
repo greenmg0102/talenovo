@@ -1,7 +1,7 @@
 
 export async function currencyGet() {
 
-  const res = await fetch('http://195.35.32.163:3000/api/admin/job-info/currency', {
+  const res = await fetch('http://localhost:3000/api/admin/job-info/currency', {
     method: 'GET',
   });
 
@@ -10,7 +10,7 @@ export async function currencyGet() {
 
 export async function currencyPost(currency: any) {
 
-  const res = await fetch('http://195.35.32.163:3000/api/admin/job-info/currency', {
+  const res = await fetch('http://localhost:3000/api/admin/job-info/currency', {
     method: 'POST',
     body: JSON.stringify(currency)
   });
@@ -20,7 +20,7 @@ export async function currencyPost(currency: any) {
 
 export async function currencyDelete(currency: any) {
 
-  const res = await fetch('http://195.35.32.163:3000/api/admin/job-info/currency', {
+  const res = await fetch('http://localhost:3000/api/admin/job-info/currency', {
     method: 'DELETE',
     body: JSON.stringify(currency)
   });
@@ -30,7 +30,7 @@ export async function currencyDelete(currency: any) {
 
 export async function currencyPut(currency: any) {
 
-  const res = await fetch('http://195.35.32.163:3000/api/admin/job-info/currency', {
+  const res = await fetch('http://localhost:3000/api/admin/job-info/currency', {
     method: 'PUT',
     body: JSON.stringify(currency)
   });
