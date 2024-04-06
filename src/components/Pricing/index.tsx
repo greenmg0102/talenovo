@@ -1,9 +1,11 @@
 "use client";
 import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
+import clsx from 'clsx'
 import SectionTitle from "../Common/SectionTitle";
 import OfferList from "./OfferList";
 import PricingBox from "./PricingBox";
+import Features from '@/components/Features'
 
 const Pricing = ({ isSectionTitle }: any) => {
   const [isMonthly, setIsMonthly] = useState(true);
@@ -46,10 +48,8 @@ const Pricing = ({ isSectionTitle }: any) => {
   }
 
   return (
-    <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28 px-auto">
-      <div className="container">
-
-        {/* {
+    <section id="pricing" className="relative z-10 pb-16 md:pb-20 lg:pb-28 px-auto">
+      {/* {
           userData?.subscriptionId && isSectionTitle === false &&
           <div className="">
             <div className="flex flex-col justify-center items-center bg-green-400">
@@ -77,8 +77,7 @@ const Pricing = ({ isSectionTitle }: any) => {
           </div>
         } */}
 
-
-        <div className="flex justify-center flex-col items-center mb-24 shadow-2xl border border-gray-300 border-t-[5px] rounded-[12px] w-full max-w-[650px] p-4 mx-auto">
+      {/* <div className="flex justify-center flex-col items-center mb-24 shadow-2xl border border-gray-300 border-t-[5px] rounded-[12px] w-full max-w-[650px] p-4 mx-auto">
           <p className="text-center text-gray-900 font-bold text-[16px] md:text-[24px]">Simple & Affordable Membership Priciing</p>
           <p className="text-center text-gray-900 font-bold text-[16px] md:text-[24px] mb-8">Unlock Your Career Potential</p>
           <div className="flex justify-start items-start w-full max-w-[650px] mb-2">
@@ -121,9 +120,9 @@ const Pricing = ({ isSectionTitle }: any) => {
               <span className="font-bold text-[13px] md:text-[17px]">Exclusive benefits</span>: Gain access to immediate X job updates, proactive alerts, and a sophisticated search tool designed to elevate your job search experience.
             </p>
           </div>
-        </div>
+        </div> */}
 
-        {/* <div className="w-full">
+      {/* <div className="w-full">
           <div className="mb-8 flex justify-center md:mb-12 lg:mb-16">
             <span
               onClick={() => setIsMonthly(true)}
@@ -160,46 +159,45 @@ const Pricing = ({ isSectionTitle }: any) => {
           </div>
         </div> */}
 
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
-          <PricingBox
-            packageName="Monthly"
-            price={"13"}
-            duration={"mo"}
-            priceId={process.env.NEXT_PUBLIC_ONE_MONTH}
-            subtitle="1 day trial – Cancel anytime"
-            isSectionTitle={isSectionTitle}
-            handleSubscription={(total: any) => handleSubscription(total)}
-          />
+      <div className="container grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+        <PricingBox
+          packageName="Monthly"
+          price={"13"}
+          duration={"mo"}
+          priceId={process.env.NEXT_PUBLIC_ONE_MONTH}
+          subtitle="1 day trial – Cancel anytime"
+          isSectionTitle={isSectionTitle}
+          handleSubscription={(total: any) => handleSubscription(total)}
+        />
 
-          <PricingBox
-            packageName="6 Months"
-            price={"10"}
-            duration={"mo"}
-            priceId={process.env.NEXT_PUBLIC_SIX_MONTH}
-            subtitle="Billed 60 dollars at once"
-            isSectionTitle={isSectionTitle}
-            handleSubscription={(total: any) => handleSubscription(total)}
-          />
+        <PricingBox
+          packageName="6 Months"
+          price={"10"}
+          duration={"mo"}
+          priceId={process.env.NEXT_PUBLIC_SIX_MONTH}
+          subtitle="Billed 60 dollars at once"
+          isSectionTitle={isSectionTitle}
+          handleSubscription={(total: any) => handleSubscription(total)}
+        />
 
-          <PricingBox
-            packageName="12 Months"
-            price={"8"}
-            duration={"mo"}
-            priceId={process.env.NEXT_PUBLIC_ONE_YEAR}
-            subtitle="Billed 96 dollars at once"
-            isSectionTitle={isSectionTitle}
-            handleSubscription={(total: any) => handleSubscription(total)}
-          >
-            {/* <OfferList text="All UI Components" status="active" />
+        <PricingBox
+          packageName="12 Months"
+          price={"8"}
+          duration={"mo"}
+          priceId={process.env.NEXT_PUBLIC_ONE_YEAR}
+          subtitle="Billed 96 dollars at once"
+          isSectionTitle={isSectionTitle}
+          handleSubscription={(total: any) => handleSubscription(total)}
+        >
+          {/* <OfferList text="All UI Components" status="active" />
             <OfferList text="Use with Unlimited Projects" status="active" />
             <OfferList text="Commercial Use" status="active" />
             <OfferList text="Lifetime Access" status="active" />
             <OfferList text="Free Lifetime Updates" status="active" /> */}
-          </PricingBox>
-        </div>
+        </PricingBox>
       </div>
 
-      <div className="absolute bottom-0 left-0 z-[-1]">
+      {/* <div className={clsx(isSectionTitle ? "hidden" : "absolute bottom-0 left-0 z-[-1]")}>
         <svg
           width="239"
           height="601"
@@ -252,7 +250,7 @@ const Pricing = ({ isSectionTitle }: any) => {
             </linearGradient>
           </defs>
         </svg>
-      </div>
+      </div> */}
     </section>
   );
 };

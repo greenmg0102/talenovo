@@ -87,12 +87,24 @@ html {
 }
 
 .ais-Pagination-item {
-    padding: 3px 6px 3px 6px;
-    border-radius: 2px;
-    background-color: rgb(79, 184, 79);
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: #e9eaed;
     margin-right: 2px;
-    color: white;
-    font-size: 12px;
+    margin-bottom: 0px;
+    color: #788293;
+    font-size: 14px;
+    transition: all;
+}
+
+.ais-Pagination-item:hover {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: #e9edeb;
+    margin-right: 2px;
+    margin-bottom: 0px;
+    color: #788293;
+    font-size: 14px;
 }
 
 ::-webkit-scrollbar {

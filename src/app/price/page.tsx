@@ -15,8 +15,8 @@ const PricePage = () => {
         pageName="Price Page"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
       /> */}
-      <section className="pb-[120px] pt-[30px]">
-        <div className="container flex justify-center items-start flex-wrap">
+      <section className="pb-[60px] pt-12 sm:pt-20 md:pt-40">
+        <div className="flex justify-center items-start flex-wrap">
           <Pricing isSectionTitle={false} />
         </div>
       </section>

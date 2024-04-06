@@ -16,6 +16,7 @@ import { message, Alert, Tooltip } from 'antd';
 import PriceCard from '@/components/Hero/priceCard'
 import Pricing from '@/components/Pricing'
 import Testimonials from '@/components/Testimonials'
+import Features from '@/components/Features'
 
 import {
   InstantSearch,
@@ -166,7 +167,7 @@ const Hero = ({ setIsDetail }: any) => {
         className="relative z-10 overflow-hidden bg-white pb-16 pt-[100px] md:pb-[120px] md:pt-[120px] xl:pb-[160px] xl:pt-[140px] 2xl:pb-[200px] 2xl:pt-[160px]"
       >
         {contextHolder}
-        <div className="container">
+        <div className="mx-auto">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
 
@@ -179,7 +180,7 @@ const Hero = ({ setIsDetail }: any) => {
                 </h4>
               </div>
 
-              <div className="w-full">
+              <div className="container w-full">
                 <InstantSearch
                   indexName="title"
                   searchClient={searchClient}
@@ -348,10 +349,20 @@ const Hero = ({ setIsDetail }: any) => {
                 </InstantSearch>
 
               </div>
+              <Features />
 
               {/* <PriceCard /> */}
               <Testimonials />
               <section id="price"></section>
+
+              <div
+                className={`w-full mx-auto text-center mt-[60px]`}
+                style={{ maxWidth: "570px", marginBottom: "30px" }}
+              >
+                <h2 className="text-3xl font-bold !leading-tight text-black dark:text-white sm:text-4xl md:text-[45px]">
+                  Pricing
+                </h2>
+              </div>
               <Pricing isSectionTitle={true} />
             </div>
           </div>

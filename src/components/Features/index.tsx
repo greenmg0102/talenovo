@@ -1,24 +1,22 @@
 import SectionTitle from "../Common/SectionTitle";
-import JobList from "../Hero/job";
 import SingleFeature from "./SingleFeature";
 import featuresData from "./featuresData";
 
 const Features = () => {
   return (
     <>
-      <section id="features" className="py-16 md:py-20 lg:py-28">
+      <section id="features" className="py-8 md:py-12 lg:py-20">
         <div className="container">
-        {/* <JobList/> */}
-          {/* <SectionTitle
-            title="Main Features"
+          <SectionTitle
+            title="Unlock Your Career Potential"
             center
           />
 
-          <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3 pt-12">
             {featuresData.map((feature) => (
               <SingleFeature key={feature.id} feature={feature} />
             ))}
-          </div> */}
+          </div>
         </div>
       </section>
     </>
