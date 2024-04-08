@@ -12,7 +12,7 @@ export async function suggestJobs(data: any) {
     // const cityInfo = locationInfo.split(", ")[0]
 
     const skillSet = ["Communication"]
-    const countryInfo = "    FL"
+    const countryInfo = "FL"
     const cityInfo = "Miami"
 
     // console.log("skillSet", skillSet);
@@ -33,6 +33,5 @@ export async function suggestJobs(data: any) {
         { headers: { 'Authorization': `Bearer ${apiKey}` } }
     );
 
-    // return []
     return response.data.hits
 }

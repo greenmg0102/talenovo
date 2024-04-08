@@ -32,7 +32,7 @@ export async function POST(req: any, res: any) {
 
     return NextResponse.json({
       isOkay: isOkay,
-      message: isOkay ? "Correctly registered!" : 'Registration failed'
+      message: isOkay ? "Added to Bookmark!" : 'Registration failed'
     });
 
   } else {

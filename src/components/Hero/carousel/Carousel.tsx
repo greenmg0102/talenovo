@@ -25,7 +25,7 @@ export default function Carousel() {
         async function fetchData() {
 
             const list = ["Staffing and Recruiting", "Hospitals and Health Care", "Manufacturing"]
-            let result = await carouselIndustry(list)
+            let result: any = await carouselIndustry(list)
 
             if (!result.isOkay) messageApi.error(result.message);
             else {
@@ -45,7 +45,7 @@ export default function Carousel() {
 
     return (
         <div className="shadow-lg rounded-[8px] mb-4 bg-white border border-gray-300">
-            <div className="px-4 pb-2">
+            <div className="px-2 pb-2">
                 <Tabs defaultActiveKey="1" items={items} />
             </div>
         </div>

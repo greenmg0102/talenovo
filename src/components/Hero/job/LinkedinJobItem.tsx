@@ -2,6 +2,7 @@ import React from "react";
 import Link from 'next/link';
 import { registBookmark } from '@/store/action/user/jobget/landingJob'
 import { message } from 'antd';
+import clsx from "clsx";
 
 const LinkedinJobItem = ({ item, setIsDetail }: any) => {
 
@@ -49,7 +50,7 @@ const LinkedinJobItem = ({ item, setIsDetail }: any) => {
           <div className="flex justify-start items-center flex-wrap">
             <p className="text-[12px] text-gray-500 mr-2">{item.location}</p>
             <p className="text-[12px] text-gray-500 mr-2">{item.employmentType}</p>
-            <p className="text-[10px] py-[1px] px-[4px] rounded-[4px] text-red-500 mr-2 border border-red-200">{item.tertiaryDescription}</p>
+            <p className={clsx(item.tertiaryDescription ? "text-[10px] py-[1px] px-[4px] rounded-[4px] text-red-500 mr-2 border border-red-200" : "hidden")}>{item.tertiaryDescription}</p>
           </div>
         </div>
 
@@ -82,7 +83,7 @@ const LinkedinJobItem = ({ item, setIsDetail }: any) => {
         </div>
 
       </div>
-      <p className="text-[10px] text-gray-400 mb-2">{item.descriptionText.length > 300 ? item.descriptionText.slice(0, 300) + " ..." : item.descriptionText}</p>
+      <p className="text-[12px] text-gray-600 mb-2">{item.descriptionText.length > 300 ? item.descriptionText.slice(0, 300) + " ..." : item.descriptionText}</p>
       <div className="flex justify-start items-center flex-wrap">
         {item.skills.map((item: any, index: any) =>
           <p key={index} className="px-1 py-[1px] mr-2 border border-gray-300 text-gray-500 hover:bg-blue-400 hover:text-gray-50 transition-all rounded-[4px] text-[10px] mr-1 mb-[2px]">

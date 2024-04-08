@@ -13,7 +13,7 @@ var settings = {
 export default function CarouselItem({ subResult }: any) {
 
     return (
-        <div className="mb-4 px-4">
+        <div className="mb-0 p-8 bg-blue-400 rounded-[4px]">
             <Slider {...settings}>
                 <div className="flex justify-between items-center">
                     <div className="flex justify-center items-start">
@@ -22,9 +22,9 @@ export default function CarouselItem({ subResult }: any) {
                                 key={index}
                                 className="w-1/4 flex justify-center items-center flex-col"
                             >
-                                <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={60} height={60} />
-                                <p className="text-center text-gray-500 text-[12px]">{item.companyName}</p>
-                                <p className="text-center text-gray-400 text-[13px]">{item.count} Jobs</p>
+                                <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={50} height={50} />
+                                <p className="text-center text-gray-100 text-[12px]">{item.companyName}</p>
+                                {/* <p className="text-center text-gray-400 text-[13px]">{item.count} Jobs</p> */}
                             </div>
                         )}
                     </div>
@@ -36,9 +36,9 @@ export default function CarouselItem({ subResult }: any) {
                                 key={index}
                                 className="w-1/4 flex justify-center items-center flex-col"
                             >
-                                <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={60} height={60} />
-                                <p className="text-center text-gray-500 text-[12px]">{item.companyName}</p>
-                                <p className="text-center text-gray-400 text-[13px]">{item.count} Jobs</p>
+                                <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={50} height={50} />
+                                <p className="text-center text-gray-100 text-[12px]">{item.companyName}</p>
+                                {/* <p className="text-center text-gray-400 text-[13px]">{item.count} Jobs</p> */}
                             </div>
                         )}
                     </div>
@@ -50,9 +50,9 @@ export default function CarouselItem({ subResult }: any) {
                                 key={index}
                                 className="w-1/4 flex justify-center items-center flex-col"
                             >
-                                <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={60} height={60} />
-                                <p className="text-center text-gray-500 text-[12px]">{item.companyName}</p>
-                                <p className="text-center text-gray-400 text-[13px]">{item.count} Jobs</p>
+                                <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={50} height={50} />
+                                <p className="text-center text-gray-100 text-[12px]">{item.companyName}</p>
+                                {/* <p className="text-center text-gray-400 text-[13px]">{item.count} Jobs</p> */}
                             </div>
                         )}
                     </div>

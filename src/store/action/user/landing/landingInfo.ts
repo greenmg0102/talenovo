@@ -34,7 +34,7 @@ export async function carouselIndustry({ list }: any) {
         });
 
         const oneShuffledCompanyData = oneUniqueCompanyData.sort(() => Math.random() - 0.5);
-        const oneRandomCompanyData = oneShuffledCompanyData.slice(0, 4);
+        const oneRandomCompanyData = oneShuffledCompanyData.slice(0, 6);
 
         const Two = await axios.post(
             `${host}/indexes/${indexName}/search`,
@@ -64,13 +64,13 @@ export async function carouselIndustry({ list }: any) {
         });
 
         const twoShuffledCompanyData = twoUniqueCompanyData.sort(() => Math.random() - 0.5);
-        const twoRandomCompanyData = twoShuffledCompanyData.slice(0, 4);
+        const twoRandomCompanyData = twoShuffledCompanyData.slice(0, 6);
 
 
         return {
             isOkay: true,
             companyCount: 3,
-            industryCount: 4,
+            industryCount: 6,
             result: [
                 {
                     category: "Hospitals and Health Care",
