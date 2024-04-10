@@ -177,7 +177,7 @@ const Hero = ({ setIsDetail }: any) => {
     <>
       <section
         id="home"
-        className='z-10 bg-white pb-16 pt-[30px] md:pb-[40px] md:pt-[120px] xl:pb-[50px] xl:pt-[140px] 2xl:pb-[60px] 2xl:pt-[160px]'
+        className='z-10 bg-white pb-16 pt-[100px] md:pb-[40px] md:pt-[120px] xl:pb-[50px] xl:pt-[140px] 2xl:pb-[60px] 2xl:pt-[160px]'
       // className="z-10 overflow-hidden bg-white pb-16 pt-[30px] md:pb-[40px] md:pt-[120px] xl:pb-[50px] xl:pt-[140px] 2xl:pb-[60px] 2xl:pt-[160px]"
       // className="relative z-10 overflow-hidden bg-white pb-16 pt-[30px] md:pb-[40px] md:pt-[120px] xl:pb-[50px] xl:pt-[140px] 2xl:pb-[60px] 2xl:pt-[160px]"
       >
@@ -186,7 +186,7 @@ const Hero = ({ setIsDetail }: any) => {
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
 
-              <div className="mx-auto max-w-[1200px] text-center">
+              <div className="mx-auto max-w-[1200px] text-center mb-[60px]">
                 <h1 className="mb-5 text-center text-lg font-bold leading-tight text-black sm:text-2xl sm:leading-tight md:text-4xl md:leading-tight">
                   Search Over <span className='text-blue-500 font-bold text-[26px] sm:text-[32px] w-[60px]'> <CountUp start={0} end={total} duration={3}></CountUp>+ </span>Jobs Globally
                 </h1>
@@ -200,11 +200,13 @@ const Hero = ({ setIsDetail }: any) => {
                   indexName="title"
                   searchClient={searchClient}
                 >
-                  <div className="mx-auto max-w-[998px] mt-[60px] sticky top-[60px] bg-white z-[11]">
-                    <SearchBox translations={{ placeholder: `Search by Job Title, Keywords, Company in ${geoPosition}` }} />
+                  <div className='flex justify-center items-center sticky top-[1px] z-[11]'>
+                    <div className="mx-auto max-w-[998px] w-full bg-white">
+                      <SearchBox translations={{ placeholder: `Search by Job Title, Keywords, Company in ${geoPosition}` }} />
+                    </div>
                   </div>
 
-                  <div className='flex justify-center items-center pb-8'>
+                  <div className='flex justify-center items-center pb-8 mt-[60px]'>
                     <div className="flex justify-around items-center flex-wrap mt-2 mb-6 w-full sm:w-4/5">
                       <div>
                         <p className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center">

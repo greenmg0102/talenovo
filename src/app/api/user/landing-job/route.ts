@@ -8,10 +8,10 @@ export async function GET(req: any, res: any) {
 
   const client = new MeiliSearch({
     host: 'https://ms-d932cad3594f-8320.sfo.meilisearch.io',
-      apiKey: '45679470fdc94d8c90ef03712354389f8d209067',
+    apiKey: '45679470fdc94d8c90ef03712354389f8d209067',
   });
 
-  const user = await currentUser();
+  const user: any = await currentUser();
   let { db } = await connectToDatabase();
 
   const ip = (req.headers.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0]
@@ -19,7 +19,7 @@ export async function GET(req: any, res: any) {
 
   let result = await client.index('title').getStats();
 
-  let isMe = await db.collection("userinfos").findOne({ userId: user.id });
+  let isMe: any = user === null ? [] : await db.collection("userinfos").findOne({ userId: user.id });
 
   return NextResponse.json({
     total: result.numberOfDocuments,

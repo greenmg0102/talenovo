@@ -1,6 +1,8 @@
 import { Testimonial } from "@/types/testimonial";
 import SectionTitle from "../Common/SectionTitle";
 import SingleTestimonial from "./SingleTestimonial";
+import Senja from '@/components/Senja'
+
 
 const testimonialData: Testimonial[] = [
   {
@@ -43,6 +45,9 @@ const Testimonials = () => {
         <h4 className="mb-2 text-lg !leading-tight text-black dark:text-white sm:text-xl md:text-[20px] text-center px-2 sm:px-24 md:px-40 text-gray-500">
           Ultimately, over <span className="font-bold text-red-500">90% of customers</span> decided to extend their subscriptions after the initial registration
         </h4>
+        <div className="flex justify-center items-center mt-8">
+          <Senja />
+        </div>
 
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3 mt-12">
           {testimonialData.map((testimonial) => (

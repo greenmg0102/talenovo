@@ -29,10 +29,10 @@ const categoryData: Category[] = [
     id: 6,
     title: "Subscription",
   },
-  // {
-  //   id: 6,
-  //   title: "Business Analyze",
-  // },
+  {
+    id: 7,
+    title: "News"
+  }
 ];
 export default categoryData;
 

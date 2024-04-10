@@ -54,10 +54,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`header left-0 top-0 z-40 flex w-full items-center ${sticky
-          ? "fixed z-[9999] bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm transition dark:bg-gray-dark dark:shadow-sticky-dark"
-          : "absolute bg-transparent"
-          }`}
+        className={`bg-white header left-0 top-0 z-40 flex w-full items-center`}
       >
         <div className="container">
           <div className="relative -mx-4 flex items-center justify-between">
@@ -193,8 +190,8 @@ const Header = () => {
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
+          </div >
+        </div >
       </header >
     </>
   );

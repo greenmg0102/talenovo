@@ -9,6 +9,7 @@ import JobInfoAdmin from "@/components/Admin/JobInfoAdmin";
 import Paylog from "@/components/Admin/Paylog";
 import Subscription from "@/components/Admin/Subscription/Subscription";
 import categoryData from '@/components/Admin/categoryData'
+import News from '@/components/Admin/news'
 
 import Breadcrumb from "@/components/Common/Breadcrumb";
 
@@ -31,7 +32,8 @@ const Admin = () => {
     3: <OtherJobPostAdmin />,
     4: <JobInfoAdmin />,
     5: <Paylog />,
-    6: <Subscription />
+    6: <Subscription />,
+    7: <News />
   }
 
   return (

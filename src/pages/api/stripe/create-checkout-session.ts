@@ -33,8 +33,8 @@ export default async function handler(
                 },
             },
             customer_email: email,
-            success_url: "http://195.35.32.163:3000/user-profile", // Redirect URL after successful payment
-            cancel_url: "http://195.35.32.163:3000/price", // Redirect URL after cancelled payment
+            success_url: "http://localhost:3000/user-profile", // Redirect URL after successful payment
+            cancel_url: "http://localhost:3000/price", // Redirect URL after cancelled payment
         });
 
         return res.status(200).json({ url: session.url });
