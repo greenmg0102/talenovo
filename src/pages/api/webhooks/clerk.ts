@@ -5,16 +5,13 @@ import type { WebhookEvent } from "@clerk/nextjs/server";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { connectToDatabase } from "@/lib/mongodb";
 import { UserModel } from "@/models/UserModel";
-
+import createContract from '@/app/api/mail/util/createContractInList'
 
 export const config = {
     api: {
         bodyParser: false,
     },
 };
-
-
-
 
 export default async function handler(
     req: NextApiRequest,
@@ -78,6 +75,16 @@ export default async function handler(
             const userModel = new UserModel(db);
             // id>>email>>status>>plan name
             await userModel.createUser(clerkId, email, status, planName);
+
+
+            const total = {
+                email: data.email_addresses[0].email_address,
+                FirstName: data.first_name,
+                LastName: data.last_name,
+                listType: "all clients",
+            }
+
+            await createContract(total)
 
             // Create user on users collection
 

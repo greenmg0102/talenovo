@@ -6,8 +6,8 @@ export async function POST(req: any, res: any) {
     let data = await req.json();
 
     const client = new MeiliSearch({
-      host: 'https://ms-d932cad3594f-8320.sfo.meilisearch.io',
-      apiKey: '45679470fdc94d8c90ef03712354389f8d209067',
+      host: 'https://ms-2eabdf8fdac6-9012.nyc.meilisearch.io',
+      apiKey: '45949bbe2bf65ebe9aa08012ed5742c1373cc310',
     });
 
     const document = await client.index('title').getDocument(data.id);

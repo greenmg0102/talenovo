@@ -4,7 +4,9 @@ const host = 'https://ms-2eabdf8fdac6-9012.nyc.meilisearch.io';
 const apiKey = '45949bbe2bf65ebe9aa08012ed5742c1373cc310';
 const indexName = 'title';
 
-export async function suggestJobs(data: any) {
+export default async function searchJobPerUser(data: any) {
+
+    console.log("searchJobPerUser", data);
 
     // const skillSet = data.skill; // Array of skills
     // const locationInfo = data.locatedin; // Array of skills
@@ -33,5 +35,5 @@ export async function suggestJobs(data: any) {
         { headers: { 'Authorization': `Bearer ${apiKey}` } }
     );
 
-    return response.data.hits
+    return response.data.hits.length
 }

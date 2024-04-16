@@ -34,8 +34,8 @@ import {
 } from "react-instantsearch-dom";
 
 const searchClient = instantMeiliSearch(
-  'https://ms-d932cad3594f-8320.sfo.meilisearch.io',
-  '45679470fdc94d8c90ef03712354389f8d209067',
+  'https://ms-2eabdf8fdac6-9012.nyc.meilisearch.io',
+  '45949bbe2bf65ebe9aa08012ed5742c1373cc310',
   {
     finitePagination: true
   }
@@ -177,7 +177,7 @@ const Hero = ({ setIsDetail }: any) => {
     <>
       <section
         id="home"
-        className='z-10 bg-white pb-16 pt-[100px] md:pb-[40px] md:pt-[120px] xl:pb-[50px] xl:pt-[140px] 2xl:pb-[60px] 2xl:pt-[160px]'
+        className='z-10 bg-white pb-16 pt-[100px] md:pb-[40px] md:pt-[100px] xl:pb-[50px] xl:pt-[120px] 2xl:pb-[60px] 2xl:pt-[140px]'
       // className="z-10 overflow-hidden bg-white pb-16 pt-[30px] md:pb-[40px] md:pt-[120px] xl:pb-[50px] xl:pt-[140px] 2xl:pb-[60px] 2xl:pt-[160px]"
       // className="relative z-10 overflow-hidden bg-white pb-16 pt-[30px] md:pb-[40px] md:pt-[120px] xl:pb-[50px] xl:pt-[140px] 2xl:pb-[60px] 2xl:pt-[160px]"
       >
@@ -201,7 +201,7 @@ const Hero = ({ setIsDetail }: any) => {
                   searchClient={searchClient}
                 >
                   <div className='flex justify-center items-center sticky top-[1px] z-[11]'>
-                    <div className="mx-auto max-w-[998px] w-full bg-white">
+                    <div className="mx-auto w-full sm:max-w-[558px] xl:max-w-[768px] bg-white">
                       <SearchBox translations={{ placeholder: `Search by Job Title, Keywords, Company in ${geoPosition}` }} />
                     </div>
                   </div>

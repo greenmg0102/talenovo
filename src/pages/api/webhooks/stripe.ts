@@ -4,6 +4,7 @@ const stripe: any = new Stripe(process.env.STRIPE_SECRET_KEY);
 import type { NextApiRequest, NextApiResponse } from "next";
 import { connectToDatabase } from "@/lib/mongodb";
 import { UserModel } from "@/models/UserModel";
+import createContract from '@/app/api/mail/util/createContractInList'
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
@@ -30,7 +31,7 @@ export default async function handler(
         console.log("event", event);
         console.log("stripe", stripe);
         console.log("webhookSecret", webhookSecret);
-        
+
         // Connect to the MongoDB database
         const { db } = await connectToDatabase();
 
@@ -61,11 +62,24 @@ export default async function handler(
 
                     await userModel.updateUser(dbUser._id, updates);
                     console.log('User updated successfully:', dbUser._id);
+
+                    const total = {
+                        email: subscription.metadata.email,
+                        FirstName: "N/A",
+                        LastName: "N/A",
+                        CurrentCount: 0, 
+                        listType: "premium user"
+                    }
+
+                    await createContract(total)
+
                 } else {
                     console.log('User not found in the database');
                 }
 
                 console.log(subscriptionData);
+
+
 
 
                 break;

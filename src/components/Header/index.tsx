@@ -1,8 +1,8 @@
 "use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import clsx from 'clsx'
 import { useUser } from '@clerk/nextjs';
@@ -11,6 +11,7 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { scarppingStart } from '@/store/action/automation/scraping'
 
 const Header = () => {
+
   const { user } = useUser();
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -32,6 +33,7 @@ const Header = () => {
     async function startScraping() {
       scarppingStart()
     }
+
     startScraping()
   }, [])
 

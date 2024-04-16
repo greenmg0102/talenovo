@@ -7,8 +7,8 @@ import { currentUser } from '@clerk/nextjs';
 export async function GET(req: any, res: any) {
 
   const client = new MeiliSearch({
-    host: 'https://ms-d932cad3594f-8320.sfo.meilisearch.io',
-    apiKey: '45679470fdc94d8c90ef03712354389f8d209067',
+    host: 'https://ms-2eabdf8fdac6-9012.nyc.meilisearch.io',
+    apiKey: '45949bbe2bf65ebe9aa08012ed5742c1373cc310',
   });
 
   const user: any = await currentUser();

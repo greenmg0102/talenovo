@@ -8,16 +8,19 @@ import { indeedScrapping } from '@/app/api/automation/scrapping-start/indeed'
 import { connectToDatabase } from "@/lib/mongodb";
 import { adminAPIMiddleware } from '@/app/api/admin/middleware';
 import { MeiliSearch } from 'meilisearch';
+import JobAlertAutomation from '@/app/api/automation/scrapping-start/mailAutomation/jobAlert'
 
-const host = 'https://ms-d932cad3594f-8320.sfo.meilisearch.io';
-const apiKey = '45679470fdc94d8c90ef03712354389f8d209067';
+const host = 'https://ms-2eabdf8fdac6-9012.nyc.meilisearch.io';
+const apiKey = '45949bbe2bf65ebe9aa08012ed5742c1373cc310';
 const indexName = 'title';
 
 export async function GET(req: any, res: any) {
   // await adminAPIMiddleware(req, res);
   // let { db } = await connectToDatabase();
 
-  // // schedule.scheduleJob('0 */12 * * *', async () => {
+  // schedule.scheduleJob('0 */12 * * *', async () => {
+
+  await JobAlertAutomation()
 
   // const client = new MeiliSearch({
   //   host: host,
@@ -29,6 +32,7 @@ export async function GET(req: any, res: any) {
   // // // // let kadoa = await KadoaScrapping();
   // let real = linkedin
   // // // // // let real = [...linkedin, ...kadoa]
+
   // console.log(1);
   // await client.index(indexName).addDocuments(real, { primaryKey: 'jobId' });
   // console.log(2);
