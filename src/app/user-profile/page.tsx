@@ -1,4 +1,3 @@
-import Breadcrumb from "@/components/Common/Breadcrumb";
 import UserBannerMain from '@/components/UserProfile/UserBannerMain';
 import UserInfoMain from '@/components/UserProfile/UserInfoMain';
 
@@ -13,10 +12,6 @@ export const metadata: Metadata = {
 const UserProfile = () => {
   return (
     <>
-      <Breadcrumb
-        pageName="My Profile"
-        description=""
-      />
       <section className="pb-[120px] pt-[30px]">
         <div className="container flex justify-between items-start flex-wrap">
           <div className="w-full lg:w-[35%] pr-0 lg:pr-4 mb-12">

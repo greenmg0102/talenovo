@@ -1,45 +1,37 @@
-'use client '
-import { useState, useEffect } from 'react';
-import { Alert, Divider } from 'antd';
-import AddJobTitle from '@/components/UserProfile/MyJobAlert/AddJobTitle'
-import AddJobType from '@/components/UserProfile/MyJobAlert/AddJobType'
-import AddPaySlider from '@/components/UserProfile/MyJobAlert/AddPaySlider'
-import AddWorkSchedule from '@/components/UserProfile/MyJobAlert/AddWorkSchedule'
-import Addnotification from '@/components/UserProfile/MyJobAlert/Addnotification'
-import { getfacetedIndustry } from '@/store/action/user/userProfile/myjobalert'
+'use client'
 
-const MyAlert = ({ }: any) => {
+import { Tab } from '@headlessui/react';
 
-  const [industryList, setIndustryList] = useState([])
+import JobAlertSetting from '@/components/UserProfile/JobAlertSetting'
+import AlertingJob from '@/components/UserProfile/AlertingJob'
 
-  useEffect(() => {
-
-    async function fecthData() {
-      let real = []
-      let result = await getfacetedIndustry()
-
-      for (let i = 10; i < result.length; i++) {
-        real.push({
-          label: result[i],
-          value: result[i]
-        });
-      }
-      setIndustryList(real)
-    }
-    fecthData()
-  }, [])
+const MyAlert = ({ alertingJob, setIsDetail }: any) => {
 
   return (
-    <div className=''>
-      <AddJobTitle />
-      <Divider />
-      <AddJobType />
-      <Divider />
-      <AddPaySlider />
-      <Divider />
-      <AddWorkSchedule industryList={industryList} />
-      <Divider />
-      <Addnotification />
+    <div className='w-full px-4'>
+      <Tab.Group>
+        <Tab.List className="flex flex-wrap border-b border-gray-200">
+          <Tab className='mr-8'>
+            Job Alert Setting
+          </Tab>
+          <Tab>
+            Alerting Jobd {alertingJob.length === 0 ? null : `(${alertingJob.length})`}
+          </Tab>
+        </Tab.List>
+        <Tab.Panels>
+          <div className="active pt-5">
+            <Tab.Panel>
+              <JobAlertSetting />
+            </Tab.Panel>
+            <Tab.Panel>
+              <AlertingJob
+                alertingJob={alertingJob}
+                setIsDetail={(data: any) => setIsDetail(data)}
+              />
+            </Tab.Panel>
+          </div>
+        </Tab.Panels>
+      </Tab.Group>
     </div>
   );
 };

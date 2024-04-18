@@ -1,4 +1,5 @@
 'use client'
+import { useState } from "react";
 
 import { Tab } from '@headlessui/react';
 import { Fragment } from 'react';
@@ -8,11 +9,18 @@ import { Fragment } from 'react';
 import JobAlert from "@/components/UserProfile/JobAlert";
 import MyPostingJob from "@/components/UserProfile/MyPostingJob";
 import MyJobs from "@/components/UserProfile/MyJobs";
+import LandingDetail from "@/components/Hero/landingDetail";
 
-const UserDashboard = ({ mybookmarkjob, postedJob, appliedJob, bookmark, skill, locatedin }: any) => {
+const UserDashboard = ({ mybookmarkjob, postedJob, appliedJob, bookmark, skill, locatedin, alertingJob, bookJob }: any) => {
+
+  const [isDetail, setIsDetail] = useState(undefined)
 
   return (
-    <div className="flex justify-between items-start">
+    <div className="flex justify-between items-start relative">
+      <LandingDetail
+        isDetail={isDetail}
+        setIsDetail={(data: any) => setIsDetail(data)}
+      />
       <div className="w-full">
         <Tab.Group>
           <Tab.List className="mt-3 flex flex-wrap border-b border-gray-200">
@@ -32,7 +40,7 @@ const UserDashboard = ({ mybookmarkjob, postedJob, appliedJob, bookmark, skill, 
                   className={`${selected ? '!border-gray-200 !border-b-white text-danger dark:!border-b-black' : ''} p-3.5 py-2 -mb-[1px] flex items-center border border-transparent hover:text-danger !outline-none transition duration-300 text-[14px]`}
                 >
                   <svg viewBox="64 64 896 896" className='mr-2' focusable="false" data-icon="check-square" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M433.1 657.7a31.8 31.8 0 0051.7 0l210.6-292c3.8-5.3 0-12.7-6.5-12.7H642c-10.2 0-19.9 4.9-25.9 13.3L459 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H315c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8z"></path><path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path></svg>
-                  My Saved Jobs {bookmark === 0 ? null : `(${bookmark})`}
+                  My Saved Jobs {bookJob.length === 0 ? null : `(${bookJob.length})`}
                 </button>
               )}
             </Tab>
@@ -54,7 +62,7 @@ const UserDashboard = ({ mybookmarkjob, postedJob, appliedJob, bookmark, skill, 
                   className={`${selected ? 'text-[14px] !border-gray-200 !border-b-white text-danger dark:!border-b-black' : ''} p-3.5 py-2 -mb-[1px] flex items-center border border-transparent hover:text-danger !outline-none transition duration-300`}
                 >
                   <svg viewBox="64 64 896 896" className='mr-2' focusable="false" data-icon="check-square" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M433.1 657.7a31.8 31.8 0 0051.7 0l210.6-292c3.8-5.3 0-12.7-6.5-12.7H642c-10.2 0-19.9 4.9-25.9 13.3L459 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H315c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8z"></path><path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path></svg>
-                  Job Alert {appliedJob === 0 ? null : `(${appliedJob})`}
+                  Job Alert {alertingJob.length === 0 ? null : `(${alertingJob.length})`}
                 </button>
               )}
             </Tab>
@@ -70,6 +78,8 @@ const UserDashboard = ({ mybookmarkjob, postedJob, appliedJob, bookmark, skill, 
               <Tab.Panel>
                 <MyJobs
                   mybookmarkjob={mybookmarkjob}
+                  bookJob={bookJob}
+                  setIsDetail={(data: any) => setIsDetail(data)}
                 />
               </Tab.Panel>
               <Tab.Panel>
@@ -77,7 +87,8 @@ const UserDashboard = ({ mybookmarkjob, postedJob, appliedJob, bookmark, skill, 
               </Tab.Panel>
               <Tab.Panel>
                 <JobAlert
-
+                  alertingJob={alertingJob}
+                  setIsDetail={(data: any) => setIsDetail(data)}
                 />
               </Tab.Panel>
             </div>

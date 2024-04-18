@@ -4,6 +4,7 @@ import UserInfo from "@/components/UserProfile/UserInitialInfo/UserInfo";
 import { userInitialInfo } from '@/store/action/user/userProfile/userInfo';
 import UserDashboard from '@/components/UserProfile/UserDashboard';
 import { Spin } from 'antd';
+import { myJobAlert, myBookMarkJob } from '@/store/action/user/userProfile/myjobalert'
 
 const UserInfoMain = () => {
 
@@ -28,6 +29,24 @@ const UserInfoMain = () => {
     profileViews: 0,
     mybookmarkjob: []
   })
+
+  const [alertingJob, setAlertingJob] = useState([])
+  const [bookJob, setBookJob] = useState([])
+
+
+  useEffect(() => {
+
+    async function fecthData() {
+
+      let result1 = await myJobAlert()
+      if (result1.isOkay) setAlertingJob(result1.result)
+
+      let result2 = await myBookMarkJob()
+      if (result2.isOkay) setBookJob(result2.result)
+    }
+
+    fecthData()
+  }, [])
 
   useEffect(() => {
     async function userInfoGet() {
@@ -80,6 +99,8 @@ const UserInfoMain = () => {
             locatedin={userInfo.locatedin}
             postedJob={userInfo.postedJob}
             appliedJob={userInfo.appliedJob}
+            alertingJob={alertingJob}
+            bookJob={bookJob}
             bookmark={userInfo.bookmark}
             mybookmarkjob={userInfo.mybookmarkjob}
           />

@@ -36,7 +36,7 @@ export async function GET(req: any, res: any) {
   // console.log(1);
   // await client.index(indexName).addDocuments(real, { primaryKey: 'jobId' });
   // console.log(2);
-  // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2"]);
+  // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId"]);
   // await client.index(indexName).updateDistinctAttribute("companyName");
   // console.log(3);
 

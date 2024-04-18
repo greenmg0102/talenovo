@@ -1,9 +1,14 @@
 
-const MyJobApplyItem = ({ item }: any) => {
+const MyJobApplyItem = ({ item, setIsDetail }: any) => {
   return (
     <div className="px-2 py-4 border border-gray-200 hover:border-blue-500 rounded-[6px] mb-4 hover:shadow-lg transition-all">
       <div className="flex justify-between itesm-center">
-        <p className="text-gray-900 text-[18px] pb-4">{item.title}</p>
+        <p
+          className="text-gray-900 text-[18px] pb-4 hover:underline hover:cursor-pointer"
+          onClick={() => setIsDetail(item)}
+        >
+          {item.title}
+        </p>
         <p className="text-blue-900 text-[12px] pb-4">2024-03-08</p>
       </div>
       <p className="text-gray-500 text-[14px]">{item.descriptionText.length > 300 ? item.descriptionText.slice(0, 300) + " ..." : item.descriptionText}</p>
