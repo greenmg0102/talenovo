@@ -17,6 +17,9 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse,
 ) {
+
+    console.log('~!!!!!!1!!!!!!1!!!!!!1!!!!!!1!!!!!!1!!!!!!1!!!!!!1!!!!!!1!!!!!!1!!!!!!1!!!!!!1!!!!!!1!!!!!!1');
+
     if (req.method !== "POST") {
         return res.status(405);
     }
@@ -57,6 +60,9 @@ export default async function handler(
 
     switch (eventType) {
         case "user.created":
+
+            console.log('user.created data', data);
+
             console.log({
                 id: data.id,
                 email: data.email_addresses[0].email_address
@@ -89,6 +95,13 @@ export default async function handler(
             // Create user on users collection
 
             break;
+
+        case "session.created":
+
+            console.log('session.created data', data);
+
+            break;
+
 
         default: {
             console.error(`The event type: ${eventType} is not configured`);

@@ -12,9 +12,9 @@ export default function createContract(total: any) {
         let postData = ""
 
         if (total.listType === "all clients") {
-            postData = `{"api_key":"${process.env.EMAIL_OCTO_PUS_API_KEY}","email_address":${total.email},"fields": {"EmailAddress":${total.email},"FirstName":${total.FirstName},"LastName":${total.LastName}}, "tags": [""],"status": "SUBSCRIBED"}`;
+            postData = `{"api_key":"${process.env.EMAIL_OCTO_PUS_API_KEY}","email_address":"${total.email}","fields": {"EmailAddress":"${total.email}","FirstName":"${total.FirstName}","LastName":"${total.LastName}"}, "tags": [""],"status": "SUBSCRIBED"}`;
         } else if (total.listType === "premium user") {
-            postData = `{"api_key":"${process.env.EMAIL_OCTO_PUS_API_KEY}","email_address":${total.email},"fields": {"EmailAddress":${total.email},"FirstName":${total.FirstName},"LastName":${total.LastName}},"CurrentCount":${total.CurrentCount}}, "tags": [""],"status": "SUBSCRIBED"}`;
+            postData = `{"api_key":"${process.env.EMAIL_OCTO_PUS_API_KEY}","email_address":"${total.email}","fields": {"EmailAddress":"${total.email}","FirstName":"${total.FirstName}","LastName":"${total.LastName}"},"CurrentCount":"${total.CurrentCount}"}, "tags": [""],"status": "SUBSCRIBED"}`;
         }
 
         console.log("postData", postData);
@@ -37,6 +37,9 @@ export default function createContract(total: any) {
             });
 
             response.on('end', () => {
+
+                console.log("createContract", data);
+
                 resolve(true); // Resolve the promise when the response ends
             });
         });

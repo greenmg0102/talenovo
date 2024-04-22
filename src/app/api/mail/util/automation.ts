@@ -33,7 +33,6 @@ export default async function automations(total: any) {
             });
 
             response.on('end', () => {
-                console.log('data', data);
 
                 resolve(true); // Resolve the promise when the response ends
             });

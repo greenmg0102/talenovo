@@ -28,9 +28,9 @@ export default async function handler(
             webhookSecret,
         );
 
-        console.log("event", event);
-        console.log("stripe", stripe);
-        console.log("webhookSecret", webhookSecret);
+        // console.log("event", event);
+        // console.log("stripe", stripe);
+        // console.log("webhookSecret", webhookSecret);
 
         // Connect to the MongoDB database
         const { db } = await connectToDatabase();
@@ -79,16 +79,11 @@ export default async function handler(
 
                 console.log(subscriptionData);
 
-
-
-
                 break;
             }
 
             case "checkout.session.completed": {
                 const session = event.data.object;
-
-
 
                 console.log({ session });
 

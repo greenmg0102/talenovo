@@ -25,6 +25,7 @@ export default async function handler(
         const user = await userModel.getUserByEmail(email);
         // const user = await userModel.getUserByEmail("shakilkhanofficial6@gmail.com");
         return res.status(200).json({ user });
+        
     } catch (error) {
         console.error("Error creating Checkout Session:", error);
         return res.status(500).json({ error: "Internal Server Error" });

@@ -106,6 +106,9 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
   //   setIsModalVisible(!isModalVisible)
   // }
 
+  console.log("userData", userData);
+
+
   const fectData = () => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/get-user`, {
       method: 'POST',
@@ -167,12 +170,13 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
 
         <div className='w-full sm:w-1/2 mb-8'>
           <p className='text-center'>Subscriptions</p>
-          {userData !== null && Object.keys(userData).length > 0 ?
+          <p className='text-center text-blue-500'>{userData.planName}</p>
+
+          {userData.planName !== "free" ?
             <div>
-              <p className='text-center text-blue-500'>{userData.planName}</p>
               <p className='text-center text-blue-500 text-[13px]'>
                 <Link
-                  href="/https://billing.stripe.com/p/login/test_fZeeX92VnaZD11K6oo"
+                  href="https://billing.stripe.com/p/login/test_fZeeX92VnaZD11K6oo"
                   className="hover:underline text-red-500 hover:text-green-500 cursor-pointer ml-2"
                 >
                   Manage subscriptions
@@ -181,8 +185,6 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
             </div>
             :
             <div>
-              <p className='text-center text-blue-500'>Free</p>
-
               <p className='text-center text-blue-500 text-[13px]'>
                 You can start
                 <Link
