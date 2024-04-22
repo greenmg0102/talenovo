@@ -170,10 +170,10 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
 
         <div className='w-full sm:w-1/2 mb-8'>
           <p className='text-center'>Subscriptions</p>
-          <p className='text-center text-blue-500'>{userData.planName}</p>
 
           {userData.planName !== "free" ?
             <div>
+              <p className='text-center text-blue-500'>{userData.planName}</p>
               <p className='text-center text-blue-500 text-[13px]'>
                 <Link
                   href="https://billing.stripe.com/p/login/test_fZeeX92VnaZD11K6oo"
@@ -185,6 +185,8 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
             </div>
             :
             <div>
+              <p className='text-center text-blue-500'>{userData.planName}</p>
+
               <p className='text-center text-blue-500 text-[13px]'>
                 You can start
                 <Link
