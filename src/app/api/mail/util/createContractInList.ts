@@ -17,7 +17,6 @@ export default function createContract(total: any) {
             postData = `{"api_key":"${process.env.EMAIL_OCTO_PUS_API_KEY}","email_address":${total.email},"fields": {"EmailAddress":${total.email},"FirstName":${total.FirstName},"LastName":${total.LastName}},"CurrentCount":${total.CurrentCount}}, "tags": [""],"status": "SUBSCRIBED"}`;
         }
 
-
         console.log("postData", postData);
 
         var options = {

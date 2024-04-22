@@ -89,7 +89,7 @@ function UserBannerModal({ tagList, isModalVisible, setIsModalVisible, userInfo,
                 onCancel={handleCancel}
             >
                 <div>
-                    <div className='w-full mt-4 flex justify-center items-center'>
+                    {/* <div className='w-full mt-4 flex justify-center items-center'>
                         <Upload
                             name="avatar"
                             listType="picture-circle"
@@ -101,11 +101,11 @@ function UserBannerModal({ tagList, isModalVisible, setIsModalVisible, userInfo,
                         >
                             {imageUrl ? <img src={imageUrl} className='rounded-full' alt="avatar" style={{ width: '100%' }} /> : uploadButton}
                         </Upload>
-                    </div>
+                    </div> */}
 
-                    <p className='text-center text-blue-500 my-2'>{userInfo.name}</p>
+                    {/* <p className='text-center text-blue-500 my-2'>{userInfo.name}</p> */}
 
-                    <p className='text-gray-400 my-2'>My Job Title</p>
+                    <p className='text-gray-400 my-4'>My Job Title</p>
                     <Input
                         value={userInfo.jobTitle}
                         placeholder="Job Title"

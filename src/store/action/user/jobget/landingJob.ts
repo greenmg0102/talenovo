@@ -5,9 +5,6 @@ export async function landingJob() {
     method: 'GET',
   });
 
-  console.log(res);
-  
-
   return await res.json();
 }
 

@@ -18,95 +18,93 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
     fectData()
   }, [email])
 
-  const handleCancel = async () => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/cancel-subscription`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // Add any additional headers if needed
-      },
-      body: JSON.stringify({
-        subscriptionId: userData.subscriptionId,
-      }),
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json(); // Parse the response body as JSON
-      })
-      .then(data => {
+  // const handleCancel = async () => {
+  //   fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/cancel-subscription`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       // Add any additional headers if needed
+  //     },
+  //     body: JSON.stringify({
+  //       subscriptionId: userData.subscriptionId,
+  //     }),
+  //   })
+  //     .then(response => {
+  //       if (!response.ok) {
+  //         throw new Error('Network response was not ok');
+  //       }
+  //       return response.json(); // Parse the response body as JSON
+  //     })
+  //     .then(data => {
 
-        fectData()
-        window.alert(data.message);
-      })
-      .catch(error => {
-        // Handle errors
-        console.error('There was a problem with the fetch operation:', error);
-      });
-  };
+  //       fectData()
+  //       window.alert(data.message);
+  //     })
+  //     .catch(error => {
+  //       // Handle errors
+  //       console.error('There was a problem with the fetch operation:', error);
+  //     });
+  // };
 
-  const handleResume = async () => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/re-active-subscription`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // Add any additional headers if needed
-      },
-      body: JSON.stringify({
-        subscriptionId: userData.subscriptionId,
-      }),
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json(); // Parse the response body as JSON
-      })
-      .then(data => {
+  // const handleResume = async () => {
+  //   fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/re-active-subscription`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       // Add any additional headers if needed
+  //     },
+  //     body: JSON.stringify({
+  //       subscriptionId: userData.subscriptionId,
+  //     }),
+  //   })
+  //     .then(response => {
+  //       if (!response.ok) {
+  //         throw new Error('Network response was not ok');
+  //       }
+  //       return response.json(); // Parse the response body as JSON
+  //     })
+  //     .then(data => {
+  //       fectData()
+  //       window.alert(data.message);
+  //     })
+  //     .catch(error => {
+  //       // Handle errors
+  //       console.error('There was a problem with the fetch operation:', error);
+  //     });
+  // };
 
-        fectData()
-        window.alert(data.message);
-      })
-      .catch(error => {
-        // Handle errors
-        console.error('There was a problem with the fetch operation:', error);
-      });
+  // const handleDelete = async () => {
+  //   fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/delete-subscription`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       // Add any additional headers if needed
+  //     },
+  //     body: JSON.stringify({
+  //       subscriptionId: userData.subscriptionId,
+  //     }),
+  //   })
+  //     .then(response => {
+  //       if (!response.ok) {
+  //         throw new Error('Network response was not ok');
+  //       }
+  //       return response.json(); // Parse the response body as JSON
+  //     })
+  //     .then(data => {
 
-  };
-
-  const handleDelete = async () => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/delete-subscription`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // Add any additional headers if needed
-      },
-      body: JSON.stringify({
-        subscriptionId: userData.subscriptionId,
-      }),
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json(); // Parse the response body as JSON
-      })
-      .then(data => {
-
-        fectData()
-        window.alert(data.message);
-      })
-      .catch(error => {
-        // Handle errors
-        console.error('There was a problem with the fetch operation:', error);
-      });
-  };
+  //       fectData()
+  //       window.alert(data.message);
+  //     })
+  //     .catch(error => {
+  //       // Handle errors
+  //       console.error('There was a problem with the fetch operation:', error);
+  //     });
+  // };
 
 
-  const add = () => {
-    setIsModalVisible(!isModalVisible)
-  }
+  // const add = () => {
+  //   setIsModalVisible(!isModalVisible)
+  // }
 
   const fectData = () => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/get-user`, {
@@ -126,8 +124,6 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
         return response.json(); // Parse the response body as JSON
       })
       .then(data => {
-        // Handle the response data
-        console.log("Handle", data);
         //redirect to checkout page
         setUserData(data.user);
       })
@@ -174,13 +170,14 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
           {userData !== null && Object.keys(userData).length > 0 ?
             <div>
               <p className='text-center text-blue-500'>{userData.planName}</p>
-              <div className='flex justify-around items-center'>
-                <Button type="primary" size="small" danger onClick={handleDelete} >
-                  Delete
-                </Button>
-                <p className='text-[12px]'>Active Button(required)</p>
-                {/* <Switch checkedChildren="Enable" unCheckedChildren="Disable" checked={userData.status === "active"} /> */}
-              </div>
+              <p className='text-center text-blue-500 text-[13px]'>
+                <Link
+                  href="/https://billing.stripe.com/p/login/test_fZeeX92VnaZD11K6oo"
+                  className="hover:underline text-red-500 hover:text-green-500 cursor-pointer ml-2"
+                >
+                  Manage subscriptions
+                </Link>
+              </p>
             </div>
             :
             <div>

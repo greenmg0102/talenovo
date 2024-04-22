@@ -10,9 +10,6 @@ export async function GET(req: any, res: any) {
 
   const subscriptionList = await db.collection("users").find().toArray();
 
-  console.log("subscriptionList", subscriptionList);
-
-
   return NextResponse.json({
     subscriptionList: subscriptionList,
   });

@@ -2,7 +2,6 @@ import https from "https";
 
 export default async function automations(total: any) {
 
-    console.log('total', total);
     
     const automationKey = {
         "job alert": process.env.EMAIL_OCTO_PUS_JOB_ALERT_AUTOMATION_KEY
@@ -15,8 +14,6 @@ export default async function automations(total: any) {
         if (total.listType === "job alert") {
             postData = `{"api_key":"${process.env.EMAIL_OCTO_PUS_API_KEY}","list_member_id":"${total.memberId}"}`;
         }
-
-        console.log("postData", postData);
 
         var options = {
             hostname: 'emailoctopus.com',

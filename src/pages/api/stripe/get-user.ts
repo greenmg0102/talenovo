@@ -16,8 +16,6 @@ export default async function handler(
     try {
 
         const { email } = req.body;
-        console.log("here!", email);
-
         // Connect to the MongoDB database
         const { db } = await connectToDatabase();
 
@@ -26,7 +24,6 @@ export default async function handler(
 
         const user = await userModel.getUserByEmail(email);
         // const user = await userModel.getUserByEmail("shakilkhanofficial6@gmail.com");
-        console.log("getUserByEmail", user);
         return res.status(200).json({ user });
     } catch (error) {
         console.error("Error creating Checkout Session:", error);

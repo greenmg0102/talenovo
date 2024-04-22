@@ -15,10 +15,20 @@ const apiKey = '45949bbe2bf65ebe9aa08012ed5742c1373cc310';
 const indexName = 'title';
 
 export async function GET(req: any, res: any) {
+
+
+
+
+
+
+
   // await adminAPIMiddleware(req, res);
   // let { db } = await connectToDatabase();
 
   // schedule.scheduleJob('0 */12 * * *', async () => {
+
+
+
 
   await JobAlertAutomation()
 

@@ -15,9 +15,9 @@ export async function GET(req: any, res: any) {
   // getList()
   // automations({})
 
-  let result = await createContract({})
+  // let result = await createContract({})
 
-  console.log('result', result);
+  // console.log('result', result);
 
   // var postData = `{"api_key":"${process.env.EMAIL_OCTO_PUS_API_KEY}","list_member_id":"${process.env.EMAIL_OCTO_PUS_JOB_ALERT_LIST_KEY}"}`;
 

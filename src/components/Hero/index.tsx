@@ -91,7 +91,6 @@ const Hero = ({ setIsDetail }: any) => {
         })
         .then(data => {
           // Handle the response data
-          console.log("setUserData", data.user);
           //redirect to checkout page
           setUserData(data.user);
         })

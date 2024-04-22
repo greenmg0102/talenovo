@@ -10,7 +10,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
   const localInfo: any = await axios.get(`https://api.findip.net/${ip === "::1" ? "8.230.6.196" : ip}/?token=988e48d25e534484b591149ce6a32c74`);
 
   let { db } = await connectToDatabase();
-  const user = await currentUser();
+  const user: any = await currentUser();
 
   let isMe = await db.collection("userinfos").findOne({ userId: user.id });
 

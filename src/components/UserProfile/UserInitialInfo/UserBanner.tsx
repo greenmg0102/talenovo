@@ -23,13 +23,13 @@ const UserBanner = ({ userInfo, tagList, onchange }: any) => {
       />
       <EditButton add={add} />
 
-      <div className="flex justify-center py-4">
+      {/* <div className="flex justify-center py-4">
         <div className="w-[100px] h-[100px] rounded-full border-gray-200 border-[3px] flex justify-center items-center">
           <img src={userInfo.avatar} className='w-full bg-cover rounded-full shadow-lg' alt="avatar" />
         </div>
-      </div>
+      </div> */}
 
-      <p className={clsx("text-center mb-2 font-bold", userInfo.name === "" ? "text-gray-300" : "text-blue-500")}>
+      <p className={clsx("text-center mb-2 mt-12 font-bold", userInfo.name === "" ? "text-gray-300" : "text-blue-500")}>
         {userInfo.name === "" ? "Please wait ..." : userInfo.name}
       </p>
       {userInfo.jobTitle === "" ?
