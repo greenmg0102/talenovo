@@ -171,7 +171,7 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
         <div className='w-full sm:w-1/2 mb-8'>
           <p className='text-center'>Subscriptions</p>
 
-          {userData.planName !== "free" ?
+          {userData && userData.planName !== "free" ?
             <div>
               <p className='text-center text-blue-500'>{userData.planName}</p>
               <p className='text-center text-blue-500 text-[13px]'>
