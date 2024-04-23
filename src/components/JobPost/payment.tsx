@@ -17,7 +17,8 @@ const Payment = ({ value, warn, setValue }: any) => {
 
   return (
     <div>
-      <p className="mb-4">Select a product to post the job.</p>
+      <p className="mb-4">Select Job Posting Plan</p>
+      <p className="text-[14px] text-gray-400 mb-4 mt-2">All jobs post will be reviewed prior to publishing, once payment have been process, an email will be sent once job listing is activated</p>
       {productionList.map((item: any, index: any) =>
         <PaymentItem
           key={index}

@@ -19,13 +19,14 @@ export async function GET(req: any, res: any) {
 
   let result = await client.index('title').getStats();
 
-  let isMe: any = user === null ? [] : await db.collection("userinfos").findOne({ userId: user.id });
+  let isMe: any = user === null ? null : await db.collection("userinfos").findOne({ userId: user.id });
 
   return NextResponse.json({
     total: result.numberOfDocuments,
     todayJob: result.numberOfDocuments - 456,
     locatedin: localInfo.data.city.names.en + ", " + localInfo.data.country.names.en,
-    skill: isMe === null ? [] : isMe.skill
+    skill: isMe === null ? [] : isMe.skill,
+    jobalertsetting: isMe === null ? null : isMe.jobalertsetting,
   });
 
 }

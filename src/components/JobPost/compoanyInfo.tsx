@@ -29,7 +29,7 @@ const CompoanyInfo = ({ value, warn, setValue }: any) => {
                 value={value}
                 type={'companyLink'}
                 warn={warn}
-                title={"Company Link"}
+                title={"Company Website"}
                 warningText={"The link field is required."}
                 onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
               />

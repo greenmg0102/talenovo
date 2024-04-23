@@ -61,8 +61,6 @@ export default async function handler(
     switch (eventType) {
         case "user.created":
 
-            console.log('user.created data', data);
-
             console.log({
                 id: data.id,
                 email: data.email_addresses[0].email_address

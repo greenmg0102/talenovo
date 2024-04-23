@@ -6,32 +6,46 @@ const indexName = 'title';
 
 export async function suggestJobs(data: any) {
 
-    // const skillSet = data.skill; // Array of skills
-    // const locationInfo = data.locatedin; // Array of skills
-    // const countryInfo = locationInfo.split(", ")[1]
-    // const cityInfo = locationInfo.split(", ")[0]
+    let processingData = data
+    const cityInfo = processingData.locatedin.split(", ")[0]
+    const skillSet = processingData.skill
 
-    const skillSet = ["Communication"]
-    const countryInfo = "FL"
-    const cityInfo = "Miami"
+    if (processingData.jobalertsetting === undefined) {
 
-    // console.log("skillSet", skillSet);
-    // console.log("locationInfo", locationInfo);
+        const response = await axios.post(
+            `${host}/indexes/${indexName}/search`,
+            {
+                filter: [
+                    `city = "${cityInfo}"`,
+                ],
+                showRankingScore: true,
+                limit: 20,
+            },
+            { headers: { 'Authorization': `Bearer ${apiKey}` } }
+        );
+        
+        return response.data.hits
+    } else {
 
-    let skillSetFilter = skillSet.map((itme: any) => { return `skills = "${itme}"`; })
+        let skillSetFilter = skillSet.map((itme: any) => { return `skills = "${itme}"`; })
 
-    const response = await axios.post(
-        `${host}/indexes/${indexName}/search`,
-        {
-            filter: [
-                [...skillSetFilter],
-                `country = "${countryInfo}"`,
-                `city = "${cityInfo}"`,
-            ],
-            showRankingScore: true,
-        },
-        { headers: { 'Authorization': `Bearer ${apiKey}` } }
-    );
+        let queryList = processingData.jobalertsetting.titleList.join(" ")
 
-    return response.data.hits
+        const response = await axios.post(
+            `${host}/indexes/${indexName}/search`,
+            {
+                q: queryList,
+                filter: [
+                    [...skillSetFilter],
+                    `city = "${cityInfo}"`,
+                ],
+                showRankingScore: true,
+                limit: 20,
+            },
+            { headers: { 'Authorization': `Bearer ${apiKey}` } }
+        );
+
+        return response.data.hits
+    }
+
 }

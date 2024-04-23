@@ -1,46 +1,51 @@
-# Startup - Free Next.js Startup Website Template
+# Job Portal Application
 
-Startup free, open-source, and premium-quality startup website template for Next.js comes with everything you need to launch a startup, business, or SaaS website, including all essential sections, components, and pages.
+Welcome to the Job Portal Application! This project aims to provide a platform for employers to post job openings and for job seekers to find and apply for relevant positions. With a user-friendly interface and powerful search capabilities, our application strives to streamline the job search process.
 
-If you're looking for a high-quality and visually appealing, feature-rich Next.js Template for your next startup, SaaS, or business website, this is the perfect choice and starting point for you!
+## Installation
 
-### ✨ Key Features
-- Crafted for Startup and SaaS Business
-- Next.js 13 and Tailwind CSS
-- All Essential Business Sections and Pages
-- High-quality and Clean Design
-- Dark and Light Version
-- TypeScript Support
-and Much More ...
+To use the Job Portal Application, follow these steps:
 
-### [🔥 Get Startup Pro](https://nextjstemplates.com/templates/saas-starter-startup)
+1. Clone the repository to your local machine.
+2. Install the required dependencies by running `npm install`.
+3. Set up the database and configure the necessary environment variables.
+4. Start the application by running `npm start`.
 
-[![Startup Pro](https://cdn.nextjstemplates.com/Startup-Pro---Next.js-Starter-Template-for-SaaS-Startups-282e26f7-f543-4ae4-a777-ac306c08cce8.png)](https://nextjstemplates.com/templates/saas-starter-startup)
+For detailed installation instructions, refer to the [Installation Guide](docs/installation.md).
 
-Startup Pro - Expertly crafted for fully-functional, high-performing SaaS startup websites. Comes with with Authentication, Database, Blog, and all the essential integrations necessary for SaaS business sites.
+## Usage
 
+Once the application is up and running, you can perform the following actions:
 
-### [🚀 View Free Demo](https://startup.nextjstemplates.com/)
+- **Employers**: Post job openings, review applications, and manage your company profile.
+- **Job Seekers**: Browse job listings, apply for positions, and track your applications.
 
-### [🚀 View Pro Demo](https://startup-pro.nextjstemplates.com/)
+For a comprehensive guide on using the Job Portal Application, refer to the [User Guide](docs/user-guide.md).
 
-### [📦 Download](https://nextjstemplates.com/templates/startup)
+## Features
 
-### [🔥 Get Pro](https://nextjstemplates.com/templates/saas-starter-startup)
+- Easy job posting and application submission process.
+- Advanced search filters to find specific job listings.
+- User-friendly interface for both employers and job seekers.
+- Secure authentication and data privacy measures.
+- Email notifications for important updates and application status.
 
-### [🔌 Documentation](https://nextjstemplates.com/docs)
+## Contribution Guidelines
 
-### ⚡ Deploy Now
+We welcome and appreciate contributions from the community! To contribute to the Job Portal Application, please follow these guidelines:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNextJSTemplates%2Fstartup-nextjs)
+1. Fork the repository and create a new branch for your feature or bug fix.
+2. Implement your changes and ensure all tests pass.
+3. Submit a pull request with a detailed description of your changes.
 
-[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/NextJSTemplates/startup-nextjs)
+For more information on how to contribute, please refer to the [Contribution Guidelines](CONTRIBUTING.md).
 
+## License
 
-### 📄 License
-Startup is 100% free and open-source, feel free to use with your personal and commercial projects.
+The Job Portal Application is released under the [MIT License](LICENSE).
 
-### 💜 Support
-If you like the template, please star this repository to inspire the team to create more stuff like this and reach more users like you!
+## Contact
 
-### ✨ Explore and Download - Free [Next.js Templates](https://nextjstemplates.com)
+For any questions or feedback, please reach out to our team at jobportal@example.com. You can also connect with us on [Twitter](https://twitter.com/jobportalapp) for updates and announcements.
+
+Happy job hunting!

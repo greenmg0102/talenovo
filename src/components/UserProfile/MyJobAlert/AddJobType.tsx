@@ -3,12 +3,10 @@ import { GlobalOutlined } from '@ant-design/icons';
 import { Radio } from 'antd';
 import type { RadioChangeEvent } from 'antd';
 
-const AddJobType = () => {
-
-  const [value, setValue] = useState(1);
+const AddJobType = ({ setJobType, jobType }: any) => {
 
   const onChange = (e: RadioChangeEvent) => {
-    setValue(e.target.value);
+    setJobType(e.target.value);
   };
 
   return (
@@ -20,7 +18,7 @@ const AddJobType = () => {
         </p>
       </div>
       <div className="flex justify-center items-center flex-wrap px-4 sm:px-16">
-        <Radio.Group onChange={onChange} value={value}>
+        <Radio.Group onChange={onChange} value={jobType}>
           <Radio value={1}>On-Site</Radio>
           <Radio value={2}>Hybrid</Radio>
           <Radio value={3}>Remote</Radio>

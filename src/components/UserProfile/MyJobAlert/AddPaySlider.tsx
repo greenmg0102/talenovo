@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import { InputNumber, Slider } from 'antd'
 import { DollarOutlined } from '@ant-design/icons';
 
-const AddPaySlider = () => {
-
-  const [inputValue, setInputValue] = useState(50000);
+const AddPaySlider = ({ range, setRange }: any) => {
 
   const onChange = (newValue: number) => {
-    setInputValue(newValue);
+    setRange(newValue);
   };
 
   return (
@@ -24,7 +22,7 @@ const AddPaySlider = () => {
           min={1}
           max={200000}
           onChange={onChange}
-          value={typeof inputValue === 'number' ? inputValue : 0}
+          value={typeof range === 'number' ? range : 0}
           className='max-w-[500px] w-full'
         />
 
@@ -32,7 +30,7 @@ const AddPaySlider = () => {
           min={1}
           max={200000}
           style={{ margin: '0 16px' }}
-          value={inputValue}
+          value={range}
           onChange={onChange}
         />
       </div>

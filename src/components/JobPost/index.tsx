@@ -98,7 +98,11 @@ const JobPostMain = () => {
 
     if (category === 0) {
 
-      if (value.companyName.length > 0 && value.companyLink.length > 0) {
+      if
+        (
+        value.companyName.length > 0 &&
+        value.companyLink.length > 0 
+      ) {
         setLoading(true)
         result = await companyDatilPost(companyDetailInfo)
 

@@ -3,18 +3,15 @@ import { useState, useEffect } from 'react';
 import { Button, Input, Space } from 'antd';
 const { Search } = Input;
 
-const AddJobTitle = () => {
+const AddJobTitle = ({ titleList, setTitleList }: any) => {
 
   const [value, setValue] = useState("")
-  const [realIndustry, setRealIndustry] = useState([])
 
   const save = () => {
     if (value !== "") {
-      console.log("value", value);
-
-      let real = realIndustry
+      let real = titleList
       real.push(value)
-      setRealIndustry(real)
+      setTitleList(real)
       setValue("")
     }
   }
@@ -34,12 +31,12 @@ const AddJobTitle = () => {
             value={value}
             onChange={(e: any) => setValue(e.target.value)}
           />
-          <Button type="primary" onClick={save}>Submit</Button>
+          <Button type="primary" onClick={save}>Regist</Button>
         </Space.Compact>
       </div>
 
       <div className='flex justify-start items-center flex-wrap mt-4'>
-        {realIndustry.map((item: any, index: any) =>
+        {titleList.map((item: any, index: any) =>
           <p key={index} className='mr-2 mb-1 px-2 border border-gray-300 rounded-[4px] text-gray-500 text-[13px]'>{item}</p>
         )}
       </div>

@@ -7,8 +7,8 @@ import LandingDetail from "@/components/Hero/landingDetail";
 
 
 // export const metadata: Metadata = {
-//   title: "Free Next.js Template for Startup and SaaS",
-//   description: "This is Home for Startup Nextjs Template",
+//   title: "We support your career with AI",
+//   description: "This is Home for Talenovo",
 //   // other metadata
 // };
 

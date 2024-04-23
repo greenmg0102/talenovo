@@ -58,7 +58,6 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
       setJobCategory(reslutJobCategory)
       setJobCurrency(reslutCurrency)
       setJobCurrencyType(reslutCurrencyType)
-
     }
     fetchData()
 
@@ -67,7 +66,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
   return (
     <div>
       <div className="flex justify-between items-start flex-wrap">
-        <p className="w-full mb-4">General Information</p>
+        <p className="w-full mb-4">Add Job Details</p>
         <div className='mb-6 w-[48%]'>
           <TestInput
             textType={'text'}

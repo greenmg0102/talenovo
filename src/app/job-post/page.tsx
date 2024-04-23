@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Job Post | Hire technique",
-  description: "Post your company job and connect with the suitable team or agency",
+  description: "Post yoFind the people and talent you need to help your business thrive. Reach over 30000+ view pers month",
   // other metadata
 };
 
@@ -13,7 +13,7 @@ const JobPost = () => {
     <>
       <Breadcrumb
         pageName="Job Post"
-        description="Post your company job and connect with the suitable team or agency."
+        description="Post yoFind the people and talent you need to help your business thrive. Reach over 30000+ view pers month."
       />
 
       <section className="pb-[120px] pt-[12px]">

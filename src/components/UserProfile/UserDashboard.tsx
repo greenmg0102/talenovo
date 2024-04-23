@@ -65,9 +65,6 @@ const UserDashboard = ({ mybookmarkjob, postedJob, appliedJob, bookmark, skill, 
                 </button>
               )}
             </Tab>
-
-
-
           </Tab.List>
           <Tab.Panels>
             <div className="active pt-5">

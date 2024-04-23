@@ -4,9 +4,9 @@ import { Select, Button } from 'antd';
 import { Alert } from 'antd';
 import type { SelectProps } from 'antd';
 
-const AddIndustry = ({ industryList }: any) => {
+const AddIndustry = ({ industryList, setBuffer, buffer }: any) => {
 
-  const [buffer, setBuffer] = useState([])
+
   const [realIndustry, setRealIndustry] = useState([])
   const [validation, setValidaion] = useState(false)
 

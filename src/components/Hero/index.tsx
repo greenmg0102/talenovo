@@ -71,34 +71,33 @@ const Hero = ({ setIsDetail }: any) => {
   }, [])
 
   useEffect(() => {
-
-    if (email) {
-      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/get-user`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          // Add any additional headers if needed
-        },
-        body: JSON.stringify({
-          email,
-        }),
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json(); // Parse the response body as JSON
-        })
-        .then(data => {
-          // Handle the response data
-          //redirect to checkout page
-          setUserData(data.user);
-        })
-        .catch(error => {
-          // Handle errors
-          console.error('There was a problem with the fetch operation:', error);
-        });
-    }
+    // if (email) {
+    //   fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/get-user`, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       // Add any additional headers if needed
+    //     },
+    //     body: JSON.stringify({
+    //       email,
+    //     }),
+    //   })
+    //     .then(response => {
+    //       if (!response.ok) {
+    //         throw new Error('Network response was not ok');
+    //       }
+    //       return response.json(); // Parse the response body as JSON
+    //     })
+    //     .then(data => {
+    //       // Handle the response data
+    //       //redirect to checkout page
+    //       setUserData(data.user);
+    //     })
+    //     .catch(error => {
+    //       // Handle errors
+    //       console.error('There was a problem with the fetch operation:', error);
+    //     });
+    // }
   }, [email])
 
   useEffect(() => {
@@ -136,6 +135,7 @@ const Hero = ({ setIsDetail }: any) => {
       setToday(result.todayJob)
       setLocatedin(result.locatedin)
       setSkil(result.skill)
+      setUserData(result.jobalertsetting === null ? {} : result)
     }
 
     landingJobGetting()
@@ -150,7 +150,8 @@ const Hero = ({ setIsDetail }: any) => {
 
         let data = {
           skill: skil,
-          locatedin: locatedin
+          locatedin: locatedin,
+          ...userData
         }
 
         let result: any = await suggestJobs(data)
@@ -159,7 +160,7 @@ const Hero = ({ setIsDetail }: any) => {
       }
     }
     fetchSuggestJobs()
-  }, [locatedin, skil])
+  }, [locatedin, skil, userData])
 
   const Hit = ({ hit }: any) => {
     return (

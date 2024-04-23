@@ -3,8 +3,8 @@ import JobDetail from "@/components/JobDetail";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Free Next.js Template for Startup and SaaS",
-  description: "This is Home for Startup Nextjs Template",
+  title: "We support your career with AI",
+  description: "This is Home for Talenovo",
 };
 
 
