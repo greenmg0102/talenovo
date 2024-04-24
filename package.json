@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@bytescale/upload-widget-react": "^4.18.0",
     "@clerk/nextjs": "^4.29.7",
+    "@cloudinary/react": "^1.13.0",
+    "@cloudinary/url-gen": "^1.19.0",
     "@headlessui/react": "^1.7.18",
     "@meilisearch/instant-meilisearch": "^0.11.0",
     "antd": "^5.15.2",

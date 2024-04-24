@@ -2,12 +2,13 @@
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
 import { currentUser } from '@clerk/nextjs';
+import { ObjectId } from 'mongodb';
 
 export async function POST(req: any, res: any) {
 
   let { db } = await connectToDatabase();
   let data = await req.json()
-  const user = await currentUser();
+  const user: any = await currentUser();
 
   data.recruiterId = user.id
   data.isComplete = false
@@ -20,7 +21,13 @@ export async function POST(req: any, res: any) {
       updateData.$set[element] = data[element];
     });
 
-    await db.collection("myjobposts").findOneAndUpdate({ _id: data._id }, updateData);
+    await db.collection("myjobposts")
+      .findOneAndUpdate({ _id: new ObjectId(data._id) }, updateData)
+      .then((result: any) => {
+      })
+      .catch((err: any) => {
+        console.log("err", err);
+      })
 
   } else {
     await db

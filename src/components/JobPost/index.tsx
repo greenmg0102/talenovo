@@ -14,6 +14,7 @@ const JobPostMain = () => {
   const [loading, setLoading] = useState(false)
 
   const [value, setValue] = useState({
+    logo: "",
     companyName: "",
     companyLink: "",
     jobTitle: "",
@@ -100,10 +101,12 @@ const JobPostMain = () => {
 
       if
         (
+        value.logo.length > 0 &&
         value.companyName.length > 0 &&
-        value.companyLink.length > 0 
+        value.companyLink.length > 0
       ) {
         setLoading(true)
+
         result = await companyDatilPost(companyDetailInfo)
 
         setValue({ ...value, ...result })

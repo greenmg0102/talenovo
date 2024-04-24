@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 const JobPost = () => {
   return (
     <>
-      <Breadcrumb
+      {/* <Breadcrumb
         pageName="Job Post"
         description="Post yoFind the people and talent you need to help your business thrive. Reach over 30000+ view pers month."
-      />
+      /> */}
 
-      <section className="pb-[120px] pt-[12px]">
+      <section className="pb-[120px] pt-[48px]">
         <div className="container">
           <JobPostMain />
         </div>

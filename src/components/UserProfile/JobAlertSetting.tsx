@@ -54,7 +54,6 @@ const JobAlertSetting = ({ }: any) => {
     }
 
     let result = await jobAlertConfig(data)
-    console.log("result", result);
   }
 
   return (
