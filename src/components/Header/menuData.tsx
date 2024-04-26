@@ -16,12 +16,12 @@ const menuData: Menu[] = [
   {
     id: 3,
     title: "Premium",
-    path: "/price",
+    path: "/premium",
     newTab: false,
   },
   {
     id: 4,
-    title: "My Profile",
+    title: "My Jobs",
     path: "/user-profile",
     newTab: false,
   },
