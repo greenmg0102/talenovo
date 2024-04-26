@@ -5,6 +5,7 @@ export default authMiddleware({
   publicRoutes: [
     "/",
     "/contact",
+    "/premium",
     "/api/webhooks/clerk",
     "/api/webhooks/stripe",
     "/api/stripe/create-checkout-session",
