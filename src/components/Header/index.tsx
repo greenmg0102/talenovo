@@ -162,7 +162,7 @@ const Header = () => {
                         )}
                       </li>
                     ))}
-                    {usePathName === '/price' ?
+                    {/* {usePathName === '/price' ?
                       null :
                       < li className="group relative">
                         <a
@@ -174,7 +174,7 @@ const Header = () => {
                           Pricing
                         </a>
                       </li>
-                    }
+                    } */}
                   </ul>
                 </nav>
               </div>
