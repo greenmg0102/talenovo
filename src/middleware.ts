@@ -11,7 +11,8 @@ export default authMiddleware({
     "/api/stripe/test",
     "/api/automation/scrapping-start",
     "/api/service/geo",
-    "/api/user/landing-job"
+    "/api/user/landing-job",
+    "/api/user/user-profile/user-premium-status"
   ], // Add "/api/webhooks/clerk" to publicRoutes
   ignoredRoutes: [], // Optionally add "/api/webhooks/clerk" to ignoredRoutes
 });

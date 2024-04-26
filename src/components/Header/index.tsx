@@ -46,7 +46,7 @@ const Header = () => {
 
     async function fetchData() {
       let result = await userPremiumStatus()
-      setUserStatus(result.status === 'active')
+      if (result !== null) setUserStatus(result.status === 'active')
     }
     fetchData()
   });
