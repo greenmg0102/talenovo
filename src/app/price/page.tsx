@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const PricePage = () => {
   return (
     <>
-      <section className="pb-[60px] pt-12 sm:pt-20 md:pt-40">
+      <section className="pb-[60px] pt-12">
         <div className="flex justify-center items-start flex-wrap">
           <Pricing isSectionTitle={false} />
         </div>

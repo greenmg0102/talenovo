@@ -10,7 +10,7 @@ export async function POST(req: any, res: any) {
   let { db } = await connectToDatabase();
 
   let data = await req.json()
-  const user = await currentUser();
+  const user: any = await currentUser();
 
   data.recruiterId = user.id
 
@@ -19,6 +19,9 @@ export async function POST(req: any, res: any) {
   Object.keys(data).filter((key: any) => key !== "_id").forEach((element: any) => {
     updateData.$set[element] = data[element];
   });
+
+  console.log("updateData", updateData);
+  
 
   await db.collection("myjobposts").findOneAndUpdate({ _id: new ObjectId(data._id) }, updateData);
 

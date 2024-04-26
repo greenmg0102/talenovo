@@ -132,6 +132,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
           />
         </div>
         <div className='mb-4 w-[100%]'>
+          <p className='mb-2 font-semibold text-[14px]'>Description *</p>
           <ReactQuill
             theme="snow"
             value={params.description}
@@ -146,8 +147,6 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
             style={{ minHeight: '200px' }}
           />
         </div>
-
-        <p className="w-full mb-4 pt-8 border border-dashed border-t-[1px] border-l-0 border-r-0 border-b-0">Compensation</p>
 
         <div className='mb-12 w-[22%]'>
           <TestInput
@@ -186,6 +185,18 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
             warn={warn}
             title={"Pay Period"}
             list={jobCurrencyType}
+            onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
+          />
+        </div>
+
+        <div className='mb-6 w-full'>
+          <TestInput
+            textType={'text'}
+            value={value}
+            type={'jobApplyLink'}
+            warn={warn}
+            title={"Job Apply Url *"}
+            warningText={"The job apply url field is required."}
             onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
           />
         </div>

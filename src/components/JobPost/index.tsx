@@ -30,7 +30,8 @@ const JobPostMain = () => {
     currencyType: undefined,
     applyBy: undefined,
     contactInfo: undefined,
-    premiumType: undefined
+    premiumType: undefined,
+    jobApplyLink: ""
   })
 
   const [warn, setWarn] = useState({
@@ -48,7 +49,8 @@ const JobPostMain = () => {
     currencyType: "",
     applyBy: "",
     contactInfo: "",
-    premiumType: ""
+    premiumType: "",
+    jobApplyLink: ""
   })
 
   const [params, setParams] = useState<any>(JSON.parse(JSON.stringify({
@@ -124,19 +126,20 @@ const JobPostMain = () => {
       real.description = params.description
       real.descriptionText = params.descriptionText
 
-
       if (
-        real.jobTitle.length > 0 && real.type !== undefined &&
+        real.jobTitle.length > 50 && real.type !== undefined &&
+        real.jobApplyLink.length > 50 &&
         real.category !== undefined && real.location !== undefined &&
         real.tag.length > 0 &&
         real.description !== undefined &&
         real.minimumPay !== undefined && real.maximumPay !== undefined &&
         real.description !== "" && real.descriptionText !== "" &&
+        real.descriptionText.length > 250 &&
         real.currency !== undefined && real.currencyType !== undefined
         // value.applyBy !== undefined
       ) {
         setLoading(true)
-        result = await jobDatilPost(companyDetailInfo)
+        result = await jobDatilPost(real)
         setValue({ ...value, ...result })
         setLoading(false)
         setCategory(Nextcategory)

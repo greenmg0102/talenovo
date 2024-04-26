@@ -13,7 +13,7 @@ export default async function handler(
 
     try {
 
-        const { email, priceId, clerkId, packageName } = req.body;
+        const { email, priceId, clerkId, packageName, redirectLink } = req.body;
 
         // Create the Checkout Session
         const session = await stripe.checkout.sessions.create({
@@ -33,7 +33,7 @@ export default async function handler(
                 },
             },
             customer_email: email,
-            success_url: "http://104.128.55.140:3000/user-profile", // Redirect URL after successful payment
+            success_url: redirectLink === undefined ? "http://104.128.55.140:3000/user-profile" : redirectLink, // Redirect URL after successful payment
             cancel_url: "http://104.128.55.140:3000/price", // Redirect URL after cancelled payment
         });
 

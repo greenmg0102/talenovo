@@ -24,6 +24,19 @@ export default function CarouselItem({ subResult }: any) {
                             >
                                 <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={50} height={50} />
                                 <p className="text-center text-gray-700 text-[12px]">{item.companyName}</p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+                <div className="flex justify-between items-center">
+                    <div className="flex justify-center items-start">
+                        {subResult.map((item: any, index: any) =>
+                            <div
+                                key={index}
+                                className="w-1/4 flex justify-center items-center flex-col"
+                            >
+                                <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={50} height={50} />
+                                <p className="text-center text-gray-700 text-[12px]">{item.companyName}</p>
                                 {/* <p className="text-center text-gray-400 text-[13px]">{item.count} Jobs</p> */}
                             </div>
                         )}
@@ -37,21 +50,7 @@ export default function CarouselItem({ subResult }: any) {
                                 className="w-1/4 flex justify-center items-center flex-col"
                             >
                                 <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={50} height={50} />
-                                <p className="text-center text-gray-100 text-[12px]">{item.companyName}</p>
-                                {/* <p className="text-center text-gray-400 text-[13px]">{item.count} Jobs</p> */}
-                            </div>
-                        )}
-                    </div>
-                </div>
-                <div className="flex justify-between items-center">
-                    <div className="flex justify-center items-start">
-                        {subResult.map((item: any, index: any) =>
-                            <div
-                                key={index}
-                                className="w-1/4 flex justify-center items-center flex-col"
-                            >
-                                <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={50} height={50} />
-                                <p className="text-center text-gray-100 text-[12px]">{item.companyName}</p>
+                                <p className="text-center text-gray-700 text-[12px]">{item.companyName}</p>
                                 {/* <p className="text-center text-gray-400 text-[13px]">{item.count} Jobs</p> */}
                             </div>
                         )}

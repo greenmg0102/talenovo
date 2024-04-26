@@ -177,7 +177,7 @@ const Hero = ({ setIsDetail }: any) => {
     <>
       <section
         id="home"
-        className='z-10 bg-white pb-16 pt-[100px] md:pb-[40px] md:pt-[100px] xl:pb-[50px] xl:pt-[120px] 2xl:pb-[60px] 2xl:pt-[140px]'
+        className='z-10 bg-white pb-16 pt-[50px] md:pb-[40px] md:pt-[50px] xl:pb-[50px] xl:pt-[70px] 2xl:pb-[60px] 2xl:pt-[100px]'
       // className="z-10 overflow-hidden bg-white pb-16 pt-[30px] md:pb-[40px] md:pt-[120px] xl:pb-[50px] xl:pt-[140px] 2xl:pb-[60px] 2xl:pt-[160px]"
       // className="relative z-10 overflow-hidden bg-white pb-16 pt-[30px] md:pb-[40px] md:pt-[120px] xl:pb-[50px] xl:pt-[140px] 2xl:pb-[60px] 2xl:pt-[160px]"
       >
@@ -328,9 +328,7 @@ const Hero = ({ setIsDetail }: any) => {
                       </div>
                       <div className='flex justify-center mb-12'>
                         {userData && Object.keys(userData).length > 0 ?
-                          <Pagination showLast={true} limit={3} offset={0} />
-                          :
-                          null
+                          <Pagination showLast={true} limit={3} offset={0} /> : null
                         }
                       </div>
                     </div>
@@ -362,11 +360,11 @@ const Hero = ({ setIsDetail }: any) => {
                 </InstantSearch>
 
               </div>
-              <Features />
+              {/* <Features /> */}
 
               {/* <PriceCard /> */}
               <Testimonials />
-              <section id="price"></section>
+              {/* <section id="price"></section>
 
               <div className='dark:bg-bg-color-dark bg-gray-light pt-12'>
                 <div
@@ -382,7 +380,7 @@ const Hero = ({ setIsDetail }: any) => {
                   </h4>
                 </div>
                 <Pricing isSectionTitle={true} />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

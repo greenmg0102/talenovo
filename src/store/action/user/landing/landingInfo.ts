@@ -27,8 +27,7 @@ export async function carouselIndustry({ list }: any) {
                 oneUniqueCompanyNames.add(result.companyName);
                 oneUniqueCompanyData.push({
                     companyName: result.companyName,
-                    companyLogo: result.companyLogo,
-                    count: One.data.facetDistribution.companyName[result.companyName]
+                    companyLogo: result.companyLogo
                 });
             }
         });

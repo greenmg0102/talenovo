@@ -9,12 +9,16 @@ import { useUser } from '@clerk/nextjs';
 import menuData from "./menuData";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { scarppingStart } from '@/store/action/automation/scraping'
+import { userPremiumStatus } from '@/store/action/user/userProfile/userInfo'
 
 const Header = () => {
 
   const { user } = useUser();
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
+
+  const [userStatus, setUserStatus] = useState(false)
+
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen);
   };
@@ -33,12 +37,18 @@ const Header = () => {
     async function startScraping() {
       scarppingStart()
     }
-
     startScraping()
   }, [])
 
   useEffect(() => {
+
     window.addEventListener("scroll", handleStickyNavbar);
+
+    async function fetchData() {
+      let result = await userPremiumStatus()
+      setUserStatus(result.status)
+    }
+    fetchData()
   });
 
   // submenu handler
@@ -156,7 +166,7 @@ const Header = () => {
                       null :
                       < li className="group relative">
                         <a
-                          href="/#price"
+                          href="/price"
                           className={clsx(
                             'flex py-[8px] px-[16px] hover:bg-gray-200 hover:rounded-[4px] text-base lg:inline-flex transition-all hover:shadow-md hover:text-primary',
                           )}
@@ -185,7 +195,7 @@ const Header = () => {
                   </SignedOut>
                 </div>
                 <Link
-                  href="/job-post"
+                  href={userStatus ? "/job-post" : "/job-post-feature"}
                   className="ease-in-up hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-white shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9"
                 >
                   Job Post

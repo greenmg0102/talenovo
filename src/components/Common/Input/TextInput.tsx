@@ -4,7 +4,7 @@ const TextInput = ({ value, title, warningText, warn, type, onchange, textType }
 
   return (
     <div>
-      <p className='mb-2'>{title}</p>
+      <p className='mb-2 font-semibold text-[14px]'>{title}</p>
       <div
         className={
           clsx(
