@@ -82,13 +82,17 @@ const PaidJobPostItem = ({ item, setIsDetail }: any) => {
 
       </div>
       <p className="text-[12px] text-gray-600 mb-2">{item && item.descriptionText && item.descriptionText.length > 300 ? item.descriptionText.slice(0, 300) + " ..." : item.descriptionText}</p>
-      <div className="flex justify-start items-center flex-wrap">
-        {item.tag.map((item: any, index: any) =>
-          <p key={index} className="px-1 py-[1px] mr-2 border border-gray-300 text-gray-500 hover:bg-blue-400 hover:text-gray-50 transition-all rounded-[4px] text-[10px] mr-1 mb-[2px]">
-            {item}
-          </p>
-        )}
+      <div className="flex justify-between items-center">
+        <div className="flex justify-start items-center flex-wrap">
+          {item.tag.map((item: any, index: any) =>
+            <p key={index} className="px-1 py-[1px] mr-2 border border-gray-300 text-gray-500 hover:bg-blue-400 hover:text-gray-50 transition-all rounded-[4px] text-[10px] mr-1 mb-[2px]">
+              {item}
+            </p>
+          )}
+        </div>
+        <p className="border border-red-500 rounded-[3px] px-2 py-[2px] mb-0 text-[10px] text-red-500">Featured</p>
       </div>
+
     </div>
   );
 };
