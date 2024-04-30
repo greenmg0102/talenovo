@@ -19,7 +19,7 @@ const NextPrevious = ({ category, setCategory, loading }: any) => {
         type="button"
         className={clsx(
           "transition-all",
-          category === 2 ? 'invisible' : "btn btn-warning flex items-center rounded-[6px] py-[4px] px-[18px] hover:shadow-lg",
+          "btn btn-warning flex items-center rounded-[6px] py-[4px] px-[18px] hover:shadow-lg",
           loading ? "border border-red-500 bg-gray-100 text-red-500" : "bg-red-500 text-gray-100"
         )}
         onClick={() => setCategory(category + 1)}
@@ -29,7 +29,8 @@ const NextPrevious = ({ category, setCategory, loading }: any) => {
           :
           null
         }
-        Next
+        {category === 2 ? "Submit" : "Next"}
+
         <svg viewBox="0 0 1024 1024" focusable="false" data-icon="swap-right" width="1em" height="1em" fill="currentColor" aria-hidden="true" className="ml-1"><path d="M873.1 596.2l-164-208A32 32 0 00684 376h-64.8c-6.7 0-10.4 7.7-6.3 13l144.3 183H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h695.9c26.8 0 41.7-30.8 25.2-51.8z"></path></svg>
       </button>
     </div>

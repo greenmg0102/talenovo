@@ -44,7 +44,7 @@ const CompoanyInfo = ({ value, warn, setValue }: any) => {
     <div>
       <p className="mb-4">Company Details</p>
       <div className="flex justify-between items-start flex-wrap">
-        <div className="w-[250px] h-[200px] border rounded-[12px] overflow-hidden flex justify-center items-center border border-red-400">
+        <div className="w-[250px] h-[200px] border rounded-[12px] overflow-hidden flex justify-center items-center border border-gray-400">
 
           <input ref={inputRef} type="file" name="myImage" accept="image/*" className='hidden' onChange={handleImageChange} />
           {selectedImage ?

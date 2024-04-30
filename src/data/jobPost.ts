@@ -9,7 +9,7 @@ export const JobPostingMileston = [
   },
   {
     title: 'Step 3',
-    content: 'Payment'
+    content: 'Final'
   },
 ];
 

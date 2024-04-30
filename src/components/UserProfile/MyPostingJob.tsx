@@ -1,23 +1,16 @@
 'use client '
 import { useState, useEffect } from 'react';
-import { myJobPost } from '@/store/action/user/userProfile/myjobpost'
 import { Alert } from 'antd';
 import MyJobPostItem from '@/components/UserProfile/MyJobPost/MyJobPostItem'
 
-const MyPostingJob = () => {
+const MyPostingJob = ({ myPostedJob, setIsDetail }: any) => {
 
-  const [list, setList] = useState([])
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     setLoading(true)
-    async function fetchData() {
-      const res = await myJobPost()
-      setList(res.myjobposts)
-      setLoading(false)
-    }
-    fetchData()
-  }, []);
+    if (myPostedJob.length > 0) setLoading(false)
+  }, [myPostedJob]);
 
   return (
     <div>
@@ -27,12 +20,13 @@ const MyPostingJob = () => {
         </div>
         :
         <div>
-          {list.length > 0 ?
+          {myPostedJob.length > 0 ?
             <>
-              {list.map((item: any, index: any) =>
+              {myPostedJob.map((item: any, index: any) =>
                 <MyJobPostItem
                   key={index}
                   item={item}
+                  setIsDetail={(data: any) => setIsDetail(data)}
                 />
               )}
             </>
@@ -41,7 +35,7 @@ const MyPostingJob = () => {
               message={
                 <p>
                   There are no posted job, if you like to post a job, please click
-                  <a href="http://195.35.32.163:3000/job-post"  target="_blank" className='text-bold text-blue-500 hover:underline px-1'>here</a>
+                  <a href="http://195.35.32.163:3000/job-post" target="_blank" className='text-bold text-blue-500 hover:underline px-1'>here</a>
                   to post a job
                 </p>
               }

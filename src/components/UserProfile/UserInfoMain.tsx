@@ -5,6 +5,7 @@ import { userInitialInfo } from '@/store/action/user/userProfile/userInfo';
 import UserDashboard from '@/components/UserProfile/UserDashboard';
 import { Spin } from 'antd';
 import { myJobAlert, myBookMarkJob } from '@/store/action/user/userProfile/myjobalert'
+import { myJobPost } from '@/store/action/user/userProfile/myjobpost'
 
 const UserInfoMain = () => {
 
@@ -32,6 +33,7 @@ const UserInfoMain = () => {
 
   const [alertingJob, setAlertingJob] = useState([])
   const [bookJob, setBookJob] = useState([])
+  const [postedJob, setPostedJob] = useState([])
 
 
   useEffect(() => {
@@ -43,6 +45,9 @@ const UserInfoMain = () => {
 
       let result2 = await myBookMarkJob()
       if (result2.isOkay) setBookJob(result2.result)
+
+      let result3 = await myJobPost()
+      setPostedJob(result3.myjobposts)
     }
 
     fecthData()
@@ -98,6 +103,7 @@ const UserInfoMain = () => {
             skill={userInfo.skill}
             locatedin={userInfo.locatedin}
             postedJob={userInfo.postedJob}
+            myPostedJob={postedJob}
             appliedJob={userInfo.appliedJob}
             alertingJob={alertingJob}
             bookJob={bookJob}

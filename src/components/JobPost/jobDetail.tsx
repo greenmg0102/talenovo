@@ -60,9 +60,9 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
       setJobCurrencyType(reslutCurrencyType)
     }
     fetchData()
-
   }, [])
 
+  
   return (
     <div>
       <div className="flex justify-between items-start flex-wrap">

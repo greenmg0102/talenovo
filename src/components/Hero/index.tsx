@@ -11,8 +11,9 @@ import Carousel from '@/components/Hero/carousel/Carousel'
 import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
 import JobCard from "@/components/Hero/job/jobCard";
 import { suggestJobs } from '@/store/action/user/landing/suggestion'
-import { landingInfo } from '@/store/action/user/landing/landingInfo'
+import { landingInfo, paidJobGet } from '@/store/action/user/landing/landingInfo'
 import { message, Alert, Tooltip } from 'antd';
+import PaidJobPostItem from '@/components/Hero/job/PaidJobPostItem'
 import PriceCard from '@/components/Hero/priceCard'
 import clsx from 'clsx'
 import { locationDetecting } from '@/store/action/user/service/geo'
@@ -34,8 +35,8 @@ import {
 } from "react-instantsearch-dom";
 
 const searchClient = instantMeiliSearch(
-  'https://ms-2eabdf8fdac6-9012.nyc.meilisearch.io',
-  '45949bbe2bf65ebe9aa08012ed5742c1373cc310',
+  'https://ms-1dd1c86bf47e-9385.nyc.meilisearch.io',
+  'e6c3cf035914f999bc89bdc1c13aa1bcfb930fb2',
   {
     finitePagination: true
   }
@@ -49,6 +50,8 @@ const Hero = ({ setIsDetail }: any) => {
 
   const [total, setTotal] = useState(0);
   const [today, setToday] = useState(0);
+  const [paidJobList, setPaidJobList] = useState([]);
+
   const [companyCount, setCompanyCount] = useState(0);
   const [industry, setIndustry] = useState(0);
   const [locatedin, setLocatedin] = useState(null);
@@ -71,33 +74,12 @@ const Hero = ({ setIsDetail }: any) => {
   }, [])
 
   useEffect(() => {
-    // if (email) {
-    //   fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/get-user`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       // Add any additional headers if needed
-    //     },
-    //     body: JSON.stringify({
-    //       email,
-    //     }),
-    //   })
-    //     .then(response => {
-    //       if (!response.ok) {
-    //         throw new Error('Network response was not ok');
-    //       }
-    //       return response.json(); // Parse the response body as JSON
-    //     })
-    //     .then(data => {
-    //       // Handle the response data
-    //       //redirect to checkout page
-    //       setUserData(data.user);
-    //     })
-    //     .catch(error => {
-    //       // Handle errors
-    //       console.error('There was a problem with the fetch operation:', error);
-    //     });
-    // }
+    async function fetchData() {
+      let result = await paidJobGet()
+      console.log("result", result.myjobposts);
+      setPaidJobList(result.myjobposts)
+    }
+    fetchData()
   }, [email])
 
   useEffect(() => {
@@ -324,6 +306,17 @@ const Hero = ({ setIsDetail }: any) => {
                       <Carousel />
 
                       <div className="mb-4">
+                        {paidJobList.map((item: any, index: any) =>
+                          <div
+                            key={index}
+                            className="border border-gray-300 bg-white rounded-md px-2 mb-2 cursor-pointer transition-all hover:shadow-lg hover:border-blue-500"
+                          >
+                            <PaidJobPostItem
+                              item={item}
+                              setIsDetail={(data: any) => setIsDetail(data)}
+                            />
+                          </div>
+                        )}
                         <Hits hitComponent={Hit} />
                       </div>
                       <div className='flex justify-center mb-12'>
@@ -383,9 +376,9 @@ const Hero = ({ setIsDetail }: any) => {
               </div> */}
             </div>
           </div>
-        </div>
+        </div >
 
-      </section>
+      </section >
     </>
   );
 };

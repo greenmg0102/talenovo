@@ -12,7 +12,7 @@ export async function GET(req: any, res: any) {
 
   let result = await db
     .collection('myjobposts')
-    .findOne({ recruiterId: user.id, isComplete: false });
+    .findOne({ recruiterId: user.id, postStatus: 0 });
 
   return NextResponse.json(result);
 

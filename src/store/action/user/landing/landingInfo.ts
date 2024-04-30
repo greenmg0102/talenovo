@@ -1,8 +1,18 @@
 import axios from 'axios';
 
-const host = 'https://ms-2eabdf8fdac6-9012.nyc.meilisearch.io';
-const apiKey = '45949bbe2bf65ebe9aa08012ed5742c1373cc310';
+const host = 'https://ms-1dd1c86bf47e-9385.nyc.meilisearch.io';
+const apiKey = 'e6c3cf035914f999bc89bdc1c13aa1bcfb930fb2';
 const indexName = 'title';
+
+export async function paidJobGet() {
+
+    const res = await fetch('http://104.128.55.140:3000/api/user/landing-job', {
+        method: 'POST',
+        body: JSON.stringify({})
+    });
+
+    return await res.json();
+}
 
 export async function carouselIndustry({ list }: any) {
     try {
@@ -20,7 +30,7 @@ export async function carouselIndustry({ list }: any) {
         const oneSearchResults = One.data.hits;
 
         const oneUniqueCompanyNames = new Set();
-        const oneUniqueCompanyData = [];
+        const oneUniqueCompanyData: any = [];
 
         oneSearchResults.forEach((result: any) => {
             if (!oneUniqueCompanyNames.has(result.companyName)) {
@@ -49,7 +59,7 @@ export async function carouselIndustry({ list }: any) {
         const twoSearchResults = Two.data.hits;
 
         const twoUniqueCompanyNames = new Set();
-        const twoUniqueCompanyData = [];
+        const twoUniqueCompanyData: any = [];
 
         twoSearchResults.forEach((result: any) => {
             if (!twoUniqueCompanyNames.has(result.companyName)) {

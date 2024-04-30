@@ -8,7 +8,6 @@ export async function jobPostStatus() {
   return await res.json();
 }
 
-
 export async function companyDatilPost(companyDetailInfo: any) {
 
   const res = await fetch('http://104.128.55.140:3000/api/admin/job-post/company-detail', {

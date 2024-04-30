@@ -1,8 +1,8 @@
 
 import axios from 'axios';
 
-const host = 'https://ms-2eabdf8fdac6-9012.nyc.meilisearch.io';
-const apiKey = '45949bbe2bf65ebe9aa08012ed5742c1373cc310';
+const host = 'https://ms-1dd1c86bf47e-9385.nyc.meilisearch.io';
+const apiKey = 'e6c3cf035914f999bc89bdc1c13aa1bcfb930fb2';
 const indexName = 'title';
 
 import { NextResponse } from "next/server";

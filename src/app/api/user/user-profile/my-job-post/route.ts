@@ -6,11 +6,11 @@ import { currentUser } from '@clerk/nextjs';
 export async function POST(req: any, res: any) {
 
   let { db } = await connectToDatabase();
-  const user = await currentUser();
+  const user:any = await currentUser();
   const data = await req.json()
 
   const myjobposts = await db.collection("myjobposts")
-    .find({ recruiterId: user.id, isComplete: false, isComfirm: false })
+    .find({ recruiterId: user.id, postStatus: 2 })
     .toArray();
 
   return NextResponse.json({

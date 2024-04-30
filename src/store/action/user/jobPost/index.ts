@@ -8,7 +8,6 @@ export async function jobPostStatus() {
   return await res.json();
 }
 
-
 export async function companyDatilPost(companyDetailInfo: any) {
 
   const res = await fetch('http://104.128.55.140:3000/api/user/job-post/company-detail', {
@@ -22,6 +21,16 @@ export async function companyDatilPost(companyDetailInfo: any) {
 export async function jobDatilPost(jobDetailInfo: any) {
 
   const res = await fetch('http://104.128.55.140:3000/api/user/job-post/job-detail', {
+    method: 'POST',
+    body: JSON.stringify(jobDetailInfo)
+  });
+
+  return await res.json();
+}
+
+export async function changejobPostStatus(jobDetailInfo: any) {
+
+  const res = await fetch('http://104.128.55.140:3000/api/user/job-post/job-submit', {
     method: 'POST',
     body: JSON.stringify(jobDetailInfo)
   });

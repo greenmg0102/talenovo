@@ -6,10 +6,10 @@ import { ObjectId } from 'mongodb';
 
 export async function POST(req: any, res: any) {
 
-  let insertedId = null
   let { db } = await connectToDatabase();
 
   let data = await req.json()
+
   const user: any = await currentUser();
 
   data.recruiterId = user.id
@@ -22,10 +22,8 @@ export async function POST(req: any, res: any) {
 
   await db.collection("myjobposts").findOneAndUpdate({ _id: new ObjectId(data._id) }, updateData);
 
-  let result = await db
-    .collection('myjobposts')
-    .findOne({ _id: insertedId });
-
-  return NextResponse.json(result);
+  return NextResponse.json({
+    isOkay: true
+  });
 
 }

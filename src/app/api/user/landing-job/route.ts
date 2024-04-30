@@ -7,8 +7,8 @@ import { currentUser } from '@clerk/nextjs';
 export async function GET(req: any, res: any) {
 
   const client = new MeiliSearch({
-    host: 'https://ms-2eabdf8fdac6-9012.nyc.meilisearch.io',
-    apiKey: '45949bbe2bf65ebe9aa08012ed5742c1373cc310',
+    host: 'https://ms-1dd1c86bf47e-9385.nyc.meilisearch.io',
+    apiKey: 'e6c3cf035914f999bc89bdc1c13aa1bcfb930fb2',
   });
 
   const user: any = await currentUser();
@@ -27,6 +27,21 @@ export async function GET(req: any, res: any) {
     locatedin: localInfo.data.city.names.en + ", " + localInfo.data.country.names.en,
     skill: isMe === null ? [] : isMe.skill,
     jobalertsetting: isMe === null ? null : isMe.jobalertsetting,
+  });
+
+}
+
+
+export async function POST(req: any, res: any) {
+
+  let { db } = await connectToDatabase();
+
+  const myjobposts = await db.collection("myjobposts")
+    .find({ postStatus: 2 })
+    .toArray();
+
+  return NextResponse.json({
+    myjobposts: myjobposts,
   });
 
 }

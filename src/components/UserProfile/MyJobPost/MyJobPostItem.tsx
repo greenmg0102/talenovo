@@ -1,10 +1,39 @@
+import clsx from 'clsx'
 
-const MyJobPostItem = ({ item }: any) => {
+const MyJobPostItem = ({ item, setIsDetail }: any) => {
   return (
     <div className="px-2 py-4 border border-gray-200 rounded-[6px] mb-4 hover:shadow-lg transition-all">
-      <div className="flex justify-between itesm-center">
-        <p className="text-gray-900 text-[18px] pb-4">{item.jobTitle}</p>
-        <p className="text-blue-900 text-[12px] pb-4">2024-03-08</p>
+      <div className="flex justify-between items-start">
+        <p
+          className="text-gray-900 text-[18px] pb-2 w-[calc(100%-100px)] hover:underline hover:cursor-pointer"
+          onClick={() => setIsDetail(item)}
+        >
+          {item.jobTitle}
+        </p>
+        <div className="w-[100px] flex justify-center flex-col items-end">
+          <p className="text-blue-900 text-[12px] pb-0 text-right">2024-03-08</p>
+          <div
+            className={clsx(
+              "text-[12px] pb-4 text-right rounded-[4px] h-[12px] w-[90px] text-center flex justify-end",
+              item && item.postStatus && item.postStatus === 1 ? "text-blue-600 border-blue-600" : "text-gray-600 border-gray-600"
+            )}
+          >
+            {
+              item &&
+                item.postStatus &&
+                item.postStatus === 1 ?
+                <div className='flex justify-end items-center mt-2'>
+                  <svg viewBox="64 64 896 896" focusable="false" data-icon="clock-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"></path></svg>
+                  <p className='ml-1'>Waiting</p>
+                </div>
+                :
+                <div className='flex justify-end items-center mt-2'>
+                  <svg viewBox="64 64 896 896" focusable="false" data-icon="file-done" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M688 312v-48c0-4.4-3.6-8-8-8H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8zm-392 88c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm376 116c-119.3 0-216 96.7-216 216s96.7 216 216 216 216-96.7 216-216-96.7-216-216-216zm107.5 323.5C750.8 868.2 712.6 884 672 884s-78.8-15.8-107.5-44.5C535.8 810.8 520 772.6 520 732s15.8-78.8 44.5-107.5C593.2 595.8 631.4 580 672 580s78.8 15.8 107.5 44.5C808.2 653.2 824 691.4 824 732s-15.8 78.8-44.5 107.5zM761 656h-44.3c-2.6 0-5 1.2-6.5 3.3l-63.5 87.8-23.1-31.9a7.92 7.92 0 00-6.5-3.3H573c-6.5 0-10.3 7.4-6.5 12.7l73.8 102.1c3.2 4.4 9.7 4.4 12.9 0l114.2-158c3.9-5.3.1-12.7-6.4-12.7zM440 852H208V148h560v344c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h272c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8z"></path></svg>
+                  <p className='ml-1'>Approved</p>
+                </div>
+            }
+          </div>
+        </div>
       </div>
       <p className="text-gray-500 text-[14px]">{item.descriptionText.length > 300 ? item.descriptionText.slice(0, 300) + " ..." : item.descriptionText}</p>
       <div className="flex justify-between items-center border border-dashed border-r-0 border-l-0 border-b-0 mt-4 pt-2">
@@ -17,7 +46,7 @@ const MyJobPostItem = ({ item }: any) => {
           {item.tag.map((each: any, order: any) => <p key={order} className="border rounded-[4px] text-[12px] px-2">{each}</p>)}
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

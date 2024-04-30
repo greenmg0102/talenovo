@@ -1,10 +1,28 @@
 'use client'
 import { useState, useEffect } from 'react';
 import JobItem from '@/components/Admin/jobManaging/JobItem'
+import { changejobPostStatus } from "@/store/action/user/jobPost"
+import { message } from 'antd';
 
 const OurJobPostAdmin = () => {
 
   const [list, setList] = useState([])
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const changeStatus = async (item: any, status: any) => {
+    let data = {
+      ...item,
+      postStatus: status
+    }
+    let result = await changejobPostStatus(data)
+
+    if (status === 2) {
+      if (result.isOkay) messageApi.success("Approved");
+      else messageApi.error("Approval failed");
+    }
+
+    if (status === 3) messageApi.info("It was rejected");
+  }
 
   useEffect(() => {
 
@@ -23,6 +41,8 @@ const OurJobPostAdmin = () => {
 
   return (
     <div>
+      {contextHolder}
+
       <div className="flex justify-between bg-gray-200 p-1 rounded-[2px]">
         <p className="w-[40px]">
           No
@@ -43,6 +63,7 @@ const OurJobPostAdmin = () => {
           key={index}
           item={item}
           order={index}
+          changeStatus={(item: any, status: any) => changeStatus(item, status)}
         />
       )}
     </div>

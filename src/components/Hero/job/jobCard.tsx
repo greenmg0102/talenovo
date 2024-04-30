@@ -3,6 +3,8 @@ import KadoaJobItem from '@/components/Hero/job/KadoaJobItem'
 import Link from "next/link";
 import '@/styles/landing.css'
 import LinkedinJobItem from '@/components/Hero/job/LinkedinJobItem'
+import PaidJobPostItem from '@/components/Hero/job/PaidJobPostItem'
+
 import clsx from 'clsx'
 
 const JobCard = ({ item, setIsDetail }: any) => {
@@ -27,6 +29,13 @@ const JobCard = ({ item, setIsDetail }: any) => {
           setIsDetail={(data: any) => setIsDetail(data)}
         /> : null
       }
+      {/* {item.platform === "talenovo" && item.subType === "paid" ?
+        <PaidJobPostItem
+          item={item}
+          setIsDetail={(data: any) => setIsDetail(data)}
+        /> : null
+      } */}
+
       <div className={clsx(item.__position > 17 ? "transbox rounded-md" : "hidden")}>
         <p className="text-blue-500 font-bold">
           <Link

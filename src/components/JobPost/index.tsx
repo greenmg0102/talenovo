@@ -4,11 +4,14 @@ import NextPrevious from '@/components/JobPost/NextPrevious'
 import Milestone from '@/components/JobPost/milestone'
 import CompoanyInfo from "@/components/JobPost/compoanyInfo";
 import JobDetail from "@/components/JobPost/jobDetail";
-import Payment from "@/components/JobPost/payment";
-import { companyDatilPost, jobDatilPost, jobPostStatus } from "@/store/action/user/jobPost"
+import Final from "@/components/JobPost/Final";
+import { useRouter } from 'next/navigation';
+import { companyDatilPost, jobDatilPost, jobPostStatus, changejobPostStatus } from "@/store/action/user/jobPost"
 import { JobPostingMileston } from '@/data/jobPost'
 
 const JobPostMain = () => {
+
+  const router = useRouter();
 
   const [category, setCategory] = useState(0)
   const [loading, setLoading] = useState(false)
@@ -31,7 +34,11 @@ const JobPostMain = () => {
     applyBy: undefined,
     contactInfo: undefined,
     premiumType: undefined,
-    jobApplyLink: ""
+    jobApplyLink: "",
+
+    platform: "talenovo",
+    subType: "paid",
+    postStatus: 0
   })
 
   const [warn, setWarn] = useState({
@@ -64,6 +71,8 @@ const JobPostMain = () => {
     priority: 'low',
   })));
 
+  console.log('value', value);
+
   const list = {
     0: <CompoanyInfo
       warn={warn}
@@ -77,7 +86,7 @@ const JobPostMain = () => {
       setParams={(totla: any) => setParams(totla)}
       setValue={(eachValue: any) => setValue(eachValue)} />,
 
-    2: <Payment
+    2: <Final
       warn={warn}
       value={value}
       setValue={(eachValue: any) => setValue(eachValue)} />
@@ -87,7 +96,14 @@ const JobPostMain = () => {
 
     async function fetchData() {
       let result = await jobPostStatus()
-      setValue(prevValue => ({ ...prevValue, ...result }));
+
+      console.log("result", result);
+
+      if (result !== null) {
+        setParams({ ...params, description: result.description, descriptionText: result.descriptionText })
+        setValue(prevValue => ({ ...prevValue, ...result }));
+      }
+
     }
     fetchData()
 
@@ -144,9 +160,19 @@ const JobPostMain = () => {
         setLoading(false)
         setCategory(Nextcategory)
       } else {
+
       }
     } else if (category === 2) {
-      setCategory(Nextcategory)
+
+      let data = {
+        ...value,
+        postStatus: 1
+      }
+      let result = await changejobPostStatus(data)
+      console.log("result", result);
+      if (result.isOkay) {
+        router.push('/user-profile');
+      }
     }
   }
 
@@ -165,7 +191,7 @@ const JobPostMain = () => {
           JobPostingMileston={JobPostingMileston}
           setCategory={(previous: any) => saveValue(previous)}
         />
-      </div >
+      </div>
     </div >
   );
 };

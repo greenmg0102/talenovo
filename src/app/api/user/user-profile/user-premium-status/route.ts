@@ -8,8 +8,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
   let { db } = await connectToDatabase();
   const user: any = await currentUser();
 
-  console.log("user", user);
-
   if (user) {
     let isMe = await db.collection("users").findOne({ clerkId: user.id });
 
@@ -17,8 +15,5 @@ export async function GET(req: NextRequest, res: NextResponse) {
   } else {
     return NextResponse.json(null)
   }
-
-
-
 
 }

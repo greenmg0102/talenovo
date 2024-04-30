@@ -10,9 +10,13 @@ import { adminAPIMiddleware } from '@/app/api/admin/middleware';
 import { MeiliSearch } from 'meilisearch';
 import JobAlertAutomation from '@/app/api/automation/scrapping-start/mailAutomation/jobAlert'
 
-const host = 'https://ms-2eabdf8fdac6-9012.nyc.meilisearch.io';
-const apiKey = '45949bbe2bf65ebe9aa08012ed5742c1373cc310';
-const indexName = 'title';
+// const host = 'https://ms-1dd1c86bf47e-9385.nyc.meilisearch.io';
+// const apiKey = 'e6c3cf035914f999bc89bdc1c13aa1bcfb930fb2';
+// const indexName = 'title';
+
+// master key:  e6c3cf035914f999bc89bdc1c13aa1bcfb930fb2
+// search key:  d07ef4b8bcd4218536209eb0bf8201f4d5a0d34c742d662512bc50aae4493d1e
+// admin  key:  d07ef4b8bcd4218536209eb0bf8201f4d5a0d34c742d662512bc50aae4493d1e
 
 export async function GET(req: any, res: any) {
 
