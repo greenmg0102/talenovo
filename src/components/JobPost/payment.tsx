@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { jobProductionGet } from "@/store/action/admin/jobInfo/jobProduction"
-import PaymentItem from '@/components/JobPost/paymentItem'
+import PaymentItem from '@/components/JobPost/PaymentItem'
 import { useUser } from "@clerk/nextjs";
 
 const Payment = ({ value, warn, setValue }: any) => {
