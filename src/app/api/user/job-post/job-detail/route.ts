@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
 import { currentUser } from '@clerk/nextjs';
 import { ObjectId } from 'mongodb';
+import { jobPostValidation } from '@/util/backend/job-post-validation'
 
 export async function POST(req: any, res: any) {
 
@@ -14,6 +15,16 @@ export async function POST(req: any, res: any) {
 
   data.recruiterId = user.id
 
+  let { error, errorMessage }: any = jobPostValidation(data, 'detail')
+
+  if (error) {
+    return NextResponse.json({
+      isOkay: !error,
+      errorMessage: errorMessage
+    });
+  }
+
+
   let updateData = { $set: {} };
 
   Object.keys(data).filter((key: any) => key !== "_id").forEach((element: any) => {
@@ -24,8 +35,11 @@ export async function POST(req: any, res: any) {
 
   let result = await db
     .collection('myjobposts')
-    .findOne({ _id: insertedId });
+    .findOne({ _id: new ObjectId(data._id) });
 
-  return NextResponse.json(result);
+  return NextResponse.json({
+    isOkay: true,
+    result: result
+  });
 
 }

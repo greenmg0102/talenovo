@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 const TagInput = ({ value, title, warningText, warn, type, onchange, list, formatList, pushList }: any) => {
 
-  const inputRef = useRef(null);
+  const inputRef: any = useRef(null);
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -68,10 +68,10 @@ const TagInput = ({ value, title, warningText, warn, type, onchange, list, forma
           )
         }
       >
-        <div className='w-full flex justify-between items-center'>
+        <div className='w-full flex justify-start items-center'>
           {value[type].map((item: any, index: any) =>
-            <div key={index} className='flex justify-start items-center mr-2 border border-dashed rounded-[4px] py-[1px] px-[6px]'>
-              <p className='mr-1 mb-1'>{item}</p>
+            <div key={index} className='flex justify-start items-center mr-2 border border-dashed rounded-[4px] py-[1px] px-[6px] border'>
+              <p className='mr-1 mb-0 text-[14px]'>{item}</p>
               <svg fillRule="evenodd" viewBox="64 64 896 896" focusable="false" data-icon="close-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true" onClick={() => deleteItem(index)}><path d="M512 64c247.4 0 448 200.6 448 448S759.4 960 512 960 64 759.4 64 512 264.6 64 512 64zm0 76c-205.4 0-372 166.6-372 372s166.6 372 372 372 372-166.6 372-372-166.6-372-372-372zm128.01 198.83c.03 0 .05.01.09.06l45.02 45.01a.2.2 0 01.05.09.12.12 0 010 .07c0 .02-.01.04-.05.08L557.25 512l127.87 127.86a.27.27 0 01.05.06v.02a.12.12 0 010 .07c0 .03-.01.05-.05.09l-45.02 45.02a.2.2 0 01-.09.05.12.12 0 01-.07 0c-.02 0-.04-.01-.08-.05L512 557.25 384.14 685.12c-.04.04-.06.05-.08.05a.12.12 0 01-.07 0c-.03 0-.05-.01-.09-.05l-45.02-45.02a.2.2 0 01-.05-.09.12.12 0 010-.07c0-.02.01-.04.06-.08L466.75 512 338.88 384.14a.27.27 0 01-.05-.06l-.01-.02a.12.12 0 010-.07c0-.03.01-.05.05-.09l45.02-45.02a.2.2 0 01.09-.05.12.12 0 01.07 0c.02 0 .04.01.08.06L512 466.75l127.86-127.86c.04-.05.06-.06.08-.06a.12.12 0 01.07 0z"></path></svg>
             </div>
           )}
@@ -95,7 +95,7 @@ const TagInput = ({ value, title, warningText, warn, type, onchange, list, forma
             list.map((item: any, index: any) =>
               <p
                 key={index}
-                className='pb-1 p-4 border border-dashed border-t-0 border-l-0 border-r-0 cursor-pointer rounded-[4px] hover:bg-gray-200 transition-all'
+                className='pb-1 p-4 text-[14px] border border-dashed border-t-0 border-l-0 border-r-0 cursor-pointer rounded-[4px] hover:bg-gray-200 transition-all'
                 onClick={() => selsctValue(item.tag)}
               >
                 {item[type]}
@@ -106,7 +106,8 @@ const TagInput = ({ value, title, warningText, warn, type, onchange, list, forma
           }
         </div>
       </div>
-      {warn[type].length === 0 ? null : <p className='text-red-500'>{warningText}</p>}
+
+      <p className={clsx('h-[16px] pt-[4px]', warn[type].length === 0 ? "visible" : 'text-red-500 text-[12px]')}>{warn[type]}</p>
     </div >
   );
 };

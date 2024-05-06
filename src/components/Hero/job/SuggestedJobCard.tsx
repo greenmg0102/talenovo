@@ -27,10 +27,6 @@ const SuggestedJobCard = ({ item }: any) => {
       <Link href={`/job-detail/${item.jobId}`}>
         <p className="text-[14px] font-bold text-gray-500 mt-2 hover:underline">{item.title}</p>
       </Link>
-      <p className="text-[12px] text-gray-500 pb-2">{item.tertiaryDescription}</p>
-      <div className="flex justify-between items-center">
-        <p className="text-[12px] text-gray-400">{postedDate(item.postedAt)} days ago</p>
-      </div>
       <p className="text-[10px] text-gray-400 mb-2 xl:hidden">{item.descriptionText.length > 300 ? item.descriptionText.slice(0, 300) + " ..." : item.descriptionText}</p>
       <div className="flex justify-start items-center flex-wrap xl:hidden">
         {item.skills.map((item: any, index: any) =>
@@ -38,6 +34,13 @@ const SuggestedJobCard = ({ item }: any) => {
             {item}
           </p>
         )}
+      </div>
+
+      <div className="flex justify-between flex-wrap">
+        <p className="text-[12px] text-gray-500 pb-2">{item.tertiaryDescription}</p>
+        <div className="flex justify-between items-center">
+          <p className="text-[12px] text-gray-400">{postedDate(item.postedAt)} days ago</p>
+        </div>
       </div>
     </div>
   );

@@ -8,8 +8,6 @@ export async function GET(req: any, res: any) {
   let { db } = await connectToDatabase();
   const user: any = await currentUser();
 
-  console.log("user.id", user.id);
-
   let result = await db
     .collection('myjobposts')
     .findOne({ recruiterId: user.id, postStatus: 0 });

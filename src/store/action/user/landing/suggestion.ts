@@ -6,6 +6,8 @@ const indexName = 'title';
 
 export async function suggestJobs(data: any) {
 
+    console.log("processingData", data);
+
     let processingData = data
     const cityInfo = processingData.locatedin.split(", ")[0]
     const skillSet = processingData.skill
@@ -23,7 +25,7 @@ export async function suggestJobs(data: any) {
             },
             { headers: { 'Authorization': `Bearer ${apiKey}` } }
         );
-        
+
         return response.data.hits
     } else {
 

@@ -27,8 +27,6 @@ export async function PUT(req: any, res: any) {
 
   let data = await req.json()
   
-  console.log("PUT", data);
-
   const myjobposts = await db.collection("myjobposts")
     .find({ postStatus: 1 })
     .toArray();

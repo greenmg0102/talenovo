@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 const SearchInput = ({ value, title, warningText, warn, type, onchange, list, formatList, pushList }: any) => {
 
-  const inputRef = useRef(null);
+  const inputRef: any = useRef(null);
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -94,8 +94,8 @@ const SearchInput = ({ value, title, warningText, warn, type, onchange, list, fo
           }
         </div>
       </div>
-      {warn[type].length === 0 ? null : <p className='text-red-500'>{warningText}</p>}
 
+      <p className={clsx('h-[16px] pt-[4px]', warn[type].length === 0 ? "visible" : 'text-red-500 text-[12px]')}>{warn[type]}</p>
     </div>
   );
 };

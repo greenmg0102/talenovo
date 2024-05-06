@@ -1,15 +1,16 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { connectToDatabase } from "@/lib/mongodb";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-export default async function handler(
-    req: NextApiRequest,
-    res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+
     if (req.method !== "POST") {
         return res.status(405).json({ error: "Method Not Allowed" });
     }
+
+    let { db } = await connectToDatabase();
 
     try {
 
@@ -33,9 +34,16 @@ export default async function handler(
                 },
             },
             customer_email: email,
-            success_url: redirectLink === undefined ? "http://104.128.55.140:3000/user-profile" : redirectLink, // Redirect URL after successful payment
-            cancel_url: "http://104.128.55.140:3000/price", // Redirect URL after cancelled payment
+            success_url: redirectLink === undefined ? "http://localhost:3000/user-profile" : redirectLink, // Redirect URL after successful payment
+            cancel_url: "http://localhost:3000/price", // Redirect URL after cancelled payment
         });
+
+        await db
+            .collection('myjobposts')
+            .findOneAndUpdate(
+                { recruiterId: clerkId, postStatus: 0 },
+                { $set: { postStatus: 1 } },
+            );
 
         return res.status(200).json({ url: session.url });
 

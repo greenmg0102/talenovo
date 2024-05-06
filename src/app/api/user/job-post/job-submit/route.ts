@@ -22,8 +22,13 @@ export async function POST(req: any, res: any) {
 
   await db.collection("myjobposts").findOneAndUpdate({ _id: new ObjectId(data._id) }, updateData);
 
+  const myjobposts = await db.collection("myjobposts")
+    .find({ postStatus: 1 })
+    .toArray();
+
   return NextResponse.json({
-    isOkay: true
+    isOkay: true,
+    myjobposts: myjobposts
   });
 
 }

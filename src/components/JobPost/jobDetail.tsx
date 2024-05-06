@@ -12,6 +12,7 @@ import { currencyGet } from "@/store/action/admin/jobInfo/currency"
 import { currencyTypeGet } from "@/store/action/admin/jobInfo/currencyType"
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import clsx from 'clsx'
 
 const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
 
@@ -49,6 +50,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
   useEffect(() => {
 
     async function fetchData() {
+
       let reslutJobType = await jobTypeGet()
       let reslutJobCategory = await jobCategoryGet()
       let reslutCurrency = await currencyGet()
@@ -58,16 +60,16 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
       setJobCategory(reslutJobCategory)
       setJobCurrency(reslutCurrency)
       setJobCurrencyType(reslutCurrencyType)
+
     }
     fetchData()
   }, [])
 
-  
   return (
     <div>
       <div className="flex justify-between items-start flex-wrap">
         <p className="w-full mb-4">Add Job Details</p>
-        <div className='mb-6 w-[48%]'>
+        <div className='mb-6 w-[100%]'>
           <TestInput
             textType={'text'}
             value={value}
@@ -89,6 +91,17 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
           />
         </div>
         <div className='mb-6 w-[48%]'>
+          <SelectInput
+            value={value}
+            type={'category'}
+            warn={warn}
+            title={"Category"}
+            list={jobCategory}
+            onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
+          />
+        </div>
+
+        <div className='mb-6 w-[48%]'>
           <SearchInput
             value={value}
             type={'location'}
@@ -108,16 +121,6 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
             />
             This job is remote
           </p>
-        </div>
-        <div className='mb-6 w-[48%]'>
-          <SelectInput
-            value={value}
-            type={'category'}
-            warn={warn}
-            title={"Category"}
-            list={jobCategory}
-            onchange={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}
-          />
         </div>
         <div className='mb-6 w-[100%]'>
           <TagInput
@@ -146,6 +149,12 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
             }}
             style={{ minHeight: '200px' }}
           />
+          <p className={clsx('h-[16px]', warn.descriptionText.length === 0 ? "invisible" : 'text-red-500 text-[12px]')}>{warn.descriptionText}</p>
+          
+          <p className='text-right text-gray-500 text-[12px]'>
+            {params.descriptionText === undefined ? 0 : params.descriptionText.length}
+            (200 ~ 5000)
+          </p>
         </div>
 
         <div className='mb-12 w-[22%]'>

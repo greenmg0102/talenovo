@@ -55,7 +55,7 @@ export default function TalenovoDetail({ isDetail, setIsDetail }: any) {
                                 <p className="text-gray-700 text-[14px]">Please let <span className="font-bold">{isDetail.companyName}</span> know that you found this position on our job board, as that is a great way to support us, so we can keep posting cool jobs every day </p>
 
                                 <div className="flex justify-center items-center flex-col mt-4 mb-2">
-                                    <a href={isDetail.applyUrl} target="_blank">
+                                    <a href={isDetail.jobApplyLink} target="_blank">
                                         <p className="px-8 py-2 bg-blue-600 rounded-full text-center text-white text-[14px]">Apply Now</p>
                                     </a>
                                     <p className="mt-4 px-0 py-2 bg-blue-600 w-full rounded-[4px] text-center text-white text-[14px]">Share this job</p>
@@ -75,7 +75,7 @@ export default function TalenovoDetail({ isDetail, setIsDetail }: any) {
                                     </p>
                                 </div>
                                 <div className="flex justify-center items-center">
-                                    <a href={isDetail.companyLinkedinUrl} target="_blank">
+                                    <a href={isDetail.companyLink} target="_blank">
                                         <p className="px-8 py-2 border border-blue-600 rounded-full text-center text-blue-700 text-[14px]">View company</p>
                                     </a>
                                 </div>

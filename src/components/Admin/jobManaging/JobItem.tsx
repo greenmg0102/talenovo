@@ -1,18 +1,22 @@
 import clsx from 'clsx'
 
 
-const JobItem = ({ item, order, changeStatus }: { item: any, order: any, changeStatus: any }) => {
+const JobItem = ({ item, order, changeStatus, setIsDetail }: { item: any, order: any, changeStatus: any, setIsDetail: any }) => {
 
   return (
-    <div className="flex justify-between border border-white hover:border-dashed hover:border-gray-200 p-1 my-2">
-
+    <div className="flex justify-between border border-white hover:border-dashed hover:border-gray-200 p-1 my-2 text-[12px]">
 
       <p className="w-[40px]">
         {order + 1}
       </p>
       <div className="w-[calc(100%-40px)] flex justify-between items-center">
         <p className='w-[15%] text-center'>{item.companyName}</p>
-        <p className='w-[25%] text-center'>{item.jobTitle}</p>
+        <p
+          className='w-[25%] text-center hover:underline cursor-pointer'
+          onClick={() => setIsDetail(item)}
+        >
+          {item.jobTitle.length > 20 ? item.jobTitle.slice(0, 20) + "..." : item.jobTitle}
+        </p>
         <p className='w-[10%] text-center'>{item && item.tag[0]}</p>
         <div className='w-[20%] flex justify-center items-center'>
           {item.location}

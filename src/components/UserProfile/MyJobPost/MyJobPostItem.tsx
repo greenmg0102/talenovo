@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 
 const MyJobPostItem = ({ item, setIsDetail }: any) => {
+
   return (
     <div className="px-2 py-4 border border-gray-200 rounded-[6px] mb-4 hover:shadow-lg transition-all">
       <div className="flex justify-between items-start">
@@ -15,7 +16,7 @@ const MyJobPostItem = ({ item, setIsDetail }: any) => {
           <div
             className={clsx(
               "text-[12px] pb-4 text-right rounded-[4px] h-[12px] w-[90px] text-center flex justify-end",
-              item && item.postStatus && item.postStatus === 1 ? "text-blue-600 border-blue-600" : "text-gray-600 border-gray-600"
+              item && item.postStatus && item.postStatus === 1 ? "text-red-600 border-red-600" : "text-blue-600 border-blue-600"
             )}
           >
             {

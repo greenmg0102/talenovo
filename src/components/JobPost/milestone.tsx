@@ -1,15 +1,14 @@
 import { JobPostingMileston } from '@/data/jobPost'
 import clsx from 'clsx'
 
-const Milestone = ({ category }: any) => {
-
+const Milestone = ({ category, userStatus }: any) => {
 
   return (
     <div className="flex justify-between items-center">
-      {JobPostingMileston.map((item: any, index: any) =>
+      {JobPostingMileston.slice(0, userStatus ? 3 : 4).map((item: any, index: any) =>
         <div
           key={index}
-          className='w-[31%]'
+          className={clsx(userStatus ? "w-[31%]" : "w-[22%]")}
         >
           <div className=''>
             <div className={clsx("w-full h-[4px] rounded-[1px] transition-all", category >= index ? "bg-green-500" : "bg-gray-200")} />

@@ -77,7 +77,7 @@ const PaidJobPostItem = ({ item, setIsDetail }: any) => {
               </g>
             </svg>
           </div>
-          <p className="text-[10px] text-blue-400 pt-2">{postedDate(item.postedAt)} days ago</p>
+          <p className="text-[10px] text-blue-400 pt-2">1 days ago</p>
         </div>
 
       </div>

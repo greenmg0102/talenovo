@@ -3,11 +3,14 @@ import { useState, useEffect } from 'react';
 import JobItem from '@/components/Admin/jobManaging/JobItem'
 import { changejobPostStatus } from "@/store/action/user/jobPost"
 import { message } from 'antd';
+import LandingDetail from "@/components/Hero/landingDetail";
 
 const OurJobPostAdmin = () => {
 
   const [list, setList] = useState([])
   const [messageApi, contextHolder] = message.useMessage();
+
+  const [isDetail, setIsDetail] = useState(undefined)
 
   const changeStatus = async (item: any, status: any) => {
     let data = {
@@ -17,7 +20,10 @@ const OurJobPostAdmin = () => {
     let result = await changejobPostStatus(data)
 
     if (status === 2) {
-      if (result.isOkay) messageApi.success("Approved");
+      if (result.isOkay) {
+        messageApi.success("Approved");
+        setList(result.myjobposts)
+      }
       else messageApi.error("Approval failed");
     }
 
@@ -27,7 +33,7 @@ const OurJobPostAdmin = () => {
   useEffect(() => {
 
     async function fetchData() {
-      const res = await fetch('http://104.128.55.140:3000/api/admin/my-job-post', {
+      const res = await fetch('http://localhost:3000/api/admin/my-job-post', {
         method: 'POST',
         body: JSON.stringify({
         })
@@ -42,6 +48,11 @@ const OurJobPostAdmin = () => {
   return (
     <div>
       {contextHolder}
+
+      <LandingDetail
+        isDetail={isDetail}
+        setIsDetail={(data: any) => setIsDetail(data)}
+      />
 
       <div className="flex justify-between bg-gray-200 p-1 rounded-[2px]">
         <p className="w-[40px]">
@@ -63,6 +74,7 @@ const OurJobPostAdmin = () => {
           key={index}
           item={item}
           order={index}
+          setIsDetail={(data: any) => setIsDetail(data)}
           changeStatus={(item: any, status: any) => changeStatus(item, status)}
         />
       )}

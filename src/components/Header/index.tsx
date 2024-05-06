@@ -3,21 +3,17 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ThemeToggler from "./ThemeToggler";
 import clsx from 'clsx'
 import { useUser } from '@clerk/nextjs';
 import menuData from "./menuData";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { scarppingStart } from '@/store/action/automation/scraping'
-import { userPremiumStatus } from '@/store/action/user/userProfile/userInfo'
 
 const Header = () => {
 
   const { user } = useUser();
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
-
-  const [userStatus, setUserStatus] = useState(false)
 
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen);
@@ -41,14 +37,7 @@ const Header = () => {
   }, [])
 
   useEffect(() => {
-
     window.addEventListener("scroll", handleStickyNavbar);
-
-    async function fetchData() {
-      let result = await userPremiumStatus()
-      if (result !== null) setUserStatus(result.status === 'active')
-    }
-    fetchData()
   });
 
   // submenu handler
@@ -195,7 +184,7 @@ const Header = () => {
                   </SignedOut>
                 </div>
                 <Link
-                  href={userStatus ? "/job-post" : "/job-post-feature"}
+                  href={"/job-post"}
                   className="ease-in-up hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-white shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9"
                 >
                   Job Post

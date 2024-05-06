@@ -76,7 +76,6 @@ const Hero = ({ setIsDetail }: any) => {
   useEffect(() => {
     async function fetchData() {
       let result = await paidJobGet()
-      console.log("result", result.myjobposts);
       setPaidJobList(result.myjobposts)
     }
     fetchData()
@@ -128,6 +127,9 @@ const Hero = ({ setIsDetail }: any) => {
   useEffect(() => {
     async function fetchSuggestJobs() {
 
+      console.log("locatedin", locatedin);
+      console.log("skil", skil);
+
       if (locatedin !== null && skil !== null) {
 
         let data = {
@@ -136,6 +138,8 @@ const Hero = ({ setIsDetail }: any) => {
           ...userData
         }
 
+        console.log("data", data);
+        
         let result: any = await suggestJobs(data)
 
         setSuggestList(result)

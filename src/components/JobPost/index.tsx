@@ -5,7 +5,9 @@ import Milestone from '@/components/JobPost/milestone'
 import CompoanyInfo from "@/components/JobPost/compoanyInfo";
 import JobDetail from "@/components/JobPost/jobDetail";
 import Final from "@/components/JobPost/Final";
+import Payment from "@/components/JobPost/Payment";
 import { useRouter } from 'next/navigation';
+import { userPremiumStatus } from '@/store/action/user/userProfile/userInfo'
 import { companyDatilPost, jobDatilPost, jobPostStatus, changejobPostStatus } from "@/store/action/user/jobPost"
 import { JobPostingMileston } from '@/data/jobPost'
 
@@ -27,6 +29,7 @@ const JobPostMain = () => {
     isRmote: false,
     tag: [],
     description: undefined,
+    descriptionText: undefined,
     minimumPay: undefined,
     maximumPay: undefined,
     currency: undefined,
@@ -42,14 +45,16 @@ const JobPostMain = () => {
   })
 
   const [warn, setWarn] = useState({
+    logo: "",
     companyName: "",
     companyLink: "",
     jobTitle: "",
     type: "",
     category: "",
     location: "",
-    tag: [],
+    tag: "",
     description: "",
+    descriptionText: "",
     minimumPay: "",
     maximumPay: "",
     currency: "",
@@ -59,6 +64,8 @@ const JobPostMain = () => {
     premiumType: "",
     jobApplyLink: ""
   })
+
+  const [userStatus, setUserStatus] = useState(false)
 
   const [params, setParams] = useState<any>(JSON.parse(JSON.stringify({
     id: null,
@@ -71,13 +78,22 @@ const JobPostMain = () => {
     priority: 'low',
   })));
 
-  console.log('value', value);
+  useEffect(() => {
+
+    async function fetchData() {
+      let result = await userPremiumStatus()
+      if (result !== null) setUserStatus(result.status === 'active')
+    }
+    fetchData()
+
+  });
 
   const list = {
     0: <CompoanyInfo
       warn={warn}
       value={value}
-      setValue={(eachValue: any) => setValue(eachValue)} />,
+      setValue={(eachValue: any) => setValue(eachValue)}
+      setWarn={(eachValue: any) => setWarn(eachValue)} />,
 
     1: <JobDetail
       warn={warn}
@@ -89,15 +105,19 @@ const JobPostMain = () => {
     2: <Final
       warn={warn}
       value={value}
+      setValue={(eachValue: any) => setValue(eachValue)} />,
+
+    3: <Payment
+      warn={warn}
+      value={value}
       setValue={(eachValue: any) => setValue(eachValue)} />
   }
 
   useEffect(() => {
 
     async function fetchData() {
-      let result = await jobPostStatus()
 
-      console.log("result", result);
+      let result = await jobPostStatus()
 
       if (result !== null) {
         setParams({ ...params, description: result.description, descriptionText: result.descriptionText })
@@ -117,21 +137,47 @@ const JobPostMain = () => {
 
     if (category === 0) {
 
-      if
-        (
-        value.logo.length > 0 &&
-        value.companyName.length > 0 &&
-        value.companyLink.length > 0
-      ) {
-        setLoading(true)
+      setLoading(true)
 
-        result = await companyDatilPost(companyDetailInfo)
+      let companyInfoResult = await companyDatilPost(companyDetailInfo)
 
-        setValue({ ...value, ...result })
-        setLoading(false)
+      if (companyInfoResult.isOkay) {
+        setValue({ ...value, ...companyInfoResult.result })
         setCategory(Nextcategory)
+        setWarn({
+          logo: "",
+          companyName: "",
+          companyLink: "",
+          jobTitle: "",
+          type: "",
+          category: "",
+          location: "",
+          tag: "",
+          description: "",
+          descriptionText: "",
+          minimumPay: "",
+          maximumPay: "",
+          currency: "",
+          currencyType: "",
+          applyBy: "",
+          contactInfo: "",
+          premiumType: "",
+          jobApplyLink: ""
+        })
       } else {
+
+        let real: any = {}
+
+        Object.keys(warn).forEach((key: any) => {
+          if (key in companyInfoResult.errorMessage) real[key] = companyInfoResult.errorMessage[key]
+          else real[key] = ""
+        });
+
+        setWarn({ ...real })
       }
+
+      setLoading(false)
+
     } else if (category === 1 && Nextcategory === 0) {
 
       setCategory(Nextcategory)
@@ -142,36 +188,76 @@ const JobPostMain = () => {
       real.description = params.description
       real.descriptionText = params.descriptionText
 
-      if (
-        real.jobTitle.length > 50 && real.type !== undefined &&
-        real.jobApplyLink.length > 50 &&
-        real.category !== undefined && real.location !== undefined &&
-        real.tag.length > 0 &&
-        real.description !== undefined &&
-        real.minimumPay !== undefined && real.maximumPay !== undefined &&
-        real.description !== "" && real.descriptionText !== "" &&
-        real.descriptionText.length > 250 &&
-        real.currency !== undefined && real.currencyType !== undefined
-        // value.applyBy !== undefined
-      ) {
-        setLoading(true)
-        result = await jobDatilPost(real)
-        setValue({ ...value, ...result })
-        setLoading(false)
+      // if (
+      //   real.jobTitle.length > 50 && real.type !== undefined &&
+      //   real.jobApplyLink.length > 50 &&
+      //   real.category !== undefined && real.location !== undefined &&
+      //   real.tag.length > 0 &&
+      //   real.description !== undefined &&
+      //   real.minimumPay !== undefined && real.maximumPay !== undefined &&
+      //   real.description !== "" && real.descriptionText !== "" &&
+      //   real.descriptionText.length > 250 &&
+      //   real.currency !== undefined && real.currencyType !== undefined
+      //   // value.applyBy !== undefined
+      // ) {
+
+      setLoading(true)
+
+      let companyDetailResult = await jobDatilPost(real)
+
+      if (companyDetailResult.isOkay) {
+        setValue({ ...value, ...companyDetailResult.result })
         setCategory(Nextcategory)
+        setWarn({
+          logo: "",
+          companyName: "",
+          companyLink: "",
+          jobTitle: "",
+          type: "",
+          category: "",
+          location: "",
+          tag: "",
+          description: "",
+          descriptionText: "",
+          minimumPay: "",
+          maximumPay: "",
+          currency: "",
+          currencyType: "",
+          applyBy: "",
+          contactInfo: "",
+          premiumType: "",
+          jobApplyLink: ""
+        })
       } else {
 
+        let real: any = {}
+
+        Object.keys(warn).forEach((key: any) => {
+          if (key in companyDetailResult.errorMessage) real[key] = companyDetailResult.errorMessage[key]
+          else real[key] = ""
+        });
+
+        setWarn({ ...real })
       }
+
+      setLoading(false)
+
     } else if (category === 2) {
 
-      let data = {
-        ...value,
-        postStatus: 1
-      }
-      let result = await changejobPostStatus(data)
-      console.log("result", result);
-      if (result.isOkay) {
-        router.push('/user-profile');
+      console.log("userStatus", userStatus);
+      
+
+      if (userStatus) {
+        let data = {
+          ...value,
+          postStatus: 1
+        }
+        let result = await changejobPostStatus(data)
+        if (result.isOkay) {
+          router.push('/user-profile');
+        }
+      } else {
+        setCategory(Nextcategory)
       }
     }
   }
@@ -180,14 +266,16 @@ const JobPostMain = () => {
     <div className="max-w-2xl mx-auto">
       <Milestone
         category={category}
+        userStatus={userStatus}
       />
 
       <div className="bg-gray-50 shadow-2xl rounded-[4px] p-4 mt-12">
         <div className="py-4"> {list[category]} </div>
 
         <NextPrevious
-          category={category}
           loading={loading}
+          category={category}
+          userStatus={userStatus}
           JobPostingMileston={JobPostingMileston}
           setCategory={(previous: any) => saveValue(previous)}
         />

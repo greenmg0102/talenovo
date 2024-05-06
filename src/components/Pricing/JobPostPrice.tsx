@@ -24,15 +24,6 @@ const JobPostPrice = ({ isSectionTitle }: any) => {
 
   const handleSubscription = async (plan: any) => {
 
-    console.log(
-      "plan",
-      plan,
-      "priceId",
-      jobPostPlan[plan.priceId],
-      "packageName",
-      jobPostPlan[plan.packageName]
-    );
-
     await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/create-checkout-session`, {
       method: 'POST',
       headers: {
@@ -43,7 +34,7 @@ const JobPostPrice = ({ isSectionTitle }: any) => {
         clerkId,
         priceId: jobPostPlan[plan.packageName],
         packageName: plan.packageName,
-        redirectLink: "http://104.128.55.140:3000/job-post"
+        redirectLink: "http://localhost:3000/job-post"
       }),
     })
       .then(response => {

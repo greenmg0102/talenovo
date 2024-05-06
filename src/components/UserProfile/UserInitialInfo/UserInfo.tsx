@@ -106,8 +106,6 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
   //   setIsModalVisible(!isModalVisible)
   // }
 
-  console.log("userData", userData);
-
 
   const fectData = () => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/get-user`, {

@@ -30,9 +30,6 @@ export async function GET(req: any, res: any) {
 
   const matchedData = response.data.hits;
 
-  console.log("matchedData", matchedData);
-  
-
   return NextResponse.json({
     isOkay: true,
     result: matchedData
