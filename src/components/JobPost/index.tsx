@@ -5,7 +5,7 @@ import Milestone from '@/components/JobPost/milestone'
 import CompoanyInfo from "@/components/JobPost/compoanyInfo";
 import JobDetail from "@/components/JobPost/jobDetail";
 import Final from "@/components/JobPost/Final";
-import Payment from "@/components/JobPost/Payment";
+import PaymentComponent from "@/components/JobPost/PaymentComponent";
 import { useRouter } from 'next/navigation';
 import { userPremiumStatus } from '@/store/action/user/userProfile/userInfo'
 import { companyDatilPost, jobDatilPost, jobPostStatus, changejobPostStatus } from "@/store/action/user/jobPost"
@@ -107,7 +107,7 @@ const JobPostMain = () => {
       value={value}
       setValue={(eachValue: any) => setValue(eachValue)} />,
 
-    3: <Payment
+    3: <PaymentComponent
       warn={warn}
       value={value}
       setValue={(eachValue: any) => setValue(eachValue)} />
@@ -245,7 +245,6 @@ const JobPostMain = () => {
     } else if (category === 2) {
 
       console.log("userStatus", userStatus);
-      
 
       if (userStatus) {
         let data = {
