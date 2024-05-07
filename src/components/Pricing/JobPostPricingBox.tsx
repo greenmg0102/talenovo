@@ -28,15 +28,19 @@ const JobPostPricingBox = (props: {
         </div>
         <div className="border-b border-body-color border-opacity-10 dark:border-white dark:border-opacity-10">
 
-          <button
-            className="flex w-full items-center justify-center rounded-sm bg-primary p-3 text-base font-semibold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
-            onClick={() => handleSubscription({
-              packageName: packageName,
-              priceId: priceId
-            })}
+          <Link
+            href={"/job-post"}
           >
-            Get Started
-          </button>
+            <button
+              className="flex w-full items-center justify-center rounded-sm bg-primary p-3 text-base font-semibold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
+            // onClick={() => handleSubscription({
+            //   packageName: packageName,
+            //   priceId: priceId
+            // })}
+            >
+              Get Started
+            </button>
+          </Link>
 
         </div>
         <div className="mt-4">{children}</div>
@@ -85,7 +89,7 @@ const JobPostPricingBox = (props: {
           </svg>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

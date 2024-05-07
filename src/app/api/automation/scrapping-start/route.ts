@@ -25,8 +25,9 @@ export async function GET(req: any, res: any) {
 
   // schedule.scheduleJob('0 */12 * * *', async () => {
 
+  console.log("scrapping-start");
 
-  await JobAlertAutomation()
+  // await JobAlertAutomation()
 
   // const client = new MeiliSearch({
   //   host: host,

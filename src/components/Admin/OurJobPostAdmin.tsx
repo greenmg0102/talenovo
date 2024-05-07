@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import JobItem from '@/components/Admin/jobManaging/JobItem'
 import { changejobPostStatus } from "@/store/action/user/jobPost"
 import { message } from 'antd';
-import LandingDetail from "@/components/Hero/landingDetail";
+import AdminTalenovoDetail from "@/components/Hero/landingDetail/AdminTalenovoDetail";
 
 const OurJobPostAdmin = () => {
 
@@ -33,7 +33,7 @@ const OurJobPostAdmin = () => {
   useEffect(() => {
 
     async function fetchData() {
-      const res = await fetch('http://104.128.55.140:3000/api/admin/my-job-post', {
+      const res = await fetch('http://localhost:3000/api/admin/my-job-post', {
         method: 'POST',
         body: JSON.stringify({
         })
@@ -49,9 +49,10 @@ const OurJobPostAdmin = () => {
     <div>
       {contextHolder}
 
-      <LandingDetail
+      <AdminTalenovoDetail
         isDetail={isDetail}
         setIsDetail={(data: any) => setIsDetail(data)}
+        setList={(list: any) => setList(list)}
       />
 
       <div className="flex justify-between bg-gray-200 p-1 rounded-[2px]">

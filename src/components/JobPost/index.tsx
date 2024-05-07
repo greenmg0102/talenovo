@@ -133,7 +133,6 @@ const JobPostMain = () => {
 
     let companyDetailInfo: any = {}
     companyDetailInfo = { ...value }
-    let result = {}
 
     if (category === 0) {
 
@@ -244,7 +243,7 @@ const JobPostMain = () => {
 
     } else if (category === 2) {
 
-      console.log("userStatus", userStatus);
+      console.log("userStatus 2", userStatus);
 
       if (userStatus) {
         let data = {

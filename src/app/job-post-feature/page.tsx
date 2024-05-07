@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const JobPostNewFeature = () => {
   return (
     <>
-      <section className="pb-[120px] pt-[48px]">
+      <section className="pb-[120px] pt-[24px]">
         <div className="container">
           <JobPostFeature />
           <section id="price"></section>

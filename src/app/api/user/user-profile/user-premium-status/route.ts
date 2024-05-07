@@ -11,6 +11,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
   if (user) {
     let isMe = await db.collection("users").findOne({ clerkId: user.id });
 
+    console.log("isMe", isMe);
+
+
     return NextResponse.json(isMe)
   } else {
     return NextResponse.json(null)
