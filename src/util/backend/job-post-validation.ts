@@ -50,6 +50,8 @@ export function jobPostValidation(jobPostingData: any, stage: any) {
 
         if (jobPostingData.jobApplyLink.length === 0) errorMessage.jobApplyLink = "Please enter the job posting link.!"
 
+        if (jobPostingData.location === undefined) errorMessage.location = "Please enter job location!"
+
 
         return {
             error: Object.keys(errorMessage).length > 0 ? true : false,

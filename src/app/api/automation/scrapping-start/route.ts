@@ -5,6 +5,8 @@ import { KadoaScrapping } from '@/app/api/automation/scrapping-start/kadoa'
 import { linkedinScrapping } from '@/app/api/automation/scrapping-start/linkedin'
 import { indeedScrapping } from '@/app/api/automation/scrapping-start/indeed'
 
+import { bufferLocationData } from '@/app/api/automation/scrapping-start/bufferLocationData'
+
 import { connectToDatabase } from "@/lib/mongodb";
 import { adminAPIMiddleware } from '@/app/api/admin/middleware';
 import { MeiliSearch } from 'meilisearch';
@@ -21,7 +23,7 @@ import JobAlertAutomation from '@/app/api/automation/scrapping-start/mailAutomat
 export async function GET(req: any, res: any) {
 
   // await adminAPIMiddleware(req, res);
-  // let { db } = await connectToDatabase();
+  let { db } = await connectToDatabase();
 
   // schedule.scheduleJob('0 */12 * * *', async () => {
 
@@ -60,6 +62,23 @@ export async function GET(req: any, res: any) {
   // await db
   //   .collection("jobtags")
   //   .insertMany(skillsList.map(skill => ({ tag: skill })))
+  //   .then(async (result: any) => {
+  //     return
+  //   })
+
+  // let joblocationList: any = []
+
+  // Object.keys(bufferLocationData).forEach((key: any, index: any) => {
+  //   bufferLocationData[key].forEach((each: any, order: any) => {
+  //     joblocationList.push({ location: each + ", " + key, value: each })
+  //   })
+  // })
+
+  // console.log("joblocationList", joblocationList);
+
+  // await db
+  //   .collection("joblocations")
+  //   .insertMany(joblocationList.map(joblocation => joblocation))
   //   .then(async (result: any) => {
   //     return
   //   })

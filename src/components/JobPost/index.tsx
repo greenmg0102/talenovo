@@ -243,8 +243,6 @@ const JobPostMain = () => {
 
     } else if (category === 2) {
 
-      console.log("userStatus 2", userStatus);
-
       if (userStatus) {
         let data = {
           ...value,

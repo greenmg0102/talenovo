@@ -7,7 +7,6 @@ import { jobPostValidation } from '@/util/backend/job-post-validation'
 
 export async function POST(req: any, res: any) {
 
-  let insertedId = null
   let { db } = await connectToDatabase();
 
   let data = await req.json()

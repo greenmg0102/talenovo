@@ -25,7 +25,7 @@ export default function TalenovoDetail({ isDetail, setIsDetail }: any) {
                 {isDetail !== undefined ?
                     <div className="flex justify-between items-start flex-wrap">
                         <div className="w-full mb-2 lg:w-3/4 lg:mb-0 px-4">
-                            <div className="border border-gray-200 rounded-[8px] shadow-2xl p-12">
+                            <div className="border border-gray-200 rounded-[8px] shadow-2xl p-12 py-2">
                                 <p className="text-center text-[24px] font-bold pb-12">{isDetail.jobTitle}</p>
                                 <div className="flex justify-start items-center flex-wrap mb-4">
                                     {isDetail.location !== "" ? <p className="mr-2 mb-1 text-[12px] px-2 bg-green-200 rounded-[4px] text-green-900">{isDetail.location}</p> : null}

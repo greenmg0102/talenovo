@@ -33,7 +33,7 @@ const Admin = () => {
     4: <JobInfoAdmin />,
     5: <Paylog />,
     6: <Subscription />,
-    7: <News />
+    // 7: <News />
   }
 
   return (

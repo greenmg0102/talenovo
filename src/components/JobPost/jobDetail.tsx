@@ -150,7 +150,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
             style={{ minHeight: '200px' }}
           />
           <p className={clsx('h-[16px]', warn.descriptionText.length === 0 ? "invisible" : 'text-red-500 text-[12px]')}>{warn.descriptionText}</p>
-          
+
           <p className='text-right text-gray-500 text-[12px]'>
             {params.descriptionText === undefined ? 0 : params.descriptionText.length}
             (200 ~ 5000)

@@ -84,7 +84,7 @@ const SearchInput = ({ value, title, warningText, warn, type, onchange, list, fo
               <p
                 key={index}
                 className='pb-1 p-4 border border-dashed border-t-0 border-l-0 border-r-0 cursor-pointer rounded-[4px] hover:bg-gray-200 transition-all'
-                onClick={() => selsctValue(item[type])}
+                onClick={() => selsctValue(item['value'])}
               >
                 {item[type]}
               </p>
