@@ -6,9 +6,6 @@ import clsx from "clsx";
 
 const GoogleJobItem = ({ item, setIsDetail }: any) => {
 
-  console.log("item", item);
-
-
   const [messageApi, contextHolder] = message.useMessage();
 
   const postedDate = (givenDateString: string): any => {

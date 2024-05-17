@@ -57,7 +57,7 @@ const Hero = ({ setIsDetail }: any) => {
 
   const [total, setTotal] = useState(0);
   const [today, setToday] = useState(0);
-  const [paidJobList, setPaidJobList] = useState([]);
+  // const [paidJobList, setPaidJobList] = useState([]);
 
   const [companyCount, setCompanyCount] = useState(0);
   const [industry, setIndustry] = useState(0);
@@ -312,7 +312,7 @@ const Hero = ({ setIsDetail }: any) => {
                       <Carousel />
 
                       <div className="mb-4">
-                        {paidJobList.map((item: any, index: any) =>
+                        {/* {paidJobList.map((item: any, index: any) =>
                           <div
                             key={index}
                             className="border border-gray-300 bg-white rounded-md px-2 mb-2 cursor-pointer transition-all hover:shadow-lg hover:border-blue-500"
@@ -322,7 +322,7 @@ const Hero = ({ setIsDetail }: any) => {
                               setIsDetail={(data: any) => setIsDetail(data)}
                             />
                           </div>
-                        )}
+                        )} */}
                         <Configure
                           // Add sorting configuration here
                           sortBy="-postStatus"
