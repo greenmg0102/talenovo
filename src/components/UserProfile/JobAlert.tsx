@@ -23,9 +23,8 @@ const MyAlert = ({ alertingJob, setIsDetail }: any) => {
             <Tab.Panel>
 
               <div className='flex justify-center items-center mb-4 mt-2'>
-                <p className='w-3/5 text-center font-bold text-gray-600 text-[18px]' >Talenovo's AI Job Recommendations show jobs based on your job searches, job alerts, profile and skills.</p>
+                <p className='w-3/5 text-center font-bold text-gray-600 text-[16px]' >Talenovo's AI Job Recommendations show jobs based on your job searches, job alerts, profile and skills.</p>
               </div>
-
 
               <AlertingJob
                 alertingJob={alertingJob}

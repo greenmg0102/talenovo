@@ -35,10 +35,17 @@ import {
 } from "react-instantsearch-dom";
 
 const searchClient = instantMeiliSearch(
-  'https://ms-1dd1c86bf47e-9385.nyc.meilisearch.io',
-  'e6c3cf035914f999bc89bdc1c13aa1bcfb930fb2',
+  'https://ms-7b38c9a53bf5-9766.lon.meilisearch.io',
+  'a9120440eb9dce6256f824577056a48700be88f0',
   {
-    finitePagination: true
+    finitePagination: true,
+    // limit: 1
+    // filter: [
+    //   "jobPostStatus = 2",
+    // ],
+
+    // filter: 'jobPostStatus = 2 OR jobPostStatus = 3',
+    // sort: ['jobPostStatus:asc']
   }
 );
 
@@ -73,13 +80,13 @@ const Hero = ({ setIsDetail }: any) => {
     fetchGeo()
   }, [])
 
-  useEffect(() => {
-    async function fetchData() {
-      let result = await paidJobGet()
-      setPaidJobList(result.myjobposts)
-    }
-    fetchData()
-  }, [email])
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     let result = await paidJobGet()
+  //     setPaidJobList(result.myjobposts)
+  //   }
+  //   fetchData()
+  // }, [email])
 
   useEffect(() => {
 
@@ -127,9 +134,6 @@ const Hero = ({ setIsDetail }: any) => {
   useEffect(() => {
     async function fetchSuggestJobs() {
 
-      console.log("locatedin", locatedin);
-      console.log("skil", skil);
-
       if (locatedin !== null && skil !== null) {
 
         let data = {
@@ -138,8 +142,6 @@ const Hero = ({ setIsDetail }: any) => {
           ...userData
         }
 
-        console.log("data", data);
-        
         let result: any = await suggestJobs(data)
 
         setSuggestList(result)
@@ -238,9 +240,9 @@ const Hero = ({ setIsDetail }: any) => {
                             ]}
                         /> */}
 
-                      <h2 className='text-gray-700p pb-2'>Job Type</h2>
+                      {/* <h2 className='text-gray-700p pb-2'>Job Type</h2> */}
                       {/* <RefinementList attribute="location" /> */}
-                      <RefinementList
+                      {/* <RefinementList
                         attribute="occupationType"
                         limit={3}
                         showMore={false}
@@ -253,10 +255,10 @@ const Hero = ({ setIsDetail }: any) => {
                         attribute="country"
                         limit={10}
                         showMore={true}
-                      />
-                      <Divider />
+                      /> */}
+                      {/* <Divider /> */}
 
-                      <h2 className='text-gray-700p pb-2'>City</h2>
+                      <h2 className='text-gray-700p pb-2'>Location</h2>
                       <RefinementList
                         attribute="city"
                         limit={3}
@@ -274,7 +276,7 @@ const Hero = ({ setIsDetail }: any) => {
                       />
                       <Divider />
 
-                      <h2 className='text-gray-700p pb-2'>Skill</h2>
+                      {/* <h2 className='text-gray-700p pb-2'>Skill</h2>
                       <RefinementList
                         attribute="skills"
                         limit={3}
@@ -290,15 +292,15 @@ const Hero = ({ setIsDetail }: any) => {
                         showMore={true}
                         showMoreLimit={20}
                       />
-                      <Divider />
+                      <Divider /> */}
 
-                      <h2 className='text-gray-700p pb-2'>Salary</h2>
+                      {/* <h2 className='text-gray-700p pb-2'>Salary</h2>
                       <RefinementList
                         attribute="tertiaryDescription"
                         limit={3}
                         showMore={true}
                         showMoreLimit={20}
-                      />
+                      /> */}
                       {/* <Configure
                         hitsPerPage={6}
                         attributesToSnippet={["description:50"]}
@@ -321,6 +323,10 @@ const Hero = ({ setIsDetail }: any) => {
                             />
                           </div>
                         )}
+                        <Configure
+                          // Add sorting configuration here
+                          sortBy="-postStatus"
+                        />
                         <Hits hitComponent={Hit} />
                       </div>
                       <div className='flex justify-center mb-12'>

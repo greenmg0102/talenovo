@@ -3,8 +3,18 @@ import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
 import { currentUser } from '@clerk/nextjs';
 import { ObjectId } from 'mongodb';
+import { MeiliSearch } from 'meilisearch';
+
+const host = 'https://ms-7b38c9a53bf5-9766.lon.meilisearch.io';
+const apiKey = 'a9120440eb9dce6256f824577056a48700be88f0';
+const indexName = 'title';
 
 export async function POST(req: any, res: any) {
+
+  const client = new MeiliSearch({
+    host: host,
+    apiKey: apiKey,
+  });
 
   let { db } = await connectToDatabase();
 
@@ -21,6 +31,18 @@ export async function POST(req: any, res: any) {
   });
 
   await db.collection("myjobposts").findOneAndUpdate({ _id: new ObjectId(data._id) }, updateData);
+
+  console.log("data", data.postStatus);
+
+
+  if (data.postStatus === 2) {
+    console.log(1);
+    await client.index(indexName).addDocuments([data], { primaryKey: 'jobId' });
+    // client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId"]);
+    client.index(indexName). updateFilterableAttributes(["title", "city", "country", "companyName", "jobId", "postStatus", "recruiterId"]);
+   
+    console.log(2);
+  }
 
   const myjobposts = await db.collection("myjobposts")
     .find({ postStatus: 1 })

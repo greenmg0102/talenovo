@@ -20,7 +20,7 @@ const Final = ({ value, warn, setValue }: any) => {
           <div className="flex justify-between items-start flex-wrap">
             <div className="w-full mb-2 lg:mb-0 px-4">
               <div className="border border-gray-200 rounded-[8px] shadow-2xl p-4">
-                <p className="text-center text-[24px] font-bold pb-12">{value.jobTitle}</p>
+                <p className="text-center text-[24px] font-bold pb-12">{value.title}</p>
                 <div className="flex justify-start items-center flex-wrap mb-4">
                   {value.location !== "" ? <p className="mr-2 mb-1 text-[12px] px-2 bg-green-200 rounded-[4px] text-green-900">{value.location}</p> : null}
                   {value.tertiaryDescription !== "" ? <p className="mr-2 mb-1 text-[12px] px-2 bg-blue-200 rounded-[4px] text-blue-900">{value.tertiaryDescription}</p> : null}
@@ -31,7 +31,7 @@ const Final = ({ value, warn, setValue }: any) => {
                     <p key={index} className="mr-2 mb-1 text-[12px] font-bold !text-gray-900 border border-dashed border-gray-300 px-2">{item}</p>
                   )}
                 </div>
-                <Divider />
+                <Divider className='my-4' />
                 <div className="flex justify-between items-center pb-4">
                   <p className="font-semibold text-[14px]">Job Description</p>
                 </div>

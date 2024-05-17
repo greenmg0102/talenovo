@@ -15,7 +15,7 @@ const JobItem = ({ item, order, changeStatus, setIsDetail }: { item: any, order:
           className='w-[25%] text-center hover:underline cursor-pointer'
           onClick={() => setIsDetail(item)}
         >
-          {item.jobTitle.length > 20 ? item.jobTitle.slice(0, 20) + "..." : item.jobTitle}
+          {item.title && item.title.length > 20 ? item.title.slice(0, 20) + "..." : item.title}
         </p>
         <p className='w-[10%] text-center'>{item && item.tag[0]}</p>
         <div className='w-[20%] flex justify-center items-center'>

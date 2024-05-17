@@ -73,7 +73,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
           <TestInput
             textType={'text'}
             value={value}
-            type={'jobTitle'}
+            type={'title'}
             warn={warn}
             title={"Job Title *"}
             warningText={"The name field is required."}
@@ -202,7 +202,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
           <TestInput
             textType={'text'}
             value={value}
-            type={'jobApplyLink'}
+            type={'applyUrl'}
             warn={warn}
             title={"Job Apply Url *"}
             warningText={"The job apply url field is required."}

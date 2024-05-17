@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const host = 'https://ms-1dd1c86bf47e-9385.nyc.meilisearch.io';
-const apiKey = 'e6c3cf035914f999bc89bdc1c13aa1bcfb930fb2';
+const host = 'https://ms-7b38c9a53bf5-9766.lon.meilisearch.io';
+const apiKey = 'a9120440eb9dce6256f824577056a48700be88f0';
 const indexName = 'title';
 
 export async function paidJobGet() {
@@ -20,7 +20,7 @@ export async function carouselIndustry({ list }: any) {
             `${host}/indexes/${indexName}/search`,
             {
                 attributesToRetrieve: ["companyName", "companyLogo"],
-                filter: `insightsV2 = "Hospitals and Health Care"`,
+                // filter: `insightsV2 = "Hospitals and Health Care"`,
                 facets: ["companyName"],
                 limit: 1000
             },
@@ -49,7 +49,7 @@ export async function carouselIndustry({ list }: any) {
             `${host}/indexes/${indexName}/search`,
             {
                 attributesToRetrieve: ["companyName", "companyLogo"],
-                filter: `insightsV2 = "Manufacturing"`,
+                // filter: `insightsV2 = "Manufacturing"`,
                 facets: ["companyName"],
                 limit: 1000
             },
@@ -106,14 +106,19 @@ export async function landingInfo() {
         const response = await axios.post(
             `${host}/indexes/${indexName}/search`,
             {
-                facets: ['companyName', 'insightsV2'],
+                facets: ['companyName'],
+                // facets: ['companyName', 'insightsV2'],
             },
             { headers: { 'Authorization': `Bearer ${apiKey}` } }
         );
         const { facetDistribution } = response.data;
 
+
+        console.log("facetDistribution", facetDistribution);
+
         const companyCount = Object.keys(facetDistribution.companyName).length;
-        const industryCount = Object.keys(facetDistribution.insightsV2).length;
+        const industryCount = 24;
+        // const industryCount = Object.keys(facetDistribution.insightsV2).length;
 
         return {
             isOkay: true,

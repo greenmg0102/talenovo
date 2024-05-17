@@ -37,7 +37,7 @@ export default function TalenovoDetail({ isDetail, setIsDetail }: any) {
                                         <p key={index} className="mr-2 mb-1 text-[12px] font-bold !text-gray-900 border border-dashed border-gray-300 px-2">{item}</p>
                                     )}
                                 </div>
-                                <Divider />
+                                <Divider className='my-4' />
                                 <div className="flex justify-between items-center pb-4">
                                     <p className="font-semibold text-[14px]">Job Description</p>
                                 </div>

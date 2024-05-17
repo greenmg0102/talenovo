@@ -38,6 +38,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             cancel_url: "http://104.128.55.140:3000/price", // Redirect URL after cancelled payment
         });
 
+        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+
+
         await db
             .collection('myjobposts')
             .findOneAndUpdate(

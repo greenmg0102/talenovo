@@ -29,7 +29,7 @@ const SuggestedJobCard = ({ item }: any) => {
       </Link>
       <p className="text-[10px] text-gray-400 mb-2 xl:hidden">{item.descriptionText.length > 300 ? item.descriptionText.slice(0, 300) + " ..." : item.descriptionText}</p>
       <div className="flex justify-start items-center flex-wrap xl:hidden">
-        {item.skills.map((item: any, index: any) =>
+        {item.skills &&  item.skills .map((item: any, index: any) =>
           <p key={index} className="px-1 py-[1px] mr-2 border border-gray-300 text-gray-500 hover:bg-blue-400 hover:text-gray-50 transition-all rounded-[4px] text-[10px] mr-1 mb-[2px]">
             {item}
           </p>

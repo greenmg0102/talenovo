@@ -9,8 +9,8 @@ const AlertingJob = ({ alertingJob, setIsDetail }: any) => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    setLoading(true)
-    if (alertingJob.length > 0) setLoading(false)
+    // setLoading(true)
+    // if (alertingJob.length > 0) setLoading(false)
   }, []);
 
   return (

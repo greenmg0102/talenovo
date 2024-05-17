@@ -41,7 +41,7 @@ const UserInfoMain = () => {
     async function fecthData() {
 
       let result1 = await myJobAlert()
-      if (result1.isOkay) setAlertingJob(result1.result)
+      if (result1.isOkay) setAlertingJob(result1.result)     
 
       let result2 = await myBookMarkJob()
       if (result2.isOkay) setBookJob(result2.result)

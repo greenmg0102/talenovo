@@ -9,8 +9,8 @@ const MyJobs = ({ mybookmarkjob, bookJob, setIsDetail }: any) => {
   const [loading, setLoading] = useState(false)
   
   useEffect(() => {
-    setLoading(true)
-    if (bookJob.length > 0) setLoading(false)
+    // setLoading(true)
+    // if (bookJob.length > 0) setLoading(false)
   }, [bookJob]);
 
   return (

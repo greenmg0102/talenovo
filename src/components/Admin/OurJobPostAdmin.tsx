@@ -63,7 +63,7 @@ const OurJobPostAdmin = () => {
           <p className='w-[15%] text-center'>Company</p>
           <p className='w-[25%] text-center'>Title</p>
           <p className='w-[10%] text-center'>Stack</p>
-          <p className='w-[20%] text-center'>Location</p>
+          <p className='w-[20%] text-center'>Location</p> 
           <p className='w-[5%] text-center'>Min</p>
           <p className='w-[5%] text-center'>Max</p>
           <p className='w-[12%] text-center'>Post Date</p>

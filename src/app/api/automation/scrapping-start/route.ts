@@ -3,6 +3,7 @@ import schedule from 'node-schedule';
 import axios from 'axios';
 import { KadoaScrapping } from '@/app/api/automation/scrapping-start/kadoa'
 import { linkedinScrapping } from '@/app/api/automation/scrapping-start/linkedin'
+import { googleScrapping } from '@/app/api/automation/scrapping-start/google'
 import { indeedScrapping } from '@/app/api/automation/scrapping-start/indeed'
 
 import { bufferLocationData } from '@/app/api/automation/scrapping-start/bufferLocationData'
@@ -12,13 +13,15 @@ import { adminAPIMiddleware } from '@/app/api/admin/middleware';
 import { MeiliSearch } from 'meilisearch';
 import JobAlertAutomation from '@/app/api/automation/scrapping-start/mailAutomation/jobAlert'
 
-// const host = 'https://ms-1dd1c86bf47e-9385.nyc.meilisearch.io';
-// const apiKey = 'e6c3cf035914f999bc89bdc1c13aa1bcfb930fb2';
-// const indexName = 'title';
+import { sendEmail } from '@/mailAction'
 
-// master key:  e6c3cf035914f999bc89bdc1c13aa1bcfb930fb2
-// search key:  d07ef4b8bcd4218536209eb0bf8201f4d5a0d34c742d662512bc50aae4493d1e
-// admin  key:  d07ef4b8bcd4218536209eb0bf8201f4d5a0d34c742d662512bc50aae4493d1e
+const host = 'https://ms-7b38c9a53bf5-9766.lon.meilisearch.io';
+const apiKey = 'a9120440eb9dce6256f824577056a48700be88f0';
+const indexName = 'title';
+
+// master key:  a9120440eb9dce6256f824577056a48700be88f0
+// search key:  8a3e51982f047c917dca3a2ceaa8439f728d06b2ef63d9f5c515486ad5c41796
+// admin  key:  8a3e51982f047c917dca3a2ceaa8439f728d06b2ef63d9f5c515486ad5c41796
 
 export async function GET(req: any, res: any) {
 
@@ -29,23 +32,32 @@ export async function GET(req: any, res: any) {
 
   console.log("scrapping-start");
 
+  // let mailSendingResult = await sendEmail({ error: "", success: true })
+
+  // console.log("mailSendingResult", mailSendingResult);
+
   // await JobAlertAutomation()
 
-  // const client = new MeiliSearch({
-  //   host: host,
-  //   apiKey: apiKey,
-  // });
+  const client = new MeiliSearch({
+    host: host,
+    apiKey: apiKey,
+  });
 
   // let linkedin = await linkedinScrapping();
+  // let google = await googleScrapping();
   // // let indeed = await indeedScrapping();
   // // // // let kadoa = await KadoaScrapping();
-  // let real = linkedin
+  // let real = google
   // // // // // let real = [...linkedin, ...kadoa]
+
+  // console.log("real",real);
 
   // console.log(1);
   // await client.index(indexName).addDocuments(real, { primaryKey: 'jobId' });
   // console.log(2);
-  // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId"]);
+  // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "companyName", "jobId", "postStatus", "recruiterId"]);
+  // // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId"]);
+  // await client.index(indexName).updateSortableAttributes(["postStatus"]);
   // await client.index(indexName).updateDistinctAttribute("companyName");
   // console.log(3);
 

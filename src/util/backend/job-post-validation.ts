@@ -5,13 +5,13 @@ export function jobPostValidation(jobPostingData: any, stage: any) {
 
         let errorMessage: any = {}
 
-        if (jobPostingData.logo.length < 1) errorMessage.logo = "Logo must be entered!"
+        if (jobPostingData.companyLogo.length < 1) errorMessage.companyLogo = "Company logo must be entered!"
 
         if (jobPostingData.companyName.length === 0) errorMessage.companyName = "Company name must be entered!"
         if (jobPostingData.companyName.length > 0 && jobPostingData.companyName.length < 5) errorMessage.companyName = "The company name must be at least 4 characters in length!"
 
-        if (jobPostingData.companyLink.length === 0) errorMessage.companyLink = "Company link must be entered!"
-        if (!jobPostingData.companyLink.includes(".") && (!jobPostingData.companyLink.includes("http") || !jobPostingData.companyLink.includes("https"))) errorMessage.companyLink = "Please enter the company link correctly."
+        if (jobPostingData.companyLinkedinUrl.length === 0) errorMessage.companyLinkedinUrl = "Company link must be entered!"
+        if (!jobPostingData.companyLinkedinUrl.includes(".") && (!jobPostingData.companyLinkedinUrl.includes("http") || !jobPostingData.companyLinkedinUrl.includes("https"))) errorMessage.companyLinkedinUrl = "Please enter the company link correctly."
 
         return {
             error: Object.keys(errorMessage).length > 0 ? true : false,
@@ -22,9 +22,8 @@ export function jobPostValidation(jobPostingData: any, stage: any) {
 
         let errorMessage: any = {}
 
-
-        if (jobPostingData.jobTitle.length === 0) errorMessage.jobTitle = "Job title must be entered!"
-        if (jobPostingData.jobTitle.length > 0 && jobPostingData.jobTitle.length < 10) errorMessage.jobTitle = "The job title must be at least 10 characters in length!"
+        if (jobPostingData.title.length === 0) errorMessage.title = "Job title must be entered!"
+        if (jobPostingData.title.length > 0 && jobPostingData.title.length < 10) errorMessage.title = "The job title must be at least 10 characters in length!"
 
         if (jobPostingData.tag.length === 0) errorMessage.tag = "You must enter at least one skill!"
         if (jobPostingData.tag.length > 10) errorMessage.tag = "More than 10 technologies cannot be registered!"
@@ -48,7 +47,7 @@ export function jobPostValidation(jobPostingData: any, stage: any) {
 
         if (jobPostingData.category === undefined) errorMessage.category = "Set job category!"
 
-        if (jobPostingData.jobApplyLink.length === 0) errorMessage.jobApplyLink = "Please enter the job posting link.!"
+        if (jobPostingData.applyUrl.length === 0) errorMessage.applyUrl = "Please enter the job posting link.!"
 
         if (jobPostingData.location === undefined) errorMessage.location = "Please enter job location!"
 

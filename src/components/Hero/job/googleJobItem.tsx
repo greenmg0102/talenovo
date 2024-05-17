@@ -4,7 +4,10 @@ import { registBookmark } from '@/store/action/user/jobget/landingJob'
 import { message } from 'antd';
 import clsx from "clsx";
 
-const PaidJobPostItem = ({ item, setIsDetail }: any) => {
+const GoogleJobItem = ({ item, setIsDetail }: any) => {
+
+  console.log("item", item);
+
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -27,21 +30,23 @@ const PaidJobPostItem = ({ item, setIsDetail }: any) => {
   return (
     <div className="p-2">
       {contextHolder}
+
       <div className="relative flex justify-start items-center mb-2">
         <div className="p-2">
-          <a href={item.jobApplyLink} target="_blank">
-            <div className='w-[60px] h-[60px] bg-cover bg-center rounded-full border border-blue-300 border-dashed' style={{ backgroundImage: `url(${item.companyLogo})` }} >
-            </div>
+          <a href={item && item.applyLink[0] && item.applyLink[0].link} target="_blank">
+            <img src={item.companyLogo} alt="avatar" className="rounded-full border border-blue-300 border-dashed" width={60} height={60} />
           </a>
         </div>
         <div className="pl-4 pr-4">
           {/* <Link href={`/job-detail/${item.jobId}`}> */}
+
           <p
             className="text-[16x] font-bold text-gray-500 hover:underline"
             onClick={() => setIsDetail(item)}
           >
             {item.title}
           </p>
+
           {/* </Link> */}
 
           <p className="text-[10px] font-bold text-gray-400">{item.companyName} - <span className="font-normal">{item && item.insightsV2 && item.insightsV2[0]}</span></p>
@@ -77,24 +82,20 @@ const PaidJobPostItem = ({ item, setIsDetail }: any) => {
               </g>
             </svg>
           </div>
-          <p className="text-[10px] text-blue-400 pt-2">1 days ago</p>
+          <p className="text-[10px] text-blue-400 pt-2">{postedDate(item.postedAt)} days ago</p>
         </div>
 
       </div>
-      <p className="text-[12px] text-gray-600 mb-2">{item && item.descriptionText && item.descriptionText.length > 300 ? item.descriptionText.slice(0, 300) + " ..." : item.descriptionText}</p>
-      <div className="flex justify-between items-center">
-        <div className="flex justify-start items-center flex-wrap">
-          {item.tag.map((item: any, index: any) =>
-            <p key={index} className="px-1 py-[1px] mr-2 border border-gray-300 text-gray-500 hover:bg-blue-400 hover:text-gray-50 transition-all rounded-[4px] text-[10px] mr-1 mb-[2px]">
-              {item}
-            </p>
-          )}
-        </div>
-        <p className="border border-red-500 rounded-[3px] px-2 py-[2px] mb-0 text-[10px] text-red-500">Featured</p>
+      <p className="text-[12px] text-gray-600 mb-2">{item.description.length > 300 ? item.description.slice(0, 300) + " ..." : item.description}</p>
+      <div className="flex justify-start items-center flex-wrap">
+        {item.skills && item.skills.map((item: any, index: any) =>
+          <p key={index} className="px-1 py-[1px] mr-2 border border-gray-300 text-gray-500 hover:bg-blue-400 hover:text-gray-50 transition-all rounded-[4px] text-[10px] mr-1 mb-[2px]">
+            {item}
+          </p>
+        )}
       </div>
-
     </div>
   );
 };
 
-export default PaidJobPostItem;
+export default GoogleJobItem;

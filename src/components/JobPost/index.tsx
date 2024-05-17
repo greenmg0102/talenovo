@@ -19,10 +19,10 @@ const JobPostMain = () => {
   const [loading, setLoading] = useState(false)
 
   const [value, setValue] = useState({
-    logo: "",
+    companyLogo: "",
     companyName: "",
-    companyLink: "",
-    jobTitle: "",
+    companyLinkedinUrl: "",
+    title: "",
     type: undefined,
     category: undefined,
     location: undefined,
@@ -37,7 +37,7 @@ const JobPostMain = () => {
     applyBy: undefined,
     contactInfo: undefined,
     premiumType: undefined,
-    jobApplyLink: "",
+    applyUrl: "",
 
     platform: "talenovo",
     subType: "paid",
@@ -45,10 +45,10 @@ const JobPostMain = () => {
   })
 
   const [warn, setWarn] = useState({
-    logo: "",
+    companyLogo: "",
     companyName: "",
-    companyLink: "",
-    jobTitle: "",
+    companyLinkedinUrl: "",
+    title: "",
     type: "",
     category: "",
     location: "",
@@ -62,7 +62,7 @@ const JobPostMain = () => {
     applyBy: "",
     contactInfo: "",
     premiumType: "",
-    jobApplyLink: ""
+    applyUrl: ""
   })
 
   const [userStatus, setUserStatus] = useState(false)
@@ -119,7 +119,9 @@ const JobPostMain = () => {
 
       let result = await jobPostStatus()
 
-      if (result !== null) {
+      console.log("jobPostStatus", result);
+
+      if (Object.keys(result).length !== 0) {
         setParams({ ...params, description: result.description, descriptionText: result.descriptionText })
         setValue(prevValue => ({ ...prevValue, ...result }));
       }
@@ -144,10 +146,10 @@ const JobPostMain = () => {
         setValue({ ...value, ...companyInfoResult.result })
         setCategory(Nextcategory)
         setWarn({
-          logo: "",
+          companyLogo: "",
           companyName: "",
-          companyLink: "",
-          jobTitle: "",
+          companyLinkedinUrl: "",
+          title: "",
           type: "",
           category: "",
           location: "",
@@ -161,7 +163,7 @@ const JobPostMain = () => {
           applyBy: "",
           contactInfo: "",
           premiumType: "",
-          jobApplyLink: ""
+          applyUrl: ""
         })
       } else {
 
@@ -188,8 +190,8 @@ const JobPostMain = () => {
       real.descriptionText = params.descriptionText
 
       // if (
-      //   real.jobTitle.length > 50 && real.type !== undefined &&
-      //   real.jobApplyLink.length > 50 &&
+      //   real.title.length > 50 && real.type !== undefined &&
+      //   real.applyUrl.length > 50 &&
       //   real.category !== undefined && real.location !== undefined &&
       //   real.tag.length > 0 &&
       //   real.description !== undefined &&
@@ -208,10 +210,10 @@ const JobPostMain = () => {
         setValue({ ...value, ...companyDetailResult.result })
         setCategory(Nextcategory)
         setWarn({
-          logo: "",
+          companyLogo: "",
           companyName: "",
-          companyLink: "",
-          jobTitle: "",
+          companyLinkedinUrl: "",
+          title: "",
           type: "",
           category: "",
           location: "",
@@ -225,7 +227,7 @@ const JobPostMain = () => {
           applyBy: "",
           contactInfo: "",
           premiumType: "",
-          jobApplyLink: ""
+          applyUrl: ""
         })
       } else {
 

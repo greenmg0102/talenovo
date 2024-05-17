@@ -11,8 +11,8 @@ const CompoanyInfo = ({ value, warn, setValue, setWarn }: any) => {
 
   useEffect(() => {
 
-    if (value.logo.length !== 100) {
-      setSelectedImage(value.logo)
+    if (value.companyLogo.length !== 100) {
+      setSelectedImage(value.companyLogo)
     }
 
   }, [value])
@@ -22,15 +22,15 @@ const CompoanyInfo = ({ value, warn, setValue, setWarn }: any) => {
     const maxSizeInBytes = 5 * 1024 * 1024; // 5MB
 
     if (file.size > maxSizeInBytes) {
-      setWarn({ ...warn, logo: "Image size exceeds the limit" })
+      setWarn({ ...warn, companyLogo: "Image size exceeds the limit" })
       return;
     }
 
     const reader = new FileReader();
     reader.onload = function () {
       setSelectedImage(reader.result)
-      setValue({ ...value, logo: reader.result })
-      setWarn({ ...warn, logo: "" })
+      setValue({ ...value, companyLogo: reader.result })
+      setWarn({ ...warn, companyLogo: "" })
     };
 
     reader.readAsDataURL(file);
@@ -57,13 +57,13 @@ const CompoanyInfo = ({ value, warn, setValue, setWarn }: any) => {
               :
               <div>
                 <button onClick={handleClickImage}>
-                <svg viewBox="64 64 896 896" focusable="false" data-icon="border-outer" width="4em" height="4em" fill="#4B5563" aria-hidden="true"><path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656zM484 366h56c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zM302 548h56c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm364 0h56c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-182 0h56c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm0 182h56c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8z"></path></svg>
+                  <svg viewBox="64 64 896 896" focusable="false" data-icon="border-outer" width="4em" height="4em" fill="#4B5563" aria-hidden="true"><path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656zM484 366h56c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zM302 548h56c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm364 0h56c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-182 0h56c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm0 182h56c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8z"></path></svg>
                 </button>
-                
+
               </div>
             }
           </div>
-          <p className={clsx('h-[16px]', warn.logo.length === 0 ? "invisible" : 'text-red-500 text-[12px]')}>{warn.logo}</p>
+          <p className={clsx('h-[16px]', warn.companyLogo.length === 0 ? "invisible" : 'text-red-500 text-[12px]')}>{warn.logo}</p>
         </div>
         <div className="w-[calc(100%-250px)] pl-4">
           <div className="h-[200px]">
@@ -83,7 +83,7 @@ const CompoanyInfo = ({ value, warn, setValue, setWarn }: any) => {
               <TestInput
                 textType={'text'}
                 value={value}
-                type={'companyLink'}
+                type={'companyLinkedinUrl'}
                 warn={warn}
                 title={"Company Website"}
                 warningText={"The link field is required."}
