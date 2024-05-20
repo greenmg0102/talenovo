@@ -22,7 +22,7 @@ const CompoanyInfo = ({ value, warn, setValue, setWarn }: any) => {
     const maxSizeInBytes = 5 * 1024 * 1024; // 5MB
 
     if (file.size > maxSizeInBytes) {
-      setWarn({ ...warn, companyLogo: "Image size exceeds the limit" })
+      setWarn({ ...warn, companyLogo: "Re-upload Logo, exceed maximum size" })
       return;
     }
 

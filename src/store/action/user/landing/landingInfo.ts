@@ -33,17 +33,19 @@ export async function carouselIndustry({ list }: any) {
         const oneUniqueCompanyData: any = [];
 
         oneSearchResults.forEach((result: any) => {
-            if (!oneUniqueCompanyNames.has(result.companyName)) {
+            if (!oneUniqueCompanyNames.has(result.companyName) && (result.companyLogo !== undefined)) {
+
                 oneUniqueCompanyNames.add(result.companyName);
                 oneUniqueCompanyData.push({
                     companyName: result.companyName,
                     companyLogo: result.companyLogo
                 });
+
             }
         });
 
         const oneShuffledCompanyData = oneUniqueCompanyData.sort(() => Math.random() - 0.5);
-        const oneRandomCompanyData = oneShuffledCompanyData.slice(0, 6);
+        const oneRandomCompanyData = oneShuffledCompanyData.slice(0, 18);
 
         const Two = await axios.post(
             `${host}/indexes/${indexName}/search`,
@@ -62,18 +64,17 @@ export async function carouselIndustry({ list }: any) {
         const twoUniqueCompanyData: any = [];
 
         twoSearchResults.forEach((result: any) => {
-            if (!twoUniqueCompanyNames.has(result.companyName)) {
+            if (!twoUniqueCompanyNames.has(result.companyName) && (result.companyLogo !== undefined)) {
                 twoUniqueCompanyNames.add(result.companyName);
                 twoUniqueCompanyData.push({
                     companyName: result.companyName,
                     companyLogo: result.companyLogo,
-                    count: Two.data.facetDistribution.companyName[result.companyName]
                 });
             }
         });
 
         const twoShuffledCompanyData = twoUniqueCompanyData.sort(() => Math.random() - 0.5);
-        const twoRandomCompanyData = twoShuffledCompanyData.slice(0, 6);
+        const twoRandomCompanyData = twoShuffledCompanyData.slice(0, 18);
 
 
         return {
@@ -82,13 +83,9 @@ export async function carouselIndustry({ list }: any) {
             industryCount: 6,
             result: [
                 {
-                    category: "Hospitals and Health Care",
+                    category: "Featured",
                     subResult: oneRandomCompanyData
-                },
-                {
-                    category: "Manufacturing",
-                    subResult: twoRandomCompanyData
-                },
+                }
             ]
         }
     } catch (error) {
@@ -112,9 +109,6 @@ export async function landingInfo() {
             { headers: { 'Authorization': `Bearer ${apiKey}` } }
         );
         const { facetDistribution } = response.data;
-
-
-        console.log("facetDistribution", facetDistribution);
 
         const companyCount = Object.keys(facetDistribution.companyName).length;
         const industryCount = 24;

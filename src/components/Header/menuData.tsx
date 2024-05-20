@@ -10,7 +10,7 @@ const menuData: Menu[] = [
   {
     id: 2,
     title: "Career Hub",
-    path: "https://blog.talenovo.com/",
+    path: "https://talenovo.com/careerhub",
     newTab: false,
   },
   {

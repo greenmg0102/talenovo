@@ -189,19 +189,6 @@ const JobPostMain = () => {
       real.description = params.description
       real.descriptionText = params.descriptionText
 
-      // if (
-      //   real.title.length > 50 && real.type !== undefined &&
-      //   real.applyUrl.length > 50 &&
-      //   real.category !== undefined && real.location !== undefined &&
-      //   real.tag.length > 0 &&
-      //   real.description !== undefined &&
-      //   real.minimumPay !== undefined && real.maximumPay !== undefined &&
-      //   real.description !== "" && real.descriptionText !== "" &&
-      //   real.descriptionText.length > 250 &&
-      //   real.currency !== undefined && real.currencyType !== undefined
-      //   // value.applyBy !== undefined
-      // ) {
-
       setLoading(true)
 
       let companyDetailResult = await jobDatilPost(real)

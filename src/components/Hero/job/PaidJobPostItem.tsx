@@ -90,7 +90,7 @@ const PaidJobPostItem = ({ item, setIsDetail }: any) => {
             </p>
           )}
         </div>
-        <p className="border border-red-500 rounded-[3px] px-2 py-[2px] mb-0 text-[10px] text-red-500">Featured</p>
+        <p className="font-bold text-gray-100 bg-green-500 rounded-[3px] px-2 py-[2px] mb-0 text-[10px] text-red-500 ">Featured</p>
       </div>
 
     </div>

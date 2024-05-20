@@ -80,14 +80,6 @@ const Hero = ({ setIsDetail }: any) => {
     fetchGeo()
   }, [])
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     let result = await paidJobGet()
-  //     setPaidJobList(result.myjobposts)
-  //   }
-  //   fetchData()
-  // }, [email])
-
   useEffect(() => {
 
     let total = localStorage.getItem('talenovo-job-total')
@@ -151,6 +143,7 @@ const Hero = ({ setIsDetail }: any) => {
   }, [locatedin, skil, userData])
 
   const Hit = ({ hit }: any) => {
+
     return (
       <div key={hit.jobId} className='shadow-lg'>
         <JobCard
@@ -165,9 +158,7 @@ const Hero = ({ setIsDetail }: any) => {
     <>
       <section
         id="home"
-        className='z-10 bg-white pb-16 pt-[50px] md:pb-[40px] md:pt-[50px] xl:pb-[50px] xl:pt-[70px] 2xl:pb-[60px] 2xl:pt-[100px]'
-      // className="z-10 overflow-hidden bg-white pb-16 pt-[30px] md:pb-[40px] md:pt-[120px] xl:pb-[50px] xl:pt-[140px] 2xl:pb-[60px] 2xl:pt-[160px]"
-      // className="relative z-10 overflow-hidden bg-white pb-16 pt-[30px] md:pb-[40px] md:pt-[120px] xl:pb-[50px] xl:pt-[140px] 2xl:pb-[60px] 2xl:pt-[160px]"
+        className='z-10 bg-white pb-16 md:pb-[40px] pt-[50px] md:pt-[50px] xl:pb-[50px] xl:pt-[50px] 2xl:pb-[60px] 2xl:pt-[50px]'
       >
         {contextHolder}
         <div className="mx-auto">
@@ -189,13 +180,13 @@ const Hero = ({ setIsDetail }: any) => {
                   searchClient={searchClient}
                 >
                   <div className='flex justify-center items-center sticky top-[1px] z-[11]'>
-                    <div className="mx-auto w-full sm:max-w-[558px] xl:max-w-[768px] bg-white">
+                    <div className="mx-auto w-full sm:max-w-[760px] xl:max-w-[998px] bg-white">
                       <SearchBox translations={{ placeholder: `Search by Job Title, Keywords, Company in ${geoPosition}` }} />
                     </div>
                   </div>
 
                   <div className='flex justify-center items-center pb-8 mt-[60px]'>
-                    <div className="flex justify-around items-center flex-wrap mt-2 mb-6 w-full sm:w-4/5">
+                    <div className="flex justify-around items-center flex-wrap mt-2 mb-6 w-full sm:w-3/5">
                       <div>
                         <p className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center">
                           <CountUp start={0} end={total} duration={3} className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center"></CountUp>+</p>
@@ -222,121 +213,9 @@ const Hero = ({ setIsDetail }: any) => {
                     </div>
                   </div>
 
-                  <div className="mx-auto max-w-[1368px] flex justify-between items-start flex-wrap">
-                    <div className="w-full sm:w-[30%] md:w-[25%] lg:w-[20%] border border-gray-300 bg-white rounded-md p-4 shadow-lg h-[300px] sm:h-full overflow-y-scroll sm:overflow-y-auto mb-4">
-                      <ClearRefinements />
-                      {/* <SortBy
-                            defaultRefinement="title"
-                            items={[
-                                { value: "title", label: "Relevant" },
-                                {
-                                    value: "title:companyName:desc",
-                                    label: "Most Recommended"
-                                },
-                                {
-                                    value: "title:skills:asc",
-                                    label: "Least Recommended"
-                                }
-                            ]}
-                        /> */}
+                  <div className="mx-auto max-w-[1368px] w-full flex flex-col-reverse lg:flex-row lg:justify-between items-start flex-wrap">
 
-                      {/* <h2 className='text-gray-700p pb-2'>Job Type</h2> */}
-                      {/* <RefinementList attribute="location" /> */}
-                      {/* <RefinementList
-                        attribute="occupationType"
-                        limit={3}
-                        showMore={false}
-                      // showMoreLimit={20}
-                      />
-                      <Divider />
-
-                      <h2 className='text-gray-700p pb-2'>Location</h2>
-                      <RefinementList
-                        attribute="country"
-                        limit={10}
-                        showMore={true}
-                      /> */}
-                      {/* <Divider /> */}
-
-                      <h2 className='text-gray-700p pb-2'>Location</h2>
-                      <RefinementList
-                        attribute="city"
-                        limit={3}
-                        showMore={true}
-                        showMoreLimit={20}
-                      />
-                      <Divider />
-
-                      <h2 className='text-gray-700p pb-2'>Company Name</h2>
-                      <RefinementList
-                        attribute="companyName"
-                        limit={3}
-                        showMore={true}
-                        showMoreLimit={20}
-                      />
-                      <Divider />
-
-                      {/* <h2 className='text-gray-700p pb-2'>Skill</h2>
-                      <RefinementList
-                        attribute="skills"
-                        limit={3}
-                        showMore={true}
-                        showMoreLimit={20}
-                      />
-                      <Divider />
-
-                      <h2 className='text-gray-700p pb-2'>Industry</h2>
-                      <RefinementList
-                        attribute="insightsV2"
-                        limit={3}
-                        showMore={true}
-                        showMoreLimit={20}
-                      />
-                      <Divider /> */}
-
-                      {/* <h2 className='text-gray-700p pb-2'>Salary</h2>
-                      <RefinementList
-                        attribute="tertiaryDescription"
-                        limit={3}
-                        showMore={true}
-                        showMoreLimit={20}
-                      /> */}
-                      {/* <Configure
-                        hitsPerPage={6}
-                        attributesToSnippet={["description:50"]}
-                        snippetEllipsisText={"..."}
-                        /> */}
-                    </div>
-                    <div className="w-full sm:w-[70%] md:w-[75%] lg:w-[80%] xl:w-[55%] px-0 sm:px-2">
-
-                      <Carousel />
-
-                      <div className="mb-4">
-                        {/* {paidJobList.map((item: any, index: any) =>
-                          <div
-                            key={index}
-                            className="border border-gray-300 bg-white rounded-md px-2 mb-2 cursor-pointer transition-all hover:shadow-lg hover:border-blue-500"
-                          >
-                            <PaidJobPostItem
-                              item={item}
-                              setIsDetail={(data: any) => setIsDetail(data)}
-                            />
-                          </div>
-                        )} */}
-                        <Configure
-                          // Add sorting configuration here
-                          sortBy="-postStatus"
-                        />
-                        <Hits hitComponent={Hit} />
-                      </div>
-                      <div className='flex justify-center mb-12'>
-                        {userData && Object.keys(userData).length > 0 ?
-                          <Pagination showLast={true} limit={3} offset={0} /> : null
-                        }
-                      </div>
-                    </div>
-
-                    <div className="w-full xl:w-[25%]">
+                    <div className="w-full lg:w-[30%]">
                       <div className="border border-gray-300 bg-white rounded-md p-2 flex justify-between items-center mb-4 shadow-lg">
                         <p className="font-bold text-[16px]">Suggested Jobs</p>
                         <Tooltip placement="topLeft" title={text}>
@@ -359,31 +238,128 @@ const Hero = ({ setIsDetail }: any) => {
                         </div>
                       }
                     </div>
+                    <div className='w-full lg:w-[70%] flex flex-col-reverse md:flex-row md:justify-between items-start flex-wrap'>
+                      <div className="w-full md:w-[80%] px-0 sm:px-2">
+                        <Carousel />
+
+                        <div className="mb-4">
+                          {/* {paidJobList.map((item: any, index: any) =>
+                            <div
+                              key={index}
+                              className="border border-gray-300 bg-white rounded-md px-2 mb-2 cursor-pointer transition-all hover:shadow-lg hover:border-blue-500"
+                            >
+                              <PaidJobPostItem
+                                item={item}
+                                setIsDetail={(data: any) => setIsDetail(data)}
+                              />
+                            </div>
+                          )} */}
+                          <Configure
+                            // Add sorting configuration here
+                            sortBy="-postStatus"
+                          />
+                          <Hits hitComponent={Hit} />
+                        </div>
+                        <div className='flex justify-center mb-12'>
+                          {userData && Object.keys(userData).length > 0 ?
+                            <Pagination showLast={true} limit={3} offset={0} /> : null
+                          }
+                        </div>
+                      </div>
+                      <div className="w-full md:w-[20%]">
+                        <ClearRefinements />
+                        {/* <SortBy
+                            defaultRefinement="title"
+                            items={[
+                                { value: "title", label: "Relevant" },
+                                {
+                                    value: "title:companyName:desc",
+                                    label: "Most Recommended"
+                                },
+                                {
+                                    value: "title:skills:asc",
+                                    label: "Least Recommended"
+                                }
+                            ]}
+                        /> */}
+
+                        {/* <h2 className='text-gray-700p pb-2'>Job Type</h2> */}
+                        {/* <RefinementList attribute="location" /> */}
+                        {/* <RefinementList
+                        attribute="occupationType"
+                        limit={3}
+                        showMore={false}
+                      // showMoreLimit={20}
+                      />
+                      <Divider />
+
+                      <h2 className='text-gray-700p pb-2'>Location</h2>
+                      <RefinementList
+                        attribute="country"
+                        limit={10}
+                        showMore={true}
+                      /> */}
+                        {/* <Divider /> */}
+
+                        <h2 className='text-gray-700p pb-2'>Location</h2>
+                        <RefinementList
+                          attribute="city"
+                          limit={3}
+                          showMore={true}
+                          showMoreLimit={20}
+                        />
+                        <Divider />
+
+                        <h2 className='text-gray-700p pb-2'>Company Name</h2>
+                        <RefinementList
+                          attribute="companyName"
+                          limit={3}
+                          showMore={true}
+                          showMoreLimit={20}
+                        />
+                        <Divider />
+
+                        {/* <h2 className='text-gray-700p pb-2'>Skill</h2>
+                      <RefinementList
+                        attribute="skills"
+                        limit={3}
+                        showMore={true}
+                        showMoreLimit={20}
+                      />
+                      <Divider />
+
+                      <h2 className='text-gray-700p pb-2'>Industry</h2>
+                      <RefinementList
+                        attribute="insightsV2"
+                        limit={3}
+                        showMore={true}
+                        showMoreLimit={20}
+                      />
+                      <Divider /> */}
+
+                        {/* <h2 className='text-gray-700p pb-2'>Salary</h2>
+                      <RefinementList
+                        attribute="tertiaryDescription"
+                        limit={3}
+                        showMore={true}
+                        showMoreLimit={20}
+                      /> */}
+                        {/* <Configure
+                        hitsPerPage={6}
+                        attributesToSnippet={["description:50"]}
+                        snippetEllipsisText={"..."}
+                        /> */}
+                      </div>
+                    </div>
+
+
                   </div>
                 </InstantSearch>
 
               </div>
-              {/* <Features /> */}
 
-              {/* <PriceCard /> */}
               <Testimonials />
-              {/* <section id="price"></section>
 
-              <div className='dark:bg-bg-color-dark bg-gray-light pt-12'>
-                <div
-                  className={`w-full mx-auto text-center mt-[60px]`}
-                  style={{ maxWidth: "570px", marginBottom: "30px" }}
-                >
-
-                  <h2 className="mb-2 text-3xl font-bold !leading-tight text-black dark:text-white sm:text-4xl md:text-[45px] text-center">
-                    Pricing
-                  </h2>
-                  <h4 className="mb-2 text-lg !leading-tight text-black dark:text-white sm:text-xl md:text-[20px] text-center px-2 text-gray-500">
-                    Subscribe to membership and unlock all jobs
-                  </h4>
-                </div>
-                <Pricing isSectionTitle={true} />
-              </div> */}
             </div>
           </div>
         </div >

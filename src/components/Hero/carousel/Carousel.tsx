@@ -38,7 +38,7 @@ export default function Carousel() {
     const items: TabsProps['items'] = industryList.map((item: any, index: any) => {
         return {
             key: index.toString(),
-            label: item.category,
+            label: <p className='font-semibold'>{item.category}</p>,
             children: <CarouselItem subResult={item.subResult} />
         }
     })

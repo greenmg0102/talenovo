@@ -62,7 +62,7 @@ const Pricing = ({ isSectionTitle }: any) => {
             Pricing
           </h2>
           <h4 className="mb-2 text-lg !leading-tight text-black dark:text-white sm:text-xl md:text-[20px] text-center px-2 text-gray-500">
-            Subscribe to membership and unlock all jobs
+            Subscribe to premium and unlock all jobs
           </h4>
         </div>
 
@@ -75,20 +75,32 @@ const Pricing = ({ isSectionTitle }: any) => {
             subtitle="1 day trial – Cancel anytime"
             isSectionTitle={isSectionTitle}
             handleSubscription={(total: any) => handleSubscription(total)}
-          />
+          >
+            <OfferList text="Immediate access to 50,000+ job" status="active" />
+            <OfferList text="Real-time job postings" status="active" />
+            <OfferList text="Personalized alerts" status="active" />
+            <OfferList text="Lifetime Access" status="active" />
+            <OfferList text="Coming soon: AI-Powered Resume Feedback" status="active" />
+          </PricingBox>
 
           <PricingBox
-            packageName="6 Months"
+            packageName="3 Months"
             price={"10"}
             duration={"mo"}
             priceId={process.env.NEXT_PUBLIC_SIX_MONTH}
             subtitle="Billed 60 dollars at once"
             isSectionTitle={isSectionTitle}
             handleSubscription={(total: any) => handleSubscription(total)}
-          />
+          >
+            <OfferList text="25% discount - $30 billed at once" status="active" />
+            <OfferList text="Immediate 50,000+ job updates" status="active" />
+            <OfferList text="Real-time job postings" status="active" />
+            <OfferList text="Personalized alerts" status="active" />
+            <OfferList text="Coming soon: AI-Powered Resume Feedback" status="active" />
+          </PricingBox>
 
           <PricingBox
-            packageName="12 Months"
+            packageName="6 Months"
             price={"8"}
             duration={"mo"}
             priceId={process.env.NEXT_PUBLIC_ONE_YEAR}
@@ -96,11 +108,11 @@ const Pricing = ({ isSectionTitle }: any) => {
             isSectionTitle={isSectionTitle}
             handleSubscription={(total: any) => handleSubscription(total)}
           >
-            {/* <OfferList text="All UI Components" status="active" />
-            <OfferList text="Use with Unlimited Projects" status="active" />
-            <OfferList text="Commercial Use" status="active" />
-            <OfferList text="Lifetime Access" status="active" />
-            <OfferList text="Free Lifetime Updates" status="active" /> */}
+            <OfferList text="30% discount - $48 billed at once" status="active" />
+            <OfferList text="Immediate 50,000+ job updates" status="active" />
+            <OfferList text="Real-time job postings" status="active" />
+            <OfferList text="Personalized alerts" status="active" />
+            <OfferList text="Coming soon: AI-Powered Resume Feedback" status="active" />
           </PricingBox>
         </div>
       </div>

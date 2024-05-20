@@ -3,8 +3,8 @@ import Pricing from '@/components/Pricing'
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Price Page | We support your career with AI",
-  description: "This is Price Page for Talenovo",
+  title: "Talenovo Premium Features | We support your career with AI",
+  description: "This is Talenovo Premium Features",
   // other metadata
 };
 

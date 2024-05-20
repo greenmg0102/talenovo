@@ -7,9 +7,10 @@ const PricingBox = (props: {
   priceId: any,
   subtitle: string;
   isSectionTitle: any;
-  handleSubscription: any
+  handleSubscription: any;
+  children: any
 }) => {
-  const { price, duration, packageName, subtitle, isSectionTitle, handleSubscription, priceId } = props;
+  const { price, duration, packageName, subtitle, isSectionTitle, handleSubscription, priceId, children } = props;
 
   return (
     <div className="w-full">
@@ -49,7 +50,7 @@ const PricingBox = (props: {
           }
 
         </div>
-        {/* <div>{children}</div> */}
+        <div className="mt-4">{children}</div>
         <div className="absolute bottom-0 right-0 z-[-1]">
           <svg
             width="179"

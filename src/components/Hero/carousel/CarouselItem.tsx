@@ -17,26 +17,26 @@ export default function CarouselItem({ subResult }: any) {
             <Slider {...settings}>
                 <div className="flex justify-between items-center">
                     <div className="flex justify-center items-start">
-                        {subResult.map((item: any, index: any) =>
+                        {subResult.slice(0, 6).map((item: any, index: any) =>
                             <div
                                 key={index}
                                 className="w-1/4 flex justify-center items-center flex-col"
                             >
-                                <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={50} height={50} />
-                                <p className="text-center text-gray-700 text-[12px]">{item.companyName}</p>
+                                <img src={item.companyLogo} alt="avatar" className="w-full w-[50px] h-[50px] rounded-full bg-cover shadow-lg" />
+                                <p className="text-center text-gray-700 text-[12px] font-bold">{item.companyName}</p>
                             </div>
                         )}
                     </div>
                 </div>
                 <div className="flex justify-between items-center">
                     <div className="flex justify-center items-start">
-                        {subResult.map((item: any, index: any) =>
+                        {subResult.slice(6, 12).map((item: any, index: any) =>
                             <div
                                 key={index}
                                 className="w-1/4 flex justify-center items-center flex-col"
                             >
-                                <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={50} height={50} />
-                                <p className="text-center text-gray-700 text-[12px]">{item.companyName}</p>
+                                <img src={item.companyLogo} alt="avatar" className="w-full w-[50px] h-[50px] rounded-full bg-cover shadow-lg" />
+                                <p className="text-center text-gray-700 text-[12px] font-bold">{item.companyName}</p>
                                 {/* <p className="text-center text-gray-400 text-[13px]">{item.count} Jobs</p> */}
                             </div>
                         )}
@@ -44,13 +44,13 @@ export default function CarouselItem({ subResult }: any) {
                 </div>
                 <div className="flex justify-between items-center">
                     <div className="flex justify-center items-start">
-                        {subResult.map((item: any, index: any) =>
+                        {subResult.slice(12, 18).map((item: any, index: any) =>
                             <div
                                 key={index}
                                 className="w-1/4 flex justify-center items-center flex-col"
                             >
-                                <img src={item.companyLogo} alt="avatar" className="rounded-full shadow-lg" width={50} height={50} />
-                                <p className="text-center text-gray-700 text-[12px]">{item.companyName}</p>
+                                <img src={item.companyLogo} alt="avatar" className="w-full w-[50px] h-[50px] rounded-full bg-cover shadow-lg" />
+                                <p className="text-center text-gray-700 text-[12px] font-bold">{item.companyName}</p>
                                 {/* <p className="text-center text-gray-400 text-[13px]">{item.count} Jobs</p> */}
                             </div>
                         )}

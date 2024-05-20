@@ -3,9 +3,8 @@ import clsx from 'clsx'
 import { Divider } from 'antd'
 
 export default function GoogleDetail({ isDetail, setIsDetail }: any) {
-
-    console.log("GoogleDetail", isDetail);
-
+    
+    
 
     return (
         <div
@@ -31,8 +30,12 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                             <div className="border border-gray-200 rounded-[8px] shadow-2xl p-12 py-2">
                                 <p className="text-center text-[24px] font-bold pb-12">{isDetail.title}</p>
                                 <div className="flex justify-start items-center flex-wrap mb-4">
-                                    {isDetail.location !== "" ? <p className="mr-2 mb-1 text-[12px] px-2 bg-green-200 rounded-[4px] text-green-900">{isDetail.location}</p> : null}
-                                    {isDetail.tertiaryDescription !== "" ? <p className="mr-2 mb-1 text-[12px] px-2 bg-blue-200 rounded-[4px] text-blue-900">{isDetail.tertiaryDescription}</p> : null}
+                                    {isDetail.location !== "" ? <p className="mr-2 text-[12px] px-2 rounded-[4px] text-green-900">{isDetail.location}</p> : null}
+                                    {isDetail && isDetail.extras && isDetail.extras.length > 0 && isDetail.extras.reverse().map((item: any, index: any) =>
+                                        <p key={index} className="text-[12px] text-gray-500 mr-2">
+                                            {item}
+                                        </p>
+                                    )}
                                 </div>
                                 {/* <p className="pb-4">Skill</p>
                                 <div className="flex justify-start flex-wrap items-center pb-4">
@@ -43,7 +46,7 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                 <Divider />
                                 <div className="flex justify-between items-center pb-4">
                                     <p className="font-semibold text-[14px]">Job Description</p>
-                                    <p className="font-semibold text-[14px]">Posted on: <span className="font-normal">{isDetail.extras && isDetail.extras && isDetail.extras[0]}</span></p>
+                                    {/* <p className="font-semibold text-[14px]">Posted on: <span className="font-normal">{isDetail.extras && isDetail.extras && isDetail.extras[0]}</span></p> */}
                                 </div>
                                 <p className="text-gray-500 pt-2 text-[12px]">{isDetail.description}</p>
                             </div>
@@ -66,7 +69,13 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
 
                             <div className=" border border-gray-200 rounded-[8px] shadow-2xl p-4 mb-4">
                                 <div className='flex justify-center items-center'>
-                                    <img src={isDetail.companyLogo} alt="avatar" className="rounded-[4px]" width={100} height={100} />
+                                    <img
+                                        src={isDetail.companyLogo ? isDetail.companyLogo : "/images/hero/default.jpeg"}
+                                        alt="avatar"
+                                        className="rounded-[4px]"
+                                        width={100}
+                                        height={100}
+                                    />
                                 </div>
                                 <p className="text-gray-700 font-bold text-center"><span className="font-medium text-[14px]">{isDetail.companyName}</span></p>
 

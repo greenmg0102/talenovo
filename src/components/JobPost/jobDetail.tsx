@@ -127,7 +127,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
             value={value}
             type={'tag'}
             warn={warn}
-            title={"Tag"}
+            title={"Skill"}
             list={jobTag}
             formatList={() => setJobTag([])}
             pushList={(type: any, eachvalue: any) => setValue({ ...value, [type]: eachvalue })}

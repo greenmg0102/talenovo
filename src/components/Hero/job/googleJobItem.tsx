@@ -31,7 +31,12 @@ const GoogleJobItem = ({ item, setIsDetail }: any) => {
       <div className="relative flex justify-start items-center mb-2">
         <div className="p-2">
           <a href={item && item.applyLink[0] && item.applyLink[0].link} target="_blank">
-            <img src={item.companyLogo} alt="avatar" className="rounded-full border border-blue-300 border-dashed" width={60} height={60} />
+            <img
+              src={item.companyLogo ? item.companyLogo : "/images/hero/default.jpeg"}
+              alt="avatar"
+              className="w-full w-[50px] h-[50px] rounded-full bg-cover bg-cover border-blue-300 border-dashed"
+              width={60} height={60}
+            />
           </a>
         </div>
         <div className="pl-4 pr-4">
@@ -48,9 +53,15 @@ const GoogleJobItem = ({ item, setIsDetail }: any) => {
 
           <p className="text-[10px] font-bold text-gray-400">{item.companyName} - <span className="font-normal">{item && item.insightsV2 && item.insightsV2[0]}</span></p>
           <div className="flex justify-start items-center flex-wrap">
-            <p className="text-[12px] text-gray-500 mr-2">{item.location}</p>
-            <p className="text-[12px] text-gray-500 mr-2">{item.employmentType}</p>
-            <p className={clsx(item.tertiaryDescription ? "text-[10px] py-[1px] px-[4px] rounded-[4px] text-red-500 mr-2 border border-red-200" : "hidden")}>{item.tertiaryDescription}</p>
+            <p className="text-[10px] text-gray-500 mr-2">{item.location}</p>
+            {/* <p className="text-[12px] text-gray-500 mr-2 border">1 {item.employmentType}</p> */}
+
+            {item && item.extras && item.extras.length > 0 && item.extras.reverse().map((item: any, index: any) =>
+              <p key={index} className="text-[10px] text-gray-500 mr-2">
+                {item}
+              </p>
+            )}
+
           </div>
         </div>
 
@@ -79,7 +90,7 @@ const GoogleJobItem = ({ item, setIsDetail }: any) => {
               </g>
             </svg>
           </div>
-          <p className="text-[10px] text-blue-400 pt-2">{postedDate(item.postedAt)} days ago</p>
+          {/* {item.extras && item.extras[0] && <p className="text-[10px] text-blue-400 pt-2">{item.extras[0]}</p>} */}
         </div>
 
       </div>

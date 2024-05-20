@@ -33,8 +33,10 @@ export function jobPostValidation(jobPostingData: any, stage: any) {
         if (jobPostingData.descriptionText !== undefined && jobPostingData.descriptionText.length > 5000) errorMessage.descriptionText = "The job description cannot be longer than 5000 characters!"
 
         if (jobPostingData.maximumPay === undefined) errorMessage.maximumPay = "A maximum price must be set!"
+        if (jobPostingData.maximumPay < 0) errorMessage.maximumPay = "This number cannot be negative value."
 
         if (jobPostingData.minimumPay === undefined) errorMessage.minimumPay = "A minimum price must be set!"
+        if (jobPostingData.minimumPay < 0) errorMessage.minimumPay = "This number cannot be negative value."
         if (Number(jobPostingData.minimumPay) > Number(jobPostingData.maximumPay)) errorMessage.maximumPay = "A maximum price must be greater than the minimum price!"
 
         if (jobPostingData.currency === undefined) errorMessage.currency = "Set currency unit!"

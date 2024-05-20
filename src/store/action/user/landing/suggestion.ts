@@ -12,8 +12,6 @@ export async function suggestJobs(data: any) {
 
     if (processingData.jobalertsetting === undefined) {
 
-        console.log("processingData 1", data);
-
         const response = await axios.post(
             `${host}/indexes/${indexName}/search`,
             {
@@ -29,8 +27,6 @@ export async function suggestJobs(data: any) {
 
         return response.data.hits
     } else {
-
-        console.log("processingData 2", data);
 
         let skillSetFilter = skillSet.map((itme: any) => { return `skills = "${itme}"`; })
 
