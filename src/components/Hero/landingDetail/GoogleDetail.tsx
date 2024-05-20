@@ -4,8 +4,6 @@ import { Divider } from 'antd'
 
 export default function GoogleDetail({ isDetail, setIsDetail }: any) {
     
-    
-
     return (
         <div
             className={
@@ -29,8 +27,9 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                         <div className="w-full mb-2 lg:w-3/4 lg:mb-0 px-4">
                             <div className="border border-gray-200 rounded-[8px] shadow-2xl p-12 py-2">
                                 <p className="text-center text-[24px] font-bold pb-12">{isDetail.title}</p>
+                                <p className="text-left text-[18px] font-bold pb-0">{isDetail.companyName}</p>
                                 <div className="flex justify-start items-center flex-wrap mb-4">
-                                    {isDetail.location !== "" ? <p className="mr-2 text-[12px] px-2 rounded-[4px] text-green-900">{isDetail.location}</p> : null}
+                                    {isDetail.location !== "" ? <p className="mr-2 text-[12px] pr-2 rounded-[4px] text-green-900">{isDetail.location}</p> : null}
                                     {isDetail && isDetail.extras && isDetail.extras.length > 0 && isDetail.extras.reverse().map((item: any, index: any) =>
                                         <p key={index} className="text-[12px] text-gray-500 mr-2">
                                             {item}
