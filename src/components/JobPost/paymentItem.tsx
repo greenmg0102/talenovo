@@ -21,8 +21,8 @@ const PaymentItem = ({ item, handleSubscription }: any) => {
       <div
         className="border rounded-[4px] py-1 px-2 border-red-500 text-red-500 cursor-pointer hover:text-gray-700 hover:shadow transition-all"
         onClick={() => handleSubscription({
+          priceId: item.amount,
           packageName: item.amount,
-          priceId: item.amount
         })}
       >
         Select

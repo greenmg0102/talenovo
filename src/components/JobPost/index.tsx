@@ -82,7 +82,7 @@ const JobPostMain = () => {
 
     async function fetchData() {
       let result = await userPremiumStatus()
-      if (result !== null) setUserStatus(result.status === 'active')
+      if (result !== null) setUserStatus(result.status !== 'active')
     }
     fetchData()
 
@@ -118,8 +118,6 @@ const JobPostMain = () => {
     async function fetchData() {
 
       let result = await jobPostStatus()
-
-      console.log("jobPostStatus", result);
 
       if (Object.keys(result).length !== 0) {
         setParams({ ...params, description: result.description, descriptionText: result.descriptionText })
@@ -231,6 +229,9 @@ const JobPostMain = () => {
       setLoading(false)
 
     } else if (category === 2) {
+
+      console.log("userStatus", userStatus);
+      
 
       if (userStatus) {
         let data = {

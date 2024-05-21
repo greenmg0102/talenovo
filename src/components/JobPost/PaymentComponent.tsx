@@ -12,19 +12,26 @@ const PaymentComponent = ({ value, warn, setValue }: any) => {
 
   const { user } = useUser();
 
-  const [productionList, setProductionList] = useState([])
+  const [productionList] = useState([
+    {
+      title: "Job Post monthly", price: "100", amount: "Job Post monthly"
+    },
+    {
+      title: "Job Post 3 monthly", price: "275", amount: "Job Post 3 monthly"
+    },
+  ])
 
   const email = user?.primaryEmailAddress?.emailAddress;
   const clerkId = user?.id;
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    async function fetchData() {
-      let result = await jobProductionGet()
-      setProductionList(result)
-    }
-    fetchData()
-  }, [])
+  //   async function fetchData() {
+  //     let result = await jobProductionGet()
+  //     setProductionList(result)
+  //   }
+  //   fetchData()
+  // }, [])
 
   const handleSubscription = async (plan: any) => {
 

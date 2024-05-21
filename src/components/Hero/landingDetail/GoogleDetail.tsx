@@ -3,7 +3,9 @@ import clsx from 'clsx'
 import { Divider } from 'antd'
 
 export default function GoogleDetail({ isDetail, setIsDetail }: any) {
-    
+
+    console.log("isDetail", isDetail);
+
     return (
         <div
             className={
@@ -25,13 +27,16 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                 {isDetail !== undefined ?
                     <div className="flex justify-between items-start flex-wrap">
                         <div className="w-full mb-2 lg:w-3/4 lg:mb-0 px-4">
-                            <div className="border border-gray-200 rounded-[8px] shadow-2xl p-12 py-2">
+                            <div className="border border-gray-200 rounded-[8px] shadow-md p-12 py-2">
                                 <p className="text-center text-[24px] font-bold pb-12">{isDetail.title}</p>
                                 <p className="text-left text-[18px] font-bold pb-0">{isDetail.companyName}</p>
                                 <div className="flex justify-start items-center flex-wrap mb-4">
                                     {isDetail.location !== "" ? <p className="mr-2 text-[12px] pr-2 rounded-[4px] text-green-900">{isDetail.location}</p> : null}
-                                    {isDetail && isDetail.extras && isDetail.extras.length > 0 && isDetail.extras.reverse().map((item: any, index: any) =>
-                                        <p key={index} className="text-[12px] text-gray-500 mr-2">
+                                    {isDetail && isDetail.extras && isDetail.extras.length > 0 && isDetail.extras.filter((item: any) => !item.includes("days ago")).map((item: any, index: any) =>
+                                        <p
+                                            key={index}
+                                            className={clsx("text-[10px] mr-2", item.includes("Full-time") ? "text-red-400 border border-red-400 px-1" : "text-gray-500")}
+                                        >
                                             {item}
                                         </p>
                                     )}
@@ -44,14 +49,35 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                 </div> */}
                                 <Divider />
                                 <div className="flex justify-between items-center pb-4">
-                                    <p className="font-semibold text-[14px]">Job Description</p>
-                                    {/* <p className="font-semibold text-[14px]">Posted on: <span className="font-normal">{isDetail.extras && isDetail.extras && isDetail.extras[0]}</span></p> */}
+                                    <p className="font-semibold text-[16px]">Job Description</p>
+                                    <p className="font-semibold text-[14px] flex">
+                                        Posted on: <span className="font-normal">
+                                            {isDetail && isDetail.extras && isDetail.extras.length > 0 && isDetail.extras.filter((item: any) => item.includes("days ago")).map((item: any, index: any) => <p key={index} className="text-blue-500 ml-1">{item}</p>)}
+                                        </span>
+                                    </p>
+
                                 </div>
-                                <p className="text-gray-500 pt-2 text-[12px]">{isDetail.description}</p>
+                                {isDetail.jobHighlights.length > 0 ?
+                                    <div>
+                                        {isDetail.jobHighlights.map((item: any, index: any) =>
+                                            <div key={index} className=''>
+                                                <p className='font-bold text-[14px] mt-4'>{item.title}</p>
+                                                <ul className='list-disc marker:text-blue-500'>
+                                                    {item.items.map((each: any, order: any) =>
+                                                        <li key={order} className='text-[14px] ml-6'>{each}</li>
+                                                    )}
+                                                </ul>
+                                            </div>
+                                        )}
+                                    </div>
+                                    :
+                                    <p className="text-gray-500 pt-2 text-[12px]">{isDetail.description}</p>
+                                }
+
                             </div>
                         </div>
                         <div className="w-full lg:w-1/4 pl-4">
-                            <div className=" border border-gray-200 rounded-[8px] shadow-2xl p-4 mb-12">
+                            <div className=" border border-gray-200 rounded-[8px] shadow-md p-4 mb-12">
                                 <div className="flex justify-start items-start items-center flex-wrap mb-4">
                                     <svg viewBox="64 64 896 896" focusable="false" data-icon="check-square" width="3em" height="3em" fill="#2b6cb0" aria-hidden="true"><path d="M433.1 657.7a31.8 31.8 0 0051.7 0l210.6-292c3.8-5.3 0-12.7-6.5-12.7H642c-10.2 0-19.9 4.9-25.9 13.3L459 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H315c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8z"></path><path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"></path></svg>
                                     <p className="text-gray-700 font-bold ml-2">Apply now</p>
@@ -66,12 +92,12 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                 </div>
                             </div>
 
-                            <div className=" border border-gray-200 rounded-[8px] shadow-2xl p-4 mb-4">
+                            <div className=" border border-gray-200 rounded-[8px] shadow-md p-4 mb-4">
                                 <div className='flex justify-center items-center'>
                                     <img
                                         src={isDetail.companyLogo ? isDetail.companyLogo : "/images/hero/default.jpeg"}
                                         alt="avatar"
-                                        className="rounded-[4px]"
+                                        className="rounded-[4px] w-[100px] h-[100px]"
                                         width={100}
                                         height={100}
                                     />

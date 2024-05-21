@@ -11,7 +11,7 @@ const Final = ({ value, warn, setValue }: any) => {
   return (
     <div>
       <p className="mb-4">Please review your job post</p>
-      <p className="text-[14px] text-gray-400 mb-4 mt-2">
+      <p className="text-[14px] text-gray-600 mb-4 mt-2">
         All jobs post will be reviewed prior to publishing, once payment have been process, an email will be sent once job listing is activated.
       </p>
 

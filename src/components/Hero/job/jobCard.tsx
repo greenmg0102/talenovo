@@ -14,7 +14,7 @@ const JobCard = ({ item, setIsDetail }: any) => {
       className={
         clsx(
           "border border-gray-300 bg-white rounded-md px-2 mb-2 cursor-pointer transition-all hover:shadow-lg hover:border-blue-500",
-          item.__position > 19 ? "blur_background rounded-md" : ""
+          item.__position > 17 ? "blur_background rounded-md" : ""
         )
       }
     >
@@ -43,7 +43,7 @@ const JobCard = ({ item, setIsDetail }: any) => {
         /> : null
       }
 
-      <div className={clsx(item.__position > 19 ? "transbox rounded-md" : "hidden")}>
+      <div className={clsx(item.__position > 17 ? "transbox rounded-md" : "hidden")}>
         <p className="text-blue-500 font-bold">
           <Link
             href="/premium"

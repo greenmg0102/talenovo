@@ -26,11 +26,11 @@ const indexName = 'title';
 export async function GET(req: any, res: any) {
 
   // await adminAPIMiddleware(req, res);
-  let { db } = await connectToDatabase();
+  // let { db } = await connectToDatabase();
 
   // schedule.scheduleJob('0 */12 * * *', async () => {
 
-  console.log("scrapping-start");
+  // console.log("scrapping-start");
 
   // let mailSendingResult = await sendEmail({ error: "", success: true })
 
@@ -38,10 +38,10 @@ export async function GET(req: any, res: any) {
 
   // await JobAlertAutomation()
 
-  const client = new MeiliSearch({
-    host: host,
-    apiKey: apiKey,
-  });
+  // const client = new MeiliSearch({
+  //   host: host,
+  //   apiKey: apiKey,
+  // });
 
   // let linkedin = await linkedinScrapping();
   // let google = await googleScrapping();

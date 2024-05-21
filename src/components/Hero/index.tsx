@@ -266,7 +266,7 @@ const Hero = ({ setIsDetail }: any) => {
                           }
                         </div>
                       </div>
-                      <div className="w-full md:w-[20%]">
+                      <div className="w-full md:w-[20%] pl-0 md:pl-4">
                         <ClearRefinements />
                         {/* <SortBy
                             defaultRefinement="title"
@@ -351,7 +351,6 @@ const Hero = ({ setIsDetail }: any) => {
                         /> */}
                       </div>
                     </div>
-
 
                   </div>
                 </InstantSearch>

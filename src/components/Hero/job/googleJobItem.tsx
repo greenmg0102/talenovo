@@ -34,14 +34,13 @@ const GoogleJobItem = ({ item, setIsDetail }: any) => {
             <img
               src={item.companyLogo ? item.companyLogo : "/images/hero/default.jpeg"}
               alt="avatar"
-              className="w-full w-[50px] h-[50px] rounded-full bg-cover bg-cover border-blue-300 border-dashed"
+              className="w-[50px] h-[50px] rounded-full bg-cover bg-cover border-blue-300 border-dashed"
               width={60} height={60}
             />
           </a>
         </div>
         <div className="pl-4 pr-4">
           {/* <Link href={`/job-detail/${item.jobId}`}> */}
-
           <p
             className="text-[16x] font-bold text-gray-500 hover:underline"
             onClick={() => setIsDetail(item)}
@@ -54,14 +53,15 @@ const GoogleJobItem = ({ item, setIsDetail }: any) => {
           <p className="text-[10px] font-bold text-gray-400">{item.companyName} - <span className="font-normal">{item && item.insightsV2 && item.insightsV2[0]}</span></p>
           <div className="flex justify-start items-center flex-wrap">
             <p className="text-[10px] text-gray-500 mr-2">{item.location}</p>
-            {/* <p className="text-[12px] text-gray-500 mr-2 border">1 {item.employmentType}</p> */}
-
-            {item && item.extras && item.extras.length > 0 && item.extras.reverse().map((item: any, index: any) =>
-              <p key={index} className="text-[10px] text-gray-500 mr-2">
+            {/* <p className="text-[12px] text-gray-500 mr-2 border">{item.employmentType}</p> */}
+            {item && item.extras && item.extras.length > 0 && item.extras.filter((item: any) => !item.includes("days ago")).map((item: any, index: any) =>
+              <p
+                key={index}
+                className={clsx("text-[10px] mr-2", item.includes("Full-time") ? "text-red-400 border border-red-400 px-1" : "text-gray-500")}
+              >
                 {item}
               </p>
             )}
-
           </div>
         </div>
 
@@ -74,12 +74,6 @@ const GoogleJobItem = ({ item, setIsDetail }: any) => {
               <path d="M5 6.2C5 5.07989 5 4.51984 5.21799 4.09202C5.40973 3.71569 5.71569 3.40973 6.09202 3.21799C6.51984 3 7.07989 3 8.2 3H15.8C16.9201 3 17.4802 3 17.908 3.21799C18.2843 3.40973 18.5903 3.71569 18.782 4.09202C19 4.51984 19 5.07989 19 6.2V21L12 16L5 21V6.2Z" stroke="#000000" strokeWidth="2" stroke-linejoin="round" />
             </svg> */}
             <svg width="1em" height="1em" viewBox="-5 0 20 20" version="1.1" >
-
-              <title>bookmark_fill [#1227]</title>
-              <desc>Created with Sketch.</desc>
-              <defs>
-
-              </defs>
               <g id="Page-1" stroke="none" strokeWidth="1" fill="#4299e1" fillRule="evenodd">
                 <g id="Dribbble-Light-Preview" transform="translate(-265.000000, -2679.000000)" fill="#4299e1">
                   <g id="icons" transform="translate(56.000000, 160.000000)">
@@ -90,7 +84,7 @@ const GoogleJobItem = ({ item, setIsDetail }: any) => {
               </g>
             </svg>
           </div>
-          {/* {item.extras && item.extras[0] && <p className="text-[10px] text-blue-400 pt-2">{item.extras[0]}</p>} */}
+          {item && item.extras && item.extras.length > 0 && item.extras.filter((item: any) => item.includes("days ago")).map((item: any, index: any) => <p key={index} className="text-[10px] text-blue-500"> {item}  </p>)}
         </div>
 
       </div>

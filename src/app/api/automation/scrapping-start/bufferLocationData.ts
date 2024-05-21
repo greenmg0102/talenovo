@@ -84144,3 +84144,7 @@ export const bufferLocationData = {
     "Victoria Falls"
   ]
 }
+
+export const bufferLocationData1 = {
+
+}
