@@ -44,7 +44,7 @@ const PaidJobPostItem = ({ item, setIsDetail }: any) => {
           </p>
           {/* </Link> */}
 
-          <p className="text-[10px] font-bold text-gray-400">{item.companyName} - <span className="font-normal">{item && item.insightsV2 && item.insightsV2[0]}</span></p>
+          <p className="text-[10px] font-bold text-gray-400">{item.companyName}  <span className="font-normal">{item && item.insightsV2 && item.insightsV2[0]}</span></p>
           <div className="flex justify-start items-center flex-wrap">
             <p className="text-[12px] text-gray-500 mr-2">{item.location}</p>
             <p className="text-[12px] text-gray-500 mr-2">{item.employmentType}</p>

@@ -23,7 +23,7 @@ export default function CarouselItem({ subResult }: any) {
                                 className="w-1/4 flex justify-center items-center flex-col"
                             >
                                 <img src={item.companyLogo} alt="avatar" className="w-[50px] h-[50px] rounded-full bg-cover shadow-lg" width={50} height={50} />
-                                <p className="text-center text-gray-700 text-[12px] font-bold">{item.companyName}</p>
+                                <p className="text-center text-gray-700 text-[12px] mt-2 font-bold">{item.companyName}</p>
                             </div>
                         )}
                     </div>

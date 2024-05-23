@@ -29,10 +29,10 @@ const categoryData: Category[] = [
     id: 6,
     title: "Subscription",
   },
-  // {
-  //   id: 7,
-  //   title: "News"
-  // }
+  {
+    id: 7,
+    title: "About Talenovo"
+  }
 ];
 export default categoryData;
 

@@ -6,7 +6,7 @@ const indexName = 'title';
 
 export async function paidJobGet() {
 
-    const res = await fetch('http://104.128.55.140:3000/api/user/landing-job', {
+    const res = await fetch('http://localhost:3000/api/user/landing-job', {
         method: 'POST',
         body: JSON.stringify({})
     });
@@ -83,7 +83,7 @@ export async function carouselIndustry({ list }: any) {
             industryCount: 6,
             result: [
                 {
-                    category: "Featured",
+                    category: "Featured Companies",
                     subResult: oneRandomCompanyData
                 }
             ]

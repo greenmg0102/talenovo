@@ -8,13 +8,14 @@ const GoogleJobItem = ({ item, setIsDetail }: any) => {
 
   const [messageApi, contextHolder] = message.useMessage();
 
-  const postedDate = (givenDateString: string): any => {
-    const givenDate = new Date(givenDateString);
-    const currentDate = new Date();
-    const timeDifference = currentDate.getTime() - givenDate.getTime();
-    const daysPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    return daysPassed
-  }
+  const extraColor = [
+    { bg: 'bg-green-200', text: 'text-green-600' },
+    { bg: 'bg-red-200', text: 'text-red-600' },
+    { bg: 'bg-blue-200', text: 'text-blue-600' },
+    { bg: 'bg-green-200', text: 'text-green-600' },
+    { bg: 'bg-blue-200', text: 'text-blue-600' },
+    { bg: 'bg-red-200', text: 'text-red-600' },
+  ]
 
   const bookmark = async (jobId: any) => {
     const data = { jobId: jobId }
@@ -50,14 +51,14 @@ const GoogleJobItem = ({ item, setIsDetail }: any) => {
 
           {/* </Link> */}
 
-          <p className="text-[10px] font-bold text-gray-400">{item.companyName} - <span className="font-normal">{item && item.insightsV2 && item.insightsV2[0]}</span></p>
+          <p className="text-[10px] font-bold text-gray-400">{item.companyName}  <span className="font-normal">{item && item.insightsV2 && item.insightsV2[0]}</span></p>
           <div className="flex justify-start items-center flex-wrap">
             <p className="text-[10px] text-gray-500 mr-2">{item.location}</p>
             {/* <p className="text-[12px] text-gray-500 mr-2 border">{item.employmentType}</p> */}
-            {item && item.extras && item.extras.length > 0 && item.extras.filter((item: any) => !item.includes("days ago")).map((item: any, index: any) =>
+            {item && item.extras && item.extras.length > 0 && item.extras.filter((item: any) => !item.includes("ago")).map((item: any, index: any) =>
               <p
                 key={index}
-                className={clsx("text-[10px] mr-2", item.includes("Full-time") ? "text-red-400 border border-red-400 px-1" : "text-gray-500")}
+                className={clsx("text-[10px] mr-2 px-2 py-[2px] rounded-[2px]", extraColor[index].bg, extraColor[index].text)}
               >
                 {item}
               </p>
@@ -84,7 +85,7 @@ const GoogleJobItem = ({ item, setIsDetail }: any) => {
               </g>
             </svg>
           </div>
-          {item && item.extras && item.extras.length > 0 && item.extras.filter((item: any) => item.includes("days ago")).map((item: any, index: any) => <p key={index} className="text-[10px] text-blue-500"> {item}  </p>)}
+          {item && item.extras && item.extras.length > 0 && item.extras.filter((item: any) => item.includes("ago")).map((item: any, index: any) => <p key={index} className="text-[10px] text-blue-500"> {item}  </p>)}
         </div>
 
       </div>

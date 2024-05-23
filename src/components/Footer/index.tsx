@@ -28,7 +28,7 @@ const Footer = () => {
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">
                   Your Gateway to Success
                 </p>
-                <div className="flex items-center">
+                <div className="flex items-center flex-wrap">
                   <a
                     href="https://www.facebook.com/profile.php?id=61558137845692"
                     aria-label="facebook"
@@ -117,26 +117,18 @@ const Footer = () => {
                 <ul>
                   <li>
                     <Link
-                      href="/blog"
+                      href="/careerhub"
                       className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
-                      Blog
+                      Careerhub
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="/"
+                      href="/premium"
                       className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
-                      Pricing
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/about"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                    >
-                      About
+                      Premium
                     </Link>
                   </li>
                   <li>
@@ -159,26 +151,26 @@ const Footer = () => {
                 <ul>
                   <li>
                     <Link
-                      href="/"
+                      href="/terms"
                       className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
-                      TOS
+                      Terms
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="/"
+                      href="/policy"
                       className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
-                      Privacy Policy
+                      Privacy
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="/"
+                      href="/refound"
                       className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
-                      Refund Policy
+                      Refund
                     </Link>
                   </li>
                 </ul>

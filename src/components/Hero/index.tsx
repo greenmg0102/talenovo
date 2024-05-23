@@ -13,6 +13,7 @@ import JobCard from "@/components/Hero/job/jobCard";
 import { suggestJobs } from '@/store/action/user/landing/suggestion'
 import { landingInfo, paidJobGet } from '@/store/action/user/landing/landingInfo'
 import { message, Alert, Tooltip } from 'antd';
+import NewsLatterBox from "@/components/Contact/NewsLatterBox";
 import PaidJobPostItem from '@/components/Hero/job/PaidJobPostItem'
 import PriceCard from '@/components/Hero/priceCard'
 import clsx from 'clsx'
@@ -216,6 +217,7 @@ const Hero = ({ setIsDetail }: any) => {
                   <div className="mx-auto max-w-[1368px] w-full flex flex-col-reverse lg:flex-row lg:justify-between items-start flex-wrap">
 
                     <div className="w-full lg:w-[30%]">
+                      <NewsLatterBox />
                       <div className="border border-gray-300 bg-white rounded-md p-2 flex justify-between items-center mb-4 shadow-lg">
                         <p className="font-bold text-[16px]">Suggested Jobs</p>
                         <Tooltip placement="topLeft" title={text}>
@@ -233,7 +235,17 @@ const Hero = ({ setIsDetail }: any) => {
                               )}
                             </div>
                             :
-                            <Alert message="No jobs available, please check back again" type="info" />
+                            <Alert
+                              message={
+                                <a href='/user-profile'>
+                                  <ul>
+                                    <li>No jobs available, please check back again.</li>
+                                    <li>For accurate job suggestion, please update your location and add your skills in your profile.</li>
+                                  </ul>
+                                </a>
+                              }
+                              type="info"
+                            />
                           }
                         </div>
                       }
@@ -261,9 +273,10 @@ const Hero = ({ setIsDetail }: any) => {
                           <Hits hitComponent={Hit} />
                         </div>
                         <div className='flex justify-center mb-12'>
-                          {userData && Object.keys(userData).length > 0 ?
+                          {/* {userData && Object.keys(userData).length > 0 ?
                             <Pagination showLast={true} limit={3} offset={0} /> : null
-                          }
+                          } */}
+                          <Pagination showLast={true} limit={3} offset={0} />
                         </div>
                       </div>
                       <div className="w-full md:w-[20%] pl-0 md:pl-4">
@@ -282,17 +295,17 @@ const Hero = ({ setIsDetail }: any) => {
                                 }
                             ]}
                         /> */}
-
-                        {/* <h2 className='text-gray-700p pb-2'>Job Type</h2> */}
-                        {/* <RefinementList attribute="location" /> */}
-                        {/* <RefinementList
-                        attribute="occupationType"
-                        limit={3}
-                        showMore={false}
-                      // showMoreLimit={20}
-                      />
-                      <Divider />
-
+                        {/* 
+                        <h2 className='text-gray-700p pb-2'>Job Type</h2>
+                        <RefinementList attribute="location" />
+                        <RefinementList
+                          attribute="occupationType"
+                          limit={3}
+                          showMore={false}
+                        // showMoreLimit={20}
+                        />
+                        <Divider />
+                       
                       <h2 className='text-gray-700p pb-2'>Location</h2>
                       <RefinementList
                         attribute="country"
