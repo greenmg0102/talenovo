@@ -29,7 +29,11 @@ const NewsLatterBox = () => {
           placeholder="Enter your email"
           className="border-stroke mb-4 w-full rounded-sm border bg-[#f8f8f8] px-4 py-2 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
         />
-        <Checkbox onChange={onChange} className="mb-4 text-gray-600 text-[13px]">I accept terms & condition, hyperlink to our terms page.</Checkbox>
+        <Checkbox onChange={onChange} className="mb-4 text-gray-600 text-[16px]">
+          <a href="http://104.128.55.140:3000/terms">
+            I accept terms & condition.
+          </a>
+        </Checkbox>
         <input
           type="submit"
           value="Subscribe Newsletters"
