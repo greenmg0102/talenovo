@@ -4,7 +4,6 @@ import { Db, ObjectId } from "mongodb";
 
 export interface User {
     _id: ObjectId;
-    clerkId: string;
     email: string;
     status: string;
     planName: string;
@@ -20,9 +19,9 @@ export class UserModel {
         this.db = db;
     }
 
-    async createUser(clerkId: string, email: string, status: string, planName: string): Promise<User> {
+    async createUser(email: string, status: string, planName: string, stripeCustomerId: string, subscriptionId: string): Promise<any> {
         try {
-            const result = await this.db.collection("users").insertOne({ clerkId, email, status, planName });
+            const result = await this.db.collection("users").insertOne({ email, status, planName, stripeCustomerId, subscriptionId });
             console.log('Here is result of user creation',result);
             // return result.ops[0] as User;
         } catch (error) {
@@ -31,7 +30,7 @@ export class UserModel {
         }
     }
 
-    async updateUser(userId: string, updates: Partial<User>): Promise<User | null> {
+    async updateUser(userId: string, updates: Partial<User>): Promise<any> {
         const user = await this.db.collection("users").findOneAndUpdate(
             { _id: new ObjectId(userId) },
             { $set: updates },
@@ -45,7 +44,7 @@ export class UserModel {
         return result.deletedCount === 1;
     }
 
-    async getUserByEmail(email: string): Promise<User | null> {
+    async getUserByEmail(email: string): Promise<any> {
         return await this.db.collection("users").findOne({ email });
     }
 

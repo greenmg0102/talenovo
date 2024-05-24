@@ -28,10 +28,6 @@ export default async function handler(
             webhookSecret,
         );
 
-        // console.log("event", event);
-        // console.log("stripe", stripe);
-        // console.log("webhookSecret", webhookSecret);
-
         // Connect to the MongoDB database
         const { db } = await connectToDatabase();
 
@@ -61,7 +57,6 @@ export default async function handler(
                     };
 
                     await userModel.updateUser(dbUser._id, updates);
-                    console.log('User updated successfully:', dbUser._id);
 
                     const total = {
                         email: subscription.metadata.email,
@@ -75,9 +70,8 @@ export default async function handler(
 
                 } else {
                     console.log('User not found in the database');
+                    await userModel.createUser( subscription.metadata.email, "active", subscriptionData.planName, subscriptionData.customerId, subscriptionData.subscriptionId);
                 }
-
-                console.log(subscriptionData);
 
                 break;
             }

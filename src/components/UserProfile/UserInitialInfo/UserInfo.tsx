@@ -183,12 +183,12 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
             </div>
             :
             <div>
-              <p className='text-center text-blue-500'>{userData.planName}</p>
+              <p className='text-center text-blue-500'>{userData && userData.planName}</p>
 
               <p className='text-center text-blue-500 text-[13px]'>
                 You can start
                 <Link
-                  href="/price"
+                  href="/premium"
                   className="hover:underline text-red-500 hover:text-green-500 cursor-pointer ml-2"
                 >
                   Here
