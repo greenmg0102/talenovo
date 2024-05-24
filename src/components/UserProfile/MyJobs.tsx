@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react';
 import { myJobApply } from '@/store/action/user/userProfile/myjobpost'
 import { Alert } from 'antd';
 import MyJobApplyItem from '@/components/UserProfile/MyJobApply/MyJobApplyItem'
+import JobCard from "@/components/Hero/job/jobCard";
 
 const MyJobs = ({ mybookmarkjob, bookJob, setIsDetail }: any) => {
- 
+
   const [loading, setLoading] = useState(false)
-  
+
   useEffect(() => {
     // setLoading(true)
     // if (bookJob.length > 0) setLoading(false)
@@ -24,15 +25,16 @@ const MyJobs = ({ mybookmarkjob, bookJob, setIsDetail }: any) => {
           {bookJob.length > 0 ?
             <>
               {bookJob.map((item: any, index: any) =>
-                <MyJobApplyItem
+                <JobCard
                   key={index}
                   item={item}
+                  hiddenBookMark={true}
                   setIsDetail={(data: any) => setIsDetail(data)}
                 />
               )}
             </>
             :
-            <Alert message="No bookmarked jobs" type="info" />
+            <Alert message={<p><a href='https://talenovo.com' className='text-blue-600 font-semibold'>Search Job</a> and add to your bookmark</p>} type="info" />
           }
         </div>
       }

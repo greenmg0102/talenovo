@@ -8,7 +8,10 @@ import GoogleJobItem from '@/components/Hero/job/googleJobItem'
 
 import clsx from 'clsx'
 
-const JobCard = ({ item, clerkId, setIsDetail }: any) => {
+const JobCard = ({ item, clerkId, hiddenBookMark, setIsDetail }: any) => {
+
+  console.log("hiddenBookMark", hiddenBookMark);
+
   return (
     <div
       className={
@@ -22,6 +25,7 @@ const JobCard = ({ item, clerkId, setIsDetail }: any) => {
         <LinkedinJobItem
           item={item}
           clerkId={clerkId}
+          hiddenBookMark={hiddenBookMark}
           setIsDetail={(data: any) => setIsDetail(data)}
         /> : null
       }
@@ -29,6 +33,7 @@ const JobCard = ({ item, clerkId, setIsDetail }: any) => {
         <GoogleJobItem
           item={item}
           clerkId={clerkId}
+          hiddenBookMark={hiddenBookMark}
           setIsDetail={(data: any) => setIsDetail(data)}
         /> : null
       }
@@ -36,6 +41,7 @@ const JobCard = ({ item, clerkId, setIsDetail }: any) => {
         <KadoaJobItem
           item={item}
           clerkId={clerkId}
+          hiddenBookMark={hiddenBookMark}
           setIsDetail={(data: any) => setIsDetail(data)}
         /> : null
       }
@@ -43,6 +49,7 @@ const JobCard = ({ item, clerkId, setIsDetail }: any) => {
         <PaidJobPostItem
           item={item}
           clerkId={clerkId}
+          hiddenBookMark={hiddenBookMark}
           setIsDetail={(data: any) => setIsDetail(data)}
         /> : null
       }

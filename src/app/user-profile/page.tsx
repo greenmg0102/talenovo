@@ -19,7 +19,7 @@ const UserProfile = () => {
               <UserBannerMain />
             </div>
           </div>
-          <div className="w-full lg:w-[65%] border border-gray-200 rounded-[16px] p-4 shadow-2xl">
+          <div className="w-full lg:w-[65%]">
             <UserInfoMain />
           </div>
         </div>

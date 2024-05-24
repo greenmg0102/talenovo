@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import MyJobApplyItem from '@/components/UserProfile/MyJobApply/MyJobApplyItem'
 import { myJobAlert } from '@/store/action/user/userProfile/myjobalert'
+import JobCard from "@/components/Hero/job/jobCard";
 import { Alert } from 'antd';
 
 const AlertingJob = ({ alertingJob, setIsDetail }: any) => {
@@ -24,15 +25,16 @@ const AlertingJob = ({ alertingJob, setIsDetail }: any) => {
           {alertingJob.length > 0 ?
             <>
               {alertingJob.map((item: any, index: any) =>
-                <MyJobApplyItem
+                <JobCard
                   key={index}
                   item={item}
+                  hiddenBookMark = {true}
                   setIsDetail={(data: any) => setIsDetail(data)}
                 />
               )}
             </>
             :
-            <Alert message="No bookmarked jobs" type="info" />
+            <Alert message="No jobs available. For accurate job suggestion, please update your location and add your skills in your profile." type="info" />
           }
         </div>
       }

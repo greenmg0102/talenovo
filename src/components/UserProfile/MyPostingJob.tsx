@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Alert } from 'antd';
 import MyJobPostItem from '@/components/UserProfile/MyJobPost/MyJobPostItem'
+import JobCard from "@/components/Hero/job/jobCard";
 
 const MyPostingJob = ({ myPostedJob, setIsDetail }: any) => {
 
@@ -23,9 +24,10 @@ const MyPostingJob = ({ myPostedJob, setIsDetail }: any) => {
           {myPostedJob.length > 0 ?
             <>
               {myPostedJob.map((item: any, index: any) =>
-                <MyJobPostItem
+                <JobCard
                   key={index}
                   item={item}
+                  hiddenBookMark={true}
                   setIsDetail={(data: any) => setIsDetail(data)}
                 />
               )}

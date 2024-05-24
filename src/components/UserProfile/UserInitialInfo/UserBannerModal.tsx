@@ -83,7 +83,7 @@ function UserBannerModal({ tagList, isModalVisible, setIsModalVisible, userInfo,
     return (
         <div>
             <Modal
-                title="User Initial Information"
+                title="About Me"
                 open={isModalVisible}
                 onOk={handleOk}
                 onCancel={handleCancel}

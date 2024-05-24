@@ -41,7 +41,7 @@ const UserInfoMain = () => {
     async function fecthData() {
 
       let result1 = await myJobAlert()
-      if (result1.isOkay) setAlertingJob(result1.result)     
+      if (result1.isOkay) setAlertingJob(result1.result)
 
       let result2 = await myBookMarkJob()
       if (result2.isOkay) setBookJob(result2.result)
@@ -95,21 +95,25 @@ const UserInfoMain = () => {
         </div>
         :
         <div>
-          <UserInfo
-            userInfo={userInfo}
-            onchange={(total: any) => setUserInfo(total)}
-          />
-          <UserDashboard
-            skill={userInfo.skill}
-            locatedin={userInfo.locatedin}
-            postedJob={userInfo.postedJob}
-            myPostedJob={postedJob}
-            appliedJob={userInfo.appliedJob}
-            alertingJob={alertingJob}
-            bookJob={bookJob}
-            bookmark={userInfo.bookmark}
-            mybookmarkjob={userInfo.mybookmarkjob}
-          />
+          <div className="w-full border border-gray-200 rounded-[16px] p-4 shadow-2xl">
+            <UserInfo
+              userInfo={userInfo}
+              onchange={(total: any) => setUserInfo(total)}
+            />
+          </div>
+          <div className="w-full border border-gray-200 rounded-[16px] p-4 shadow-2xl mt-8">
+            <UserDashboard
+              skill={userInfo.skill}
+              locatedin={userInfo.locatedin}
+              postedJob={userInfo.postedJob}
+              myPostedJob={postedJob}
+              appliedJob={userInfo.appliedJob}
+              alertingJob={alertingJob}
+              bookJob={bookJob}
+              bookmark={userInfo.bookmark}
+              mybookmarkjob={userInfo.mybookmarkjob}
+            />
+          </div>
         </div>
       }
     </div>

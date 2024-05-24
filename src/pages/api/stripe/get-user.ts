@@ -14,14 +14,10 @@ export default async function handler(
     }
 
     try {
-
-
-        
         
         const { email } = req.body;
         // Connect to the MongoDB database
         const { db } = await connectToDatabase();
-        console.log('email*(((((((((((((((((((((((((((((((((((', email);
 
         // Instantiate the UserModel with the database instance
         const userModel = new UserModel(db);
