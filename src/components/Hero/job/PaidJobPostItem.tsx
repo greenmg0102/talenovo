@@ -4,7 +4,7 @@ import { registBookmark } from '@/store/action/user/jobget/landingJob'
 import { message } from 'antd';
 import clsx from "clsx";
 
-const PaidJobPostItem = ({ item, setIsDetail }: any) => {
+const PaidJobPostItem = ({ item, clerkId, setIsDetail }: any) => {
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -17,11 +17,15 @@ const PaidJobPostItem = ({ item, setIsDetail }: any) => {
   }
 
   const bookmark = async (jobId: any) => {
-    const data = { jobId: jobId }
-    let result = await registBookmark(data)
 
-    if (result.isOkay) messageApi.info(result.message);
-    else messageApi.error(result.message);
+    if(clerkId){
+      const data = { jobId: jobId }
+      let result = await registBookmark(data)
+  
+      if (result.isOkay) messageApi.info(result.message);
+      else messageApi.error(result.message);
+    }else messageApi.error("Please sign in.");
+    
   }
 
   return (
@@ -34,7 +38,7 @@ const PaidJobPostItem = ({ item, setIsDetail }: any) => {
             </div>
           </a>
         </div>
-        <div className="pl-4 pr-4">
+        <div className="pl-4 pr-4 w-[calc(100%-170px)]">
           {/* <Link href={`/job-detail/${item.jobId}`}> */}
           <p
             className="text-[16x] font-bold text-gray-500 hover:underline"
@@ -52,7 +56,7 @@ const PaidJobPostItem = ({ item, setIsDetail }: any) => {
           </div>
         </div>
 
-        <div className="absolute top-[2px] right-[2px]">
+        <div className="w-[80px] absolute top-[2px] right-[2px]">
           <div className="flex justify-end" onClick={() => bookmark(item.jobId)}>
             {/* <svg viewBox="64 64 896 896" className="hover:text-blue-400" focusable="false" data-icon="book" width="1em" height="1em" fill="currentColor" aria-hidden="true">
               <path d="M5 6.2C5 5.07989 5 4.51984 5.21799 4.09202C5.40973 3.71569 5.71569 3.40973 6.09202 3.21799C6.51984 3 7.07989 3 8.2 3H15.8C16.9201 3 17.4802 3 17.908 3.21799C18.2843 3.40973 18.5903 3.71569 18.782 4.09202C19 4.51984 19 5.07989 19 6.2V21L12 16L5 21V6.2Z" stroke="#000000" strokeWidth="2" stroke-linejoin="round" />

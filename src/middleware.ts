@@ -4,14 +4,17 @@ export default authMiddleware({
   apiRoutes: [], // Remove "/api/webhooks/clerk" from apiRoutes array
   publicRoutes: [
     "/",
-    "/contact",
     "/premium",
+    "/terms",
+    "/policy",
+    "/refund",
     "/api/webhooks/clerk",
     "/api/webhooks/stripe",
     "/api/stripe/create-checkout-session",
     "/api/stripe/test",
     "/api/automation/scrapping-start",
     "/api/service/geo",
+    "/api/user/about-edit",
     "/api/user/landing-job",
     "/api/user/user-profile/user-premium-status"
   ], // Add "/api/webhooks/clerk" to publicRoutes

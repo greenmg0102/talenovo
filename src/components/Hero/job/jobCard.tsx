@@ -8,7 +8,7 @@ import GoogleJobItem from '@/components/Hero/job/googleJobItem'
 
 import clsx from 'clsx'
 
-const JobCard = ({ item, setIsDetail }: any) => {
+const JobCard = ({ item, clerkId, setIsDetail }: any) => {
   return (
     <div
       className={
@@ -21,24 +21,28 @@ const JobCard = ({ item, setIsDetail }: any) => {
       {item.platform === "apify" && item.subType === "linkedin" ?
         <LinkedinJobItem
           item={item}
+          clerkId={clerkId}
           setIsDetail={(data: any) => setIsDetail(data)}
         /> : null
       }
       {item.platform === "apify" && item.subType === "google" ?
         <GoogleJobItem
           item={item}
+          clerkId={clerkId}
           setIsDetail={(data: any) => setIsDetail(data)}
         /> : null
       }
       {item.platform === "kadoa" && item.subType === "portalprocomservices" ?
         <KadoaJobItem
           item={item}
+          clerkId={clerkId}
           setIsDetail={(data: any) => setIsDetail(data)}
         /> : null
       }
       {item.platform === "talenovo" && item.subType === "paid" ?
         <PaidJobPostItem
           item={item}
+          clerkId={clerkId}
           setIsDetail={(data: any) => setIsDetail(data)}
         /> : null
       }

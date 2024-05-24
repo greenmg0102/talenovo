@@ -149,6 +149,7 @@ const Hero = ({ setIsDetail }: any) => {
       <div key={hit.jobId} className='shadow-lg'>
         <JobCard
           item={hit}
+          clerkId={clerkId}
           setIsDetail={(data: any) => setIsDetail(data)}
         />
       </div>

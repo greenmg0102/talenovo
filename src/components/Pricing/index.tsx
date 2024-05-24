@@ -72,15 +72,14 @@ const Pricing = ({ isSectionTitle }: any) => {
             price={"13"}
             duration={"mo"}
             priceId={process.env.NEXT_PUBLIC_ONE_MONTH}
-            subtitle="1 day trial – Cancel anytime"
             isSectionTitle={isSectionTitle}
             handleSubscription={(total: any) => handleSubscription(total)}
           >
-            <OfferList text={<p className="m-0 text-base font-medium text-body-color">Immediate access to <span className="text-red-500 font-bold">50,000+</span>  job"</p>} status="active" />
-            <OfferList text="Real-time job postings" status="active" />
-            <OfferList text="Personalized alerts" status="active" />
-            <OfferList text="Lifetime Access" status="active" />
-            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span>  AI-Powered Resume Feedback  job"</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color">Immediate access to <span className="text-red-500 font-bold">50,000+</span>  job</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color">Real-time job postings</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color">Personalized alerts</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color">Lifetime Access</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span>  AI-Powered Resume Feedback  job</p>} status="active" />
           </PricingBox>
 
           <PricingBox
@@ -88,15 +87,14 @@ const Pricing = ({ isSectionTitle }: any) => {
             price={"10"}
             duration={"mo"}
             priceId={process.env.NEXT_PUBLIC_SIX_MONTH}
-            subtitle="Billed 60 dollars at once"
             isSectionTitle={isSectionTitle}
             handleSubscription={(total: any) => handleSubscription(total)}
           >
             <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> 25% discount</span> $30 billed at once</p>} status="active" />
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Immediate <span className="text-red-500 font-bold"> 50,000+ </span> job updates</p>} status="active" />
-            <OfferList text="Real-time job postings" status="active" />
-            <OfferList text="Personalized alerts" status="active" />
-            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span>  AI-Powered Resume Feedback  job"</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color">Real-time job postings</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color">Personalized alerts</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span>  AI-Powered Resume Feedback  job</p>} status="active" />
           </PricingBox>
 
           <PricingBox
@@ -104,15 +102,14 @@ const Pricing = ({ isSectionTitle }: any) => {
             price={"8"}
             duration={"mo"}
             priceId={process.env.NEXT_PUBLIC_ONE_YEAR}
-            subtitle="Billed 96 dollars at once"
             isSectionTitle={isSectionTitle}
             handleSubscription={(total: any) => handleSubscription(total)}
           >
             <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold">30% discount</span> $48 billed at once</p>} status="active" />
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Immediate <span className="text-red-500 font-bold"> 50,000+ </span> job updates</p>} status="active" />
-            <OfferList text="Real-time job postings" status="active" />
-            <OfferList text="Personalized alerts" status="active" />
-            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span>  AI-Powered Resume Feedback  job"</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color">Real-time job postings</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color">Personalized alerts</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span>  AI-Powered Resume Feedback  job</p>} status="active" />
           </PricingBox>
         </div>
       </div>

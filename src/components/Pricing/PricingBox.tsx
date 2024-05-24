@@ -5,12 +5,11 @@ const PricingBox = (props: {
   duration: string;
   packageName: string;
   priceId: any,
-  subtitle: string;
   isSectionTitle: any;
   handleSubscription: any;
   children: any
 }) => {
-  const { price, duration, packageName, subtitle, isSectionTitle, handleSubscription, priceId, children } = props;
+  const { price, duration, packageName, isSectionTitle, handleSubscription, priceId, children } = props;
 
   return (
     <div className="w-full">
@@ -26,8 +25,8 @@ const PricingBox = (props: {
             {packageName}
           </h4>
         </div>
-        <p className="mb-7 text-base text-body-color text-center">{subtitle}</p>
-        <div className="border-b border-body-color border-opacity-10 dark:border-white dark:border-opacity-10">
+        {/* <p className="mb-7 text-base text-body-color text-center">{subtitle}</p> */}
+        <div className="border-b border-body-color border-opacity-10 dark:border-white dark:border-opacity-10 mt-4">
           {isSectionTitle ?
             <Link
               href="/price"
