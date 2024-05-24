@@ -12,9 +12,9 @@ const NewsLatterBox = () => {
   };
 
   return (
-    <div className="relative z-10 rounded-sm bg-white p-2 shadow-three dark:bg-gray-dark sm:p-6 mb-4">
+    <div className="border border-gray-300 rounded-[10px] relative z-10 rounded-sm bg-white p-2 shadow-three dark:bg-gray-dark sm:p-6 mb-4">
       <h3 className="mb-4 text-xl font-bold leading-tight text-black dark:text-white">
-        Subscribe to receive future updates
+        Subscribe to Talenovo's newsletter
       </h3>
       <div>
         <input
@@ -29,15 +29,12 @@ const NewsLatterBox = () => {
           placeholder="Enter your email"
           className="border-stroke mb-4 w-full rounded-sm border bg-[#f8f8f8] px-4 py-2 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
         />
-        <Checkbox onChange={onChange} className="mb-4 text-gray-600">I accept the trms and conditions.</Checkbox>
+        <Checkbox onChange={onChange} className="mb-4 text-gray-600 text-[13px]">I accept terms & condition, hyperlink to our terms page.</Checkbox>
         <input
           type="submit"
-          value="Subscribe News"
+          value="Subscribe Newsletters"
           className="mb-5 flex w-full cursor-pointer items-center justify-center rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark"
         />
-        <p className="text-center text-base leading-relaxed text-body-color dark:text-body-color-dark text-[12px]">
-          No spam guaranteed, So please don’t send any spam mail.
-        </p>
       </div>
 
       <div>
