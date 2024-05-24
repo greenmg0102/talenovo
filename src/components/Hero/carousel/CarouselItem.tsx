@@ -13,7 +13,7 @@ var settings = {
 export default function CarouselItem({ subResult }: any) {
 
     return (
-        <div className="mb-0 p-8 rounded-[4px]">
+        <div className="mb-0 pt-1 pb-4 rounded-[4px]">
             <Slider {...settings}>
                 <div className="flex justify-between items-center">
                     <div className="flex justify-center items-start">
