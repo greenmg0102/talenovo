@@ -9,7 +9,7 @@ export async function POST(req: any, res: any) {
   const user: any = await currentUser();
   let reqData = await req.json()
 
-  let isMe:any = await db.collection("userinfos").findOne({ userId: user.id });
+  let isMe: any = await db.collection("userinfos").findOne({ userId: user.id });
 
   if (isMe === null) {
     const data = {

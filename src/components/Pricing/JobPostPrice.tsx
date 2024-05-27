@@ -57,7 +57,6 @@ const JobPostPrice = ({ isSectionTitle }: any) => {
   return (
     <section id="pricing" className="relative z-10 pb-16 md:pb-20 lg:pb-28 px-auto">
 
-
       <div className="container flex justify-around items-start">
         <JobPostPricingBox
           packageName="Job Post monthly"
@@ -68,11 +67,13 @@ const JobPostPrice = ({ isSectionTitle }: any) => {
           isSectionTitle={isSectionTitle}
           handleSubscription={(total: any) => handleSubscription(total)}
         >
-          <OfferList text="All UI Components" status="active" />
-          <OfferList text="Use with Unlimited Projects" status="active" />
-          <OfferList text="Commercial Use" status="active" />
-          <OfferList text="Lifetime Access" status="active" />
-          <OfferList text="Free Lifetime Updates" status="active" />
+          <OfferList text="Featured Placement" status="active" />
+          <OfferList text="Job Post match with targeted audience" status="active" />
+          <OfferList text="Niche Expertise" status="active" />
+          <OfferList text="Top Tier Exposure" status="active" />
+          <OfferList text="Brand Exposure" status="active" />
+          <OfferList text="Quality Candidates" status="active" />
+          
         </JobPostPricingBox>
 
         <JobPostPricingBox
@@ -84,11 +85,13 @@ const JobPostPrice = ({ isSectionTitle }: any) => {
           isSectionTitle={isSectionTitle}
           handleSubscription={(total: any) => handleSubscription(total)}
         >
-          <OfferList text="All UI Components" status="active" />
-          <OfferList text="Use with Unlimited Projects" status="active" />
-          <OfferList text="Commercial Use" status="active" />
-          <OfferList text="Lifetime Access" status="active" />
-          <OfferList text="Free Lifetime Updates" status="active" />
+          <OfferList text="Featured Placement" status="active" />
+          <OfferList text="Job Post match with targeted audience" status="active" />
+          <OfferList text="Niche Expertise" status="active" />
+          <OfferList text="Top Tier Exposure" status="active" />
+          <OfferList text="Brand Exposure" status="active" />
+          <OfferList text="Quality Candidates" status="active" />
+
         </JobPostPricingBox>
 
       </div>

@@ -24,6 +24,10 @@ const UserDashboard = ({ myPostedJob, mybookmarkjob, postedJob, appliedJob, book
         setIsDetail={(data: any) => setIsDetail(data)}
       />
       <div className="w-full">
+        <p className='text-center py-6 pt-2 text-[20px] font-bold text-gray-600 flex justify-center items-center mt-0'>
+          <svg className="mr-2" viewBox="64 64 896 896" focusable="false" data-icon="database" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M832 64H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V96c0-17.7-14.3-32-32-32zm-600 72h560v208H232V136zm560 480H232V408h560v208zm0 272H232V680h560v208zM304 240a40 40 0 1080 0 40 40 0 10-80 0zm0 272a40 40 0 1080 0 40 40 0 10-80 0zm0 272a40 40 0 1080 0 40 40 0 10-80 0z"></path></svg>
+          My Jobs
+        </p>
         <Tab.Group>
           <Tab.List className="mt-3 flex flex-wrap border-b border-gray-200">
             {/* <Tab as={Fragment}>

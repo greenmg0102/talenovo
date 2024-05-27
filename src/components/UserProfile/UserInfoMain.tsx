@@ -47,6 +47,9 @@ const UserInfoMain = () => {
       if (result2.isOkay) setBookJob(result2.result)
 
       let result3 = await myJobPost()
+
+      console.log("result3.myjobposts", result3.myjobposts);
+      
       setPostedJob(result3.myjobposts)
     }
 

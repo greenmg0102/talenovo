@@ -6,7 +6,7 @@ const JobPostFeature = () => {
 
   return (
     <>
-      <section id="features" className=" py-8 md:py-12 lg:py-20">
+      <section id="features" className=" py-8 pb-2 md:py-12 md:pb-2 lg:py-20 lg:pb-2">
         <div className="container">
 
           <h2 className="mb-2 text-3xl font-bold !leading-tight text-black dark:text-white sm:text-4xl md:text-[45px] text-center">

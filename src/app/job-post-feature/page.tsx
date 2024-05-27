@@ -14,14 +14,14 @@ export const metadata: Metadata = {
 const JobPostNewFeature = () => {
   return (
     <>
-      <section className="pb-[120px] pt-[24px]">
+      <section className="pb-[120px] pt-[16px]">
         <div className="container">
           <JobPostFeature />
           <section id="price"></section>
 
           <div className='pt-12'>
             <div
-              className={`w-full mx-auto text-center mt-[60px]`}
+              className={`w-full mx-auto text-center mt-[12px]`}
               style={{ maxWidth: "570px", marginBottom: "30px" }}
             >
 

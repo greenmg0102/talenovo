@@ -228,10 +228,7 @@ const JobPostMain = () => {
 
       setLoading(false)
 
-    } else if (category === 2) {
-
-      console.log("userStatus", userStatus);
-      
+    } else if (category === 2) {      
 
       if (userStatus) {
         let data = {
@@ -240,7 +237,7 @@ const JobPostMain = () => {
         }
         let result = await changejobPostStatus(data)
         if (result.isOkay) {
-          router.push('/user-profile');
+          router.push('/my-jobs');
         }
       } else {
         setCategory(Nextcategory)

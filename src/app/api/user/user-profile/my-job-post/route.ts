@@ -14,7 +14,7 @@ export async function POST(req: any, res: any) {
   const user: any = await currentUser();
   const data = await req.json()
 
-    const response = await axios.post(
+  const response = await axios.post(
     `${host}/indexes/${indexName}/search`,
     {
       // Specify the search query with filters
@@ -32,12 +32,12 @@ export async function POST(req: any, res: any) {
   const meilisearchData = response.data.hits;
 
   const myjobposts = await db.collection("myjobposts")
-    .find({ recruiterId: user.id, postStatus: { $in: [1, 2] } })
+    .find({ recruiterId: user.id, postStatus: { $in: [1] } })
     .sort({ _id: -1 })
     .toArray();
 
   return NextResponse.json({
-    myjobposts: meilisearchData,
+    myjobposts: [...meilisearchData, ...myjobposts],
   });
 
 }

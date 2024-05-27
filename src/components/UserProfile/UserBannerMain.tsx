@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import UserBanner from "@/components/UserProfile/UserInitialInfo/UserBanner";
 import { userInitialInfo } from '@/store/action/user/userProfile/userInfo'
 import { jobTagGet } from '@/store/action/admin/jobInfo/jobTag'
+import { useUser } from '@clerk/clerk-react';
 import { Spin } from 'antd';
 import type { SelectProps } from 'antd';
 
@@ -10,7 +11,9 @@ const options: SelectProps['options'] = [];
 
 const UserBannerMain = () => {
 
-  const [userInfo, setUserInfo] = useState({
+  const { user } = useUser();
+
+  const [userInfo, setUserInfo] = useState<any>({
     avatar: "",
     name: "",
     jobTitle: "",
@@ -52,26 +55,30 @@ const UserBannerMain = () => {
       let mail = result.mail.map((item: any) => item.emailAddress)
       let phone = result.phone.map((item: any) => item.phoneNumber)
 
-      setUserInfo({
-        ...userInfo,
-        avatar: result.avatar,
-        name: result.name,
-        mail: mail,
-        phone: phone,
-        profile: result.profile,
-        jobTitle: result.jobTitle,
-        summary: result.summary,
-        skill: result.skill,
-        locatedin: result.locatedin,
-        gender: result.gender,
-        postedJob: result.postedJob,
-        appliedJob: 0,
-        bookmark: result.bookmark,
-        profileViews: 0
-      })
+      if (user?.imageUrl && mail && phone) {
+
+        setUserInfo({
+          ...userInfo,
+          avatar: user?.imageUrl,
+          name: result.name,
+          mail: mail,
+          phone: phone,
+          profile: result.profile,
+          jobTitle: result.jobTitle,
+          summary: result.summary,
+          skill: result.skill,
+          locatedin: result.locatedin,
+          gender: result.gender,
+          postedJob: result.postedJob,
+          appliedJob: 0,
+          bookmark: result.bookmark,
+          profileViews: 0
+        })
+      }
+
     }
     userInfoGet()
-  }, [])
+  }, [user])
 
   return (
     <div>

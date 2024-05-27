@@ -85,25 +85,20 @@ function UserBannerModal({ tagList, isModalVisible, setIsModalVisible, userInfo,
             <Modal
                 title="About Me"
                 open={isModalVisible}
-                onOk={handleOk}
-                onCancel={handleCancel}
+                footer={null}
+            // onOk={handleOk}
+            // onCancel={handleCancel}
             >
                 <div>
-                    {/* <div className='w-full mt-4 flex justify-center items-center'>
-                        <Upload
-                            name="avatar"
-                            listType="picture-circle"
-                            className="avatar-uploader !w-[100px]"
-                            showUploadList={false}
-                            action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-                            beforeUpload={beforeUpload}
-                            onChange={handleChange}
-                        >
-                            {imageUrl ? <img src={imageUrl} className='rounded-full' alt="avatar" style={{ width: '100%' }} /> : uploadButton}
-                        </Upload>
-                    </div> */}
 
-                    {/* <p className='text-center text-blue-500 my-2'>{userInfo.name}</p> */}
+                    <div className="flex justify-center py-4">
+                        <div className="w-[100px] h-[100px] rounded-full border-gray-200 border-[3px] flex justify-center items-center">
+                            <img src={userInfo.avatar} className='w-[100px] h-[100px]  bg-cover rounded-full shadow-lg' alt="avatar" width={100} height={100} />
+                        </div>
+                    </div>
+                    <p className='text-center text-gray-400 text-[12px]'>You can update your avatar in clerk setting modal. </p>
+
+                    <p className='text-center text-blue-500 my-2'>{userInfo.name}</p>
 
                     <p className='text-gray-400 my-4'>My Job Title</p>
                     <Input
@@ -141,6 +136,22 @@ function UserBannerModal({ tagList, isModalVisible, setIsModalVisible, userInfo,
                         onChange={handleSelectChange}
                         options={tagList}
                     />
+
+                    <div className='flex justify-end items-center mt-4'>
+                        <div
+                            className='bg-red-500 px-4 py-1 text-gray-100 cursor-pointer hover:shadow-lg'
+                            onClick={handleCancel}
+                        >
+                            Cancel
+                        </div>
+                        <div
+                            className='bg-blue-500 px-4 py-1 text-gray-100 ml-4 cursor-pointer hover:shadow-lg'
+                            onClick={handleOk}
+                        >
+                            Save
+                        </div>
+
+                    </div>
 
                 </div>
             </Modal>

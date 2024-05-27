@@ -27,11 +27,11 @@ const AddJobTitle = ({ titleList, setTitleList }: any) => {
       <div className='flex justify-between items-center px-4 sm:px-16'>
         <Space.Compact style={{ width: '100%' }}>
           <Input
-            placeholder="Please insert the job title which you wanna search"
+            placeholder="Please insert the job titles which you want to get email alert for."
             value={value}
             onChange={(e: any) => setValue(e.target.value)}
           />
-          <Button type="primary" onClick={save}>Regist</Button>
+          <Button type="primary" onClick={save}>Add</Button>
         </Space.Compact>
       </div>
 

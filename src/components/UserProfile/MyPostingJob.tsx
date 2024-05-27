@@ -9,8 +9,9 @@ const MyPostingJob = ({ myPostedJob, setIsDetail }: any) => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+
     setLoading(true)
-    if (myPostedJob.length > 0) setLoading(false)
+    if (Array.isArray(myPostedJob)) setLoading(false)
   }, [myPostedJob]);
 
   return (
@@ -36,9 +37,8 @@ const MyPostingJob = ({ myPostedJob, setIsDetail }: any) => {
             <Alert
               message={
                 <p>
-                  There are no posted job, if you like to post a job, please click
-                  <a href="http://195.35.32.163:3000/job-post" target="_blank" className='text-bold text-blue-500 hover:underline px-1'>here</a>
-                  to post a job
+                  Are you a recruiter?
+                  <a href="http://195.35.32.163:3000/job-post-feature" target="_blank" className='text-bold text-blue-500 hover:underline px-1'> Post a job.</a>
                 </p>
               }
               type="info"

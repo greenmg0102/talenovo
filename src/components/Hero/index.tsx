@@ -238,7 +238,7 @@ const Hero = ({ setIsDetail }: any) => {
                             :
                             <Alert
                               message={
-                                <a href='/user-profile'>
+                                <a href='/my-jobs'>
                                   <ul>
                                     <li>No jobs available, please check back again.</li>
                                     <li>For accurate job suggestion, please update your location and add your skills in your profile.</li>

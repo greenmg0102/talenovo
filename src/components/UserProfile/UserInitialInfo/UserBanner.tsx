@@ -25,7 +25,7 @@ const UserBanner = ({ userInfo, tagList, onchange }: any) => {
 
       <div className="flex justify-center py-4">
         <div className="w-[100px] h-[100px] rounded-full border-gray-200 border-[3px] flex justify-center items-center">
-          <img src={userInfo.avatar} className='w-full bg-cover rounded-full shadow-lg' alt="avatar" />
+          <img src={userInfo.avatar} className='w-[100px] h-[100px]  bg-cover rounded-full shadow-lg' alt="avatar" width={100} height={100} />
         </div>
       </div>
 
@@ -34,7 +34,7 @@ const UserBanner = ({ userInfo, tagList, onchange }: any) => {
       </p>
       {userInfo.jobTitle === "" ?
         <p className="text-center mb-6 font-semibold text-gray-300 text-[14px]">
-          Add a <span className='text-gray-400 pb-4'> your job title </span>
+          Add a your job title
         </p>
         :
         <p className="text-center mb-6 font-semibold text-gray-600 text-[14px]" >
@@ -45,7 +45,7 @@ const UserBanner = ({ userInfo, tagList, onchange }: any) => {
       <p className="text-center text-[18px] pb-0 font-semibold">Profile link</p>
       {userInfo.profile === "" ?
         <p className="text-center mb-6 text-gray-300 text-[14px]" >
-          Add a <span className='text-gray-400'> profile link </span>
+          Add a profile link
         </p>
         :
         <a href={userInfo.profile} target="_blank">
@@ -58,7 +58,7 @@ const UserBanner = ({ userInfo, tagList, onchange }: any) => {
       <p className="text-center text-[18px] pb-0 font-semibold">Headlines</p>
       {userInfo.summary === "" ?
         <p className="text-center mb-6 text-gray-300 text-[14px]" >
-          Add  <span className='text-gray-400'> your Headlines </span>
+          Add  your Headlines
         </p>
         :
         <p className="mb-6 text-gray-600 p-2 border border-dashed border-gray-100 rounded-[4px] break-words text-[12px]" >
@@ -69,7 +69,7 @@ const UserBanner = ({ userInfo, tagList, onchange }: any) => {
       <p className="text-center text-[18px] pb-0 font-semibold">Skills</p>
       {userInfo.skill.length === 0 ?
         <p className="text-center mb-6 text-gray-300" >
-          Add a  <span className='text-gray-400'> Skill </span>
+          Add a skill
         </p>
         :
         <div className='flex justify-start items-center flex-wrap'>

@@ -10,8 +10,6 @@ import clsx from 'clsx'
 
 const JobCard = ({ item, clerkId, hiddenBookMark, setIsDetail }: any) => {
 
-  console.log("hiddenBookMark", hiddenBookMark);
-
   return (
     <div
       className={

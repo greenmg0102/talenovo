@@ -38,7 +38,7 @@ const JobAlertSetting = ({ }: any) => {
       }
       setIndustryList(real)
     }
-    fecthData()
+    // fecthData()
   }, [])
 
   const save = async () => {
