@@ -40,12 +40,14 @@ export default function createContract(total: any) {
 
                 console.log("createContract", data);
 
-                resolve(true); // Resolve the promise when the response ends
+                if (data.includes("A member already exists with the")) resolve({ result: true, message: "You are trying with an already existing email." });
+                else resolve({ result: false, message: "Correctly registered." });
+                // Resolve the promise when the response ends
             });
         });
 
         req.on('error', (error: any) => {
-            reject(error); // Reject the promise if there's an error
+            reject(error, "failure"); // Reject the promise if there's an error
         });
 
         req.write(postData);

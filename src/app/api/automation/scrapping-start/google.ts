@@ -21,14 +21,14 @@ export async function googleScrapping(): Promise<any> {
     data.forEach((element: any) => {
         let randomId = uuidv4();
         real.push({
+            ...element,
             jobId: randomId,
             platform: "apify",
             subType: "google",
-            ...element,
             city: element.location.split(" (")[0].split(", ")[0],
             country: element.location.split(" (")[0].split(", ")[1],
-            // occupationType: element.location.split(" (")[element.location.split(" (").length - 1].slice(0, -1),
-            // insightsV2: element.insightsV2.map((item: any) => item.split("·")[1]),
+            insightsV2: element.metadata.scheduleType,
+            occupationType: element.metadata.scheduleType,
             // isComplete: true,
             // isComfirm: true,
             postStatus: 1
@@ -36,7 +36,6 @@ export async function googleScrapping(): Promise<any> {
     });
 
     // console.log("googleScrapping", real);
-
 
     return real;
 }

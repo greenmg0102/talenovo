@@ -10,7 +10,7 @@ import SuggestedJobCard from '@/components/Hero/job/SuggestedJobCard'
 import Carousel from '@/components/Hero/carousel/Carousel'
 import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
 import JobCard from "@/components/Hero/job/jobCard";
-import { suggestJobs } from '@/store/action/user/landing/suggestion'
+import { suggestJobs, newletterSubscribePost } from '@/store/action/user/landing/suggestion'
 import { landingInfo, paidJobGet } from '@/store/action/user/landing/landingInfo'
 import { message, Alert, Tooltip } from 'antd';
 import NewsLatterBox from "@/components/Contact/NewsLatterBox";
@@ -36,8 +36,8 @@ import {
 } from "react-instantsearch-dom";
 
 const searchClient = instantMeiliSearch(
-  'https://ms-7b38c9a53bf5-9766.lon.meilisearch.io',
-  'a9120440eb9dce6256f824577056a48700be88f0',
+  'https://ms-f818396405c0-10172.nyc.meilisearch.io/',
+  '1116d49cd6e2aee89e3b54713b1bb9b1e4184651',
   {
     finitePagination: true,
     // limit: 1
@@ -70,8 +70,53 @@ const Hero = ({ setIsDetail }: any) => {
   const [userData, setUserData] = useState<any>({});
   const { user } = useUser();
 
-  const email = user?.primaryEmailAddress?.emailAddress;
+  const [isNewsletter, setIsNewsletter] = useState(true)
+
+  const [newsletterInfo, setnewsletterInfo] = useState({
+    email: '',
+    FirstName: '',
+    LastName: '',
+  })
+
+  // const email = user?.primaryEmailAddress?.emailAddress;
   const clerkId = user?.id;
+  // const firstName = user?.firstName;
+  // const lastName = user?.lastName;
+
+  // useEffect(() => {
+  //   if (email && firstName && clerkId && lastName) {
+  //     setIsNewsletter(false)
+  //     console.log("setIsNewsletter", false);
+  //   } else {
+  //     setIsNewsletter(true)
+  //     console.log("setIsNewsletter", true);
+  //   }
+  // }, [email, firstName, clerkId, lastName])
+
+  const agreeNewsletter = async () => {
+
+    if (
+      newsletterInfo.email.length > 0 &&
+      newsletterInfo.FirstName.length > 0 &&
+      newsletterInfo.LastName.length > 0
+    ) {
+      let result = await newletterSubscribePost(newsletterInfo)
+      if (result.isOkay) {
+        messageApi.success(result.message);
+      } else {
+        messageApi.info(result.message);
+      }
+
+      setnewsletterInfo({
+        email: '',
+        FirstName: '',
+        LastName: '',
+      })
+    } else {
+      messageApi.error("All inputs are required!");
+    }
+
+  }
 
   useEffect(() => {
     async function fetchGeo() {
@@ -218,7 +263,16 @@ const Hero = ({ setIsDetail }: any) => {
                   <div className="mx-auto max-w-[1368px] w-full flex flex-col-reverse lg:flex-row lg:justify-between items-start flex-wrap">
 
                     <div className="w-full lg:w-[30%]">
-                      <NewsLatterBox />
+
+                      {
+                        isNewsletter &&
+                        <NewsLatterBox
+                          newsletterInfo={newsletterInfo}
+                          setnewsletterInfo={(total: any) => setnewsletterInfo(total)}
+                          agreeNewsletter={agreeNewsletter}
+                        />
+                      }
+
                       <div className="border border-gray-300 bg-white rounded-md p-2 flex justify-between items-center mb-4 shadow-lg">
                         <p className="font-bold text-[16px]">Suggested Jobs</p>
                         <Tooltip placement="topLeft" title={text}>
@@ -267,10 +321,11 @@ const Hero = ({ setIsDetail }: any) => {
                               />
                             </div>
                           )} */}
-                          <Configure
+
+                          {/* <Configure
                             // Add sorting configuration here
                             sortBy="-postStatus"
-                          />
+                          /> */}
                           <Hits hitComponent={Hit} />
                         </div>
                         <div className='flex justify-center mb-12'>
@@ -282,31 +337,31 @@ const Hero = ({ setIsDetail }: any) => {
                       </div>
                       <div className="w-full md:w-[20%] pl-0 md:pl-4">
                         <ClearRefinements />
-                        {/* <SortBy
-                            defaultRefinement="title"
-                            items={[
-                                { value: "title", label: "Relevant" },
-                                {
-                                    value: "title:companyName:desc",
-                                    label: "Most Recommended"
-                                },
-                                {
-                                    value: "title:skills:asc",
-                                    label: "Least Recommended"
-                                }
-                            ]}
-                        /> */}
-                        {/* 
+                        <SortBy
+                          defaultRefinement="title:postStatus:desc"
+                          items={[
+                            // { value: "title", label: "Relevant" },
+                            {
+                              value: "title:postStatus:desc",
+                              label: "Most Featured"
+                            },
+                            // {
+                            //     value: "title:skills:asc",
+                            //     label: "Least Recommended"
+                            // }
+                          ]}
+                        />
+                        {/* <Divider /> */}
                         <h2 className='text-gray-700p pb-2'>Job Type</h2>
-                        <RefinementList attribute="location" />
+                        {/* <RefinementList attribute="location" /> */}
                         <RefinementList
                           attribute="occupationType"
                           limit={3}
-                          showMore={false}
-                        // showMoreLimit={20}
+                          showMore={true}
+                          showMoreLimit={20}
                         />
                         <Divider />
-                       
+                        {/* 
                       <h2 className='text-gray-700p pb-2'>Location</h2>
                       <RefinementList
                         attribute="country"

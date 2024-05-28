@@ -1,8 +1,8 @@
 
 import axios from 'axios';
 
-const host = 'https://ms-7b38c9a53bf5-9766.lon.meilisearch.io';
-const apiKey = 'a9120440eb9dce6256f824577056a48700be88f0';
+const host = 'https://ms-f818396405c0-10172.nyc.meilisearch.io/';
+const apiKey = '1116d49cd6e2aee89e3b54713b1bb9b1e4184651';
 const indexName = 'title';
 
 export async function getfacetedIndustry() {

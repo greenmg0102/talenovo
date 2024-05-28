@@ -107,6 +107,10 @@ html {
     font-size: 14px;
 }
 
+.ais-SortBy {
+    display: none;
+}
+
 ::-webkit-scrollbar {
     width: 5px;
 }

@@ -37,7 +37,7 @@ export default function TalenovoDetail({ isDetail, setIsDetail }: any) {
                     <div className="flex justify-between items-start flex-wrap">
                         <div className="w-full mb-2 lg:w-3/4 lg:mb-0 px-4">
                             <div className="border border-gray-200 rounded-[8px] shadow-2xl p-12 py-2">
-                                <p className="text-center text-[24px] font-bold pb-12">{isDetail.jobTitle}</p>
+                                <p className="text-center text-[24px] font-bold pb-12">{isDetail.title}</p>
                                 <div className="flex justify-start items-center flex-wrap mb-4">
                                     {isDetail.location !== "" ? <p className="mr-2 mb-1 text-[12px] px-2 bg-green-200 rounded-[4px] text-green-900">{isDetail.location}</p> : null}
                                     {isDetail.tertiaryDescription !== "" ? <p className="mr-2 mb-1 text-[12px] px-2 bg-blue-200 rounded-[4px] text-blue-900">{isDetail.tertiaryDescription}</p> : null}
@@ -66,7 +66,7 @@ export default function TalenovoDetail({ isDetail, setIsDetail }: any) {
                                 <p className="text-gray-700 text-[14px]">Please let <span className="font-bold">{isDetail.companyName}</span> know that you found this position on our job board, as that is a great way to support us, so we can keep posting cool jobs every day </p>
 
                                 <div className="flex justify-center items-center flex-col mt-4 mb-2">
-                                    <a href={isDetail.jobApplyLink} target="_blank">
+                                    <a href={isDetail.applyUrl} target="_blank">
                                         <p className="px-8 py-2 bg-blue-600 rounded-full text-center text-white text-[14px]">Apply Now</p>
                                     </a>
                                     {/* <div className="a2a_kit a2a_kit_size_32 a2a_default_style mt-6">
@@ -92,7 +92,7 @@ export default function TalenovoDetail({ isDetail, setIsDetail }: any) {
 
                             <div className=" border border-gray-200 rounded-[8px] shadow-2xl p-4 mb-4">
                                 <div className='flex justify-center items-center'>
-                                    <img src={isDetail.logo} alt="avatar" className="rounded-[4px]" width={100} height={100} />
+                                    <img src={isDetail.companyLogo} alt="avatar" className="rounded-[4px] bg-cover w-[100px] h-[100px]" width={100} height={100} />
                                 </div>
                                 <p className="text-gray-700 font-bold text-center"><span className="font-medium text-[14px]">{isDetail.companyName}</span></p>
 
@@ -103,7 +103,7 @@ export default function TalenovoDetail({ isDetail, setIsDetail }: any) {
                                     </p>
                                 </div>
                                 <div className="flex justify-center items-center">
-                                    <a href={isDetail.companyLink} target="_blank">
+                                    <a href={`https://${isDetail.companyLinkedinUrl}`} target="_blank">
                                         <p className="px-8 py-2 border border-blue-600 rounded-full text-center text-blue-700 text-[14px]">View company</p>
                                     </a>
                                 </div>

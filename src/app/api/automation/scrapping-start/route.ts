@@ -15,13 +15,13 @@ import JobAlertAutomation from '@/app/api/automation/scrapping-start/mailAutomat
 
 import { sendEmail } from '@/mailAction'
 
-const host = 'https://ms-7b38c9a53bf5-9766.lon.meilisearch.io';
-const apiKey = 'a9120440eb9dce6256f824577056a48700be88f0';
+const host = 'https://ms-f818396405c0-10172.nyc.meilisearch.io';
+const apiKey = '1116d49cd6e2aee89e3b54713b1bb9b1e4184651';
 const indexName = 'title';
 
-// master key:  a9120440eb9dce6256f824577056a48700be88f0
-// search key:  8a3e51982f047c917dca3a2ceaa8439f728d06b2ef63d9f5c515486ad5c41796
-// admin  key:  8a3e51982f047c917dca3a2ceaa8439f728d06b2ef63d9f5c515486ad5c41796
+// master key:  1116d49cd6e2aee89e3b54713b1bb9b1e4184651
+// search key:  51dc23779244ba4a456f9f866e2bcabb1f57ee2abfb9ba77a3ecb7f776886340
+// admin  key:  5c512be0df5e15e8d97251025ff578bbd1edc8e7429c4f7a3917361b13033fbd
 
 export async function GET(req: any, res: any) {
 
@@ -38,10 +38,10 @@ export async function GET(req: any, res: any) {
 
   // await JobAlertAutomation()
 
-  // const client = new MeiliSearch({
-  //   host: host,
-  //   apiKey: apiKey,
-  // });
+  const client = new MeiliSearch({
+    host: host,
+    apiKey: apiKey,
+  });
 
   // let linkedin = await linkedinScrapping();
   // let google = await googleScrapping();
@@ -56,8 +56,8 @@ export async function GET(req: any, res: any) {
   // await client.index(indexName).addDocuments(real, { primaryKey: 'jobId' });
   // console.log(2);
   // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "companyName", "jobId", "postStatus", "recruiterId"]);
-  // // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId"]);
-  // await client.index(indexName).updateSortableAttributes(["postStatus"]);
+  await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId"]);
+  await client.index(indexName).updateSortableAttributes(["postStatus"]);
   // await client.index(indexName).updateDistinctAttribute("companyName");
   // console.log(3);
 

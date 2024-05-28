@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import { Checkbox } from 'antd';
 import type { CheckboxProps } from 'antd';
 
-const NewsLatterBox = () => {
+const NewsLatterBox = ({ agreeNewsletter, newsletterInfo, setnewsletterInfo }: any) => {
   const { theme } = useTheme();
 
   const onChange: CheckboxProps['onChange'] = (e) => {
@@ -12,22 +12,34 @@ const NewsLatterBox = () => {
   };
 
   return (
-    <div className="border border-gray-300 rounded-[10px] relative z-10 rounded-sm bg-white p-2 shadow-three dark:bg-gray-dark sm:p-6 mb-4">
+    <div className="border border-gray-300 rounded-[10px] relative z-10 rounded-sm bg-white p-2 shadow-three dark:bg-gray-dark  sm:p-6 mb-4">
       <h3 className="mb-4 text-xl font-bold leading-tight text-black dark:text-white">
         Subscribe to Talenovo's newsletter
       </h3>
       <div>
         <input
           type="text"
-          name="name"
-          placeholder="Enter your name"
+          name="FirstName"
+          placeholder="Enter your FirstName"
           className="border-stroke mb-4 w-full rounded-sm border bg-[#f8f8f8] px-4 py-2 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+          value={newsletterInfo.FirstName}
+          onChange={(e: any) => setnewsletterInfo({ ...newsletterInfo, [e.target.name]: e.target.value })}
+        />
+        <input
+          type="text"
+          name="LastName"
+          placeholder="Enter your LastName"
+          className="border-stroke mb-4 w-full rounded-sm border bg-[#f8f8f8] px-4 py-2 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+          value={newsletterInfo.LastName}
+          onChange={(e: any) => setnewsletterInfo({ ...newsletterInfo, [e.target.name]: e.target.value })}
         />
         <input
           type="email"
           name="email"
           placeholder="Enter your email"
           className="border-stroke mb-4 w-full rounded-sm border bg-[#f8f8f8] px-4 py-2 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+          value={newsletterInfo.email}
+          onChange={(e: any) => setnewsletterInfo({ ...newsletterInfo, [e.target.name]: e.target.value })}
         />
         <Checkbox onChange={onChange} className="mb-4 text-gray-600 text-[16px]">
           <a href="http://104.128.55.140:3000/terms">
@@ -38,6 +50,7 @@ const NewsLatterBox = () => {
           type="submit"
           value="Subscribe Newsletters"
           className="mb-5 flex w-full cursor-pointer items-center justify-center rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark"
+          onClick={agreeNewsletter}
         />
       </div>
 
