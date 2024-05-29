@@ -29,7 +29,8 @@ export async function linkedinScrapping(): Promise<any> {
             // insightsV2: element.insightsV2.map((item: any) => item.split("·")[1]),
             // isComplete: true,
             // isComfirm: true,
-            postStatus: 1
+            postStatus: 1,
+            scrapedDate: new Date().toISOString()
         })
     });
 

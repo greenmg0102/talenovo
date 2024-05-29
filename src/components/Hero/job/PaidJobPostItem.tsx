@@ -6,6 +6,9 @@ import clsx from "clsx";
 
 const PaidJobPostItem = ({ item, clerkId, hiddenBookMark, setIsDetail }: any) => {
 
+  console.log("PaidJobPostItem", item);
+
+
   const [messageApi, contextHolder] = message.useMessage();
 
   const postedDate = (givenDateString: string): any => {
@@ -56,7 +59,7 @@ const PaidJobPostItem = ({ item, clerkId, hiddenBookMark, setIsDetail }: any) =>
           </div>
         </div>
 
-        <div className="w-[60px] absolute top-[2px] right-[2px]">
+        <div className="w-[70px] absolute top-[2px] right-[2px]">
           {!hiddenBookMark &&
             <div className="flex justify-end" onClick={() => bookmark(item.jobId)}>
               {/* <svg viewBox="64 64 896 896" className="hover:text-blue-400" focusable="false" data-icon="book" width="1em" height="1em" fill="currentColor" aria-hidden="true">
@@ -77,7 +80,13 @@ const PaidJobPostItem = ({ item, clerkId, hiddenBookMark, setIsDetail }: any) =>
               </svg>
             </div>
           }
-          <p className="text-[10px] text-blue-400 pt-2">1 days ago</p>
+          <p className="text-[10px] text-blue-500 text-right">
+            {item.scrapedDate ?
+              postedDate(item.scrapedDate) + " days ago"
+              :
+              "1 days ago"
+            }
+          </p>
         </div>
 
       </div>

@@ -24,8 +24,8 @@ const UserBanner = ({ userInfo, tagList, onchange }: any) => {
       <EditButton add={add} />
 
       <div className="flex justify-center py-4">
-        <div className="w-[100px] h-[100px] rounded-full border-gray-200 border-[3px] flex justify-center items-center">
-          <img src={userInfo.avatar} className='w-[100px] h-[100px]  bg-cover rounded-full shadow-lg' alt="avatar" width={100} height={100} />
+        <div className="w-[100px] h-[100px] rounded-full border border-gray-200 border-[3px] flex justify-center items-center">
+          <img src={userInfo.avatar} className='w-[100px] h-[100px] bg-cover rounded-full shadow-lg' alt="avatar"  />
         </div>
       </div>
 

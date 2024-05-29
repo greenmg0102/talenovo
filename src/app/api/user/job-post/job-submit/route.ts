@@ -32,15 +32,17 @@ export async function POST(req: any, res: any) {
 
   await db.collection("myjobposts").findOneAndUpdate({ _id: new ObjectId(data._id) }, updateData);
 
-  console.log("data", data.postStatus);
-
-
   if (data.postStatus === 2) {
     console.log(1);
+
+    data.scrapedDate = new Date().toISOString();
+
     await client.index(indexName).addDocuments([data], { primaryKey: 'jobId' });
-    // client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId"]);
-    client.index(indexName). updateFilterableAttributes(["title", "city", "country", "companyName", "jobId", "postStatus", "recruiterId"]);
-   
+
+    await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId", "scrapedDate"]);
+    await client.index(indexName).updateSortableAttributes(["postStatus", "scrapedDate"]);
+    await client.index(indexName).updateDistinctAttribute("companyName");
+
     console.log(2);
   }
 

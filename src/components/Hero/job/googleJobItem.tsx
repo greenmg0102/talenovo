@@ -8,6 +8,14 @@ const GoogleJobItem = ({ item, clerkId, hiddenBookMark, setIsDetail }: any) => {
 
   const [messageApi, contextHolder] = message.useMessage();
 
+  const postedDate = (givenDateString: string): any => {
+    const givenDate = new Date(givenDateString);
+    const currentDate = new Date();
+    const timeDifference = currentDate.getTime() - givenDate.getTime();
+    const daysPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    return daysPassed
+  }
+
   const extraColor = [
     { bg: 'border border-green-200', text: 'text-green-600' },
     { bg: 'border border-red-200', text: 'text-red-600' },
@@ -68,7 +76,7 @@ const GoogleJobItem = ({ item, clerkId, hiddenBookMark, setIsDetail }: any) => {
           </div>
         </div>
 
-        <div className="w-[60px] absolute top-[2px] right-[2px]">
+        <div className="w-[70px] absolute top-[2px] right-[2px]">
           {!hiddenBookMark &&
             <div className="flex justify-end" onClick={() => bookmark(item.jobId)}>
               {/* <svg viewBox="64 64 896 896" className="hover:text-blue-400" focusable="false" data-icon="book" width="1em" height="1em" fill="currentColor" aria-hidden="true">
@@ -90,7 +98,20 @@ const GoogleJobItem = ({ item, clerkId, hiddenBookMark, setIsDetail }: any) => {
             </div>
           }
 
-          {item && item.extras && item.extras.length > 0 && item.extras.filter((item: any) => item.includes("ago")).map((item: any, index: any) => <p key={index} className="text-[10px] text-blue-500 text-right"> {item}  </p>)}
+          {
+            item && item.extras && item.extras.length > 0 &&
+              item.extras.filter((item: any) => item.includes("days ago")).length > 0 ?
+              item && item.extras && item.extras.length > 0 &&
+              item.extras.filter((item: any) => item.includes("days ago")).map((each: any, order: any) => <p key={order} className="text-[10px] text-blue-500 text-right">{Number(postedDate(item.scrapedDate)) + Number(each[0])} days ago </p>)
+              :
+              <p className="text-[10px] text-blue-500 text-right">
+                {postedDate(item.scrapedDate) === 0 ?
+                  "Few hours ago"
+                  :
+                  postedDate(item.scrapedDate) + " days ago"
+                }
+              </p>
+          }
         </div>
 
       </div>

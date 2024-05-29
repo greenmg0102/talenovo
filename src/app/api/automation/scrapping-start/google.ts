@@ -31,7 +31,8 @@ export async function googleScrapping(): Promise<any> {
             occupationType: element.metadata.scheduleType,
             // isComplete: true,
             // isComfirm: true,
-            postStatus: 1
+            postStatus: 1,
+            scrapedDate: new Date().toISOString()
         })
     });
 

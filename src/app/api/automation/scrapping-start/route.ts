@@ -45,21 +45,21 @@ export async function GET(req: any, res: any) {
 
   // let linkedin = await linkedinScrapping();
   // let google = await googleScrapping();
-  // // let indeed = await indeedScrapping();
-  // // // // let kadoa = await KadoaScrapping();
+  // let indeed = await indeedScrapping();
+  // let kadoa = await KadoaScrapping();
   // let real = google
   // // // // // let real = [...linkedin, ...kadoa]
 
   // console.log("real",real);
 
-  // console.log(1);
+  console.log(1);
   // await client.index(indexName).addDocuments(real, { primaryKey: 'jobId' });
-  // console.log(2);
+  console.log(2);
   // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "companyName", "jobId", "postStatus", "recruiterId"]);
-  await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId"]);
-  await client.index(indexName).updateSortableAttributes(["postStatus"]);
+  // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId", "scrapedDate"]);
+  // await client.index(indexName).updateSortableAttributes(["postStatus", "scrapedDate"]);
   // await client.index(indexName).updateDistinctAttribute("companyName");
-  // console.log(3);
+  console.log(3);
 
   // const response = await axios.post(
   //   `${host}/indexes/${indexName}/search`,

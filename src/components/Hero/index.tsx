@@ -78,6 +78,12 @@ const Hero = ({ setIsDetail }: any) => {
     LastName: '',
   })
 
+  // const [newsletterInfo, setnewsletterInfo] = useState({
+  //   email: '',
+  //   FirstName: '',
+  //   LastName: '',
+  // })
+
   // const email = user?.primaryEmailAddress?.emailAddress;
   const clerkId = user?.id;
   // const firstName = user?.firstName;
@@ -93,8 +99,8 @@ const Hero = ({ setIsDetail }: any) => {
   //   }
   // }, [email, firstName, clerkId, lastName])
 
-  const agreeNewsletter = async () => {
-
+  const agreeNewsletter = async (event: any) => {
+    event.preventDefault();
     if (
       newsletterInfo.email.length > 0 &&
       newsletterInfo.FirstName.length > 0 &&

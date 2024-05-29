@@ -86,14 +86,15 @@ function UserBannerModal({ tagList, isModalVisible, setIsModalVisible, userInfo,
                 title="About Me"
                 open={isModalVisible}
                 footer={null}
+                closeIcon={false}
             // onOk={handleOk}
             // onCancel={handleCancel}
             >
                 <div>
 
                     <div className="flex justify-center py-4">
-                        <div className="w-[100px] h-[100px] rounded-full border-gray-200 border-[3px] flex justify-center items-center">
-                            <img src={userInfo.avatar} className='w-[100px] h-[100px]  bg-cover rounded-full shadow-lg' alt="avatar" width={100} height={100} />
+                        <div className="w-[100px] h-[100px] rounded-full border border-gray-200 border-[3px] flex justify-center items-center">
+                            <img src={userInfo.avatar} className='w-[100px] h-[100px] bg-cover rounded-full shadow-lg' alt="avatar" />
                         </div>
                     </div>
                     <p className='text-center text-gray-400 text-[12px]'>You can update your avatar in clerk setting modal. </p>
