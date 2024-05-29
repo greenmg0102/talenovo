@@ -24,9 +24,10 @@ export async function GET(req: any, res: any) {
   return NextResponse.json({
     total: result.numberOfDocuments,
     todayJob: result.numberOfDocuments - 123,
-    locatedin: localInfo.data.city.names.en + ", " + localInfo.data.country.names.en,
+    currentLocatedin: localInfo.data.city.names.en + ", " + localInfo.data.country.names.en,
     skill: isMe === null ? [] : isMe.skill,
     jobalertsetting: isMe === null ? null : isMe.jobalertsetting,
+    ...isMe
   });
 
 }

@@ -71,7 +71,7 @@ const JobAlertSetting = ({ }: any) => {
       />
       <Divider />
 
-      <AddPaySlider
+      {/* <AddPaySlider
         range={range}
         setRange={(range: any) => setRange(range)}
       />
@@ -82,7 +82,7 @@ const JobAlertSetting = ({ }: any) => {
         industryList={industryList}
         setBuffer={(buffer: any) => setBuffer(buffer)}
       />
-      <Divider />
+      <Divider /> */}
 
       <Addnotification
         notificationType={notificationType}

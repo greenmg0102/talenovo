@@ -165,7 +165,7 @@ const Hero = ({ setIsDetail }: any) => {
 
       setTotal(result.total)
       setToday(result.todayJob)
-      setLocatedin(result.locatedin)
+      setLocatedin(result.currentLocatedin)
       setSkil(result.skill)
       setUserData(result.jobalertsetting === null ? {} : result)
     }
@@ -182,7 +182,7 @@ const Hero = ({ setIsDetail }: any) => {
 
         let data = {
           skill: skil,
-          locatedin: locatedin,
+          currentLocatedin: locatedin,
           ...userData
         }
 
@@ -292,7 +292,11 @@ const Hero = ({ setIsDetail }: any) => {
                           {suggestList !== undefined && suggestList.length > 0 ?
                             <div>
                               {suggestList.map((item: any, index: any) =>
-                                <SuggestedJobCard key={index} item={item} />
+                                <SuggestedJobCard
+                                  key={index}
+                                  item={item}
+                                  setIsDetail={(data: any) => setIsDetail(data)}
+                                />
                               )}
                             </div>
                             :
