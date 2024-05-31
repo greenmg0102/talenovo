@@ -101,7 +101,7 @@ const JobDetail = ({ value, warn, setValue, params, setParams }: any) => {
           />
         </div>
 
-        <div className='mb-6 w-[48%]'>
+        <div className='mb-6 w-full'>
           <SearchInput
             value={value}
             type={'location'}

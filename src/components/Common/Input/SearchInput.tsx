@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import _ from 'lodash';
 import clsx from 'clsx'
 
-const SearchInput = ({ value, title, warningText, warn, type, onchange, list, formatList, pushList }: any) => {
+const SearchInput = ({ value, title, warningText, warn, type, onchange, list, formatList, pushList, isTtitle }: any) => {
 
   const inputRef: any = useRef(null);
 
@@ -56,7 +56,13 @@ const SearchInput = ({ value, title, warningText, warn, type, onchange, list, fo
 
   return (
     <div>
-      <p className='mb-2 font-semibold text-[14px]'>{title}</p>
+      {
+        isTtitle === undefined ?
+          <p className='mb-2 font-semibold text-[14px]'>{title}</p>
+          :
+          null
+      }
+
       <div
         className={
           clsx(

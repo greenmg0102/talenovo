@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from "react";
 import UserInfo from "@/components/UserProfile/UserInitialInfo/UserInfo";
-import { userInitialInfo } from '@/store/action/user/userProfile/userInfo';
+import { userInitialInfo, userlocationUpdate } from '@/store/action/user/userProfile/userInfo';
 import UserDashboard from '@/components/UserProfile/UserDashboard';
 import { Spin } from 'antd';
 import { myJobAlert, myBookMarkJob } from '@/store/action/user/userProfile/myjobalert'
@@ -48,8 +48,6 @@ const UserInfoMain = () => {
 
       let result3 = await myJobPost()
 
-      console.log("result3.myjobposts", result3.myjobposts);
-      
       setPostedJob(result3.myjobposts)
     }
 
@@ -59,6 +57,9 @@ const UserInfoMain = () => {
   useEffect(() => {
     async function userInfoGet() {
       let result = await userInitialInfo()
+
+      console.log("result", result);
+
 
       let mail = result.mail.map((item: any) => item.emailAddress)
       let phone = result.phone.map((item: any) => item.phoneNumber)
@@ -88,6 +89,17 @@ const UserInfoMain = () => {
     userInfoGet()
   }, [])
 
+  const updateLocation = async () => {
+
+    let result = await userlocationUpdate({
+      ...userInfo,
+    })
+
+    console.log("result", result);
+
+
+  }
+
 
   return (
     <div>
@@ -101,6 +113,7 @@ const UserInfoMain = () => {
           <div className="w-full border border-gray-200 rounded-[16px] p-4 shadow-2xl">
             <UserInfo
               userInfo={userInfo}
+              updateLocation={updateLocation}
               onchange={(total: any) => setUserInfo(total)}
             />
           </div>

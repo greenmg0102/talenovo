@@ -2,17 +2,44 @@
 import { useState, useEffect } from 'react';
 import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
+import { jobLocationPut } from "@/store/action/user/jobInfo/jobLocation"
+import SearchInput from '@/components/Common/Input/SearchInput'
 import { Switch, Button } from 'antd';
 
-const UserInitialInfo = ({ userInfo, onchange }: any) => {
+const UserInitialInfo = ({ userInfo, onchange, updateLocation }: any) => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const [searchHint, setSearchHint] = useState({
+    location: "",
+  })
+  const [isEditable, setIsEditable] = useState(true)
   const [userData, setUserData] = useState<any>({});
+  const [jobLocation, setJobLocation] = useState([])
+
+  console.log("userInfo", userInfo);
 
   const { user } = useUser();
 
   const email = user?.primaryEmailAddress?.emailAddress;
   const clerkId = user?.id;
+
+  const bufferupdateLocation = () => {
+    updateLocation()
+    setIsEditable(!isEditable)
+  }
+
+  useEffect(() => {
+
+    async function locationFetchData(hint: any) {
+      const data = { locationHint: hint }
+      let reslutJobLocation = await jobLocationPut(data)
+      setJobLocation(reslutJobLocation)
+    }
+
+    if (searchHint.location !== "") locationFetchData(searchHint.location)
+
+  }, [searchHint])
 
   useEffect(() => {
     fectData()
@@ -175,7 +202,30 @@ const UserInitialInfo = ({ userInfo, onchange }: any) => {
             <svg className='mr-2' viewBox="64 64 896 896" focusable="false" data-icon="environment" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M854.6 289.1a362.49 362.49 0 00-79.9-115.7 370.83 370.83 0 00-118.2-77.8C610.7 76.6 562.1 67 512 67c-50.1 0-98.7 9.6-144.5 28.5-44.3 18.3-84 44.5-118.2 77.8A363.6 363.6 0 00169.4 289c-19.5 45-29.4 92.8-29.4 142 0 70.6 16.9 140.9 50.1 208.7 26.7 54.5 64 107.6 111 158.1 80.3 86.2 164.5 138.9 188.4 153a43.9 43.9 0 0022.4 6.1c7.8 0 15.5-2 22.4-6.1 23.9-14.1 108.1-66.8 188.4-153 47-50.4 84.3-103.6 111-158.1C867.1 572 884 501.8 884 431.1c0-49.2-9.9-97-29.4-142zM512 880.2c-65.9-41.9-300-207.8-300-449.1 0-77.9 31.1-151.1 87.6-206.3C356.3 169.5 431.7 139 512 139s155.7 30.5 212.4 85.9C780.9 280 812 353.2 812 431.1c0 241.3-234.1 407.2-300 449.1zm0-617.2c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm79.2 255.2A111.6 111.6 0 01512 551c-29.9 0-58-11.7-79.2-32.8A111.6 111.6 0 01400 439c0-29.9 11.7-58 32.8-79.2C454 338.6 482.1 327 512 327c29.9 0 58 11.6 79.2 32.8C612.4 381 624 409.1 624 439c0 29.9-11.6 58-32.8 79.2z"></path></svg>
             Location
           </p>
-          <p className='text-center text-blue-500'>{userInfo.locatedin}</p>
+          <p className='text-center text-blue-500 flex justify-center items-center mb-2'>
+            {userInfo.locatedin}
+            {isEditable ?
+              <svg className='ml-2' onClick={() => setIsEditable(!isEditable)} viewBox="64 64 896 896" focusable="false" data-icon="edit" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"></path></svg>
+              :
+              <svg className='ml-2' onClick={bufferupdateLocation} viewBox="64 64 896 896" focusable="false" data-icon="issues-close" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M464 688a48 48 0 1096 0 48 48 0 10-96 0zm72-112c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48zm400-188h-59.3c-2.6 0-5 1.2-6.5 3.3L763.7 538.1l-49.9-68.8a7.92 7.92 0 00-6.5-3.3H648c-6.5 0-10.3 7.4-6.5 12.7l109.2 150.7a16.1 16.1 0 0026 0l165.8-228.7c3.8-5.3 0-12.7-6.5-12.7zm-44 306h-64.2c-5.5 0-10.6 2.9-13.6 7.5a352.2 352.2 0 01-49.8 62.2A355.92 355.92 0 01651.1 840a355 355 0 01-138.7 27.9c-48.1 0-94.8-9.4-138.7-27.9a355.92 355.92 0 01-113.3-76.3A353.06 353.06 0 01184 650.5c-18.6-43.8-28-90.5-28-138.5s9.4-94.7 28-138.5c17.9-42.4 43.6-80.5 76.4-113.2 32.8-32.7 70.9-58.4 113.3-76.3a355 355 0 01138.7-27.9c48.1 0 94.8 9.4 138.7 27.9 42.4 17.9 80.5 43.6 113.3 76.3 19 19 35.6 39.8 49.8 62.2 2.9 4.7 8.1 7.5 13.6 7.5H892c6 0 9.8-6.3 7.2-11.6C828.8 178.5 684.7 82 517.7 80 278.9 77.2 80.5 272.5 80 511.2 79.5 750.1 273.3 944 512.4 944c169.2 0 315.6-97 386.7-238.4A8 8 0 00892 694z"></path></svg>
+            }
+          </p>
+
+          {!isEditable &&
+
+            <SearchInput
+              value={userData}
+              type={'location'}
+              warn={{ location: "" }}
+              title={"Location *"}
+              isTtitle={true}
+              list={jobLocation}
+              formatList={() => setJobLocation([])}
+              pushList={(type: any, eachvalue: any) =>  onchange({ ...userInfo, locatedin: eachvalue }) }
+              onchange={(type: any, eachvalue: any) => setSearchHint({ ...searchHint, [type]: eachvalue })}
+            />
+          }
+
         </div>
 
         <div className='w-full sm:w-1/2 mb-8'>

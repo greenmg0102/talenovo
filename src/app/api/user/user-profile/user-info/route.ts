@@ -4,6 +4,29 @@ import { currentUser } from '@clerk/nextjs';
 import axios from 'axios';
 import { NextRequest, NextResponse } from 'next/server'
 
+export async function POST(req: NextRequest, res: NextResponse) {
+
+  const user: any = await currentUser();
+  let { db } = await connectToDatabase();
+  let reqData = await req.json()
+
+
+  let isMe: any = await db.collection("userinfos").findOne({ userId: user.id });
+
+  let updateData = { $set: {} };
+    Object.keys(isMe).filter((key: any) => key !== "_id").forEach((element: any) => {
+      updateData.$set[element] = isMe[element];
+    });
+    updateData.$set["locatedin"] = reqData.locatedin;
+
+
+  let result = await db.collection("userinfos").findOneAndUpdate({ _id: isMe._id }, updateData).then((res: any) => { return res });
+  return NextResponse.json({
+    isOkay: true,
+    result: result
+  });
+}
+
 export async function GET(req: NextRequest, res: NextResponse) {
 
   const ip = (req.headers.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0]
@@ -19,6 +42,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
   let mybookmarkjob = []
 
   if (isMe === null) {
+
     return NextResponse.json({
       avatar: user.imageUrl,
       name: (user.firstName === null ? "" : user.firstName) + " " + (user.lastName === null ? "" : user.lastName),
@@ -42,6 +66,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
     });
 
   } else {
+
+    console.log("!@#$%", isMe);
+
     return NextResponse.json({
       avatar: isMe.avatar,
       name: (user.firstName === null ? "" : user.firstName) + " " + (user.lastName === null ? "" : user.lastName),
@@ -57,7 +84,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
       experience: isMe.experience,
       ctc: isMe.ctc,
 
-      locatedin: localInfo.data.city.names.en + ", " + localInfo.data.country.names.en,
+      locatedin: isMe.locatedin,
       gender: isMe.gender,
       postedJob: myjobpostCount,
       appliedJob: 0,
