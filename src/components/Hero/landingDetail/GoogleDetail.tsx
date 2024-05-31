@@ -91,6 +91,7 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                     </div>
                                     :
                                     <p className="text-gray-500 pt-2 text-[12px]">{isDetail.description}</p>
+                                    // <div className="text-gray-500 pt-2 text-[12px]" dangerouslySetInnerHTML={{ __html: isDetail.description }} />
                                 }
 
                             </div>

@@ -6,8 +6,8 @@ import { Metadata } from "next";
 import LandingDetail from "@/components/Hero/landingDetail";
 
 // export const metadata: Metadata = {
-//   title: "We support your career with AI",
-//   description: "This is Home for Talenovo",
+//   title: "Landing Page for Talenovo",
+//   description: "We support your career with AI",
 //   // other metadata
 // };
 

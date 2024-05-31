@@ -97,11 +97,11 @@ function UserBannerModal({ tagList, isModalVisible, setIsModalVisible, userInfo,
                             <img src={userInfo.avatar} className='w-[100px] h-[100px] bg-cover rounded-full shadow-lg' alt="avatar" />
                         </div>
                     </div>
-                    <p className='text-center text-gray-400 text-[12px]'>You can update your avatar in clerk setting modal. </p>
+                    <p className='text-center text-gray-400 text-[12px]'>You can update your photo in by clicking on manage account setting. </p>
 
                     <p className='text-center text-blue-500 my-2'>{userInfo.name}</p>
 
-                    <p className='text-gray-400 my-4'>My Job Title</p>
+                    <p className='text-gray-400 my-2 font-semibold'>My Job Title</p>
                     <Input
                         value={userInfo.jobTitle}
                         placeholder="Job Title"
@@ -110,16 +110,16 @@ function UserBannerModal({ tagList, isModalVisible, setIsModalVisible, userInfo,
                         onChange={(e: any) => onchange({ ...userInfo, jobTitle: e.target.value })}
                     />
 
-                    <p className='text-gray-400 my-2 text-[14px]'>My Profile Link (Add your profile link such as Linkedin, Facebook, twitter etc...)</p>
+                    <p className='text-gray-400 my-2 text-[14px] font-semibold'>My Profile Link</p>
                     <Input
                         value={userInfo.profile}
-                        placeholder="Profile Link"
+                        placeholder="Add your profile link such as Linkedin, Facebook, twitter etc..."
                         prefix={<ProfileOutlined />}
                         className='w-full my-2'
                         onChange={(e: any) => onchange({ ...userInfo, profile: e.target.value })}
                     />
 
-                    <p className='text-gray-400 my-2'>Headline</p>
+                    <p className='text-gray-400 my-2 font-semibold'>Headline</p>
                     <TextArea
                         value={userInfo.summary}
                         rows={4}

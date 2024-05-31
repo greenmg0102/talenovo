@@ -12,7 +12,7 @@ const NewsLatterBox = ({ agreeNewsletter, newsletterInfo, setnewsletterInfo }: a
   };
 
   return (
-    <div className="border border-gray-300 rounded-[10px] relative z-10 rounded-sm bg-white p-2 shadow-three dark:bg-gray-dark  sm:p-6 mb-4">
+    <div className="border border-gray-300 rounded-[10px] relative z-10 rounded-sm bg-white p-2 shadow-three dark:bg-gray-dark sm:p-6 sm:pb-2 mb-4">
       <h3 className="mb-4 text-xl font-bold leading-tight text-black dark:text-white">
         Subscribe to Talenovo's newsletter
       </h3>
@@ -20,7 +20,7 @@ const NewsLatterBox = ({ agreeNewsletter, newsletterInfo, setnewsletterInfo }: a
         <input
           type="text"
           name="FirstName"
-          placeholder="Enter your FirstName"
+          placeholder="Enter your First Name"
           className="border-stroke mb-4 w-full rounded-sm border bg-[#f8f8f8] px-4 py-2 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
           value={newsletterInfo.FirstName}
           onChange={(e: any) => setnewsletterInfo({ ...newsletterInfo, [e.target.name]: e.target.value })}
@@ -29,7 +29,7 @@ const NewsLatterBox = ({ agreeNewsletter, newsletterInfo, setnewsletterInfo }: a
         <input
           type="text"
           name="LastName"
-          placeholder="Enter your LastName"
+          placeholder="Enter your Last Name"
           className="border-stroke mb-4 w-full rounded-sm border bg-[#f8f8f8] px-4 py-2 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
           value={newsletterInfo.LastName}
           onChange={(e: any) => setnewsletterInfo({ ...newsletterInfo, [e.target.name]: e.target.value })}
@@ -38,7 +38,7 @@ const NewsLatterBox = ({ agreeNewsletter, newsletterInfo, setnewsletterInfo }: a
         <input
           type="email"
           name="email"
-          placeholder="Enter your email"
+          placeholder="Enter your E-mail"
           className="border-stroke mb-4 w-full rounded-sm border bg-[#f8f8f8] px-4 py-2 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
           value={newsletterInfo.email}
           onChange={(e: any) => setnewsletterInfo({ ...newsletterInfo, [e.target.name]: e.target.value })}

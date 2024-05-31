@@ -10,7 +10,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
   let { db } = await connectToDatabase();
   let reqData = await req.json()
 
-
   let isMe: any = await db.collection("userinfos").findOne({ userId: user.id });
 
   let updateData = { $set: {} };
@@ -18,7 +17,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
       updateData.$set[element] = isMe[element];
     });
     updateData.$set["locatedin"] = reqData.locatedin;
-
 
   let result = await db.collection("userinfos").findOneAndUpdate({ _id: isMe._id }, updateData).then((res: any) => { return res });
   return NextResponse.json({

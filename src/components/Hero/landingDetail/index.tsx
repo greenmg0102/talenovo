@@ -24,8 +24,6 @@ export default function LandingDetail({ isDetail, setIsDetail }: any) {
                     setIsDetail={(data: any) => setIsDetail(data)}
                 /> : null
             }
-
-
         </div>
     )
 }

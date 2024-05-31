@@ -268,7 +268,7 @@ const Hero = ({ setIsDetail }: any) => {
 
                   <div className="mx-auto max-w-[1368px] w-full flex flex-col-reverse lg:flex-row lg:justify-between items-start flex-wrap">
 
-                    <div className="w-full lg:w-[30%]">
+                    <div className="w-full lg:w-[25%]">
 
                       {
                         isNewsletter &&
@@ -315,8 +315,8 @@ const Hero = ({ setIsDetail }: any) => {
                         </div>
                       }
                     </div>
-                    <div className='w-full lg:w-[70%] flex flex-col-reverse md:flex-row md:justify-between items-start flex-wrap'>
-                      <div className="w-full md:w-[80%] px-0 sm:px-2">
+                    <div className='w-full lg:w-[75%] flex flex-col-reverse md:flex-row md:justify-between items-start flex-wrap'>
+                      <div className="w-full md:w-[75%] px-0 sm:px-2">
                         <Carousel />
 
                         <div className="mb-4">
@@ -345,7 +345,7 @@ const Hero = ({ setIsDetail }: any) => {
                           <Pagination showLast={true} limit={3} offset={0} />
                         </div>
                       </div>
-                      <div className="w-full md:w-[20%] pl-0 md:pl-4">
+                      <div className="w-full md:w-[25%] pl-0 md:pl-4">
                         <ClearRefinements />
                         <SortBy
                           defaultRefinement="title:postStatus:desc"
