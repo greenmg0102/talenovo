@@ -18,6 +18,10 @@
     backdrop-filter: blur(5px);
 }
 
-.ant-tabs-nav{
+.ant-tabs-nav {
     margin-bottom: 4px !important;
+}
+
+.slick-arrow {
+    display: none !important;
 }

@@ -270,15 +270,6 @@ const Hero = ({ setIsDetail }: any) => {
 
                     <div className="w-full lg:w-[25%]">
 
-                      {
-                        isNewsletter &&
-                        <NewsLatterBox
-                          newsletterInfo={newsletterInfo}
-                          setnewsletterInfo={(total: any) => setnewsletterInfo(total)}
-                          agreeNewsletter={agreeNewsletter}
-                        />
-                      }
-
                       <div className="border border-gray-300 bg-white rounded-md p-2 flex justify-between items-center mb-4 shadow-lg">
                         <p className="font-bold text-[16px]">Suggested Jobs</p>
                         <Tooltip placement="topLeft" title={text}>
@@ -313,6 +304,14 @@ const Hero = ({ setIsDetail }: any) => {
                             />
                           }
                         </div>
+                      }
+                      {
+                        isNewsletter &&
+                        <NewsLatterBox
+                          newsletterInfo={newsletterInfo}
+                          setnewsletterInfo={(total: any) => setnewsletterInfo(total)}
+                          agreeNewsletter={agreeNewsletter}
+                        />
                       }
                     </div>
                     <div className='w-full lg:w-[75%] flex flex-col-reverse md:flex-row md:justify-between items-start flex-wrap'>

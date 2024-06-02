@@ -46,7 +46,10 @@ export default function Carousel() {
     return (
         <div className="shadow-lg rounded-[8px] mb-4 bg-white border border-gray-300">
             <div className="px-2 pb-2">
-                <Tabs defaultActiveKey="1" items={items} />
+                <Tabs
+                    defaultActiveKey="1"
+                    items={items}
+                />
             </div>
         </div>
     )
