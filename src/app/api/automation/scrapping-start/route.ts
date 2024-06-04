@@ -27,7 +27,7 @@ const indexName = 'title';
 export async function GET(req: any, res: any) {
 
   // await adminAPIMiddleware(req, res);
-  let { db } = await connectToDatabase();
+  // let { db } = await connectToDatabase();
 
   // schedule.scheduleJob('0 */12 * * *', async () => {
 
@@ -39,10 +39,10 @@ export async function GET(req: any, res: any) {
 
   // await JobAlertAutomation()
 
-  const client = new MeiliSearch({
-    host: host,
-    apiKey: apiKey,
-  });
+  // const client = new MeiliSearch({
+  //   host: host,
+  //   apiKey: apiKey,
+  // });
 
   // let linkedin = await linkedinScrapping();
   // let google = await googleScrapping();
@@ -57,6 +57,7 @@ export async function GET(req: any, res: any) {
   // await client.index(indexName).addDocuments(real, { primaryKey: 'jobId' });
   console.log(2);
   // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "companyName", "jobId", "postStatus", "recruiterId"]);
+  
   // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId", "scrapedDate"]);
   // await client.index(indexName).updateSortableAttributes(["postStatus", "scrapedDate"]);
   // await client.index(indexName).updateDistinctAttribute("companyName");

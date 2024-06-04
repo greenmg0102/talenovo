@@ -24,6 +24,14 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
         };
     }, []);
 
+    const uniqueJobHighlights = isDetail.jobHighlights.reduce((acc, item) => {
+        const existingItem = acc.find((highlight) => highlight.title === item.title);
+        if (!existingItem) {
+            acc.push(item);
+        }
+        return acc;
+    }, []);
+
 
     return (
         <div
@@ -76,7 +84,7 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                     </p>
 
                                 </div>
-                                {isDetail.jobHighlights.length > 0 ?
+                                {/* {isDetail.jobHighlights.length > 0 ?
                                     <div>
                                         {isDetail.jobHighlights.map((item: any, index: any) =>
                                             <div key={index} className=''>
@@ -92,6 +100,18 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                     :
                                     <p className="text-gray-500 pt-2 text-[12px]">{isDetail.description}</p>
                                     // <div className="text-gray-500 pt-2 text-[12px]" dangerouslySetInnerHTML={{ __html: isDetail.description }} />
+                                } */}
+                                {
+                                    uniqueJobHighlights.map((item: any, index: any) => (
+                                        <div key={index} className=''>
+                                            <p className='font-bold text-[14px] mt-4'>{item.title}</p>
+                                            <ul className='list-disc marker:text-blue-500'>
+                                                {item.items.map((each: any, order: any) => (
+                                                    <li key={order} className='text-[14px] ml-6'>{each}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    ))
                                 }
 
                             </div>

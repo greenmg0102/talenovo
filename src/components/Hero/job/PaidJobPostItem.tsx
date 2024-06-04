@@ -36,10 +36,14 @@ const PaidJobPostItem = ({ item, clerkId, hiddenBookMark, setIsDetail }: any) =>
       {contextHolder}
       <div className="relative flex justify-start items-center mb-2">
         <div className="p-2">
-          <a href={item.jobApplyLink} target="_blank">
-            <div className='w-[60px] h-[60px] bg-cover bg-center rounded-full border border-blue-300 border-dashed' style={{ backgroundImage: `url(${item.companyLogo})` }} >
-            </div>
-          </a>
+          {/* <a href={item.jobApplyLink} target="_blank"> */}
+          <div
+            className='w-[60px] h-[60px] bg-cover bg-center rounded-full border border-blue-300 border-dashed'
+            style={{ backgroundImage: `url(${item.companyLogo})` }}
+            onClick={() => setIsDetail(item)}
+          >
+          </div>
+          {/* </a> */}
         </div>
         <div className="pl-4 pr-4 w-[calc(100%-170px)]">
           {/* <Link href={`/job-detail/${item.jobId}`}> */}

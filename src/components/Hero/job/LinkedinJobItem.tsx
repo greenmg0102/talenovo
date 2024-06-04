@@ -18,14 +18,14 @@ const LinkedinJobItem = ({ item, clerkId, setIsDetail }: any) => {
 
   const bookmark = async (jobId: any) => {
 
-    if(clerkId){
+    if (clerkId) {
       const data = { jobId: jobId }
       let result = await registBookmark(data)
-  
+
       if (result.isOkay) messageApi.info(result.message);
       else messageApi.error(result.message);
-    }else messageApi.error("Please sign in.");
-    
+    } else messageApi.error("Please sign in.");
+
   }
 
   return (
@@ -34,9 +34,16 @@ const LinkedinJobItem = ({ item, clerkId, setIsDetail }: any) => {
 
       <div className="relative flex justify-start items-center mb-2">
         <div className="p-2">
-          <a href={item.companyLinkedinUrl} target="_blank">
-            <img src={item.companyLogo} alt="avatar" className="rounded-full border border-blue-300 border-dashed" width={60} height={60} />
-          </a>
+          {/* <a href={item.companyLinkedinUrl} target="_blank"> */}
+          <img
+            src={item.companyLogo}
+            alt="avatar"
+            className="rounded-full border border-blue-300 border-dashed"
+            width={60}
+            height={60}
+            onClick={() => setIsDetail(item)}
+          />
+          {/* </a> */}
         </div>
         <div className="pl-4 pr-4 w-[calc(100%-170px)]">
           {/* <Link href={`/job-detail/${item.jobId}`}> */}

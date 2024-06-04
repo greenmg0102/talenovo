@@ -1,7 +1,8 @@
 
-export async function userInitialInfo() {
+export async function userInitialInfo(data:any) {
     const res = await fetch('http://104.128.55.140:3000/api/user/user-profile/user-info', {
-        method: 'GET',
+        method: 'PUT',
+        body: JSON.stringify(data)
     });
     return await res.json();
 }

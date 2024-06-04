@@ -4,9 +4,9 @@ const KadoaJobItem = ({ item, isDetail, clerkId, setIsDetail }: any) => {
   return (
     <div className="flex justify-between items-center p-2">
       <div className="w-[70px] h-[70px] flex-grow-0 rounded-full flex justify-center items-center">
-        <a href={item.directoryPageEntryData.link} target="_blank">
+        {/* <a href={item.directoryPageEntryData.link} target="_blank"> */}
           <img src={item.detailPageData.logo} alt="avatar" className="rounded-full" width={70} height={70} />
-        </a>
+        {/* </a> */}
       </div>
       <div
         className="pl-2 relative"

@@ -56,10 +56,14 @@ const UserInfoMain = () => {
 
   useEffect(() => {
     async function userInfoGet() {
-      let result = await userInitialInfo()
 
-      console.log("result", result);
+      const res: any = await fetch('https://us-central1-sodium-mountain-418120.cloudfunctions.net/geolocation', { method: 'GET' });
+      let geoLocation = await await res.json()
+      const data = {
+        geoLocation: geoLocation
+      }
 
+      let result = await userInitialInfo(data)
 
       let mail = result.mail.map((item: any) => item.emailAddress)
       let phone = result.phone.map((item: any) => item.phoneNumber)

@@ -126,8 +126,11 @@ const Hero = ({ setIsDetail }: any) => {
 
   useEffect(() => {
     async function fetchGeo() {
-      let result = await locationDetecting()
-      setGeoPosition(result.geoPostion)
+      // let result = await locationDetecting()
+      const res: any = await fetch('https://us-central1-sodium-mountain-418120.cloudfunctions.net/geolocation', { method: 'GET' });
+      let result = await await res.json()
+
+      setGeoPosition(result.city + ", " + result.country)
     }
     fetchGeo()
   }, [])
@@ -178,11 +181,11 @@ const Hero = ({ setIsDetail }: any) => {
   useEffect(() => {
     async function fetchSuggestJobs() {
 
-      if (locatedin !== null && skil !== null) {
+      if (geoPosition !== null && skil !== null) {
 
         let data = {
           skill: skil,
-          currentLocatedin: locatedin,
+          currentLocatedin: geoPosition,
           ...userData
         }
 
@@ -192,7 +195,7 @@ const Hero = ({ setIsDetail }: any) => {
       }
     }
     fetchSuggestJobs()
-  }, [locatedin, skil, userData])
+  }, [geoPosition, skil, userData])
 
   const Hit = ({ hit }: any) => {
 

@@ -13,10 +13,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
   let isMe: any = await db.collection("userinfos").findOne({ userId: user.id });
 
   let updateData = { $set: {} };
-    Object.keys(isMe).filter((key: any) => key !== "_id").forEach((element: any) => {
-      updateData.$set[element] = isMe[element];
-    });
-    updateData.$set["locatedin"] = reqData.locatedin;
+  Object.keys(isMe).filter((key: any) => key !== "_id").forEach((element: any) => {
+    updateData.$set[element] = isMe[element];
+  });
+  updateData.$set["locatedin"] = reqData.locatedin;
 
   let result = await db.collection("userinfos").findOneAndUpdate({ _id: isMe._id }, updateData).then((res: any) => { return res });
   return NextResponse.json({
@@ -25,10 +25,12 @@ export async function POST(req: NextRequest, res: NextResponse) {
   });
 }
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function PUT(req: NextRequest, res: NextResponse) {
 
-  const ip = (req.headers.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0]
-  const localInfo: any = await axios.get(`https://api.findip.net/${ip === "::1" ? "8.230.6.196" : ip}/?token=988e48d25e534484b591149ce6a32c74`);
+  // const ip = (req.headers.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0]
+  // const localInfo: any = await axios.get(`https://api.findip.net/${ip === "::1" ? "8.230.6.196" : ip}/?token=988e48d25e534484b591149ce6a32c74`);
+
+  let reqData = await req.json()
 
   let { db } = await connectToDatabase();
   const user: any = await currentUser();
@@ -55,7 +57,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
       experience: 0,
       ctc: 0,
 
-      locatedin: localInfo.data.city.names.en + ", " + localInfo.data.country.names.en,
+      locatedin: reqData.geoLocation,
       gender: "",
       postedJob: myjobpostCount,
       appliedJob: 0,
@@ -64,8 +66,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
     });
 
   } else {
-
-    console.log("!@#$%", isMe);
 
     return NextResponse.json({
       avatar: isMe.avatar,

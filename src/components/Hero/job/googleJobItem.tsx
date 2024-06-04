@@ -43,14 +43,15 @@ const GoogleJobItem = ({ item, clerkId, hiddenBookMark, setIsDetail }: any) => {
 
       <div className="relative flex justify-start items-center mb-2">
         <div className="p-2">
-          <a href={item && item.applyLink[0] && item.applyLink[0].link} target="_blank">
-            <img
-              src={item.companyLogo ? item.companyLogo : "/images/hero/default.jpeg"}
-              alt="avatar"
-              className="w-[50px] h-[50px] rounded-full bg-cover bg-cover border-blue-300 border-dashed"
-              width={60} height={60}
-            />
-          </a>
+          {/* <a href={item && item.applyLink[0] && item.applyLink[0].link} target="_blank"> */}
+          <img
+            src={item.companyLogo ? item.companyLogo : "/images/hero/default.jpeg"}
+            alt="avatar"
+            className="w-[50px] h-[50px] rounded-full bg-cover bg-cover border-blue-300 border-dashed"
+            width={60} height={60}
+            onClick={() => setIsDetail(item)}
+          />
+          {/* </a> */}
         </div>
         <div className="pl-4 pr-4 w-[calc(100%-150px)]">
           {/* <Link href={`/job-detail/${item.jobId}`}> */}
@@ -61,7 +62,10 @@ const GoogleJobItem = ({ item, clerkId, hiddenBookMark, setIsDetail }: any) => {
             {item.title}
           </p>
           {/* </Link> */}
-          <p className="text-[10px] font-bold text-gray-400">{item.companyName}  <span className="font-normal">{item && item.insightsV2 && item.insightsV2[0]}</span></p>
+          <p className="text-[10px] font-bold text-gray-400">
+            {item.companyName}
+            {/* <span className="font-normal">{item && item.insightsV2 && item.insightsV2[0]}</span> */}
+          </p>
           <div className="flex justify-start items-center flex-wrap">
             <p className="text-[10px] text-gray-500 mr-2">{item.location}</p>
             {/* <p className="text-[12px] text-gray-500 mr-2 border">{item.employmentType}</p> */}
