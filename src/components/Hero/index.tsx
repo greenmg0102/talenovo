@@ -350,11 +350,11 @@ const Hero = ({ setIsDetail }: any) => {
                       <div className="w-full md:w-[25%] pl-0 md:pl-4">
                         <ClearRefinements />
                         <SortBy
-                          defaultRefinement="title:postStatus:desc"
+                          defaultRefinement="title:scrapedDate:desc"
                           items={[
-                            // { value: "title", label: "Relevant" },
+                            // { value: "title", label: "Relevant" },  scrapedDate   postStatus   desc    asc
                             {
-                              value: "title:postStatus:desc",
+                              value: "title:scrapedDate:desc",
                               label: "Most Featured"
                             },
                             // {
