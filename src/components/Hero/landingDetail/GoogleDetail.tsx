@@ -4,6 +4,8 @@ import { Divider } from 'antd'
 
 export default function GoogleDetail({ isDetail, setIsDetail }: any) {
 
+    console.log("isDetail", isDetail);
+
     const extraColor = [
         { bg: 'bg-green-200', text: 'text-green-600' },
         { bg: 'bg-red-200', text: 'text-red-600' },
@@ -25,13 +27,20 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
     }, []);
 
     const uniqueJobHighlights = isDetail.jobHighlights.reduce((acc, item) => {
-        const existingItem = acc.find((highlight) => highlight.title === item.title);
+        const existingItem = acc.find((highlight: any) => highlight.title === item.title);
         if (!existingItem) {
             acc.push(item);
         }
         return acc;
     }, []);
 
+    const postedDate = (givenDateString: string): any => {
+        const givenDate = new Date(givenDateString);
+        const currentDate = new Date();
+        const timeDifference = currentDate.getTime() - givenDate.getTime();
+        const daysPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        return daysPassed
+    }
 
     return (
         <div
@@ -77,9 +86,23 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                 <Divider />
                                 <div className="flex justify-between items-center pb-4">
                                     <p className="font-semibold text-[16px]">Job Description</p>
-                                    <p className="font-semibold text-[14px] flex">
-                                        Posted on: <span className="font-normal">
-                                            {isDetail && isDetail.extras && isDetail.extras.length > 0 && isDetail.extras.filter((item: any) => item.includes("ago")).map((item: any, index: any) => <p key={index} className="text-blue-500 ml-1">{item}</p>)}
+                                    <p className="font-semibold text-[14px] flex items-center">
+                                        Posted on: <span className="font-normal ml-2">
+                                            {/* {isDetail && isDetail.extras && isDetail.extras.length > 0 && isDetail.extras.filter((item: any) => item.includes("ago")).map((item: any, index: any) => <p key={index} className="text-blue-500 ml-1">{item}</p>)} */}
+                                            {
+                                                isDetail && isDetail.extras && isDetail.extras.length > 0 &&
+                                                    isDetail.extras.filter((item: any) => item.includes("days ago")).length > 0 ?
+                                                    isDetail && isDetail.extras && isDetail.extras.length > 0 &&
+                                                    isDetail.extras.filter((item: any) => item.includes("days ago")).map((each: any, order: any) => <p key={order} className="text-[10px] text-blue-500 text-right">{Number(postedDate(isDetail.scrapedDate)) + Number(each[0])} days ago </p>)
+                                                    :
+                                                    <p className="text-[10px] text-blue-500 text-right">
+                                                        {postedDate(isDetail.scrapedDate) === 0 ?
+                                                            "Few hours ago"
+                                                            :
+                                                            postedDate(isDetail.scrapedDate) + " days ago"
+                                                        }
+                                                    </p>
+                                            }
                                         </span>
                                     </p>
 
@@ -101,19 +124,24 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                     <p className="text-gray-500 pt-2 text-[12px]">{isDetail.description}</p>
                                     // <div className="text-gray-500 pt-2 text-[12px]" dangerouslySetInnerHTML={{ __html: isDetail.description }} />
                                 } */}
-                                {
-                                    uniqueJobHighlights.map((item: any, index: any) => (
-                                        <div key={index} className=''>
-                                            <p className='font-bold text-[14px] mt-4'>{item.title}</p>
-                                            <ul className='list-disc marker:text-blue-500'>
-                                                {item.items.map((each: any, order: any) => (
-                                                    <li key={order} className='text-[14px] ml-6'>{each}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    ))
+                                {isDetail.jobHighlights.length > 0 ?
+                                    <div>
+                                        {
+                                            uniqueJobHighlights.map((item: any, index: any) => (
+                                                <div key={index} className=''>
+                                                    <p className='font-bold text-[14px] mt-4'>{item.title}</p>
+                                                    <ul className='list-disc marker:text-blue-500'>
+                                                        {item.items.map((each: any, order: any) => (
+                                                            <li key={order} className='text-[14px] ml-6'>{each}</li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
+                                    :
+                                    <p className="text-gray-500 pt-2 text-[12px]">{isDetail.description}</p>
                                 }
-
                             </div>
                         </div>
                         <div className="w-full lg:w-1/4 pl-4">
