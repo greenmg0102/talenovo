@@ -21,6 +21,7 @@ import { locationDetecting } from '@/store/action/user/service/geo'
 import Pricing from '@/components/Pricing'
 import Testimonials from '@/components/Testimonials'
 import Features from '@/components/Features'
+import { v4 as uuidv4 } from 'uuid';
 
 import {
   InstantSearch,

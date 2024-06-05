@@ -57,6 +57,7 @@ const NewsLatterBox = ({ agreeNewsletter, newsletterInfo, setnewsletterInfo }: a
       </form>
 
       <div>
+        {/* 
         <span className="absolute left-2 top-7">
           <svg
             width="57"
@@ -80,18 +81,18 @@ const NewsLatterBox = ({ agreeNewsletter, newsletterInfo, setnewsletterInfo }: a
                 gradientUnits="userSpaceOnUse"
               >
                 <stop
-                  stopColor={theme === "light" ? "#4A6CF7" : "#fff"}
+                  stopColor={"#ff"}
                   stopOpacity="0.62"
                 />
                 <stop
                   offset="1"
-                  stopColor={theme === "light" ? "#4A6CF7" : "#fff"}
+                  stopColor={"#fff"}
                   stopOpacity="0"
                 />
               </linearGradient>
             </defs>
           </svg>
-        </span>
+        </span> 
 
         <span className="absolute bottom-24 left-1.5">
           <svg
@@ -271,6 +272,7 @@ const NewsLatterBox = ({ agreeNewsletter, newsletterInfo, setnewsletterInfo }: a
             </defs>
           </svg>
         </span>
+        */}
       </div>
     </div>
   );

@@ -51,13 +51,13 @@ export async function GET(req: any, res: any) {
   // let real = google
   // // // // // let real = [...linkedin, ...kadoa]
 
-  // console.log("real",real);
+  // console.log("real",real.length);
 
   console.log(1);
   // await client.index(indexName).addDocuments(real, { primaryKey: 'jobId' });
   console.log(2);
   // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "companyName", "jobId", "postStatus", "recruiterId"]);
-  
+
   // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId", "scrapedDate"]);
   // await client.index(indexName).updateSortableAttributes(["postStatus", "scrapedDate"]);
   // await client.index(indexName).updateDistinctAttribute("companyName");
