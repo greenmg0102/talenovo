@@ -29,7 +29,13 @@ export async function googleScrapping(): Promise<any> {
     // const response7: any = await fetch("https://api.apify.com/v2/datasets/hRR7RibdgPNQvxJrU/items?clean=true&format=json", {
     //     method: 'GET'
     // });
-    const response8: any = await fetch("https://api.apify.com/v2/datasets/7js6idPcgNgOB84qm/items?clean=true&format=json", {
+    // const response8: any = await fetch("https://api.apify.com/v2/datasets/7js6idPcgNgOB84qm/items?clean=true&format=json", {
+    //     method: 'GET'
+    // });
+    // const response9: any = await fetch("https://api.apify.com/v2/datasets/TYsdNUdQBvYc9F4AA/items?clean=true&format=json", {
+    //     method: 'GET'
+    // });
+    const response10: any = await fetch("https://api.apify.com/v2/datasets/7yAh44p4Dc81rPyvL/items?clean=true&format=json", {
         method: 'GET'
     });
     
@@ -39,12 +45,13 @@ export async function googleScrapping(): Promise<any> {
     // const data4: any = await response4.json();
     // const data5: any = await response5.json();
     // const data6: any = await response6.json();
-    const data8: any = await response8.json();
-
+    // const data8: any = await response8.json();
+    // const data9: any = await response9.json();
+    const data10: any = await response10.json();
 
     // // let data = await db.collection("otherjobs").find().toArray();
 
-    data8.forEach((element: any) => {
+    data10.forEach((element: any) => {
         let randomId = uuidv4();
         real.push({
             ...element,

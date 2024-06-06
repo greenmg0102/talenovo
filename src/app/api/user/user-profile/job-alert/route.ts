@@ -3,6 +3,20 @@ import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
 import { currentUser } from '@clerk/nextjs';
 
+
+export async function GET(req: any, res: any) {
+
+  let { db } = await connectToDatabase();
+  const user: any = await currentUser();
+
+  let isMe: any = await db.collection("userinfos").findOne({ userId: user.id });
+
+  return NextResponse.json({
+    isOkay: true,
+    jobalertsetting: isMe.jobalertsetting
+  });
+}
+
 export async function POST(req: any, res: any) {
 
   let { db } = await connectToDatabase();
@@ -23,5 +37,4 @@ export async function POST(req: any, res: any) {
   return NextResponse.json({
     isOkay: true,
   });
-
 }

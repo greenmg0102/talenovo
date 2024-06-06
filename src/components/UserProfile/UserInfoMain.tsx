@@ -94,14 +94,9 @@ const UserInfoMain = () => {
   }, [])
 
   const updateLocation = async () => {
-
     let result = await userlocationUpdate({
       ...userInfo,
     })
-
-    console.log("result", result);
-
-
   }
 
 

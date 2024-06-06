@@ -51,7 +51,7 @@ export async function GET(req: any, res: any) {
   // let real = google
   // // // // // let real = [...linkedin, ...kadoa]
 
-  // console.log("real",real.length);
+  // console.log("real", real.length);
 
   console.log(1);
   // await client.index(indexName).addDocuments(real, { primaryKey: 'jobId' });

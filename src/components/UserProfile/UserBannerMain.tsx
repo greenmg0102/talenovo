@@ -50,7 +50,15 @@ const UserBannerMain = () => {
 
   useEffect(() => {
     async function userInfoGet() {
-      let result = await userInitialInfo()
+
+      const res: any = await fetch('https://us-central1-sodium-mountain-418120.cloudfunctions.net/geolocation', { method: 'GET' });
+      let geoResult: any = await await res.json()
+
+      const data = {
+        geoLocation: geoResult.city + ", " + geoResult.country
+      }
+
+      let result = await userInitialInfo(data)
 
       let mail = result.mail.map((item: any) => item.emailAddress)
       let phone = result.phone.map((item: any) => item.phoneNumber)

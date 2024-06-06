@@ -19,8 +19,8 @@ const AddJobTitle = ({ titleList, setTitleList }: any) => {
   return (
     <div className="">
       <div className='flex justify-start items-center pb-4 px-4 sm:px-16'>
-        <EditOutlined className='text-gray-500' />
-        <p className='text-[16px] text-gray-600 flex justify-start items-center pl-2'>
+        <EditOutlined className='text-gray-500 font-semibold' />
+        <p className='text-[16px] text-gray-600 flex justify-start items-center pl-2 font-semibold'>
           Job Title
         </p>
       </div>
@@ -35,7 +35,7 @@ const AddJobTitle = ({ titleList, setTitleList }: any) => {
         </Space.Compact>
       </div>
 
-      <div className='flex justify-start items-center flex-wrap mt-4'>
+      <div className='flex justify-start items-center flex-wrap mt-4 px-4 sm:px-16'>
         {titleList.map((item: any, index: any) =>
           <p key={index} className='mr-2 mb-1 px-2 border border-gray-300 rounded-[4px] text-gray-500 text-[13px]'>{item}</p>
         )}
