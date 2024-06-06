@@ -21,7 +21,7 @@ export async function newletterSubscribeGet() {
 export async function suggestJobs(data: any) {
 
     console.log("data", data);
-    
+
 
     let originQuery = [...data.currentLocatedin.split(", "), data.jobTitle, data.locatedin, ...data.skill]
 
@@ -42,7 +42,13 @@ export async function suggestJobs(data: any) {
 
         // let skillSetFilter = data.skillSet.map((itme: any) => { return `skills = "${itme}"`; })
 
-        let queryList = [...new Set([...originQuery, ...data.jobalertsetting.titleList])]
+        let real = data.jobalertsetting.bufferList.map((item: any) => item.titleList)
+        let titleList = real.reduce((acc: any, curr: any) => acc.concat(curr), []);
+
+        let queryList = [...new Set([...originQuery, ...titleList])]
+
+        console.log("queryList", queryList);
+
 
         const response = await axios.post(
             `${host}/indexes/${indexName}/search`,

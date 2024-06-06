@@ -63,7 +63,7 @@ const JobAlertSetting = ({ }: any) => {
 
       let jobAlertResult = await jobAlertConfigGet()
 
-      if (jobAlertResult.isOkay) {
+      if (jobAlertResult.isOkay && jobAlertResult.jobalertsetting && jobAlertResult.jobalertsetting.bufferList) {
         setBufferList(jobAlertResult.jobalertsetting.bufferList)
 
         setNotificationType({

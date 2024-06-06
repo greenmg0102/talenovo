@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: false,
   images: {
     domains: [
-      "localhost",
+      "104.128.55.140",
       'img.clerk.com',
       'media.licdn.com',
     ],
