@@ -9,7 +9,7 @@ export async function GET(req: any, res: any) {
 
   await adminAPIMiddleware(req, res)
     let { db } = await connectToDatabase();
-    const user = await currentUser();
+    const user:any = await currentUser();
 
     let result = await db
       .collection('myjobposts')

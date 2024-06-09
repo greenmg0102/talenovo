@@ -6,7 +6,7 @@ const indexName = 'title';
 
 export async function paidJobGet() {
 
-    const res = await fetch('http://104.128.55.140:3000/api/user/landing-job', {
+    const res = await fetch('http://104.128.55.140:80/api/user/landing-job', {
         method: 'POST',
         body: JSON.stringify({})
     });

@@ -33,7 +33,7 @@ const OurJobPostAdmin = () => {
   useEffect(() => {
 
     async function fetchData() {
-      const res = await fetch('http://104.128.55.140:3000/api/admin/my-job-post', {
+      const res = await fetch('http://104.128.55.140:80/api/admin/my-job-post', {
         method: 'POST',
         body: JSON.stringify({
         })

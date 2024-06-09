@@ -12,7 +12,7 @@ export async function POST(req: any, res: any) {
   let { db } = await connectToDatabase();
 
   let data = await req.json()
-  const user = await currentUser();
+  const user:any = await currentUser();
 
   data.recruiterId = user.id
 

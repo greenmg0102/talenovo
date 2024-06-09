@@ -6,7 +6,7 @@ import { currentUser } from '@clerk/nextjs';
 export async function POST(req: any, res: any) {
 
   let { db } = await connectToDatabase();
-  const user = await currentUser();
+  const user:any = await currentUser();
   let reqData = await req.json()
 
   let isMe = await db.collection("userinfos").findOne({ userId: user.id });

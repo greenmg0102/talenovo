@@ -5,7 +5,7 @@ import { currentUser } from '@clerk/nextjs';
 
 export async function POST(req: any, res: any) {
 
-  const user = await currentUser();
+  const user:any = await currentUser();
 
   let data = await req.json()
   let { db } = await connectToDatabase();

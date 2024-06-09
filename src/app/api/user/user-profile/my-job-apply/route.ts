@@ -7,7 +7,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: any, res: any) {
 
   // let { db } = await connectToDatabase();
-  // const user = await currentUser();
+  // const user:any = await currentUser();
   // const data = await req.json()
 
   // const myjobapply = await db.collection("bookmarks")
