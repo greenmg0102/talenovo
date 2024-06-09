@@ -5,14 +5,14 @@ const apiKey = '1116d49cd6e2aee89e3b54713b1bb9b1e4184651';
 const indexName = 'title';
 
 export async function newletterSubscribePost(data: any) {
-    const res = await fetch('http://104.128.55.140:3000/api/user/newsletter-confirm', {
+    const res = await fetch('http://104.128.55.140:8080/api/user/newsletter-confirm', {
         method: 'POST',
         body: JSON.stringify(data)
     });
     return await res.json();
 }
 export async function newletterSubscribeGet() {
-    const res = await fetch('http://104.128.55.140:3000/api/user/newsletter-confirm', {
+    const res = await fetch('http://104.128.55.140:8080/api/user/newsletter-confirm', {
         method: 'GET',
     });
     return await res.json();
