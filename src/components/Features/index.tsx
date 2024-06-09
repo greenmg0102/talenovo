@@ -12,7 +12,7 @@ const Features = () => {
             Talenovo Premium Features
           </h2>
           <h4 className="mb-2 text-lg !leading-tight text-black dark:text-white sm:text-xl md:text-[20px] text-center px-2 sm:px-24 md:px-40 text-gray-500">
-            Unlock your Career Potential: Navigate your next opportunity with ease with Talenovo's exclusive membership
+            Unlock your Career Potential: Navigate your next opportunity with ease with Talenovo&apos;s exclusive membership
           </h4>
 
           <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3 pt-12">

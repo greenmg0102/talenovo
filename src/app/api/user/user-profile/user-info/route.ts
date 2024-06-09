@@ -35,7 +35,7 @@ export async function PUT(req: NextRequest, res: NextResponse) {
   let { db } = await connectToDatabase();
   const user: any = await currentUser();
 
-  let isMe = await db.collection("userinfos").findOne({ userId: user.id });
+  let isMe:any = await db.collection("userinfos").findOne({ userId: user.id });
 
   let myjobpostCount = await db.collection("myjobposts").countDocuments({ recruiterId: user.id, isComplete: false, isComfirm: false });
   let mybookmarkjobCount = await db.collection("bookmarks").countDocuments({ userId: user.id });

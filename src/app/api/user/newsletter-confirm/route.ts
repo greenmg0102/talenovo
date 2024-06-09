@@ -7,7 +7,7 @@ import { currentUser } from '@clerk/nextjs';
 
 export async function POST(req: any, res: any) {
 
-  const data = await req.json()
+  const data:any = await req.json()
 
   let result = await createContract({
     FirstName: data.FirstName,

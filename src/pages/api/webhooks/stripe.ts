@@ -1,6 +1,6 @@
 import { buffer } from "micro";
 import Stripe from "stripe";
-const stripe: any = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe: any = new Stripe(process.env.STRIPE_SECRET_KEY!);
 import type { NextApiRequest, NextApiResponse } from "next";
 import { connectToDatabase } from "@/lib/mongodb";
 import { UserModel } from "@/models/UserModel";

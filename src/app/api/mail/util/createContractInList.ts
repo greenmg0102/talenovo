@@ -9,7 +9,7 @@ export default function createContract(total: any) {
 
     return new Promise((resolve: any, reject: any) => {
 
-        let postData = ""
+        let postData: any = ""
 
         if (total.listType === "all clients") {
             postData = `{"api_key":"${process.env.EMAIL_OCTO_PUS_API_KEY}","email_address":"${total.email}","fields": {"EmailAddress":"${total.email}","FirstName":"${total.FirstName}","LastName":"${total.LastName}"}, "tags": [""],"status": "SUBSCRIBED"}`;
@@ -29,10 +29,10 @@ export default function createContract(total: any) {
             }
         };
 
-        var req: any = https.request(options, (response) => {
-            let data = '';
+        var req: any = https.request(options, (response: any) => {
+            let data: any = '';
 
-            response.on('data', (chunk) => {
+            response.on('data', (chunk: any) => {
                 data += chunk;
             });
 

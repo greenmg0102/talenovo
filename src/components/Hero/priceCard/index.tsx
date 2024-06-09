@@ -9,10 +9,9 @@ export default function PriceCard() {
                 <Link
                     href="/price"
                     className="w-full md:w-[25%] py-4 my-6 hover:py-6 hover:my-4 px-6 border border-gray-200 rounded-[12px] shadow-lg hover:shadow-xl transition-all hover:border-blue-500 border-[2px] hover:bg-blue-200 cursor-pointer"
+                    key={index}
                 >
-                    <div
-                        key={index}
-                    >
+                    <div>
                         <div className='flex justify-center items-center'>
                             <div className='w-[70px] h-[70px] border border-gray-200 rounded-[4px]'>
                             </div>

@@ -107,7 +107,7 @@ const Hero = ({ setIsDetail }: any) => {
       newsletterInfo.FirstName.length > 0 &&
       newsletterInfo.LastName.length > 0
     ) {
-      let result = await newletterSubscribePost(newsletterInfo)
+      let result:any = await newletterSubscribePost(newsletterInfo)
       if (result.isOkay) {
         messageApi.success(result.message);
       } else {
@@ -253,7 +253,7 @@ const Hero = ({ setIsDetail }: any) => {
                         <p className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center">
                           <CountUp start={0} end={today} duration={2} className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center"></CountUp>+
                         </p>
-                        <p className="text-gray-600 font-bold text-[12px] sm:text-[14px] text-center">Today's Jobs</p>
+                        <p className="text-gray-600 font-bold text-[12px] sm:text-[14px] text-center">Today&apos;s Jobs</p>
                       </div>
                       <div>
                         <p className="text-blue-500 font-bold text-[20px] sm:text-[26px] text-center">

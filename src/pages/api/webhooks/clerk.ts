@@ -54,27 +54,27 @@ export default async function handler(
     }
 
     const data: any = evt.data;
-    const eventType = evt.type;
+    const eventType:any = evt.type;
 
     switch (eventType) {
         case "user.created":
 
             // Define the user details
-            const clerkId = data.id;
-            const email = data.email_addresses[0].email_address;
-            const status = "inactive";
-            const planName = "free";
+            const clerkId:any = data.id;
+            const email:any = data.email_addresses[0].email_address;
+            const status:any = "inactive";
+            const planName:any = "free";
 
             // Connect to the MongoDB database
             const { db } = await connectToDatabase();
 
             // Instantiate the UserModel with the database instance
-            const userModel = new UserModel(db);
+            const userModel:any = new UserModel(db);
             // id>>email>>status>>plan name
             await userModel.createUser(clerkId, email, status, planName);
 
 
-            const total = {
+            const total:any = {
                 email: data.email_addresses[0].email_address,
                 FirstName: data.first_name,
                 LastName: data.last_name,

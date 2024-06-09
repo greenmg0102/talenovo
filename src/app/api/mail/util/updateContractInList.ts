@@ -8,7 +8,7 @@ export default async function updateContractInList(contractBody: any) {
 
     return new Promise((resolve: any, reject: any) => {
 
-        var postData = ""
+        var postData:any = ""
 
         if (contractBody.listType === "job Alert") {
 
@@ -26,9 +26,9 @@ export default async function updateContractInList(contractBody: any) {
         };
 
         var req: any = https.request(options, (response) => {
-            let data = '';
+            let data:any = '';
 
-            response.on('data', (chunk) => {
+            response.on('data', (chunk:any) => {
                 data += chunk;
             });
 

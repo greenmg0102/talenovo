@@ -32,7 +32,7 @@ const JobCategoryList = () => {
   }
 
   const updateList = (order: any, updateValue: any) => {
-    let real = []
+    let real:any = []
     if (updateValue === null) real = categoryList.filter((item: any, index: any) => index !== order)
     else {
       categoryList.forEach((item: any, index: any) => {

@@ -1,9 +1,9 @@
 import { connectToDatabase } from "@/lib/mongodb";
 import { UserModel } from "@/models/UserModel";
 import { NextApiRequest, NextApiResponse } from "next";
-// import Stripe from "stripe";
+import Stripe from "stripe";
 
-// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export default async function handler(
     req: NextApiRequest,

@@ -9,7 +9,7 @@ import { userSearch, adminSearch, addAdmin } from '@/store/action/admin/role'
 const RoleAdmin = () => {
 
   const [userList, setUserList] = useState([])
-  const [value, setValue] = useState({ firstName: undefined })
+  const [value, setValue] = useState({ firstName: "" })
   const [warn, setWarn] = useState({ firstName: "" })
   const [matchedUsers, setMatchedUsers] = useState([])
   const [searchHint, setSearchHint] = useState({
@@ -17,7 +17,7 @@ const RoleAdmin = () => {
   })
 
   const updateList = (order: any, updateValue: any) => {
-    let real = []
+    let real:any = []
     if (updateValue === null) real = userList.filter((item: any, index: any) => index !== order)
     else {
       userList.forEach((item: any, index: any) => {
@@ -56,7 +56,7 @@ const RoleAdmin = () => {
   }, []);
 
   const addAdminRegist = async () => {
-    if (value.firstName !== undefined) {
+    if (value.firstName !== "") {
       let res = await addAdmin({ newAdmin: value.firstName })
       let result = res.map((item: any) => ({
         id: item.id,

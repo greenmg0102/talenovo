@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export async function KadoaScrapping(): Promise<any> {
 
-    let real = []
+    let real:any = []
 
     const apiKey = 'f32d04ed-9906-43e0-8c04-1e53375d3d4f'; // Replace with your actual API key
 

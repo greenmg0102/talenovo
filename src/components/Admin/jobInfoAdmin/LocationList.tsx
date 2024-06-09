@@ -21,7 +21,7 @@ const LocationList = () => {
   }, [])
 
   const updateList = (order: any, updateValue: any) => {
-    let real = []
+    let real:any = []
     if (updateValue === null) real = locationList.filter((item: any, index: any) => index !== order)
     else {
       locationList.forEach((item: any, index: any) => {

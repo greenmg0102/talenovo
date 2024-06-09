@@ -8,7 +8,7 @@ import { adminAPIMiddleware } from '../../middleware';
 export async function POST(req: any, res: any) {
 
   await adminAPIMiddleware(req, res)
-  let insertedId = null
+  let insertedId = undefined
   let { db } = await connectToDatabase();
 
   let data = await req.json()

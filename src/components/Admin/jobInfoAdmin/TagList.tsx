@@ -31,7 +31,7 @@ const TagList = () => {
   }
 
   const updateList = (order: any, updateValue: any) => {
-    let real = []
+    let real:any = []
     if (updateValue === null) real = tagList.filter((item: any, index: any) => index !== order)
     else {
       tagList.forEach((item: any, index: any) => {

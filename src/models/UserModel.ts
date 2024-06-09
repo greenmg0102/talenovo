@@ -31,10 +31,10 @@ export class UserModel {
     }
 
     async updateUser(userId: string, updates: Partial<User>): Promise<any> {
-        const user = await this.db.collection("users").findOneAndUpdate(
+        const user:any = await this.db.collection("users").findOneAndUpdate(
             { _id: new ObjectId(userId) },
-            { $set: updates },
-            { returnOriginal: false }
+            { $set: updates }
+            // { returnOriginal: false }
         );
         return user.value;
     }

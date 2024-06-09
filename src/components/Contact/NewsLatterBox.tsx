@@ -14,7 +14,7 @@ const NewsLatterBox = ({ agreeNewsletter, newsletterInfo, setnewsletterInfo }: a
   return (
     <div className="border border-gray-300 rounded-[10px] relative z-10 rounded-sm bg-white p-2 shadow-three dark:bg-gray-dark sm:p-6 sm:pb-2 mb-4">
       <h3 className="mb-4 text-xl font-bold leading-tight text-black dark:text-white">
-        Subscribe to Talenovo's newsletter
+        Subscribe to Talenovo&apos;s newsletter
       </h3>
       <form onSubmit={agreeNewsletter}>
         <input

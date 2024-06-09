@@ -145,7 +145,7 @@ export const jobPostFeaturesData: Feature[] = [
     title: "Niche Expertise",
     paragraph: (
       <p>
-        Leverage our platform's expertise in connecting employers with candidates in specific fields or sectors.
+        Leverage our platform&apos;s expertise in connecting employers with candidates in specific fields or sectors.
       </p>
     ),
   },
@@ -217,7 +217,7 @@ export const jobPostFeaturesData: Feature[] = [
     title: "Brand Exposure",
     paragraph: (
       <p>
-        <span className="font-bold text-red-500"> Increase visibility</span> for the employer's brand among professionals who visit our site regularly.
+        <span className="font-bold text-red-500"> Increase visibility</span> for the employer&apos;s brand among professionals who visit our site regularly.
       </p>
     ),
   },

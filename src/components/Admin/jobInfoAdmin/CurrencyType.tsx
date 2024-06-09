@@ -31,7 +31,7 @@ const CurrencyType = () => {
   }
 
   const updateList = (order: any, updateValue: any) => {
-    let real = []
+    let real:any = []
     if (updateValue === null) real = currencyTypeList.filter((item: any, index: any) => index !== order)
     else {
       currencyTypeList.forEach((item: any, index: any) => {

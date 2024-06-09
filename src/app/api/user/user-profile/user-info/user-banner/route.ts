@@ -7,7 +7,7 @@ export async function POST(req: any, res: any) {
 
   let { db } = await connectToDatabase();
   const user: any = await currentUser();
-  let reqData = await req.json()
+  let reqData:any = await req.json()
 
   let isMe: any = await db.collection("userinfos").findOne({ userId: user.id });
 
