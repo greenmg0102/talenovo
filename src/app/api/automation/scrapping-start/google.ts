@@ -35,9 +35,28 @@ export async function googleScrapping(): Promise<any> {
     // const response9: any = await fetch("https://api.apify.com/v2/datasets/TYsdNUdQBvYc9F4AA/items?clean=true&format=json", {
     //     method: 'GET'
     // });
-    const response10: any = await fetch("https://api.apify.com/v2/datasets/7yAh44p4Dc81rPyvL/items?clean=true&format=json", {
+    // const response10: any = await fetch("https://api.apify.com/v2/datasets/7yAh44p4Dc81rPyvL/items?clean=true&format=json", {
+    //     method: 'GET'
+    // });
+    // const response11: any = await fetch("https://api.apify.com/v2/datasets/Y9NxXhchk2jih5glp/items?clean=true&format=json", {
+    //     method: 'GET'
+    // });
+    // const response12: any = await fetch("https://api.apify.com/v2/datasets/TFamaxUQ4fciH7sqk/items?clean=true&format=json", {
+    //     method: 'GET'
+    // });
+    // const response13: any = await fetch("https://api.apify.com/v2/datasets/vilXYUyLIeHAcfCtJ/items?clean=true&format=json", {
+    //     method: 'GET'
+    // });
+    // const response14: any = await fetch("https://api.apify.com/v2/datasets/ogAawGFZc4Qw7SF90/items?clean=true&format=json", {
+    //     method: 'GET'
+    // });
+    // const response15: any = await fetch("https://api.apify.com/v2/datasets/GY55Dk5fsIWcmcWAf/items?clean=true&format=json", {
+    //     method: 'GET'
+    // });
+    const response16: any = await fetch("https://api.apify.com/v2/datasets/e7IDBVh1oXPGB9LGB/items?clean=true&format=json", {
         method: 'GET'
     });
+
     
     // const data1: any = await response1.json();
     // const data2: any = await response2.json();
@@ -47,11 +66,17 @@ export async function googleScrapping(): Promise<any> {
     // const data6: any = await response6.json();
     // const data8: any = await response8.json();
     // const data9: any = await response9.json();
-    const data10: any = await response10.json();
+    // const data10: any = await response10.json();
+    // const data11: any = await response11.json();
+    // const data12: any = await response12.json();
+    // const data13: any = await response13.json();
+    // const data14: any = await response14.json();
+    // const data15: any = await response15.json();
+    const data16: any = await response16.json();
 
     // // let data = await db.collection("otherjobs").find().toArray();
 
-    data10.forEach((element: any) => {
+    data16.forEach((element: any) => {
         let randomId = uuidv4();
         real.push({
             ...element,

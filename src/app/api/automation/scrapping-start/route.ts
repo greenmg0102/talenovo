@@ -49,7 +49,7 @@ export async function GET(req: any, res: any) {
   // let indeed = await indeedScrapping();
   // let kadoa = await KadoaScrapping();
   // let real = google
-  // // // // // let real = [...linkedin, ...kadoa]
+  // // // // // let real = [...linkedin, ...kadoa]  4416
 
   // console.log("real", real.length);
 

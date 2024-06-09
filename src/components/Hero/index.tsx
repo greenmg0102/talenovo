@@ -369,7 +369,7 @@ const Hero = ({ setIsDetail }: any) => {
                         {/* <RefinementList attribute="location" /> */}
                         <RefinementList
                           attribute="occupationType"
-                          limit={3}
+                          limit={10}
                           showMore={true}
                           showMoreLimit={20}
                         />
@@ -386,7 +386,7 @@ const Hero = ({ setIsDetail }: any) => {
                         <h2 className='text-gray-700p pb-2'>Location</h2>
                         <RefinementList
                           attribute="city"
-                          limit={3}
+                          limit={10}
                           showMore={true}
                           showMoreLimit={20}
                         />
@@ -395,7 +395,7 @@ const Hero = ({ setIsDetail }: any) => {
                         <h2 className='text-gray-700p pb-2'>Company Name</h2>
                         <RefinementList
                           attribute="companyName"
-                          limit={3}
+                          limit={10}
                           showMore={true}
                           showMoreLimit={20}
                         />
@@ -424,7 +424,7 @@ const Hero = ({ setIsDetail }: any) => {
                         attribute="tertiaryDescription"
                         limit={3}
                         showMore={true}
-                        showMoreLimit={20}
+                        showMoreLimit={20}  
                       /> */}
                         {/* <Configure
                         hitsPerPage={6}
