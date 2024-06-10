@@ -17,8 +17,6 @@ const UserInitialInfo = ({ userInfo, onchange, updateLocation }: any) => {
   const [userData, setUserData] = useState<any>({});
   const [jobLocation, setJobLocation] = useState([])
 
-  console.log("userInfo", userInfo);
-
   const { user } = useUser();
 
   const email = user?.primaryEmailAddress?.emailAddress;

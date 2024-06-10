@@ -27,7 +27,7 @@ const indexName = 'title';
 export async function GET(req: any, res: any) {
 
   // await adminAPIMiddleware(req, res);
-  // let { db } = await connectToDatabase();
+  let { db } = await connectToDatabase();
 
   // schedule.scheduleJob('0 */12 * * *', async () => {
 
@@ -80,66 +80,25 @@ export async function GET(req: any, res: any) {
   //     return
   //   })
 
-  // let joblocationList: any = []
+  // const citiesJSON = await fetch('https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/cities.json').then(response => response.json());
 
-  // Object.keys(bufferLocationData).forEach((key: any, index: any) => {
-  //   bufferLocationData[key].forEach((each: any, order: any) => {
-  //     joblocationList.push({ location: each + ", " + key, value: each })
-  //   })
-  // })
-
-  // console.log("joblocationList", joblocationList);
-
-  // const originData = stateList
-
-  // for (let i = 0; i < originData.length; i++) {
-
-  //   let real: any = []
-
-  //   var headers = new Headers();
-  //   headers.append("X-CSCAPI-KEY", "YVdOOVdCQkRyNjNvYTB3dzh3bE9LZ29hVVZsOWhmR0lFT2dSUWtMTg==");
-
-  //   var requestOptions: any = {
-  //     method: 'GET',
-  //     headers: headers,
-  //     redirect: 'follow'
+  // var processedResult = citiesJSON.slice(100000, 150634).map((item: any) => {
+  //   return {
+  //     location: item.name + ", " + item.state_name + ` (${item.state_code})` + ", " + item.country_name + ` (${item.country_code})`,
+  //     value: item.name + ", " + item.state_name + ` (${item.state_code})` + ", " + item.country_name + ` (${item.country_code})`
   //   };
+  // });
 
-  //   let result: any = await fetch("https://api.countrystatecity.in/v1/countries/IN/states/MH/cities", requestOptions)
-  //     .then(response => response.text())
-  //     .then(result => { return result })
-
-  //   var processedResult = JSON.parse(result).map((item: any) => {
-  //     return {
-  //       location: item.name + ", " + originData[i].name + ", " + countryList.filter((each: any) => originData[i].country_id === each.id)[0].name,
-  //       value: item.name + ", " + originData[i].name + ", " + countryList.filter((each: any) => originData[i].country_id === each.id)[0].name
-  //     };
-  //   });
-
-  //   // `${item.name}, ${originData[i].name}, ${countryList.filter((each: any) => originData[i].country_id === each.id)[0].name}`
-  //   real = processedResult
-
-  //   await db
-  //     .collection("joblocations")
-  //     .insertMany(processedResult.map((joblocation: any) => joblocation))
-  //     .then(async (result: any) => {
-  //       return
-  //     })
-
-  //   real = []
-
-  //   console.log(i);
-
-  // }
+  // console.log("processedResult", processedResult.length, processedResult[0]);
 
   // await db
   //   .collection("joblocations")
-  //   .insertMany(joblocationList.map(joblocation => joblocation))
+  //   .insertMany(processedResult.map((joblocation: any) => joblocation))
   //   .then(async (result: any) => {
   //     return
   //   })
 
-  // })
+  // console.log('####');
 
   return NextResponse.json({
     result: true,

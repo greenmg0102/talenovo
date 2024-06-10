@@ -12,17 +12,48 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
   let isMe: any = await db.collection("userinfos").findOne({ userId: user.id });
 
-  let updateData = { $set: {} };
-  Object.keys(isMe).filter((key: any) => key !== "_id").forEach((element: any) => {
-    updateData.$set[element] = isMe[element];
-  });
-  updateData.$set["locatedin"] = reqData.locatedin;
+  if (isMe === null) {
+    const data = {
+      userId: user.id,
+      profile: "",
+      jobTitle: "",
+      summary: "",
+      skill: [],
 
-  let result = await db.collection("userinfos").findOneAndUpdate({ _id: isMe._id }, updateData).then((res: any) => { return res });
-  return NextResponse.json({
-    isOkay: true,
-    result: result
-  });
+      birthday: reqData.birthday,
+      experience: reqData.experience,
+      ctc: reqData.ctc,
+
+      avatar: "",
+      gender: reqData.gender,
+      locatedin: reqData.locatedin,
+      postedJob: 0,
+      appliedJob: 0,
+      bookmark: 0,
+      viewed: []
+    };
+
+    await db.collection("userinfos").insertOne(data);
+
+    return NextResponse.json({
+      isOkay: true,
+    });
+
+  } else {
+    let updateData = { $set: {} };
+    Object.keys(isMe).filter((key: any) => key !== "_id").forEach((element: any) => {
+      updateData.$set[element] = isMe[element];
+    });
+    updateData.$set["locatedin"] = reqData.locatedin;
+
+    let result = await db.collection("userinfos").findOneAndUpdate({ _id: isMe._id }, updateData).then((res: any) => { return res });
+
+    return NextResponse.json({
+      isOkay: true,
+      result: result
+    });
+  }
+
 }
 
 export async function PUT(req: NextRequest, res: NextResponse) {
@@ -35,7 +66,7 @@ export async function PUT(req: NextRequest, res: NextResponse) {
   let { db } = await connectToDatabase();
   const user: any = await currentUser();
 
-  let isMe:any = await db.collection("userinfos").findOne({ userId: user.id });
+  let isMe: any = await db.collection("userinfos").findOne({ userId: user.id });
 
   let myjobpostCount = await db.collection("myjobposts").countDocuments({ recruiterId: user.id, isComplete: false, isComfirm: false });
   let mybookmarkjobCount = await db.collection("bookmarks").countDocuments({ userId: user.id });

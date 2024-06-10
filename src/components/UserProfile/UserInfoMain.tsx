@@ -60,7 +60,7 @@ const UserInfoMain = () => {
       const res: any = await fetch('https://us-central1-sodium-mountain-418120.cloudfunctions.net/geolocation', { method: 'GET' });
       let geoLocation = await await res.json()
       const data = {
-        geoLocation: geoLocation
+        geoLocation: geoLocation.city + ", " + geoLocation.country
       }
 
       let result = await userInitialInfo(data)

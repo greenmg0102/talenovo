@@ -1,7 +1,7 @@
 
 export async function landingJob() {
 
-  const res = await fetch('http://104.128.55.140:8080/api/user/landing-job', {
+  const res = await fetch('http://104.128.55.140:8443/api/user/landing-job', {
     method: 'GET',
   });
 
@@ -10,7 +10,7 @@ export async function landingJob() {
 
 export async function registBookmark(data: any) {
 
-  const res = await fetch('http://104.128.55.140:8080/api/user/job-action/bookmark', {
+  const res = await fetch('http://104.128.55.140:8443/api/user/job-action/bookmark', {
     method: 'POST',
     body: JSON.stringify(data)
   });
@@ -20,7 +20,7 @@ export async function registBookmark(data: any) {
 
 export async function registApply({ data }: any) {
 
-  const res = await fetch('http://104.128.55.140:8080/api/user/job-action/apply', {
+  const res = await fetch('http://104.128.55.140:8443/api/user/job-action/apply', {
     method: 'POST',
     body: JSON.stringify(data)
   });

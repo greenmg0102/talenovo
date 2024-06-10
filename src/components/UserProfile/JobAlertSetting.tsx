@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { Divider, message, Button } from 'antd';
 import { PlusOutlined, EditOutlined, BarsOutlined, GlobalOutlined, CloseOutlined } from '@ant-design/icons';
-import clsx from 'clsx'
 import { getfacetedIndustry } from '@/store/action/user/userProfile/myjobalert'
 import AddJobTitle from '@/components/UserProfile/MyJobAlert/AddJobTitle'
 import AddJobType from '@/components/UserProfile/MyJobAlert/AddJobType'
@@ -10,6 +9,7 @@ import AddJobLocation from '@/components/UserProfile/MyJobAlert/AddJobLocation'
 import AddPaySlider from '@/components/UserProfile/MyJobAlert/AddPaySlider'
 import AddWorkSchedule from '@/components/UserProfile/MyJobAlert/AddWorkSchedule'
 import Addnotification from '@/components/UserProfile/MyJobAlert/Addnotification'
+import clsx from 'clsx'
 import { jobAlertConfig, jobAlertConfigGet } from '@/store/action/user/userProfile/jobAlertConfig'
 
 const JobAlertSetting = ({ }: any) => {
@@ -84,6 +84,7 @@ const JobAlertSetting = ({ }: any) => {
       //   });
       // }
       // setIndustryList(real)
+
     }
     fecthData()
   }, [])
@@ -178,7 +179,7 @@ const JobAlertSetting = ({ }: any) => {
             setJobType={(type: any) => setJobType(type)}
           />
           <AddJobLocation
-            jobType={jobType}
+            jobLocation={jobLocation}
             setJobLocation={(location: any) => setJobLocation(location)}
           />
         </div>
