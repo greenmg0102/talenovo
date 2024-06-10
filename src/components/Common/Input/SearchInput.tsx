@@ -89,7 +89,7 @@ const SearchInput = ({ value, title, warningText, warn, type, onchange, list, fo
             list.map((item: any, index: any) =>
               <p
                 key={index}
-                className='pb-1 p-4 border border-dashed border-t-0 border-l-0 border-r-0 cursor-pointer rounded-[4px] hover:bg-gray-200 transition-all'
+                className='pb-1 p-1 text-[12px] border border-dashed border-t-0 border-l-0 border-r-0 cursor-pointer rounded-[4px] hover:bg-gray-200 transition-all'
                 onClick={() => selsctValue(item['value'])}
               >
                 {item[type]}

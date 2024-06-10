@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { GlobalOutlined } from '@ant-design/icons';
 import SearchInput from '@/components/Common/Input/SearchInput'
 import { Radio } from 'antd';
@@ -11,6 +11,19 @@ const AddJobLocation = ({ setJobLocation, jobLocation }: any) => {
     location: "",
   })
   const [isEditable, setIsEditable] = useState(true)
+  const [jobLocationList, setJobLocationList] = useState([])
+
+  useEffect(() => {
+
+    async function locationFetchData(hint: any) {
+      const data = { locationHint: hint }
+      let reslutJobLocation = await jobLocationPut(data)
+      setJobLocationList(reslutJobLocation)
+    }
+
+    if (searchHint.location !== "") locationFetchData(searchHint.location)
+
+  }, [searchHint])
 
   const bufferupdateLocation = () => {
     setJobLocation()
@@ -26,7 +39,7 @@ const AddJobLocation = ({ setJobLocation, jobLocation }: any) => {
       <div className='flex justify-center items-center pb-4 px-4 sm:px-16'>
         <GlobalOutlined className='text-gray-500 font-semibold' />
         <p className='text-[16px] text-gray-600 pl-2 font-semibold'>
-          Job Location
+          Job Location  
         </p>
       </div>
       <div className="flex justify-center items-center flex-wrap px-4 sm:px-16">
@@ -49,8 +62,8 @@ const AddJobLocation = ({ setJobLocation, jobLocation }: any) => {
             warn={{ location: "" }}
             title={"Location *"}
             isTtitle={true}
-            list={jobLocation}
-            formatList={() => setJobLocation([])}
+            list={jobLocationList}
+            formatList={() => setJobLocationList([])}
             pushList={(type: any, eachvalue: any) => setJobLocation(eachvalue)}
             onchange={(type: any, eachvalue: any) => setSearchHint({ ...searchHint, [type]: eachvalue })}
           />

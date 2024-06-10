@@ -1,6 +1,6 @@
 
 export async function myJobPost() {
-    const res = await fetch('http://104.128.55.140:8443/api/user/user-profile/my-job-post', {
+    const res = await fetch('http://104.128.55.140:443/api/user/user-profile/my-job-post', {
         method: 'POST',
         body: JSON.stringify({
         })
@@ -10,7 +10,7 @@ export async function myJobPost() {
 
 
 export async function myJobApply() {
-    const res = await fetch('http://104.128.55.140:8443/api/user/user-profile/my-job-apply', {
+    const res = await fetch('http://104.128.55.140:443/api/user/user-profile/my-job-apply', {
         method: 'POST',
         body: JSON.stringify({
         })

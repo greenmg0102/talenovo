@@ -19,14 +19,14 @@ export async function getfacetedIndustry() {
 
 
 export async function myJobAlert() {
-    const res = await fetch('http://104.128.55.140:8443/api/user/user-profile/my-job-alert', {
+    const res = await fetch('http://104.128.55.140:443/api/user/user-profile/my-job-alert', {
         method: 'GET',
     });
     return await res.json();
 }
 
 export async function myBookMarkJob() {
-    const res = await fetch('http://104.128.55.140:8443/api/user/user-profile/my-bookmark-job', {
+    const res = await fetch('http://104.128.55.140:443/api/user/user-profile/my-bookmark-job', {
         method: 'GET',
     });
     return await res.json();

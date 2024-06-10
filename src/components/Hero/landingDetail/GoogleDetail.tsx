@@ -4,16 +4,26 @@ import { Divider } from 'antd'
 
 export default function GoogleDetail({ isDetail, setIsDetail }: any) {
 
-    console.log("isDetail", isDetail);
-
     const extraColor = [
-        { bg: 'bg-green-200', text: 'text-green-600' },
-        { bg: 'bg-red-200', text: 'text-red-600' },
-        { bg: 'bg-blue-200', text: 'text-blue-600' },
-        { bg: 'bg-green-200', text: 'text-green-600' },
-        { bg: 'bg-blue-200', text: 'text-blue-600' },
-        { bg: 'bg-red-200', text: 'text-red-600' },
-    ]
+        { bg: 'border border-green-200', text: 'text-green-600' },
+        { bg: 'border border-red-200', text: 'text-red-600' },
+        { bg: 'border border-blue-200', text: 'text-blue-600' },
+        { bg: 'border border-green-200', text: 'text-green-600' },
+        { bg: 'border border-blue-200', text: 'text-blue-600' },
+        { bg: 'border border-red-200', text: 'text-red-600' },
+        { bg: 'border border-green-200', text: 'text-green-600' },
+        { bg: 'border border-red-200', text: 'text-red-600' },
+        { bg: 'border border-blue-200', text: 'text-blue-600' },
+        { bg: 'border border-green-200', text: 'text-green-600' },
+        { bg: 'border border-blue-200', text: 'text-blue-600' },
+        { bg: 'border border-red-200', text: 'text-red-600' },
+        { bg: 'border border-green-200', text: 'text-green-600' },
+        { bg: 'border border-red-200', text: 'text-red-600' },
+        { bg: 'border border-blue-200', text: 'text-blue-600' },
+        { bg: 'border border-green-200', text: 'text-green-600' },
+        { bg: 'border border-blue-200', text: 'text-blue-600' },
+        { bg: 'border border-red-200', text: 'text-red-600' },
+      ]
 
     useEffect(() => {
         const script = document.createElement('script');

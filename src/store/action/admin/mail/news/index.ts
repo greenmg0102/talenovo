@@ -1,7 +1,7 @@
 
 export async function newsAutomation() {
 
-  const res = await fetch('http://104.128.55.140:8443/api/mail/news', {
+  const res = await fetch('http://104.128.55.140:443/api/mail/news', {
     method: 'GET'
   });
 

@@ -34,8 +34,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 },
             },
             customer_email: email,
-            success_url: redirectLink === undefined ? "http://104.128.55.140:8443/my-jobs" : redirectLink, // Redirect URL after successful payment
-            cancel_url: "http://104.128.55.140:8443/premium", // Redirect URL after cancelled payment
+            success_url: redirectLink === undefined ? "http://104.128.55.140:443/my-jobs" : redirectLink, // Redirect URL after successful payment
+            cancel_url: "http://104.128.55.140:443/premium", // Redirect URL after cancelled payment
         });
 
         console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');

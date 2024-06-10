@@ -1,7 +1,7 @@
 
 export async function jobAlertAutomation() {
 
-  const res = await fetch('http://104.128.55.140:8443/api/mail/jobAlert', {
+  const res = await fetch('http://104.128.55.140:443/api/mail/jobAlert', {
     method: 'GET'
   });
 

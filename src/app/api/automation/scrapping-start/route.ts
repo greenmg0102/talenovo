@@ -27,7 +27,7 @@ const indexName = 'title';
 export async function GET(req: any, res: any) {
 
   // await adminAPIMiddleware(req, res);
-  let { db } = await connectToDatabase();
+  // let { db } = await connectToDatabase();
 
   // schedule.scheduleJob('0 */12 * * *', async () => {
 

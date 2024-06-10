@@ -7,7 +7,7 @@ const OtherJobPostAdmin = () => {
   useEffect(() => {
 
     async function fetchData() {
-      const res = await fetch('http://104.128.55.140:8443/api/admin/job-post', {
+      const res = await fetch('http://104.128.55.140:443/api/admin/job-post', {
         method: 'POST',
         body: JSON.stringify({
           title: "title",

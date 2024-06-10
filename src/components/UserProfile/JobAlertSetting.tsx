@@ -173,7 +173,7 @@ const JobAlertSetting = ({ }: any) => {
           titleList={titleList}
           setTitleList={(list: any) => setTitleList(list)}
         />
-        <div className='flex justify-around items-center mt-2 flex-wrap'>
+        <div className='flex justify-around items-start mt-2 flex-wrap'>
           <AddJobType
             jobType={jobType}
             setJobType={(type: any) => setJobType(type)}
