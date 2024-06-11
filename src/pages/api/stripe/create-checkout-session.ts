@@ -34,8 +34,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 },
             },
             customer_email: email,
-            success_url: redirectLink === undefined ? "http://https://talenovo.com/my-jobs" : redirectLink, // Redirect URL after successful payment
-            cancel_url: "http://https://talenovo.com/premium", // Redirect URL after cancelled payment
+            success_url: redirectLink === undefined ? "https://talenovo.com/my-jobs" : redirectLink, // Redirect URL after successful payment
+            cancel_url: "https://talenovo.com/premium", // Redirect URL after cancelled payment
         });
 
         console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');

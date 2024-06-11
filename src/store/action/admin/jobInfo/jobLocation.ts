@@ -1,7 +1,7 @@
 
 export async function jobLocationPut(data: any) {
 
-  const res = await fetch('http://https://talenovo.com/api/admin/job-info/job-location', {
+  const res = await fetch('https://talenovo.com/api/admin/job-info/job-location', {
     method: 'PUT',
     body: JSON.stringify(data)
   });
@@ -11,7 +11,7 @@ export async function jobLocationPut(data: any) {
 
 export async function jobLocationGet() {
 
-  const res = await fetch('http://https://talenovo.com/api/admin/job-info/job-location', {
+  const res = await fetch('https://talenovo.com/api/admin/job-info/job-location', {
     method: 'GET',
   });
 
@@ -20,7 +20,7 @@ export async function jobLocationGet() {
 
 export async function jobLocationPost(jobLocation: any) {
 
-  const res = await fetch('http://https://talenovo.com/api/admin/job-info/job-location', {
+  const res = await fetch('https://talenovo.com/api/admin/job-info/job-location', {
     method: 'POST',
     body: JSON.stringify(jobLocation)
   });
@@ -31,7 +31,7 @@ export async function jobLocationPost(jobLocation: any) {
 
 export async function jobLocationDelete(data: any) {
 
-  const res = await fetch('http://https://talenovo.com/api/admin/job-info/job-location', {
+  const res = await fetch('https://talenovo.com/api/admin/job-info/job-location', {
     method: 'DELETE',
     body: JSON.stringify(data)
   });

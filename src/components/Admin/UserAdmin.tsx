@@ -12,7 +12,7 @@ const UserAdmin = () => {
 
     async function fetchData() {
       try {
-        const res:any = await fetch(`http://https://talenovo.com/api/admin/user-admin`);
+        const res:any = await fetch(`https://talenovo.com/api/admin/user-admin`);
         const data:any = await res.json();
 
         if (data.users && Array.isArray(data.users)) {

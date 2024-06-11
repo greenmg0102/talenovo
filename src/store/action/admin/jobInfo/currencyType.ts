@@ -1,7 +1,7 @@
 
 export async function currencyTypeGet() {
 
-  const res = await fetch('http://https://talenovo.com/api/admin/job-info/currency-type', {
+  const res = await fetch('https://talenovo.com/api/admin/job-info/currency-type', {
     method: 'GET',
   });
 
@@ -10,7 +10,7 @@ export async function currencyTypeGet() {
 
 export async function currencyTypePost(currencyType: any) {
 
-  const res = await fetch('http://https://talenovo.com/api/admin/job-info/currency-type', {
+  const res = await fetch('https://talenovo.com/api/admin/job-info/currency-type', {
     method: 'POST',
     body: JSON.stringify(currencyType)
   });
@@ -21,7 +21,7 @@ export async function currencyTypePost(currencyType: any) {
 
 export async function currencyTypeDelete(currencyType: any) {
 
-  const res = await fetch('http://https://talenovo.com/api/admin/job-info/currency-type', {
+  const res = await fetch('https://talenovo.com/api/admin/job-info/currency-type', {
     method: 'DELETE',
     body: JSON.stringify(currencyType)
   });
@@ -31,7 +31,7 @@ export async function currencyTypeDelete(currencyType: any) {
 
 export async function currencyTypePut(currencyType: any) {
 
-  const res = await fetch('http://https://talenovo.com/api/admin/job-info/currency-type', {
+  const res = await fetch('https://talenovo.com/api/admin/job-info/currency-type', {
     method: 'PUT',
     body: JSON.stringify(currencyType)
   });
