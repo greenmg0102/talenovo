@@ -1,7 +1,7 @@
 
 export async function jobTagPut(data: any) {
 
-  const res = await fetch('http://104.128.55.140:3000/api/user/job-info/job-tag', {
+  const res = await fetch('http://https://talenovo.com/api/user/job-info/job-tag', {
     method: 'PUT',
     body: JSON.stringify(data)
   });

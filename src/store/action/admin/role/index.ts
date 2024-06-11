@@ -1,7 +1,7 @@
 
 export async function adminSearch() {
 
-  const res = await fetch('http://104.128.55.140:3000/api/admin/role-admin', {
+  const res = await fetch('http://https://talenovo.com/api/admin/role-admin', {
     method: 'GET'
   });
 
@@ -10,7 +10,7 @@ export async function adminSearch() {
 
 export async function userSearch(body: any) {
 
-  const res = await fetch('http://104.128.55.140:3000/api/admin/role-admin', {
+  const res = await fetch('http://https://talenovo.com/api/admin/role-admin', {
     method: 'POST',
     body: JSON.stringify(body)
   });
@@ -20,7 +20,7 @@ export async function userSearch(body: any) {
 
 export async function addAdmin(body: any) {
 
-  const res = await fetch('http://104.128.55.140:3000/api/admin/role-admin', {
+  const res = await fetch('http://https://talenovo.com/api/admin/role-admin', {
     method: 'PUT',
     body: JSON.stringify(body)
   });
@@ -30,7 +30,7 @@ export async function addAdmin(body: any) {
 
 export async function deleteAdmin(body: any) {
 
-  const res = await fetch('http://104.128.55.140:3000/api/admin/role-admin', {
+  const res = await fetch('http://https://talenovo.com/api/admin/role-admin', {
     method: 'DELETE',
     body: JSON.stringify(body)
   });
