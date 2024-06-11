@@ -7,34 +7,11 @@ import { Spin } from 'antd';
 import { myJobAlert, myBookMarkJob } from '@/store/action/user/userProfile/myjobalert'
 import { myJobPost } from '@/store/action/user/userProfile/myjobpost'
 
-const UserInfoMain = () => {
-
-  const [userInfo, setUserInfo] = useState({
-    birthday: "",
-    experience: 0,
-    ctc: 0,
-
-    name: "",
-    jobTitle: "",
-    summary: "",
-    skill: [],
-    profile: "",
-
-    mail: [],
-    phone: [],
-    locatedin: "",
-    gender: "",
-    postedJob: 0,
-    appliedJob: 0,
-    bookmark: 0,
-    profileViews: 0,
-    mybookmarkjob: []
-  })
+const UserInfoMain = ({ userInfo, setUserInfo }: any) => {
 
   const [alertingJob, setAlertingJob] = useState([])
   const [bookJob, setBookJob] = useState([])
   const [postedJob, setPostedJob] = useState([])
-
 
   useEffect(() => {
 
@@ -54,56 +31,16 @@ const UserInfoMain = () => {
     fecthData()
   }, [])
 
-  useEffect(() => {
-    async function userInfoGet() {
-
-      const res: any = await fetch('https://us-central1-sodium-mountain-418120.cloudfunctions.net/geolocation', { method: 'GET' });
-      let geoLocation = await await res.json()
-      const data = {
-        geoLocation: geoLocation.city + ", " + geoLocation.country
-      }
-
-      let result = await userInitialInfo(data)
-
-      let mail = result.mail.map((item: any) => item.emailAddress)
-      let phone = result.phone.map((item: any) => item.phoneNumber)
-
-      setUserInfo({
-        ...userInfo,
-
-        birthday: result.birthday,
-        experience: result.experience,
-        ctc: result.ctc,
-        mybookmarkjob: result.mybookmarkjob,
-
-        name: result.name,
-        mail: mail,
-        phone: phone,
-        profile: result.profile,
-        jobTitle: result.jobTitle,
-        summary: result.summary,
-        locatedin: result.locatedin,
-        gender: result.gender,
-        postedJob: result.postedJob,
-        appliedJob: 0,
-        bookmark: result.bookmark,
-        profileViews: 0
-      })
-    }
-    userInfoGet()
-  }, [])
-
   const updateLocation = async () => {
     let result = await userlocationUpdate({
       ...userInfo,
     })
   }
 
-
   return (
     <div>
       {userInfo.name === "" ?
-        <div className="w-full h-[400px] flex justify-center items-center flex-col text-gray-300">
+        <div className="w-full h-[calc(400px+2em)] flex justify-center items-center flex-col text-gray-300 border border-gray-200 rounded-[16px] shadow-2xl">
           <Spin size="large" />
           <p className="mt-2 text-blue-500">Please wait ...</p>
         </div>

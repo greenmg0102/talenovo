@@ -9,7 +9,7 @@ import { userBannerRegist } from '@/store/action/user/userProfile/userInfo'
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 const { TextArea } = Input;
 
-function UserBannerModal({ tagList, isModalVisible, setIsModalVisible, userInfo, onchange }: any) {
+function UserBannerModal({ isModalVisible, setIsModalVisible, userInfo, onchange }: any) {
 
     const [loading, setLoading] = useState(false);
     const [imageUrl, setImageUrl] = useState<string>();
@@ -135,7 +135,7 @@ function UserBannerModal({ tagList, isModalVisible, setIsModalVisible, userInfo,
                         style={{ width: '100%' }}
                         placeholder="Add skill sets to get customized job suggestions"
                         onChange={handleSelectChange}
-                        options={tagList}
+                        options={[]}
                     />
 
                     <div className='flex justify-end items-center mt-4'>

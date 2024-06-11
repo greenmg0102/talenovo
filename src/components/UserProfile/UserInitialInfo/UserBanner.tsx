@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import EditButton from '@/components/Common/Button/EditButton'
 import UserBannerModal from '@/components/UserProfile/UserInitialInfo/UserBannerModal'
 
-const UserBanner = ({ userInfo, tagList, onchange }: any) => {
+const UserBanner = ({ userInfo, onchange }: any) => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -15,7 +15,6 @@ const UserBanner = ({ userInfo, tagList, onchange }: any) => {
   return (
     <div className="relative p-2">
       <UserBannerModal
-        tagList={tagList}
         userInfo={userInfo}
         isModalVisible={isModalVisible}
         setIsModalVisible={(bool: any) => setIsModalVisible(bool)}
