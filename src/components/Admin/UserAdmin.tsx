@@ -12,7 +12,7 @@ const UserAdmin = () => {
 
     async function fetchData() {
       try {
-        const res:any = await fetch(`http://localhost:3000/api/admin/user-admin`);
+        const res:any = await fetch(`http://104.128.55.140:3000/api/admin/user-admin`);
         const data:any = await res.json();
 
         if (data.users && Array.isArray(data.users)) {
