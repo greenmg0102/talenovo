@@ -1,18 +1,18 @@
 import axios from 'axios';
 
-const host = 'https://ms-f818396405c0-10172.nyc.meilisearch.io';
-const apiKey = '1116d49cd6e2aee89e3b54713b1bb9b1e4184651';
+const host = 'https://ms-ce7a48ac689b-10562.nyc.meilisearch.io';
+const apiKey = '9fbe0270ada537d37c34e0f768ceed9fe2ae3b6b';
 const indexName = 'title';
 
 export async function newletterSubscribePost(data: any) {
-    const res = await fetch('http://104.128.55.140:443/api/user/newsletter-confirm', {
+    const res = await fetch('http://104.128.55.140:3000/api/user/newsletter-confirm', {
         method: 'POST',
         body: JSON.stringify(data)
     });
     return await res.json();
 }
 export async function newletterSubscribeGet() {
-    const res = await fetch('http://104.128.55.140:443/api/user/newsletter-confirm', {
+    const res = await fetch('http://104.128.55.140:3000/api/user/newsletter-confirm', {
         method: 'GET',
     });
     return await res.json();

@@ -16,13 +16,13 @@ import JobAlertAutomation from '@/app/api/automation/scrapping-start/mailAutomat
 
 import { sendEmail } from '@/mailAction'
 
-const host = 'https://ms-f818396405c0-10172.nyc.meilisearch.io';
-const apiKey = '1116d49cd6e2aee89e3b54713b1bb9b1e4184651';
+const host = 'https://ms-ce7a48ac689b-10562.nyc.meilisearch.io';
+const apiKey = '9fbe0270ada537d37c34e0f768ceed9fe2ae3b6b';
 const indexName = 'title';
 
-// master key:  1116d49cd6e2aee89e3b54713b1bb9b1e4184651
-// search key:  51dc23779244ba4a456f9f866e2bcabb1f57ee2abfb9ba77a3ecb7f776886340
-// admin  key:  5c512be0df5e15e8d97251025ff578bbd1edc8e7429c4f7a3917361b13033fbd
+// master key:  9fbe0270ada537d37c34e0f768ceed9fe2ae3b6b
+// search key:  29701137a41cf5f0f7fe1b1755bcc0dae0961a1c15e7c52cffa72e474b16f920
+// admin  key:  aac5608cfb351aa04f9cc597f5f0c3c38c33fbd97ad73b1d97436e1edc783722
 
 export async function GET(req: any, res: any) {
 
@@ -54,9 +54,25 @@ export async function GET(req: any, res: any) {
   // console.log("real", real.length);
 
   console.log(1);
-  // await client.index(indexName).addDocuments(real, { primaryKey: 'jobId' });
-  console.log(2);
-  // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "companyName", "jobId", "postStatus", "recruiterId"]);
+
+  // const chunkSize = 100;
+  // const iterations = Math.ceil(real.length / chunkSize);
+
+  // for (let i = 116; i < iterations; i++) {
+  //   console.log('Index', i);
+  //   const start = i * chunkSize;
+  //   const end = Math.min(start + chunkSize, real.length);
+  //   const list = real.slice(start, end);
+
+  //   console.log('saving ...', list.length);
+  //   await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });;
+    
+  // }
+
+  // // await client.index(indexName).addDocuments(real, { primaryKey: 'jobId' });
+
+  // console.log(2);
+  // // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "companyName", "jobId", "postStatus", "recruiterId"]);
 
   // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId", "scrapedDate"]);
   // await client.index(indexName).updateSortableAttributes(["postStatus", "scrapedDate"]);

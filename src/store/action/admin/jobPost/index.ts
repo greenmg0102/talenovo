@@ -1,7 +1,7 @@
 
 export async function jobPostStatus() {
 
-  const res = await fetch('http://104.128.55.140:443/api/admin/job-post/job-post-status', {
+  const res = await fetch('http://104.128.55.140:3000/api/admin/job-post/job-post-status', {
     method: 'GET'
   });
 
@@ -10,7 +10,7 @@ export async function jobPostStatus() {
 
 export async function companyDatilPost(companyDetailInfo: any) {
 
-  const res = await fetch('http://104.128.55.140:443/api/admin/job-post/company-detail', {
+  const res = await fetch('http://104.128.55.140:3000/api/admin/job-post/company-detail', {
     method: 'POST',
     body: JSON.stringify(companyDetailInfo)
   });
@@ -20,7 +20,7 @@ export async function companyDatilPost(companyDetailInfo: any) {
 
 export async function jobDatilPost(jobDetailInfo: any) {
 
-  const res = await fetch('http://104.128.55.140:443/api/admin/job-post/job-detail', {
+  const res = await fetch('http://104.128.55.140:3000/api/admin/job-post/job-detail', {
     method: 'POST',
     body: JSON.stringify(jobDetailInfo)
   });

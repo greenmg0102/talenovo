@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import UserBanner from "@/components/UserProfile/UserInitialInfo/UserBanner";
 import { userInitialInfo } from '@/store/action/user/userProfile/userInfo'
-import { jobTagGet } from '@/store/action/admin/jobInfo/jobTag'
+// import { jobTagGet } from '@/store/action/admin/jobInfo/jobTag'
 import { useUser } from '@clerk/clerk-react';
 import { Spin } from 'antd';
 import type { SelectProps } from 'antd';
@@ -33,20 +33,20 @@ const UserBannerMain = () => {
 
   const [tagList, setTagList] = useState([])
 
-  useEffect(() => {
-    async function fetchData() {
-      let result = await jobTagGet()
-      let options: any = []
-      for (let i = 10; i < result.length; i++) {
-        options.push({
-          value: result[i].tag,
-          label: result[i].tag,
-        });
-      }
-      setTagList(options)
-    }
-    fetchData()
-  }, [])
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     let result = await jobTagGet()
+  //     let options: any = []
+  //     for (let i = 10; i < result.length; i++) {
+  //       options.push({
+  //         value: result[i].tag,
+  //         label: result[i].tag,
+  //       });
+  //     }
+  //     setTagList(options)
+  //   }
+  //   fetchData()
+  // }, [])
 
   useEffect(() => {
     async function userInfoGet() {

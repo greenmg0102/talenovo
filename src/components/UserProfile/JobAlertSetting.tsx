@@ -47,6 +47,8 @@ const JobAlertSetting = ({ }: any) => {
       setJobType(1)
       setJobLocation("")
 
+      save()
+
     } else {
       messageApi.error("Please insert at least one job title.");
     }
@@ -55,6 +57,7 @@ const JobAlertSetting = ({ }: any) => {
   const sliceJobAlert = (deletingIndex: any) => {
     let real: any = bufferList.filter((item: any, index: any) => index !== deletingIndex)
     setBufferList(real)
+    save()
   }
 
   useEffect(() => {
@@ -146,23 +149,30 @@ const JobAlertSetting = ({ }: any) => {
               <p key={order} className='mr-2 mb-1 px-2 border border-gray-300 rounded-[4px] text-gray-500 text-[13px]'>{each}</p>
             )}
           </div>
-          <div className='flex jsutify-between items-center flex-wrap'>
-            <div className='w-full sm:w-1/2 flex justify-start items-center pb-4 px-4 sm:px-16'>
-              <BarsOutlined className='text-gray-500 font-semibold' />
-              <p className='text-[16px] text-gray-600 pl-2 font-semibold'>
-                Job Type
-              </p>
-              <p className='ml-4'>{jobTypeObject[item.jobType]}</p>
+
+          <div className='flex justify-around items-center flex-wrap'>
+
+            <div className='w-full sm:w-1/2 pb-4 px-4 sm:px-16'>
+              <div className='flex justify-center items-center'>
+                <BarsOutlined className='text-gray-500 font-semibold' />
+                <p className='text-[16px] text-gray-600 pl-2 font-semibold'>
+                  Job Type
+                </p>
+              </div>
+              <p className='ml-4 text-center text-[14px] text-gray-500'>{jobTypeObject[item.jobType]}</p>
             </div>
-            <div className='w-full sm:w-1/2 flex justify-start items-center pb-4 px-4 sm:px-16'>
-              <GlobalOutlined className='text-gray-500 font-semibold' />
-              <p className='text-[16px] text-gray-600 pl-2 font-semibold'>
-                Job Location
-              </p>
+
+            <div className='w-full sm:w-1/2 pb-4 px-4 sm:px-16'>
+              <div className='flex justify-center items-center'>
+                <GlobalOutlined className='text-gray-500 font-semibold' />
+                <p className='text-[16px] text-gray-600 pl-2 font-semibold'>
+                  Job Location
+                </p>
+              </div>
               {item.jobLocation === "" ?
-                <p className='ml-4'>Not Set</p>
+                <p className='ml-4 text-center text-[14px] text-gray-500'>Not Set</p>
                 :
-                <p className='ml-4'>{item.jobLocation}</p>
+                <p className='ml-4 text-center text-[14px] text-gray-500'>{item.jobLocation}</p>
               }
             </div>
           </div>
@@ -212,13 +222,13 @@ const JobAlertSetting = ({ }: any) => {
       />
       <Divider />
 
-      <div className='flex justify-end'>
+      {/* <div className='flex justify-end'>
         <Button
           type="primary"
           onClick={save}
           block
         >Save</Button>
-      </div>
+      </div> */}
 
     </div>
   );
