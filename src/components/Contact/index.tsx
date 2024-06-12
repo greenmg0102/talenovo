@@ -6,7 +6,7 @@ const Contact = () => {
   useEffect(() => {
     const script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = 'https://s3.amazonaws.com/assets.freshdesk.com/widget/freshwidget.js';
+    script.src = "https://s3.amazonaws.com/assets.freshdesk.com/widget/freshwidget.js";
     document.body.appendChild(script);
 
     const style = document.createElement('style');
@@ -30,12 +30,11 @@ const Contact = () => {
               title="Feedback Form"
               className="freshwidget-embedded-form"
               id="freshwidget-embedded-form"
-              src="https://yourcompany.freshdesk.com/widgets/feedback_widget/new?&widgetType=embedded"
-              scrolling="no"
+              src="https://talenovo-help.freshdesk.com/widgets/feedback_widget/new?&widgetType=embedded&formTitle=Contact+Talenovo&submitTitle=Send&submitThanks=Thank+you+for+contacting+Talenovo.+We+appreciate+your+inquiry+and+will+get+back+to+you+as+soon+as+possible.+Due+to+a+high+volume+of+requests%2C+please+allow+up+to+24+hours+for+a+response.+We+will+do+our+best+to+assist+you+promptly.&searchArea=no"
               height="500px"
               width="100%"
-              frameBorder="0"
-            ></iframe>
+            >
+            </iframe>
           </div>
         </div>
       </div>

@@ -8,29 +8,29 @@ import Senja from '@/components/Senja'
 const testimonialData: Testimonial[] = [
   {
     id: 1,
-    name: "Musharof Chy",
-    designation: "Founder @TailGrids",
+    name: "Alex Brown",
+    designation: "Senior Financial Analysis @ JP Morgan",
     content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/auth-01.png",
+    "Talenovo's resume matching feature played a crucial role in helping me secure a senior financial analyst role at JP Morgan. It simplified the application process and matched my skills perfectly with the job requirements",
+    image: "/images/testimonials/auth-01.PNG",
     star: 5,
   },
   {
     id: 2,
-    name: "Devid Weilium",
-    designation: "Founder @UIdeck",
+    name: "Maria Rodriguez",
+    designation: "Product Manager - PepsiCo",
     content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/auth-02.png",
+    "I accepted a senior product manager role through Talenovo's tailored job alerts at PepsiCo. The platform's job listings made all the difference in my job search",
+    image: "/images/testimonials/auth-02.PNG",
     star: 5,
   },
   {
     id: 3,
-    name: "Lethium Frenci",
-    designation: "Founder @Lineicons",
+    name: "Emily Johnson",
+    designation: "Software Engineer @ KPMG",
     content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/auth-03.png",
+    "Talenovo not only connected me with senior software engineer roles at KMPG but also provided invaluable insights into the tech industry landscape. It's been a game-changer in my career journey",
+    image: "/images/testimonials/auth-03.PNG",
     star: 5,
   },
 ];

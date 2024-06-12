@@ -27,7 +27,7 @@ const indexName = 'title';
 export async function GET(req: any, res: any) {
 
   // await adminAPIMiddleware(req, res);
-  // let { db } = await connectToDatabase();
+  let { db } = await connectToDatabase();
 
   // schedule.scheduleJob('0 */12 * * *', async () => {
 
@@ -66,7 +66,7 @@ export async function GET(req: any, res: any) {
 
   //   console.log('saving ...', list.length);
   //   await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });;
-    
+
   // }
 
   // // await client.index(indexName).addDocuments(real, { primaryKey: 'jobId' });
@@ -98,7 +98,7 @@ export async function GET(req: any, res: any) {
 
   // const citiesJSON = await fetch('https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/cities.json').then(response => response.json());
 
-  // var processedResult = citiesJSON.slice(100000, 150634).map((item: any) => {
+  // var processedResult = citiesJSON.filter((item: any) => item.country_id === 233).map((item: any) => {
   //   return {
   //     location: item.name + ", " + item.state_name + ` (${item.state_code})` + ", " + item.country_name + ` (${item.country_code})`,
   //     value: item.name + ", " + item.state_name + ` (${item.state_code})` + ", " + item.country_name + ` (${item.country_code})`

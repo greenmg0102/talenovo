@@ -111,6 +111,14 @@ html {
     display: none;
 }
 
+.ais-RefinementList-count::before {
+    content: "(";
+}
+
+.ais-RefinementList-count::after {
+    content: ")";
+}
+
 ::-webkit-scrollbar {
     width: 5px;
 }

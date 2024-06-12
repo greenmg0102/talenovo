@@ -78,7 +78,6 @@ const Pricing = ({ isSectionTitle }: any) => {
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Immediate access to <span className="text-red-500 font-bold">50,000+</span>  job</p>} status="active" />
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Real-time job postings</p>} status="active" />
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Personalized alerts</p>} status="active" />
-            <OfferList text={<p className="m-0 text-base font-medium text-body-color">Lifetime Access</p>} status="active" />
             <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span>  AI-Powered Resume Feedback  job</p>} status="active" />
           </PricingBox>
 
@@ -90,7 +89,7 @@ const Pricing = ({ isSectionTitle }: any) => {
             isSectionTitle={isSectionTitle}
             handleSubscription={(total: any) => handleSubscription(total)}
           >
-            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> 25% discount</span> $30 billed at once</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> 25% discount</span> <span className="italic">$30 billed at once</span></p>} status="active" />
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Immediate <span className="text-red-500 font-bold"> 50,000+ </span> job updates</p>} status="active" />
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Real-time job postings</p>} status="active" />
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Personalized alerts</p>} status="active" />
@@ -105,7 +104,7 @@ const Pricing = ({ isSectionTitle }: any) => {
             isSectionTitle={isSectionTitle}
             handleSubscription={(total: any) => handleSubscription(total)}
           >
-            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold">30% discount</span> $48 billed at once</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold">30% discount</span> <span className="italic">$48 billed at once</span></p>} status="active" />
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Immediate <span className="text-red-500 font-bold"> 50,000+ </span> job updates</p>} status="active" />
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Real-time job postings</p>} status="active" />
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Personalized alerts</p>} status="active" />

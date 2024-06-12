@@ -31,7 +31,7 @@ export async function suggestJobs(data: any) {
             `${host}/indexes/${indexName}/search`,
             {
                 q: `${originQuery.join(" ")}`,
-                limit: 20,
+                limit: 15,
                 sort: ['postStatus:asc']
             },
             { headers: { 'Authorization': `Bearer ${apiKey}` } }

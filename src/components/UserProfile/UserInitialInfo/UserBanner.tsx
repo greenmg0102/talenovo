@@ -73,7 +73,7 @@ const UserBanner = ({ userInfo, onchange }: any) => {
         :
         <div className='flex justify-start items-center flex-wrap'>
           {userInfo.skill.map((item: any, index: any) =>
-            <p key={index} className="shadow-md rounded-full text-center mb-1 mr-2 px-2 text-[12px] text-gray-500 border border-gray-300" >
+            <p key={index} className="shadow-md rounded-full text-center mb-1 mr-2 px-2 text-[12px] font-bold text-blue-500 border border-blue-300" >
               {item}
             </p>
           )}

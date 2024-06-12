@@ -80,15 +80,15 @@ export default function LinkedinDetail({ isDetail, setIsDetail }: any) {
                                         <a className="a2a_button_x" href='https://twitter.com/TalenovoSocial'></a>
                                         <a className="a2a_button_tiktok" href="https://www.tiktok.com/@talenovosocial"></a>
                                     </div> */}
-                                    <div className="a2a_kit a2a_kit_size_32 a2a_default_style mt-6">
-                                        <a className="a2a_dd mb-[4px]" href="https://www.addtoany.com/share"></a>
-                                        <a className="a2a_button_emaild mb-[4px]"></a>
-                                        <a className="a2a_button_facebookd mb-[4px]"></a>
-                                        <a className="a2a_button_whatsappd mb-[4px]"></a>
-                                        <a className="a2a_button_xd mb-[4px]"></a>
-                                        <a className="a2a_button_telegramd mb-[4px]"></a>
-                                        <a className="a2a_button_linkedind mb-[4px]"></a>
-                                        <a className="a2a_button_outlook_comd mb-[4px]"></a>
+                                      <div className="a2a_kit a2a_kit_size_32 a2a_default_style mt-6">
+                                        <a className="a2a_d mb-[4px]" href="https://www.addtoany.com/share"></a>
+                                        <a className="a2a_button_email mb-[4px]"></a>
+                                        <a className="a2a_button_facebook mb-[4px]"></a>
+                                        <a className="a2a_button_whatsapp mb-[4px]"></a>
+                                        <a className="a2a_button_x mb-[4px]"></a>
+                                        <a className="a2a_button_telegram mb-[4px]"></a>
+                                        <a className="a2a_button_linkedin mb-[4px]"></a>
+                                        <a className="a2a_button_outlook_com mb-[4px]"></a>
                                     </div>
                                 </div>
                             </div>

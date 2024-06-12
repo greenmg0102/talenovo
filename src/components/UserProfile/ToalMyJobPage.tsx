@@ -16,7 +16,6 @@ const ToalMyJobPage = () => {
     experience: 0,
     ctc: 0,
 
-
     avatar: "",
     name: "",
     jobTitle: "",

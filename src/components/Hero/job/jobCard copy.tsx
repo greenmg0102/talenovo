@@ -48,7 +48,7 @@ const JobCard = ({
       </td>
       <td className="hidden w-2/5 px-2 sm:table-cell">
         <div className="flex flex-wrap">
-          {skills.map((skill) => (
+          {skills.map((skill:any) => (
             <span
               key={skill}
               className="my-0.5 inline-flex border border-gray-100 bg-gray-100 px-2 py-0.5 text-sm font-medium text-gray-700"
