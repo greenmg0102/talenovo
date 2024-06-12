@@ -34,6 +34,7 @@ export async function suggestJobs(data: any) {
                 `${host}/indexes/${indexName}/search`,
                 {
                     q: `${[...data.currentLocatedin.split(", ")].join(" ")}`,
+                    // q: "toronto canada",
                     limit: 15,
                     sort: ['postStatus:asc']
                 },
@@ -48,7 +49,8 @@ export async function suggestJobs(data: any) {
             const response = await axios.post(
                 `${host}/indexes/${indexName}/search`,
                 {
-                    q: `${originQuery.join(" ")}`,
+                    // q: `${originQuery.join(" ")}`,
+                    q: `${[...data.currentLocatedin.split(", ")].join(" ")}`,
                     limit: 15,
                     sort: ['postStatus:asc']
                 },
@@ -72,7 +74,8 @@ export async function suggestJobs(data: any) {
         const response = await axios.post(
             `${host}/indexes/${indexName}/search`,
             {
-                q: queryList.join(" "),
+                // q: queryList.join(" "),
+                q: `${[...data.currentLocatedin.split(", ")].join(" ")}`,
                 // filter: [
                 //     [...skillSetFilter],
                 //     `city = "${cityInfo}"`,
