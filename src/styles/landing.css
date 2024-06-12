@@ -25,3 +25,7 @@
 .slick-arrow {
     display: none !important;
 }
+
+.ant-spin-dot-item{
+    background-color: white !important;
+}

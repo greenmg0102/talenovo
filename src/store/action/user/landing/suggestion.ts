@@ -27,17 +27,36 @@ export async function suggestJobs(data: any) {
 
     if (data.jobalertsetting === undefined) {
 
-        const response = await axios.post(
-            `${host}/indexes/${indexName}/search`,
-            {
-                q: `${originQuery.join(" ")}`,
-                limit: 15,
-                sort: ['postStatus:asc']
-            },
-            { headers: { 'Authorization': `Bearer ${apiKey}` } }
-        );
+        if (!data.userId) {
+            console.log("userId", [...data.currentLocatedin.split(", ")]);
 
-        return response.data.hits
+            const response = await axios.post(
+                `${host}/indexes/${indexName}/search`,
+                {
+                    q: `${[...data.currentLocatedin.split(", ")].join(" ")}`,
+                    limit: 15,
+                    sort: ['postStatus:asc']
+                },
+                { headers: { 'Authorization': `Bearer ${apiKey}` } }
+            );
+
+            return response.data.hits
+
+        } else {
+            console.log("originQuery", originQuery);
+
+            const response = await axios.post(
+                `${host}/indexes/${indexName}/search`,
+                {
+                    q: `${originQuery.join(" ")}`,
+                    limit: 15,
+                    sort: ['postStatus:asc']
+                },
+                { headers: { 'Authorization': `Bearer ${apiKey}` } }
+            );
+
+            return response.data.hits
+        }
     } else {
 
         // let skillSetFilter = data.skillSet.map((itme: any) => { return `skills = "${itme}"`; })

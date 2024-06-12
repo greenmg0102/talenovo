@@ -2,16 +2,31 @@
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
 import { currentUser } from '@clerk/nextjs';
+import { userInfoValidation } from '@/util/backend/user-info-validation'
 
 export async function POST(req: any, res: any) {
 
   let { db } = await connectToDatabase();
   const user: any = await currentUser();
-  let reqData:any = await req.json()
+  let reqData: any = await req.json()
 
   let isMe: any = await db.collection("userinfos").findOne({ userId: user.id });
 
+  console.log("reqData", reqData);
+  
+
+  let { error, errorMessage }: any = userInfoValidation(reqData)
+
+  if (error) {
+    return NextResponse.json({
+      isOkay: !error,
+      errorMessage: errorMessage
+    });
+  }
+
   if (isMe === null) {
+
+
     const data = {
       avatar: reqData.avatar,
       userId: user.id,
