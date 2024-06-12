@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <html suppressHydrationWarning lang="en">
         <Head>
           {/* Google Analytics */}
-          <script async src="https://www.googletagmanager.com/gtag/js?id=G-RB86FVG2KZ"></script>
+          {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-RB86FVG2KZ"></script>
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 gtag('config', 'G-RB86FVG2KZ');
               `,
             }}
-          />
+          /> */}
         </Head>
         <body className={`bg-[#FFFFFF] dark:bg-black ${inter.className}`}>
           <Providers>
