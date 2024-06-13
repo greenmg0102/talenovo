@@ -154,48 +154,43 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                         }
                                     </div>
                                     :
-                                    <div className="text-gray-500 pt-2 text-[12px]">
+                                    <div className="">
                                         {isDetail.description.split(".").filter((item: any) => item !== "").map((item: any, index: any) =>
                                             <div key={index}>
                                                 {item.includes(":") ?
                                                     <div>
                                                         {item.split(":").map((each: any, order: any) =>
-                                                            <div key={order}>
-                                                                {order === 0 ?
-                                                                    <p
-                                                                        key={order}
-                                                                        className={clsx('text-gray-500 pt-2 text-[13px] font-semibold')}
-                                                                    >
-                                                                        {each}
-                                                                    </p>
-                                                                    :
-                                                                    <div>
-                                                                        {each.includes("•") ?
-                                                                            each.split("•").filter((c: any) => c.trim() !== "").map((a: any, b: any) =>
-                                                                                <p
-                                                                                    key={b}
-                                                                                    className={clsx('text-gray-500 pt-2 text-[12px]')}
-                                                                                >
-                                                                                    • {a}
-                                                                                </p>
-                                                                            )
-                                                                            :
+                                                            order === 0 ?
+                                                                <p
+                                                                    key={order}
+                                                                    className={clsx('font-bold text-[14px] mt-4')}
+                                                                >
+                                                                    {each}
+                                                                </p>
+                                                                :
+                                                                <div>
+                                                                    {each.includes("•") ?
+                                                                        each.split("•").filter((c: any) => c.trim() !== "").map((a: any, b: any) =>
                                                                             <p
-                                                                                key={order}
-                                                                                className={clsx('text-gray-500 pt-2', order === 0 ? "text-[13px] font-semibold" : "text-[12px]")}
+                                                                                key={b}
+                                                                                className={clsx('pt-2 text-[14px]')}
                                                                             >
-                                                                                {each}{order === 0 ? "" : "."}
+                                                                                <span className='text-blue-500'>• </span>{a}
                                                                             </p>
-                                                                        }
-                                                                    </div>
-                                                                }
-
-                                                            </div>
+                                                                        )
+                                                                        :
+                                                                        <p
+                                                                            key={order}
+                                                                            className={clsx("pt-2 text-[14px]")}
+                                                                        >
+                                                                            <span className='text-blue-500'>• </span> {each}{order === 0 ? "" : "."}
+                                                                        </p>
+                                                                    }
+                                                                </div>
                                                         )}
                                                     </div>
                                                     :
                                                     <div>
-
                                                     </div>
                                                 }
 
