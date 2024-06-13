@@ -36,9 +36,13 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
         };
     }, []);
 
-    const uniqueJobHighlights = isDetail.jobHighlights.reduce((acc, item) => {
+    const uniqueJobHighlights = isDetail.jobHighlights.reduce((acc: any, item: any) => {
         const existingItem = acc.find((highlight: any) => highlight.title === item.title);
-        if (!existingItem) {
+        if (!existingItem || item.items.length > existingItem.items.length) {
+            // Remove the existing item if it exists
+            if (existingItem) {
+                acc = acc.filter((highlight: any) => highlight.title !== item.title);
+            }
             acc.push(item);
         }
         return acc;
@@ -150,7 +154,55 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                         }
                                     </div>
                                     :
-                                    <p className="text-gray-500 pt-2 text-[12px]">{isDetail.description}</p>
+                                    <div className="text-gray-500 pt-2 text-[12px]">
+                                        {isDetail.description.split(".").filter((item: any) => item !== "").map((item: any, index: any) =>
+                                            <div key={index}>
+                                                {item.includes(":") ?
+                                                    <div>
+                                                        {item.split(":").map((each: any, order: any) =>
+                                                            <div key={order}>
+                                                                {order === 0 ?
+                                                                    <p
+                                                                        key={order}
+                                                                        className={clsx('text-gray-500 pt-2 text-[13px] font-semibold')}
+                                                                    >
+                                                                        {each}
+                                                                    </p>
+                                                                    :
+                                                                    <div>
+                                                                        {each.includes("•") ?
+                                                                            each.split("•").filter((c: any) => c.trim() !== "").map((a: any, b: any) =>
+                                                                                <p
+                                                                                    key={b}
+                                                                                    className={clsx('text-gray-500 pt-2 text-[12px]')}
+                                                                                >
+                                                                                    • {a}
+                                                                                </p>
+                                                                            )
+                                                                            :
+                                                                            <p
+                                                                                key={order}
+                                                                                className={clsx('text-gray-500 pt-2', order === 0 ? "text-[13px] font-semibold" : "text-[12px]")}
+                                                                            >
+                                                                                {each}{order === 0 ? "" : "."}
+                                                                            </p>
+                                                                        }
+                                                                    </div>
+                                                                }
+
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                    :
+                                                    <div>
+
+                                                    </div>
+                                                }
+
+                                            </div>
+
+                                        )}
+                                    </div>
                                 }
                             </div>
                         </div>

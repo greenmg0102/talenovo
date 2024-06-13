@@ -38,10 +38,13 @@ const SuggestedJobCard = ({ item, setIsDetail }: any) => {
       className="p-4 border border-gray-300 hover:border-blue-500 cursor-pointer rounded-md mb-4 shadow-lg bg-white"
     >
       <div className="flex justify-between items-center">
-        <div className="flex justify-start items-center">
-          <a href={item && item.applyLink[0] && item.applyLink[0].link} target="_blank">
-            <img src={item.companyLogo ? item.companyLogo : "/images/hero/default.jpeg"} alt="avatar" className="rounded-full border border-blue-300 border-dashed" width={40} height={40} />
-          </a>
+        <div
+          className="flex justify-start items-center"
+          onClick={() => setIsDetail(item)}
+        >
+          {/* <a href={item && item.applyLink[0] && item.applyLink[0].link} target="_blank"> */}
+          <img src={item.companyLogo ? item.companyLogo : "/images/hero/default.jpeg"} alt="avatar" className="rounded-full border border-blue-300 border-dashed" width={40} height={40} />
+          {/* </a> */}
           <p className="text-[14px] font-semibold text-gray-500 ml-2">{item.companyName}</p>
         </div>
         {/* <Link href={`/job-detail/${item.jobId}`}> */}

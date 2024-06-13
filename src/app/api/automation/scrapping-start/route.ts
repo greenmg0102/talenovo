@@ -27,7 +27,7 @@ const indexName = 'title';
 export async function GET(req: any, res: any) {
 
   // await adminAPIMiddleware(req, res);
-  let { db } = await connectToDatabase();
+  // let { db } = await connectToDatabase();
 
   // schedule.scheduleJob('0 */12 * * *', async () => {
 
@@ -53,19 +53,19 @@ export async function GET(req: any, res: any) {
 
   // console.log("real", real.length);
 
-  console.log(1);
+  // console.log(1);
 
   // const chunkSize = 100;
   // const iterations = Math.ceil(real.length / chunkSize);
 
-  // for (let i = 116; i < iterations; i++) {
+  // for (let i = 0; i < iterations; i++) {
   //   console.log('Index', i);
   //   const start = i * chunkSize;
   //   const end = Math.min(start + chunkSize, real.length);
   //   const list = real.slice(start, end);
 
   //   console.log('saving ...', list.length);
-  //   await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });;
+  // //  await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });;
 
   // }
 
@@ -77,7 +77,7 @@ export async function GET(req: any, res: any) {
   // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId", "scrapedDate"]);
   // await client.index(indexName).updateSortableAttributes(["postStatus", "scrapedDate"]);
   // await client.index(indexName).updateDistinctAttribute("companyName");
-  console.log(3);
+  // console.log(3);
 
   // const response = await axios.post(
   //   `${host}/indexes/${indexName}/search`,

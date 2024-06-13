@@ -238,7 +238,12 @@ const Hero = ({ setIsDetail }: any) => {
                 >
                   <div className='flex justify-center items-center sticky top-[1px] z-[11]'>
                     <div className="mx-auto w-full sm:max-w-[760px] xl:max-w-[998px] bg-white">
-                      <SearchBox translations={{ placeholder: `Search by Job Title, Keywords, Company in ${geoPosition}` }} />
+                      <SearchBox
+                        // defaultRefinement={geoPosition.split(',')[1]} 
+                        translations={{ placeholder: `Search by Job Title, Keywords, Company in ${geoPosition}` }}
+                        autoFocus 
+                      />
+                      {/* <p className='text-[16px] text-gray-300 text-center mt-4'>Search by Job Title, Keywords, Company, location</p> */}
                     </div>
                   </div>
 
