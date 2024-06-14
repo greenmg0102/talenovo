@@ -88,22 +88,22 @@ export async function googleScrapping(): Promise<any> {
     //     method: 'GET'
     // });
     // console.log("response20");
-    const response21: any = await fetch("https://api.apify.com/v2/datasets/oraGOIf0MxU5NdBRu/items?clean=true&format=json", {
-        method: 'GET'
-    });
-    console.log("response21");
-    const response22: any = await fetch("https://api.apify.com/v2/datasets/1sfofBi22s1pJ6fWj/items?clean=true&format=json", {
-        method: 'GET'
-    });
-    console.log("response22");
-    const response23: any = await fetch("https://api.apify.com/v2/datasets/50HZerTF7q53tMArR/items?clean=true&format=json", {
-        method: 'GET'
-    });
-    console.log("response23");
-    const response24: any = await fetch("https://api.apify.com/v2/datasets/9V1uPs3jepbapw5Uh/items?clean=true&format=json", {
-        method: 'GET'
-    });
-    console.log("response24");
+    // const response21: any = await fetch("https://api.apify.com/v2/datasets/oraGOIf0MxU5NdBRu/items?clean=true&format=json", {
+    //     method: 'GET'
+    // });
+    // console.log("response21");
+    // const response22: any = await fetch("https://api.apify.com/v2/datasets/1sfofBi22s1pJ6fWj/items?clean=true&format=json", {
+    //     method: 'GET'
+    // });
+    // console.log("response22");
+    // const response23: any = await fetch("https://api.apify.com/v2/datasets/50HZerTF7q53tMArR/items?clean=true&format=json", {
+    //     method: 'GET'
+    // });
+    // console.log("response23");
+    // const response24: any = await fetch("https://api.apify.com/v2/datasets/9V1uPs3jepbapw5Uh/items?clean=true&format=json", {
+    //     method: 'GET'
+    // });
+    // console.log("response24");
 
     // const data1: any = await response1.json();
     // const data2: any = await response2.json();
@@ -129,13 +129,15 @@ export async function googleScrapping(): Promise<any> {
     // const data18: any = await response18.json();
     // const data19: any = await response19.json();
     // const data20: any = await response20.json();
-    const data21: any = await response21.json();
-    const data22: any = await response22.json();
-    const data23: any = await response23.json();
-    const data24: any = await response24.json();
+    // const data21: any = await response21.json();
+    // const data22: any = await response22.json();
+    // const data23: any = await response23.json();
+    // const data24: any = await response24.json();
 
     // let bufferReal = [...data1, ...data2, ...data3, ...data4, ...data5, ...data6, ...data7, ...data8, ...data9, ...data10, ...data11, ...data12, ...data13, ...data14, ...data15, ...data16, ...data17, ...data18, ...data19, ...data20]
-    let bufferReal = [...data21, ...data22, ...data23, ...data24]
+    let bufferReal = [
+        // ...data21, ...data22, ...data23, ...data24
+    ]
 
     // // let data = await db.collection("otherjobs").find().toArray();
     console.log("bufferReal done!");

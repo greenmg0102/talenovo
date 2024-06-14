@@ -8,7 +8,7 @@ export async function adminAPIMiddleware(req: NextRequest, res: NextResponse) {
   const allUsers:any = await clerkClient.users.getUserList();
 
   // Filter the user list based on the first name
-  const usersWithMatchingFirstName = allUsers.filter((u) => u.firstName === user.firstName);
+  const usersWithMatchingFirstName = allUsers.filter((u:any) => u.firstName === user.firstName);
 
   const isAdminRequestAllowed = usersWithMatchingFirstName.length > 0 ? true : false;
 
