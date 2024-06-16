@@ -104,6 +104,16 @@ export async function googleScrapping(): Promise<any> {
     //     method: 'GET'
     // });
     // console.log("response24");
+    const response25: any = await fetch("https://api.apify.com/v2/datasets/Xo17O1iT64LrPIv1Z/items?clean=true&format=json", {
+        method: 'GET'
+    });
+    console.log("response25");
+    const response26: any = await fetch("https://api.apify.com/v2/datasets/8i5qjFRUIiRTagSDz/items?clean=true&format=json", {
+        method: 'GET'
+    });
+    console.log("response26");
+
+    
 
     // const data1: any = await response1.json();
     // const data2: any = await response2.json();
@@ -133,10 +143,13 @@ export async function googleScrapping(): Promise<any> {
     // const data22: any = await response22.json();
     // const data23: any = await response23.json();
     // const data24: any = await response24.json();
+    const data25: any = await response25.json();
+    const data26: any = await response26.json();
 
     // let bufferReal = [...data1, ...data2, ...data3, ...data4, ...data5, ...data6, ...data7, ...data8, ...data9, ...data10, ...data11, ...data12, ...data13, ...data14, ...data15, ...data16, ...data17, ...data18, ...data19, ...data20]
     let bufferReal = [
-        // ...data21, ...data22, ...data23, ...data24
+        // ...data21, ...data22, ...data23, ...data24, 
+        ...data25, ...data26
     ]
 
     // // let data = await db.collection("otherjobs").find().toArray();
