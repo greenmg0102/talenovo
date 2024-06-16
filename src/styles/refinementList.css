@@ -84,6 +84,9 @@ html {
 
 .ais-Pagination-list {
     display: flex;
+    flex-wrap: wrap;           
+    justify-content: center;  
+    align-items: center;  
 }
 
 .ais-Pagination-item {
@@ -106,6 +109,19 @@ html {
     color: #788293;
     font-size: 14px;
 }
+
+/* @media (max-width: 300px) {
+    .ais-Pagination-item {
+        padding: 4px 8px;
+        border-radius: 8px;
+        background-color: #e9eaed;
+        margin-right: 2px;
+        margin-bottom: 0px;
+        color: #788293;
+        font-size: 12px;
+        transition: all;
+    }
+} */
 
 .ais-SortBy {
     display: none;

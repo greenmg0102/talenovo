@@ -220,7 +220,7 @@ const Hero = ({ setIsDetail }: any) => {
       >
         {contextHolder}
         <div className="mx-auto">
-          <div className="-mx-4 flex flex-wrap">
+          <div className="flex flex-wrap">
             <div className="w-full">
 
               <div className="mx-auto max-w-[1200px] text-center mb-[60px]">
@@ -246,8 +246,8 @@ const Hero = ({ setIsDetail }: any) => {
                         autoFocus
                       />
 
-                      <div className='flex justify-between items-center flex-wrap mt-3'>
-                        <p className='flex justify-center items-center text-[16px] text-gray-400 text-center'>
+                      <div className='flex flex-col sm:flex-row justify-center sm:justify-between items-center flex-wrap mt-2 px-2 border border-gray-300 border-t-[0px] rounded-bl-[8px] rounded-br-[8px]'>
+                        <p className='flex justify-center items-center text-[16px] text-gray-400'>
                           <svg viewBox="64 64 896 896" focusable="false" data-icon="info-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"></path></svg>
                           <span className='ml-2'>
                             Search by Job Title, Keywords, Company, location

@@ -39,36 +39,28 @@ const SuggestedJobCard = ({ item, setIsDetail }: any) => {
     >
       <div className="flex justify-between items-center">
         <div
-          className="flex justify-start items-center"
+          className="w-[calc(100%-1em)] flex justify-start items-center"
           onClick={() => setIsDetail(item)}
         >
-          {/* <a href={item && item.applyLink[0] && item.applyLink[0].link} target="_blank"> */}
           <img src={item.companyLogo ? item.companyLogo : "/images/hero/default.jpeg"} alt="avatar" className="rounded-full border border-blue-300 border-dashed" width={40} height={40} />
-          {/* </a> */}
           <p className="text-[14px] font-semibold text-gray-500 ml-2">{item.companyName}</p>
         </div>
-        {/* <Link href={`/job-detail/${item.jobId}`}> */}
         <svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"
           onClick={() => setIsDetail(item)}
         >
           <path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 10112 0 56 56 0 10-112 0zm0 284a56 56 0 10112 0 56 56 0 10-112 0zm0 284a56 56 0 10112 0 56 56 0 10-112 0z"></path>
         </svg>
-        {/* </Link> */}
       </div>
-      {/* <Link href={`/job-detail/${item.jobId}`}> */}
       <p
         className="text-[14px] font-bold text-gray-500 mt-2"
-      // onClick={() => setIsDetail(item)}
       >
         {item.title}
       </p>
-      {/* </Link> */}
 
       <p className="text-[10px] text-gray-400 mb-2 xl:hidden">{item.description.length > 300 ? item.description.slice(0, 300) + " ..." : item.description}</p>
 
       <div className="flex justify-start items-center flex-wrap mt-2">
         <p className="text-[10px] text-gray-500 mr-2">{item.location}</p>
-        {/* <p className="text-[12px] text-gray-500 mr-2 border">{item.employmentType}</p> */}
         {item && item.extras && item.extras.length > 0 && item.extras.filter((item: any) => !item.includes("ago")).map((item: any, index: any) =>
           <p
             key={index}
