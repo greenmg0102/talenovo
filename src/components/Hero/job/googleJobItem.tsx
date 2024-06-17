@@ -54,7 +54,7 @@ const GoogleJobItem = ({ item, clerkId, hiddenBookMark, setIsDetail }: any) => {
       {contextHolder}
 
       <div className="relative flex justify-start items-center mb-2">
-        <div className="p-2">
+        <div className="w-[50px]">
           {/* <a href={item && item.applyLink[0] && item.applyLink[0].link} target="_blank"> */}
           <img
             src={item.companyLogo ? item.companyLogo : "/images/hero/default.jpeg"}
@@ -65,7 +65,7 @@ const GoogleJobItem = ({ item, clerkId, hiddenBookMark, setIsDetail }: any) => {
           />
           {/* </a> */}
         </div>
-        <div className="pl-4 pr-4 w-[calc(100%-15px)]">
+        <div className="pl-4 pr-4 w-[calc(100%-65px)]">
           {/* <Link href={`/job-detail/${item.jobId}`}> */}
           <p
             className="text-[16x] font-bold text-gray-500 hover:underline"

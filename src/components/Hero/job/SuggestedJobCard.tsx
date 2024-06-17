@@ -43,7 +43,7 @@ const SuggestedJobCard = ({ item, setIsDetail }: any) => {
           onClick={() => setIsDetail(item)}
         >
           <img src={item.companyLogo ? item.companyLogo : "/images/hero/default.jpeg"} alt="avatar" className="rounded-full border border-blue-300 border-dashed" width={40} height={40} />
-          <p className="text-[14px] font-semibold text-gray-500 ml-2">{item.companyName}</p>
+          <p className="w-[calc(100%-40px)] text-[14px] font-semibold text-gray-500 ml-2">{item.companyName}</p>
         </div>
         <svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"
           onClick={() => setIsDetail(item)}
