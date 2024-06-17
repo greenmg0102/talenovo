@@ -64,7 +64,7 @@ const Hero = ({ setIsDetail }: any) => {
 
   const [companyCount, setCompanyCount] = useState(0);
   const [industry, setIndustry] = useState(0);
-  const [locatedin, setLocatedin] = useState(null);
+  const [locatedin, setLocatedin] = useState<any>(null);
   const [geoPosition, setGeoPosition] = useState("Globally");
   const [skil, setSkil] = useState(null);
   const [messageApi, contextHolder] = message.useMessage();
@@ -159,7 +159,6 @@ const Hero = ({ setIsDetail }: any) => {
 
         localStorage.setItem('talenovo-company-industry', landingInfoResult.industryCount)
         setIndustry(landingInfoResult.industryCount)
-
       }
     }
 
@@ -170,7 +169,8 @@ const Hero = ({ setIsDetail }: any) => {
 
       setTotal(result.total)
       setToday(result.todayJob)
-      setLocatedin(result.currentLocatedin)
+      // setLocatedin(result.currentLocatedin)
+      setLocatedin(result.locatedin)
       setSkil(result.skill)
       setUserData(result.jobalertsetting === null ? {} : result)
     }
@@ -241,7 +241,7 @@ const Hero = ({ setIsDetail }: any) => {
                     <div className="mx-auto w-full sm:max-w-[760px] xl:max-w-[998px] bg-white">
                       <SearchBox
                         // defaultRefinement={geoPosition.split(',')[1]}
-                        defaultRefinement={geoPosition}
+                        defaultRefinement={locatedin !== (null || undefined) ? locatedin : geoPosition}
                         // translations={{ placeholder: `Search by Job Title, Keywords, Company in ${geoPosition}` }}
                         autoFocus
                       />

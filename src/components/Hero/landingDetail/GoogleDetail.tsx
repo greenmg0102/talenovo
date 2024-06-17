@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { Divider } from 'antd'
 
@@ -25,6 +25,8 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
         { bg: 'border border-red-200', text: 'text-red-600' },
     ]
 
+    const [activeLine, setActiveLine] = useState(false)
+
     useEffect(() => {
         const script = document.createElement('script');
         script.async = true;
@@ -47,6 +49,9 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
         }
         return acc;
     }, []);
+
+    const totalLine = isDetail.description.replace(/\.{2,}/g, '.').split('.').filter((item: string) => item.trim() !== '')
+    const line = totalLine.slice(0, activeLine ? totalLine.length : 10)
 
     const postedDate = (givenDateString: string): any => {
         const givenDate = new Date(givenDateString);
@@ -98,8 +103,8 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                     )}
                                 </div> */}
                                 <Divider />
-                                <div className="flex justify-between items-center pb-4">
-                                    <p className="font-semibold text-[16px]">Job Description</p>
+                                <div className="flex justify-between items-center flex-wrap pb-4">
+                                    <p className="font-bold text-[20px]">Job Description</p>
                                     <p className="font-semibold text-[14px] flex items-center">
                                         Posted on: <span className="font-normal ml-2">
                                             {/* {isDetail && isDetail.extras && isDetail.extras.length > 0 && isDetail.extras.filter((item: any) => item.includes("ago")).map((item: any, index: any) => <p key={index} className="text-blue-500 ml-1">{item}</p>)} */}
@@ -119,7 +124,6 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                             }
                                         </span>
                                     </p>
-
                                 </div>
                                 {/* {isDetail.jobHighlights.length > 0 ?
                                     <div>
@@ -138,8 +142,70 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                     <p className="text-gray-500 pt-2 text-[12px]">{isDetail.description}</p>
                                     // <div className="text-gray-500 pt-2 text-[12px]" dangerouslySetInnerHTML={{ __html: isDetail.description }} />
                                 } */}
+
+                                {line.map((item: string, index: number) => (
+                                    <p key={index} className='text-[12px]'>
+                                        {item.trim()}.
+                                    </p>
+                                ))}
+
+                                {
+                                    <p
+                                        className='text-blue-500 text-right cursor-pointer hover:text-red-500 text-[13px]'
+                                        onClick={() => setActiveLine(!activeLine)}
+                                    >
+                                        {activeLine ? "Less" : "More"}
+                                    </p>
+                                }
+
+                                {/* <div className="">
+                                    {isDetail.description.split(".").filter((item: any) => item !== "").map((item: any, index: any) =>
+                                        <div key={index}>
+                                            {item.includes(":") ?
+                                                <div>
+                                                    {index} : {item.split(":").map((each: any, order: any) =>
+                                                        order === 0 ?
+                                                            <p
+                                                                key={order}
+                                                                className={clsx('font-semibold text-[14px] mt-4')}
+                                                            >
+                                                                {each}
+                                                            </p>
+                                                            :
+                                                            <div>
+                                                                {each.includes("•") ?
+                                                                    each.split("•").filter((c: any) => c.trim() !== "").map((a: any, b: any) =>
+                                                                        <p
+                                                                            key={b}
+                                                                            className={clsx('pt-2 text-[12px]')}
+                                                                        >
+                                                                            {a}
+                                                                        </p>
+                                                                    )
+                                                                    :
+                                                                    <p
+                                                                        key={order}
+                                                                        className={clsx("pt-2 text-[12px]")}
+                                                                    >
+                                                                        {each}{order === 0 ? "" : "."}
+                                                                    </p>
+                                                                }
+                                                            </div>
+                                                    )}
+                                                </div>
+                                                :
+                                                <div>
+                                                    {item}
+                                                </div>
+                                            }
+
+                                        </div>
+
+                                    )}
+                                </div> */}
                                 {isDetail.jobHighlights.length > 0 ?
                                     <div>
+                                        <p className='font-bold mt-12 text-[20px]'>Summary</p>
                                         {
                                             uniqueJobHighlights.map((item: any, index: any) => (
                                                 <div key={index} className=''>
@@ -154,50 +220,7 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                         }
                                     </div>
                                     :
-                                    <div className="">
-                                        {isDetail.description.split(".").filter((item: any) => item !== "").map((item: any, index: any) =>
-                                            <div key={index}>
-                                                {item.includes(":") ?
-                                                    <div>
-                                                        {item.split(":").map((each: any, order: any) =>
-                                                            order === 0 ?
-                                                                <p
-                                                                    key={order}
-                                                                    className={clsx('font-bold text-[14px] mt-4')}
-                                                                >
-                                                                    {each}
-                                                                </p>
-                                                                :
-                                                                <div>
-                                                                    {each.includes("•") ?
-                                                                        each.split("•").filter((c: any) => c.trim() !== "").map((a: any, b: any) =>
-                                                                            <p
-                                                                                key={b}
-                                                                                className={clsx('pt-2 text-[14px]')}
-                                                                            >
-                                                                                <span className='text-blue-500'>• </span>{a}
-                                                                            </p>
-                                                                        )
-                                                                        :
-                                                                        <p
-                                                                            key={order}
-                                                                            className={clsx("pt-2 text-[14px]")}
-                                                                        >
-                                                                            <span className='text-blue-500'>• </span> {each}{order === 0 ? "" : "."}
-                                                                        </p>
-                                                                    }
-                                                                </div>
-                                                        )}
-                                                    </div>
-                                                    :
-                                                    <div>
-                                                    </div>
-                                                }
-
-                                            </div>
-
-                                        )}
-                                    </div>
+                                    null
                                 }
                             </div>
                         </div>

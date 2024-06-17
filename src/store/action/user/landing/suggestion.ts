@@ -20,16 +20,11 @@ export async function newletterSubscribeGet() {
 
 export async function suggestJobs(data: any) {
 
-    console.log("data", data);
-
-
     let originQuery = [...data.currentLocatedin.split(", "), data.jobTitle, data.locatedin, ...data.skill]
 
     if (data.jobalertsetting === undefined) {
 
         if (!data.userId) {
-            console.log("userId", [...data.currentLocatedin.split(", ")]);
-
             const response = await axios.post(
                 `${host}/indexes/${indexName}/search`,
                 {
@@ -44,7 +39,6 @@ export async function suggestJobs(data: any) {
             return response.data.hits
 
         } else {
-            console.log("originQuery", originQuery);
 
             const response = await axios.post(
                 `${host}/indexes/${indexName}/search`,
@@ -67,9 +61,6 @@ export async function suggestJobs(data: any) {
         let titleList = real.reduce((acc: any, curr: any) => acc.concat(curr), []);
 
         let queryList = [...new Set([...originQuery, ...titleList])]
-
-        console.log("queryList", queryList);
-
 
         const response = await axios.post(
             `${host}/indexes/${indexName}/search`,

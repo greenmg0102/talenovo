@@ -6,7 +6,6 @@ export default function LandingDetail({ isDetail, setIsDetail }: any) {
 
     console.log("isDetail", isDetail);
     
-
     return (
         <div>
             {isDetail && isDetail.platform === "apify" && isDetail.subType === "linkedin" ?
