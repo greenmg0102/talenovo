@@ -26,101 +26,106 @@ const indexName = 'title';
 
 export async function GET(req: any, res: any) {
 
-  // const client = new MeiliSearch({
-  //   host: host,
-  //   apiKey: apiKey,
-  // });
-
+  const client = new MeiliSearch({
+    host: host,
+    apiKey: apiKey,
+  });
 
   // await adminAPIMiddleware(req, res);
-  // let { db } = await connectToDatabase();
+  let { db } = await connectToDatabase();
 
-  // let datasetArray = await axios.get('https://api.apify.com/v2/datasets?offset=10&limit=99&desc=true&unnamed=true&token=apify_api_mUPBlIjurqf8M4smqcQ23KqEyJkeaa4fJlSb')
-  //   .then(response => {
-  //     return response.data.data.items.map((item: any) => item.id)
-  //   })
-  //   .catch(error => {
-  //     console.error('Error:', error.response.data);
-  //   });
+  schedule.scheduleJob('0 */12 * * *', async () => {
 
-  // let runnedDatasetArray = datasetArray.map((item: any) => {
-  //   return {
-  //     type: "apify",
-  //     subType: "google",
-  //     datasetid: item
-  //   };
-  // });
+    let datasetArray = await axios.get('https://api.apify.com/v2/datasets?offset=10&limit=99&desc=true&unnamed=true&token=apify_api_mUPBlIjurqf8M4smqcQ23KqEyJkeaa4fJlSb')
+      .then(response => {
+        return response.data.data.items.map((item: any) => item.id)
+      })
+      .catch(error => {
+        console.error('Error:', error.response.data);
+      });
 
-  // let currencyResult = await db
-  //   .collection('scrappingids')
-  //   .find()
-  //   .toArray();
+    let runnedDatasetArray = datasetArray.map((item: any) => {
+      return {
+        type: "apify",
+        subType: "google",
+        datasetid: item
+      };
+    });
 
-  // console.log("currencyResult", currencyResult);
+    console.log("runnedDatasetArray", runnedDatasetArray.length);
 
-  // // Create a Set of datasetids from array B for fast lookup
-  // let datasetIdsB: any = currencyResult.map((item: any) => item.datasetid);
-  // console.log("datasetIdsB", datasetIdsB);
+    let currencyResult = await db
+      .collection('scrappingids')
+      .find()
+      .toArray();
 
-  // // Find an item in array A whose datasetid is not in the Set of datasetids from array B
-  // let itemNotInB = runnedDatasetArray.filter((item: any) => !datasetIdsB.includes(item.datasetid));
+    console.log("currencyResult", currencyResult.length);
 
-  // console.log("itemNotInB", itemNotInB);
+    // Create a Set of datasetids from array B for fast lookup
+    let datasetIdsB: any = currencyResult.map((item: any) => item.datasetid);
+    console.log("datasetIdsB", datasetIdsB.length);
 
-  // if (itemNotInB.length > 0) {
+    // Find an item in array A whose datasetid is not in the Set of datasetids from array B
+    let itemNotInB = runnedDatasetArray.filter((item: any) => !datasetIdsB.includes(item.datasetid));
 
-  //   let realGoogleData: any = []
+    console.log("itemNotInB", itemNotInB.length);
 
-  //   for (let i = 0; i < itemNotInB.length; i++) {
+    if (itemNotInB.length > 0) {
 
-  //     let buffer: any = await fetch(`https://api.apify.com/v2/datasets/${itemNotInB[i].datasetid}/items?clean=true&format=json`, {
-  //       method: 'GET'
-  //     });
+      let realGoogleData: any = []
 
-  //     let bufferJsonData: any = await buffer.json();
-  //     realGoogleData.push(bufferJsonData)
-  //   }
+      for (let i = 0; i < itemNotInB.length; i++) {
 
-  //   console.log('saving to the monogodb');
+        let buffer: any = await fetch(`https://api.apify.com/v2/datasets/${itemNotInB[i].datasetid}/items?clean=true&format=json`, {
+          method: 'GET'
+        });
 
-  //   await db
-  //     .collection("scrappingids")
-  //     .insertMany(itemNotInB.map((scrappingid: any) => scrappingid))
-  //     .then(async (result: any) => {
-  //       return
-  //     })
+        let bufferJsonData: any = await buffer.json();
+        realGoogleData.push(bufferJsonData)
+      }
 
-  //   console.log('ending saving');
+      console.log('saving to the monogodb');
 
-  //   const chunkSize = 100;
-  //   const iterations = Math.ceil(realGoogleData.length / chunkSize);
+      await db
+        .collection("scrappingids")
+        .insertMany(itemNotInB.map((scrappingid: any) => scrappingid))
+        .then(async (result: any) => {
+          return
+        })
 
-  //   for (let i = 0; i < iterations; i++) {
-  //     console.log('Index', i);
-  //     const start = i * chunkSize;
-  //     const end = Math.min(start + chunkSize, realGoogleData.length);
-  //     const list = realGoogleData.slice(start, end);
+      console.log('ending saving');
 
-  //     console.log('saving ...', list.length);
-  //     //  await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });;
+      const chunkSize = 100;
+      const iterations = Math.ceil(realGoogleData.length / chunkSize);
 
-  //   }
+      for (let i = 0; i < iterations; i++) {
+        console.log('Index', i);
+        const start = i * chunkSize;
+        const end = Math.min(start + chunkSize, realGoogleData.length);
+        const list = realGoogleData.slice(start, end);
 
-  //   // await client.index(indexName).addDocuments(realGoogleData, { primaryKey: 'jobId' });
+        console.log('saving ...', list.length);
+        await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });;
 
-  //   console.log(2);
-  //   // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "companyName", "jobId", "postStatus", "recruiterId"]);
+      }
 
-  //   await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId", "scrapedDate"]);
-  //   await client.index(indexName).updateSortableAttributes(["postStatus", "scrapedDate"]);
-  //   await client.index(indexName).updateDistinctAttribute("companyName");
-  //   console.log(3);
+      // await client.index(indexName).addDocuments(realGoogleData, { primaryKey: 'jobId' });
+
+      console.log(2);
+      // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "companyName", "jobId", "postStatus", "recruiterId"]);
+
+      await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId", "scrapedDate"]);
+      await client.index(indexName).updateSortableAttributes(["postStatus", "scrapedDate"]);
+      await client.index(indexName).updateDistinctAttribute("companyName");
+      console.log(3);
 
 
-  // }
+    } else {
+      console.log('There is no data!');
 
+    }
 
-  // console.log("runnedDatasetArray", runnedDatasetArray);
+  })
 
   // await db
   //   .collection("scrappingids")
