@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import schedule from 'node-schedule';
+import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import { KadoaScrapping } from '@/app/api/automation/scrapping-start/kadoa'
 import { linkedinScrapping } from '@/app/api/automation/scrapping-start/linkedin'
@@ -26,106 +27,137 @@ const indexName = 'title';
 
 export async function GET(req: any, res: any) {
 
-  const client = new MeiliSearch({
-    host: host,
-    apiKey: apiKey,
-  });
+  // const client = new MeiliSearch({
+  //   host: host,
+  //   apiKey: apiKey,
+  // });
 
-  // await adminAPIMiddleware(req, res);
-  let { db } = await connectToDatabase();
+  // // await adminAPIMiddleware(req, res);
+  // let { db } = await connectToDatabase();
 
-  schedule.scheduleJob('0 */12 * * *', async () => {
+  // // schedule.scheduleJob('0 */12 * * *', async () => {
 
-    let datasetArray = await axios.get('https://api.apify.com/v2/datasets?offset=10&limit=99&desc=true&unnamed=true&token=apify_api_mUPBlIjurqf8M4smqcQ23KqEyJkeaa4fJlSb')
-      .then(response => {
-        return response.data.data.items.map((item: any) => item.id)
-      })
-      .catch(error => {
-        console.error('Error:', error.response.data);
-      });
+  // // })
 
-    let runnedDatasetArray = datasetArray.map((item: any) => {
-      return {
-        type: "apify",
-        subType: "google",
-        datasetid: item
-      };
-    });
+  // let datasetArray = await axios.get('https://api.apify.com/v2/datasets?offset=0&limit=2&desc=true&unnamed=true&token=apify_api_mUPBlIjurqf8M4smqcQ23KqEyJkeaa4fJlSb')
+  //   .then(response => {
+  //     return response.data.data.items.map((item: any) => item.id)
+  //   })
+  //   .catch(error => {
+  //     console.error('Error:', error.response.data);
+  //   });
 
-    console.log("runnedDatasetArray", runnedDatasetArray.length);
+  // let runnedDatasetArray = datasetArray.map((item: any) => {
+  //   return {
+  //     type: "apify",
+  //     subType: "google",
+  //     datasetid: item
+  //   };
+  // });
 
-    let currencyResult = await db
-      .collection('scrappingids')
-      .find()
-      .toArray();
+  
+  // // let currencyResult = await db
+  // //   .collection('scrappingids')
+  // //   .find()
+  // //   .toArray();
+  
+  // // console.log("currencyResult", currencyResult.length);
+  
+  // // // Create a Set of datasetids from array B for fast lookup
+  // // let datasetIdsB: any = currencyResult.map((item: any) => item.datasetid);
+  // // console.log("datasetIdsB", datasetIdsB.length);
+  
+  // // // Find an item in array A whose datasetid is not in the Set of datasetids from array B
+  // // let itemNotInB = runnedDatasetArray.filter((item: any) => !datasetIdsB.includes(item.datasetid));
+  
+  // // console.log("itemNotInB", itemNotInB.length);
+  
+  // if (runnedDatasetArray.length > 0) {
+    
+    
+  //   console.log("runnedDatasetArray", runnedDatasetArray.length);
 
-    console.log("currencyResult", currencyResult.length);
+  //   let realGoogleData: any = []
 
-    // Create a Set of datasetids from array B for fast lookup
-    let datasetIdsB: any = currencyResult.map((item: any) => item.datasetid);
-    console.log("datasetIdsB", datasetIdsB.length);
+  //   for (let i = 0; i < runnedDatasetArray.length; i++) {
 
-    // Find an item in array A whose datasetid is not in the Set of datasetids from array B
-    let itemNotInB = runnedDatasetArray.filter((item: any) => !datasetIdsB.includes(item.datasetid));
+  //     console.log("i", i);
+      
 
-    console.log("itemNotInB", itemNotInB.length);
+  //     let buffer: any = await fetch(`https://api.apify.com/v2/datasets/${runnedDatasetArray[i].datasetid}/items?clean=true&format=json`, {
+  //       method: 'GET'
+  //     });
 
-    if (itemNotInB.length > 0) {
+  //     let bufferJsonData: any = await buffer.json();
 
-      let realGoogleData: any = []
+  //     console.log("bufferJsonData", bufferJsonData.length);
+      
+  //     // realGoogleData.push(bufferJsonData)
+  //     // realGoogleData = [...realGoogleData, ...bufferJsonData]
 
-      for (let i = 0; i < itemNotInB.length; i++) {
+  //     bufferJsonData.forEach((element: any, index: any) => {
 
-        let buffer: any = await fetch(`https://api.apify.com/v2/datasets/${itemNotInB[i].datasetid}/items?clean=true&format=json`, {
-          method: 'GET'
-        });
+  //       let randomId = uuidv4();
+  //       realGoogleData.push({
+  //           ...element,
+  //           jobId: randomId,
+  //           platform: "apify",
+  //           subType: "google",
+  //           city: element.location.split(" (")[0].split(", ")[0],
+  //           country: element.location.split(" (")[0].split(", ")[1],
+  //           insightsV2: element.metadata.scheduleType,
+  //           occupationType: element.metadata.scheduleType,
+  //           // isComplete: true,
+  //           // isComfirm: true,
+  //           postStatus: 1,
+  //           scrapedDate: new Date().toISOString()
+  //       })
+  //   });
 
-        let bufferJsonData: any = await buffer.json();
-        realGoogleData.push(bufferJsonData)
-      }
+  //   }
 
-      console.log('saving to the monogodb');
+  //   console.log('saving to the monogodb');
+  //   console.log('realGoogleData.length', realGoogleData.length);
 
-      await db
-        .collection("scrappingids")
-        .insertMany(itemNotInB.map((scrappingid: any) => scrappingid))
-        .then(async (result: any) => {
-          return
-        })
+  //   await db
+  //     .collection("scrappingids")
+  //     .insertMany(runnedDatasetArray.map((scrappingid: any) => scrappingid))
+  //     .then(async (result: any) => {
+  //       return
+  //     })
 
-      console.log('ending saving');
+  //   console.log('ending saving');
 
-      const chunkSize = 100;
-      const iterations = Math.ceil(realGoogleData.length / chunkSize);
+  //   let chunkSize = 100;
+  //   let iterations = Math.ceil(realGoogleData.length / chunkSize);
 
-      for (let i = 0; i < iterations; i++) {
-        console.log('Index', i);
-        const start = i * chunkSize;
-        const end = Math.min(start + chunkSize, realGoogleData.length);
-        const list = realGoogleData.slice(start, end);
+  //   for (let i = 0; i < iterations; i++) {
+  //     console.log('Index', i);
+  //     let start = i * chunkSize;
+  //     let end = Math.min(start + chunkSize, realGoogleData.length);
+  //     let list = realGoogleData.slice(start, end);
 
-        console.log('saving ...', list.length);
-        await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });;
+  //     console.log('saving ...', list.length);
+  //     await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });;
 
-      }
+  //   }
 
-      // await client.index(indexName).addDocuments(realGoogleData, { primaryKey: 'jobId' });
+  //   // await client.index(indexName).addDocuments(realGoogleData, { primaryKey: 'jobId' });
 
-      console.log(2);
-      // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "companyName", "jobId", "postStatus", "recruiterId"]);
+  //   console.log(2);
+  //   // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "companyName", "jobId", "postStatus", "recruiterId"]);
 
-      await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId", "scrapedDate"]);
-      await client.index(indexName).updateSortableAttributes(["postStatus", "scrapedDate"]);
-      await client.index(indexName).updateDistinctAttribute("companyName");
-      console.log(3);
+  //   await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId", "scrapedDate"]);
+  //   await client.index(indexName).updateSortableAttributes(["postStatus", "scrapedDate"]);
+  //   await client.index(indexName).updateDistinctAttribute("companyName");
+  //   console.log(3);
 
 
-    } else {
-      console.log('There is no data!');
+  // } else {
+  //   console.log('There is no data!');
 
-    }
+  // }
 
-  })
 
   // await db
   //   .collection("scrappingids")
