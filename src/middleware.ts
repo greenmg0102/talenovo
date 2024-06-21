@@ -16,7 +16,8 @@ export default authMiddleware({
     "/api/service/geo",
     "/api/user/about-edit",
     "/api/user/landing-job",
-    "/api/user/user-profile/user-premium-status"
+    "/api/user/user-profile/user-premium-status",
+    "/api/user/my-jobs",
   ], // Add "/api/webhooks/clerk" to publicRoutes
   ignoredRoutes: [], // Optionally add "/api/webhooks/clerk" to ignoredRoutes
 });
