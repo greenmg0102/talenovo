@@ -4,6 +4,8 @@ const nextConfig = {
   images: {
     domains: [
       "localhost",
+      "talenovo",
+      "talenovo.com",
       'img.clerk.com',
       'media.licdn.com',
     ],
