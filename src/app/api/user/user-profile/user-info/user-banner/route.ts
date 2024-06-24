@@ -11,8 +11,6 @@ export async function POST(req: any, res: any) {
   let reqData: any = await req.json()
 
   let isMe: any = await db.collection("userinfos").findOne({ userId: user.id });
-
-  console.log("reqData", reqData);
   
 
   let { error, errorMessage }: any = userInfoValidation(reqData)
