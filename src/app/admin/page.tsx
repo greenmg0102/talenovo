@@ -11,6 +11,8 @@ import Subscription from "@/components/Admin/Subscription/Subscription";
 import categoryData from '@/components/Admin/categoryData'
 import News from '@/components/Admin/news'
 import About from '@/components/Admin/About'
+import AutomationStarting from '@/components/Admin/automationStarting'
+
 
 import Breadcrumb from "@/components/Common/Breadcrumb";
 
@@ -35,6 +37,7 @@ const Admin = () => {
     5: <Paylog />,
     6: <Subscription />,
     7: <About />,
+    8: <AutomationStarting />,
     // 7: <News />
   }
 

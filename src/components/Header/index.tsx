@@ -3,11 +3,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import clsx from 'clsx'
+import clsx from 'clsx';
 import { useUser } from '@clerk/nextjs';
 import menuData from "./menuData";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { scarppingStart } from '@/store/action/automation/scraping'
 
 const Header = () => {
 
@@ -29,12 +28,7 @@ const Header = () => {
     }
   };
 
-  useEffect(() => {
-    async function startScraping() {
-      scarppingStart()
-    }
-    startScraping()
-  }, [])
+
 
   useEffect(() => {
     window.addEventListener("scroll", handleStickyNavbar);

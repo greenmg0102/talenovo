@@ -9,10 +9,13 @@ import "react-modal-video/css/modal-video.css";
 import "../styles/index.css";
 import { Providers } from "./providers";
 import { ClerkProvider } from "@clerk/nextjs";
+import useConsoleOverride from '@/util/frontend/useConsoleOverride'
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+
+  useConsoleOverride();
   return (
     <ClerkProvider>
       <html suppressHydrationWarning lang="en">
@@ -29,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               `,
             }}
           /> */}
+          <script async src="https://static.addtoany.com/menu/page.js"></script>
         </Head>
         <body className={`bg-[#FFFFFF] dark:bg-black ${inter.className}`}>
           <Providers>

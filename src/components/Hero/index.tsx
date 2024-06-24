@@ -132,7 +132,7 @@ const Hero = ({ setIsDetail }: any) => {
       const res: any = await fetch('https://us-central1-sodium-mountain-418120.cloudfunctions.net/geolocation', { method: 'GET' });
       let result = await await res.json()
 
-      setGeoPosition(result.city + ", " + result.country)
+      setGeoPosition(result.region + ", " + result.country)
     }
     fetchGeo()
   }, [])
@@ -225,7 +225,7 @@ const Hero = ({ setIsDetail }: any) => {
 
               <div className="mx-auto max-w-[1200px] text-center mb-[60px]">
                 <h1 className="mb-5 text-center text-lg font-bold leading-tight text-black sm:text-2xl sm:leading-tight md:text-4xl md:leading-tight">
-                  Search Over <span className='text-blue-500 font-bold text-[26px] sm:text-[32px] w-[60px]'> <CountUp start={0} end={total} duration={3}></CountUp>+ </span>Jobs Globally
+                  Search Over <span className='text-blue-500 font-bold text-[26px] sm:text-[32px] w-[60px]'> <CountUp start={0} end={total} duration={3}></CountUp>+ </span>Jobs Near You
                 </h1>
                 <h4 className="mb-5 text-center font-semibold leading-tight text-gray-600 sm:leading-tight md:leading-tight text-[20px]">
                   Connecting Talent to Opportunity
@@ -289,6 +289,14 @@ const Hero = ({ setIsDetail }: any) => {
                   <div className="mx-auto max-w-[1368px] w-full flex flex-col-reverse lg:flex-row lg:justify-between items-start flex-wrap">
 
                     <div className="w-full lg:w-[25%]">
+                    {
+                        isNewsletter &&
+                        <NewsLatterBox
+                          newsletterInfo={newsletterInfo}
+                          setnewsletterInfo={(total: any) => setnewsletterInfo(total)}
+                          agreeNewsletter={agreeNewsletter}
+                        />
+                      }
 
                       <div className="border border-gray-300 bg-white rounded-md p-2 flex justify-between items-center mb-4 shadow-lg">
                         <p className="font-bold text-[16px]">Suggested Jobs {suggestList !== undefined && suggestList.length > 0 ? `(${suggestList.length})` : null}</p>
@@ -325,14 +333,7 @@ const Hero = ({ setIsDetail }: any) => {
                           }
                         </div>
                       }
-                      {
-                        isNewsletter &&
-                        <NewsLatterBox
-                          newsletterInfo={newsletterInfo}
-                          setnewsletterInfo={(total: any) => setnewsletterInfo(total)}
-                          agreeNewsletter={agreeNewsletter}
-                        />
-                      }
+                     
                     </div>
                     <div className='w-full lg:w-[75%] flex flex-col-reverse md:flex-row md:justify-between items-start flex-wrap'>
                       <div className="w-full md:w-[75%] px-0 sm:px-2">

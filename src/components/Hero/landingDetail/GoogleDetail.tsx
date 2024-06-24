@@ -33,9 +33,9 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
         script.src = 'https://static.addtoany.com/menu/page.js';
         document.body.appendChild(script);
 
-        return () => {
-            document.body.removeChild(script);
-        };
+        // return () => {
+        //     document.body.removeChild(script);
+        // };
     }, []);
 
     const uniqueJobHighlights = isDetail.jobHighlights.reduce((acc: any, item: any) => {
@@ -105,16 +105,16 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                 <Divider />
                                 <div className="flex justify-between items-center flex-wrap pb-4">
                                     <p className="font-bold text-[20px]">Job Description</p>
-                                    <p className="font-semibold text-[14px] flex items-center">
-                                        Posted on: <span className="font-normal ml-2">
+                                    <p className="font-semibold flex items-center">
+                                        Posted on: <span className="font-normal ml-2 !text-[16px]">
                                             {/* {isDetail && isDetail.extras && isDetail.extras.length > 0 && isDetail.extras.filter((item: any) => item.includes("ago")).map((item: any, index: any) => <p key={index} className="text-blue-500 ml-1">{item}</p>)} */}
                                             {
                                                 isDetail && isDetail.extras && isDetail.extras.length > 0 &&
                                                     isDetail.extras.filter((item: any) => item.includes("days ago")).length > 0 ?
                                                     isDetail && isDetail.extras && isDetail.extras.length > 0 &&
-                                                    isDetail.extras.filter((item: any) => item.includes("days ago")).map((each: any, order: any) => <p key={order} className="text-[10px] text-blue-500 text-right">{Number(postedDate(isDetail.scrapedDate)) + Number(each[0])} days ago </p>)
+                                                    isDetail.extras.filter((item: any) => item.includes("days ago")).map((each: any, order: any) => <p key={order} className="!text-[16px] text-blue-500 text-right">{Number(postedDate(isDetail.scrapedDate)) + Number(each[0])} days ago </p>)
                                                     :
-                                                    <p className="text-[10px] text-blue-500 text-right">
+                                                    <p className="!text-[16px] text-blue-500 text-right">
                                                         {postedDate(isDetail.scrapedDate) === 0 ?
                                                             "Few hours ago"
                                                             :
@@ -198,9 +198,7 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                                     {item}
                                                 </div>
                                             }
-
                                         </div>
-
                                     )}
                                 </div> */}
                                 {isDetail.jobHighlights.length > 0 ?
@@ -236,16 +234,6 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                     <a href={isDetail && isDetail.applyLink[0] && isDetail.applyLink[0].link} target="_blank">
                                         <p className="px-8 py-2 bg-blue-600 rounded-full text-center text-white text-[14px]">Apply Now</p>
                                     </a>
-
-                                    {/* <div className="a2a_kit a2a_kit_size_32 a2a_default_style mt-6">
-                                        <a className="a2a_dd" href="https://www.addtoany.com/share"></a>
-                                        <a className="a2a_button_youtube" href='https://youtube.com/@TalenovoSocial?si=2ndW42UbtM5x_UvV'></a>
-                                        <a className="a2a_button_facebook" href='https://www.facebook.com/profile.php?id=61558137845692'></a>
-                                        <a className="a2a_button_instagram" href='https://www.instagram.com/talenovosocial'></a>
-                                        <a className="a2a_button_x" href='https://twitter.com/TalenovoSocial'></a>
-                                        <a className="a2a_button_tiktok" href="https://www.tiktok.com/@talenovosocial"></a>
-                                    </div> */}
-
                                     <div className="a2a_kit a2a_kit_size_32 a2a_default_style mt-6">
                                         <a className="a2a_d mb-[4px]" href="https://www.addtoany.com/share"></a>
                                         <a className="a2a_button_email mb-[4px]"></a>

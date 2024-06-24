@@ -12,7 +12,7 @@ const testimonialData: Testimonial[] = [
     designation: "Senior Financial Analysis @ JP Morgan",
     content:
     "Talenovo's resume matching feature played a crucial role in helping me secure a senior financial analyst role at JP Morgan. It simplified the application process and matched my skills perfectly with the job requirements",
-    image: "/images/testimonials/auth-01.PNG",
+    image: "/images/testimonials/auth-01.png",
     star: 5,
   },
   {
@@ -20,8 +20,8 @@ const testimonialData: Testimonial[] = [
     name: "Maria Rodriguez",
     designation: "Product Manager - PepsiCo",
     content:
-    "I accepted a senior product manager role through Talenovo's tailored job alerts at PepsiCo. The platform's job listings made all the difference in my job search",
-    image: "/images/testimonials/auth-02.PNG",
+    "I accepted a senior product manager role through Talenovo's tailored job alerts at PepsiCo. The platform's job listings made all the difference in my job search journey that aligned perfectly with my career aspirations.",
+    image: "/images/testimonials/auth-02.png",
     star: 5,
   },
   {
@@ -30,7 +30,7 @@ const testimonialData: Testimonial[] = [
     designation: "Software Engineer @ KPMG",
     content:
     "Talenovo not only connected me with senior software engineer roles at KMPG but also provided invaluable insights into the tech industry landscape. It's been a game-changer in my career journey",
-    image: "/images/testimonials/auth-03.PNG",
+    image: "/images/testimonials/auth-03.png",
     star: 5,
   },
 ];

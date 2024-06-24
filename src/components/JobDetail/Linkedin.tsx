@@ -22,7 +22,7 @@ const LinkedinJobDetail = ({ detail }: any) => {
                     <Divider />
                     <div className="flex justify-between items-center pb-4">
                         <p className="font-semibold text-[14px]">Job Description</p>
-                        <p className="font-semibold text-[14px]">Posted on: <span className="font-normal">{detail.postedAt.slice(0, 10)}</span></p>
+                        <p className="font-semibold text-[14px]">Posted on: <span className="font-normal text-[16px]">{detail.postedAt.slice(0, 10)}</span></p>
                     </div>
                     {detail.descriptionText.split(".").map((item: any, index: any) =>
                         <p key={index} className="text-gray-500 pt-2 text-[12px]">{item}.</p>

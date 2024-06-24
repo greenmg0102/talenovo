@@ -32,6 +32,10 @@ const categoryData: Category[] = [
   {
     id: 7,
     title: "About Talenovo"
+  },
+  {
+    id: 8,
+    title: "Automation Scraping"
   }
 ];
 export default categoryData;
