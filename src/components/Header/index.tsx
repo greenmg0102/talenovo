@@ -107,7 +107,7 @@ const Header = () => {
                     {menuData.slice(
                       0,
                       user === null ? 3 :
-                        user && user.primaryEmailAddress && user && user.primaryEmailAddress.emailAddress === "mohammad.patel@gmail.com" ? 5 : 4
+                        user && user.primaryEmailAddress && user && user.primaryEmailAddress.emailAddress === "talenovocorp@gmail.com" ? 5 : 4
                     ).map((menuItem, index) => (
                       <li key={index} className="group relative">
                         {menuItem.path ? (

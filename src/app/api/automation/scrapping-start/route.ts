@@ -61,6 +61,7 @@ export async function GET(req: any, res: any) {
 
     console.log('saving ...', list.length);
     await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });;
+    console.log('ending ...', list[i].city);
 
   }
 
