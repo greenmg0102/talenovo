@@ -1,6 +1,7 @@
 import { authMiddleware } from "@clerk/nextjs";
 
 export default authMiddleware({
+  debug: true,
   apiRoutes: [], // Remove "/api/webhooks/clerk" from apiRoutes array
   publicRoutes: [
     "/",
