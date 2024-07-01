@@ -36,8 +36,7 @@ export async function googleScrapping(): Promise<any> {
 
     let realGoogleData: any = []
 
-    for (let i = 0; i < 1; i++) {
-        // for (let i = 0; i < itemNotInB.length; i++) {
+    for (let i = 0; i < itemNotInB.length; i++) {
 
         console.log("i", i);
 
@@ -66,7 +65,7 @@ export async function googleScrapping(): Promise<any> {
         });
 
         console.log("re-structuring in JSON was done!");
-        
+
     }
 
     console.log('saving to the monogodb');
