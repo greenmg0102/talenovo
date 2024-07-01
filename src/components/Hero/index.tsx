@@ -38,8 +38,8 @@ import {
 } from "react-instantsearch-dom";
 
 const searchClient = instantMeiliSearch(
-  'https://ms-ce7a48ac689b-10562.nyc.meilisearch.io/',
-  '9fbe0270ada537d37c34e0f768ceed9fe2ae3b6b',
+  'https://search.talenovo.com/',
+  '47dfe734-68fb-4b19-a96f-5f19a3355458',
   {
     finitePagination: true,
     // limit: 1

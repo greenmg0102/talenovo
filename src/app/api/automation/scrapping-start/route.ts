@@ -17,11 +17,11 @@ import JobAlertAutomation from '@/app/api/automation/scrapping-start/mailAutomat
 
 import { sendEmail } from '@/mailAction'
 
-const host = 'https://ms-ce7a48ac689b-10562.nyc.meilisearch.io';
-const apiKey = '9fbe0270ada537d37c34e0f768ceed9fe2ae3b6b';
+const host = 'https://search.talenovo.com';
+const apiKey = '47dfe734-68fb-4b19-a96f-5f19a3355458';
 const indexName = 'title';
 
-// master key:  9fbe0270ada537d37c34e0f768ceed9fe2ae3b6b
+// master key:  47dfe734-68fb-4b19-a96f-5f19a3355458
 // search key:  29701137a41cf5f0f7fe1b1755bcc0dae0961a1c15e7c52cffa72e474b16f920
 // admin  key:  aac5608cfb351aa04f9cc597f5f0c3c38c33fbd97ad73b1d97436e1edc783722
 

@@ -8,8 +8,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { MeiliSearch } from 'meilisearch';
 import axios from 'axios';
 
-const host = 'https://ms-ce7a48ac689b-10562.nyc.meilisearch.io/';
-const apiKey = '9fbe0270ada537d37c34e0f768ceed9fe2ae3b6b';
+const host = 'https://search.talenovo.com/';
+const apiKey = '47dfe734-68fb-4b19-a96f-5f19a3355458';
 const indexName = 'title';
 
 export async function POST(req: any, res: any) {
