@@ -64,7 +64,7 @@ export async function GET(req: any, res: any) {
 
   console.log('saving to the melisearch!', real.length);
 
-  const chunkSize = 1000;
+  const chunkSize = 100;
   const iterations = Math.ceil(real.length / chunkSize);
 
   for (let i = 0; i < iterations; i++) {
