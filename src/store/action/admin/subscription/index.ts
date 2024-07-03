@@ -1,7 +1,7 @@
 
 export async function subscriptionGet() {
 
-    const res = await fetch('http://localhost:3000/api/admin/subscription', {
+    const res = await fetch('https://talenovo.com/api/admin/subscription', {
         method: 'GET'
     });
 

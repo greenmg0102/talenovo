@@ -1,7 +1,7 @@
 
 export async function jobAlertAutomation() {
 
-  const res = await fetch('http://localhost:3000/api/mail/jobAlert', {
+  const res = await fetch('https://talenovo.com/api/mail/jobAlert', {
     method: 'GET'
   });
 

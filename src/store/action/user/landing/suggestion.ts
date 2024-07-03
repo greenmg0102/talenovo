@@ -5,14 +5,14 @@ const apiKey = '47dfe734-68fb-4b19-a96f-5f19a3355458';
 const indexName = 'title';
 
 export async function newletterSubscribePost(data: any) {
-    const res = await fetch('http://localhost:3000/api/user/newsletter-confirm', {
+    const res = await fetch('https://talenovo.com/api/user/newsletter-confirm', {
         method: 'POST',
         body: JSON.stringify(data)
     });
     return await res.json();
 }
 export async function newletterSubscribeGet() {
-    const res = await fetch('http://localhost:3000/api/user/newsletter-confirm', {
+    const res = await fetch('https://talenovo.com/api/user/newsletter-confirm', {
         method: 'GET',
     });
     return await res.json();

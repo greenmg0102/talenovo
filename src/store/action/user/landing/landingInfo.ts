@@ -6,7 +6,7 @@ const indexName = 'title';
 
 export async function paidJobGet() {
 
-    const res = await fetch('http://localhost:3000/api/user/landing-job', {
+    const res = await fetch('https://talenovo.com/api/user/landing-job', {
         method: 'POST',
         body: JSON.stringify({})
     });
