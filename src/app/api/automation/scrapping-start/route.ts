@@ -59,6 +59,8 @@ export async function GET(req: any, res: any) {
     const end = Math.min(start + chunkSize, real.length);
     const list = real.slice(start, end);
 
+    const health = await client.health();
+    console.log('Server health:', health);
     // console.log('saving ...', list.length);
     await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });
     // console.log('ending ...');
