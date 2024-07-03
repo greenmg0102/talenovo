@@ -68,10 +68,9 @@ export async function googleScrapping(): Promise<any> {
 
     }
 
-    console.log('saving to the monogodb');
-    console.log('realGoogleData.length', realGoogleData.length);
-
     if (itemNotInB.length > 0) {
+        console.log('saving to the monogodb');
+        console.log('realGoogleData.length', realGoogleData.length);
         await db
             .collection("scrappingids")
             .insertMany(runnedDatasetArray.map((scrappingid: any) => scrappingid))

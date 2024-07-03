@@ -50,18 +50,18 @@ export async function GET(req: any, res: any) {
 
   console.log('saving to the melisearch!', real.length);
 
-  const chunkSize = 100;
+  const chunkSize = 1000;
   const iterations = Math.ceil(real.length / chunkSize);
 
   for (let i = 0; i < iterations; i++) {
-    console.log('Index', i);
+    console.log('Iterations-Index', i);
     const start = i * chunkSize;
     const end = Math.min(start + chunkSize, real.length);
     const list = real.slice(start, end);
 
-    console.log('saving ...', list.length);
+    // console.log('saving ...', list.length);
     await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });;
-    console.log('ending ...', list && list[i] && list[i].city);
+    // console.log('ending ...');
 
   }
 
