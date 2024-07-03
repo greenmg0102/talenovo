@@ -45,7 +45,7 @@ const NewsLatterBox = ({ agreeNewsletter, newsletterInfo, setnewsletterInfo }: a
           required
         />
         <Checkbox onChange={onChange} className="mb-4 text-gray-600 text-[16px]">
-          <a href="https://talenovo.com/terms">
+          <a href="http://localhost:3000/terms">
             I accept terms & condition.
           </a>
         </Checkbox>

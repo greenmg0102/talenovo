@@ -1,7 +1,7 @@
 
 export async function scarppingStart() {
 
-  await fetch('https://talenovo.com/api/automation/scrapping-start', {
+  await fetch('http://localhost:3000/api/automation/scrapping-start', {
     method: 'GET'
   });
 }

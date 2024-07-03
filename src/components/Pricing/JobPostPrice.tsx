@@ -34,7 +34,7 @@ const JobPostPrice = ({ isSectionTitle }: any) => {
         clerkId,
         priceId: jobPostPlan[plan.packageName],
         packageName: plan.packageName,
-        redirectLink: "https://talenovo.com/job-post"
+        redirectLink: "http://localhost:3000/job-post"
       }),
     })
       .then(response => {

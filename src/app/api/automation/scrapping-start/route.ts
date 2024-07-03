@@ -48,7 +48,7 @@ export async function GET(req: any, res: any) {
   let real = google
   // let real = [...linkedin, ...kadoa]  4416
 
-  console.log('saving to the melisearch!');
+  console.log('saving to the melisearch!', real.length);
 
   const chunkSize = 100;
   const iterations = Math.ceil(real.length / chunkSize);
@@ -61,7 +61,7 @@ export async function GET(req: any, res: any) {
 
     console.log('saving ...', list.length);
     await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });;
-    console.log('ending ...', list[i].city);
+    console.log('ending ...', list && list[i] && list[i].city);
 
   }
 

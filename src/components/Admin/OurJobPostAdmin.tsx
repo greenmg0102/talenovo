@@ -33,7 +33,7 @@ const OurJobPostAdmin = () => {
   useEffect(() => {
 
     async function fetchData() {
-      const res = await fetch('https://talenovo.com/api/admin/my-job-post', {
+      const res = await fetch('http://localhost:3000/api/admin/my-job-post', {
         method: 'POST',
         body: JSON.stringify({
         })

@@ -1,7 +1,7 @@
 
 export async function jobTagPut(data: any) {
 
-  const res = await fetch('https://talenovo.com/api/admin/job-info/job-tag', {
+  const res = await fetch('http://localhost:3000/api/admin/job-info/job-tag', {
     method: 'PUT',
     body: JSON.stringify(data)
   });
@@ -11,7 +11,7 @@ export async function jobTagPut(data: any) {
 
 export async function jobTagGet() {
 
-  const res = await fetch('https://talenovo.com/api/admin/job-info/job-tag', {
+  const res = await fetch('http://localhost:3000/api/admin/job-info/job-tag', {
     method: 'GET',
   });
 
@@ -20,7 +20,7 @@ export async function jobTagGet() {
 
 export async function jobTagPost(jobTag: any) {
 
-  const res = await fetch('https://talenovo.com/api/admin/job-info/job-tag', {
+  const res = await fetch('http://localhost:3000/api/admin/job-info/job-tag', {
     method: 'POST',
     body: JSON.stringify(jobTag)
   });
@@ -31,7 +31,7 @@ export async function jobTagPost(jobTag: any) {
 
 export async function jobTagDelete(data: any) {
 
-  const res = await fetch('https://talenovo.com/api/admin/job-info/job-tag', {
+  const res = await fetch('http://localhost:3000/api/admin/job-info/job-tag', {
     method: 'DELETE',
     body: JSON.stringify(data)
   });
