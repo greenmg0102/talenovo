@@ -101,9 +101,9 @@ const Pricing = ({ isSectionTitle }: any) => {
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Immediate access to <span className="text-red-500 font-bold">50,000+</span> job</p>} status="active" />
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Real-time job postings</p>} status="active" />
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Personalized alerts</p>} status="active" />
-            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span>  AI Powered Resume Review</p>} status="active" />
-            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span>  AI Powered Resume builder</p>} status="active" />
-            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span>  AI Powered Job Matching</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span> AI Powered Resume Review</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span> AI Powered Resume builder</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span> AI Powered Job Matching</p>} status="active" />
           </PricingBox>
 
           <PricingBox
@@ -118,9 +118,9 @@ const Pricing = ({ isSectionTitle }: any) => {
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Immediate access to <span className="text-red-500 font-bold">50,000+</span> job</p>} status="active" />
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Real-time job postings</p>} status="active" />
             <OfferList text={<p className="m-0 text-base font-medium text-body-color">Personalized alerts</p>} status="active" />
-            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span>  AI Powered Resume Review</p>} status="active" />
-            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span>  AI Powered Resume builder</p>} status="active" />
-            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span>  AI Powered Job Matching</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span> AI Powered Resume Review</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span> AI Powered Resume builder</p>} status="active" />
+            <OfferList text={<p className="m-0 text-base font-medium text-body-color"><span className="text-red-500 font-bold"> Coming soon:</span> AI Powered Job Matching</p>} status="active" />
           </PricingBox>
         </div>
       </div>
