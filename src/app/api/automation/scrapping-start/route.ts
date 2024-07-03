@@ -37,6 +37,20 @@ export async function GET(req: any, res: any) {
 
   console.log("scrapping-start");
 
+  try {
+    const jobDataIndex = await client.getIndex(indexName);
+    console.log(`Index ${indexName} exists:`, jobDataIndex);
+  } catch (error) {
+    if (error.code === 'index_not_found') {
+      console.log(`Index ${indexName} does not exist.`);
+      await client.createIndex(indexName);
+    } else {
+      console.error('Error checking index existence:', error);
+    }
+  }
+
+  console.log('2');
+
   // let mailSendingResult = await sendEmail({ error: "", success: true })
   // console.log("mailSendingResult", mailSendingResult);
   // await JobAlertAutomation()
