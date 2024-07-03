@@ -60,7 +60,7 @@ export async function GET(req: any, res: any) {
     const list = real.slice(start, end);
 
     // console.log('saving ...', list.length);
-    await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });;
+    await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });
     // console.log('ending ...');
 
   }
