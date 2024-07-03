@@ -2,6 +2,12 @@ import { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { Divider } from 'antd'
 
+declare global {
+    interface Window {
+        a2a: any;
+    }
+}
+
 export default function GoogleDetail({ isDetail, setIsDetail }: any) {
 
     const extraColor = [
@@ -33,10 +39,17 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
         script.src = 'https://static.addtoany.com/menu/page.js';
         document.body.appendChild(script);
 
-        // return () => {
-        //     document.body.removeChild(script);
-        // };
-    }, []);
+        script.onload = () => {
+            if (window.a2a) {
+                window.a2a.init_all();
+            }
+        };
+
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, [isDetail]);
+
 
     const uniqueJobHighlights = isDetail.jobHighlights.reduce((acc: any, item: any) => {
         const existingItem = acc.find((highlight: any) => highlight.title === item.title);
