@@ -8,6 +8,8 @@ let { db } = await connectToDatabase();
 
 export async function googleScrapping(): Promise<any> {
 
+    console.log('googleScrapping');
+
     let datasetArray = await axios.get('https://api.apify.com/v2/datasets?offset=0&limit=999&desc=true&unnamed=true&token=apify_api_mUPBlIjurqf8M4smqcQ23KqEyJkeaa4fJlSb')
         .then(response => {
             return response.data.data.items.map((item: any) => item.id)
