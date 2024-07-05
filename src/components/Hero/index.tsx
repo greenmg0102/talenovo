@@ -123,7 +123,6 @@ const Hero = ({ setIsDetail }: any) => {
     } else {
       messageApi.error("All inputs are required!");
     }
-
   }
 
   useEffect(() => {
@@ -289,7 +288,7 @@ const Hero = ({ setIsDetail }: any) => {
                   <div className="mx-auto max-w-[1368px] w-full flex flex-col-reverse lg:flex-row lg:justify-between items-start flex-wrap">
 
                     <div className="w-full lg:w-[25%]">
-                    {
+                      {
                         isNewsletter &&
                         <NewsLatterBox
                           newsletterInfo={newsletterInfo}
@@ -333,7 +332,7 @@ const Hero = ({ setIsDetail }: any) => {
                           }
                         </div>
                       }
-                     
+
                     </div>
                     <div className='w-full lg:w-[75%] flex flex-col-reverse md:flex-row md:justify-between items-start flex-wrap'>
                       <div className="w-full md:w-[75%] px-0 sm:px-2">

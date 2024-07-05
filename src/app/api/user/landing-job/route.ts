@@ -21,9 +21,16 @@ export async function GET(req: any, res: any) {
 
   let isMe: any = user === null ? null : await db.collection("userinfos").findOne({ userId: user.id });
 
+  let totalstatisticResult = await db.collection('totalstatistic').findOne({ type: "todayJob" }).then((result: any) => result)
+  console.log("totalstatisticResult", totalstatisticResult);
+
+  let todayJobCount = 0
+
+  if (totalstatisticResult) todayJobCount = totalstatisticResult.count
+
   return NextResponse.json({
     total: result.numberOfDocuments,
-    todayJob: 8895,
+    todayJob: todayJobCount,
     currentLocatedin: localInfo.data.city.names.en + ", " + localInfo.data.country.names.en,
     skill: isMe === null ? [] : isMe.skill,
     jobalertsetting: isMe === null ? null : isMe.jobalertsetting,

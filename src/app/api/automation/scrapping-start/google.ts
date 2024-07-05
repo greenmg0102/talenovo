@@ -75,7 +75,7 @@ export async function googleScrapping(): Promise<any> {
         console.log('realGoogleData.length', realGoogleData.length);
         await db
             .collection("scrappingids")
-            .insertMany(itemNotInB.map((scrappingid: any) => scrappingid))
+            .insertMany(runnedDatasetArray.map((scrappingid: any) => scrappingid))
             .then(async (result: any) => { return })
     }
 

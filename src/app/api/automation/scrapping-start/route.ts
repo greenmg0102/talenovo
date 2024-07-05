@@ -33,7 +33,7 @@ export async function GET(req: any, res: any) {
   });
 
   await adminAPIMiddleware(req, res);
-  // let { db } = await connectToDatabase();
+  let { db } = await connectToDatabase();
 
   console.log("scrapping-start");
 
@@ -68,24 +68,51 @@ export async function GET(req: any, res: any) {
   const iterations = Math.ceil(real.length / chunkSize);
 
   for (let i = 0; i < iterations; i++) {
-    console.log('Iterations-Index', i);
+
+    if (i % 50 === 0) {
+      const health = await client.health();
+      console.log('Server health:', health);
+      console.log('Iterations-Index', i);
+    }
+
     const start = i * chunkSize;
     const end = Math.min(start + chunkSize, real.length);
     const list = real.slice(start, end);
 
-    const health = await client.health();
-    console.log('Server health:', health);
-    // console.log('saving ...', list.length);
     await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });
-    // console.log('ending ...');
-
   }
 
-  console.log(2);
+  console.log("Updating the filtering attributes!");
+
   await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId", "scrapedDate"]);
   await client.index(indexName).updateSortableAttributes(["postStatus", "scrapedDate"]);
   await client.index(indexName).updateDistinctAttribute("companyName");
-  console.log(3);
+
+  console.log("Updating the filtering attributes ended!");
+
+  if (real.length > 0) {
+    console.log("There is some data today!");
+    let totalstatisticResult = await db.collection('totalstatistic').findOne({ type: "todayJob" }).then((result: any) => result)
+
+    if (totalstatisticResult) {
+      console.log("Today job was updated!");
+      let updateData = {
+        $set: {
+          type: "todayJob",
+          count: real.length
+        }
+      };
+      await db.collection("totalstatistic").findOneAndUpdate({ type: "todayJob" }, updateData);
+    } else {
+      await db
+        .collection("totalstatistic")
+        .insertOne({
+          type: "todayJob",
+          count: real.length
+        })
+        .then(async (result: any) => { return })
+    }
+  }
 
   // const response = await axios.post(
   //   `${host}/indexes/${indexName}/search`,
