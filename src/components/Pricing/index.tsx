@@ -1,6 +1,7 @@
 "use client";
 import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
+import { message } from 'antd';
 import clsx from 'clsx'
 import SectionTitle from "../Common/SectionTitle";
 import OfferList from "./OfferList";
@@ -8,6 +9,9 @@ import PricingBox from "./PricingBox";
 import Features from '@/components/Features'
 
 const Pricing = ({ isSectionTitle }: any) => {
+
+  const [messageApi, contextHolder] = message.useMessage();
+
   const [isMonthly, setIsMonthly] = useState(true);
 
   const { user } = useUser();
@@ -25,37 +29,45 @@ const Pricing = ({ isSectionTitle }: any) => {
 
   const handleSubscription = async (plan: any) => {
 
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/create-checkout-session`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        clerkId,
-        priceId: plan.priceId,
-        packageName: plan.packageName,
-      }),
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json(); // Parse the response body as JSON
+    if (user) {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/create-checkout-session`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          clerkId,
+          priceId: plan.priceId,
+          packageName: plan.packageName,
+        }),
       })
-      .then(data => {
-        // Handle the response data
-        //redirect to checkout page
-        window.location.href = data.url;
-      })
-      .catch(error => {
-        // Handle errors
-        console.error('There was a problem with the fetch operation:', error);
-      });
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json(); // Parse the response body as JSON
+        })
+        .then(data => {
+          // Handle the response data
+          //redirect to checkout page
+          window.location.href = data.url;
+        })
+        .catch(error => {
+          // Handle errors
+          console.error('There was a problem with the fetch operation:', error);
+        });
+    } else {
+      messageApi.info("Please sign in!")
+    }
+
+
+
   }
 
   return (
     <section id="pricing" className="relative z-10 pb-16 md:pb-20 lg:pb-28 px-auto">
+      {contextHolder}
       <Features />
       {/* dark:bg-bg-color-dark bg-gray-light  */}
       <div className='pt-12'>

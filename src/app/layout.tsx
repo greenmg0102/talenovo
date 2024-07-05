@@ -16,6 +16,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   
   useConsoleOverride();
+
   return (
     <ClerkProvider>
       <html suppressHydrationWarning lang="en">
