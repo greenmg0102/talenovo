@@ -240,8 +240,8 @@ const Hero = ({ setIsDetail }: any) => {
 
                   <div className='flex justify-center items-center sticky top-[1px] z-[11] mb-6'>
                     <div className="flex justify-between items-center mx-auto w-full sm:max-w-[760px] xl:max-w-[998px] bg-white border py-2 px-4 rounded-xl search-box-main text-gray-500">
-                      <div className='w-full flex justify-between items-center py-0 pl-[12px] pr-[0px]'>
-                        <div className='w-1/2 pr-4 border border-t-[0px] border-l-[0px] border-b-[0px] border-[#697EF5] border-[2px]'>
+                      <div className='w-full flex justify-between items-center flex-wrap py-0 pl-[12px] pr-[12px] sm:pr-[0px]'>
+                        <div className='w-full sm:w-1/2 pr-4 border border-t-[0px] border-l-[0px] border-b-[1px] sm:border-b-[0px] border-r-[0px] sm:border-r-[1px] border-[#697EF5] border-[2px] border-dashed sm:border-solid'>
                           <input
                             type="text"
                             className="w-full outline-none focus:outline-none p-2 rounded focus:ring-0 focus:border-transparent"
@@ -249,7 +249,7 @@ const Hero = ({ setIsDetail }: any) => {
                             onChange={(e: any) => setHint(e.target.value)}
                           />
                         </div>
-                        <div className='w-1/2 px-2'>
+                        <div className='w-full sm:w-1/2 px-2'>
                           <SearchBox
                             // defaultRefinement={geoPosition.split(',')[1]}
                             defaultRefinement={locatedin !== (null || undefined) ? locatedin + " " + hint : geoPosition + " " + hint}
