@@ -2,6 +2,7 @@
 import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { message } from 'antd';
+import { useRouter } from 'next/navigation';
 import clsx from 'clsx'
 import SectionTitle from "../Common/SectionTitle";
 import OfferList from "./OfferList";
@@ -9,6 +10,8 @@ import PricingBox from "./PricingBox";
 import Features from '@/components/Features'
 
 const Pricing = ({ isSectionTitle }: any) => {
+
+  const router = useRouter();
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -58,10 +61,8 @@ const Pricing = ({ isSectionTitle }: any) => {
           console.error('There was a problem with the fetch operation:', error);
         });
     } else {
-      messageApi.info("Please sign in!")
+      router.push('https://accounts.talenovo.com/sign-in#/?redirect_url=https%3A%2F%2Ftalenovo.com%2Fpremium');
     }
-
-
 
   }
 

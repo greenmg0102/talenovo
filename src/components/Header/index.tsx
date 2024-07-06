@@ -28,8 +28,6 @@ const Header = () => {
     }
   };
 
-
-
   useEffect(() => {
     window.addEventListener("scroll", handleStickyNavbar);
   });

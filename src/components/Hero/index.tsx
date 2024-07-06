@@ -68,6 +68,7 @@ const Hero = ({ setIsDetail }: any) => {
   const [geoPosition, setGeoPosition] = useState("Globally");
   const [skil, setSkil] = useState(null);
   const [messageApi, contextHolder] = message.useMessage();
+  const [hint, setHint] = useState("")
 
   const [userData, setUserData] = useState<any>({});
   const { user } = useUser();
@@ -236,26 +237,33 @@ const Hero = ({ setIsDetail }: any) => {
                   indexName="title"
                   searchClient={searchClient}
                 >
-                  <div className='flex justify-center items-center sticky top-[1px] z-[11]'>
-                    <div className="mx-auto w-full sm:max-w-[760px] xl:max-w-[998px] bg-white">
-                      <SearchBox
-                        // defaultRefinement={geoPosition.split(',')[1]}
-                        defaultRefinement={locatedin !== (null || undefined) ? locatedin : geoPosition}
-                        // translations={{ placeholder: `Search by Job Title, Keywords, Company in ${geoPosition}` }}
-                        autoFocus
-                      />
 
-                      <div className='flex flex-col sm:flex-row justify-center sm:justify-between items-center flex-wrap mt-2 px-2 border border-gray-300 border-t-[0px] rounded-bl-[8px] rounded-br-[8px]'>
-                        <p className='flex justify-center items-center text-[16px] text-gray-400'>
-                          <svg viewBox="64 64 896 896" focusable="false" data-icon="info-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path><path d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"></path></svg>
-                          <span className='ml-2'>
-                            Search by Job Title, Keywords, Company, location
-                          </span>
-                        </p>
-                        <Stats />
+                  <div className='flex justify-center items-center sticky top-[1px] z-[11] mb-6'>
+                    <div className="flex justify-between items-center mx-auto w-full sm:max-w-[760px] xl:max-w-[998px] bg-white border py-2 px-4 rounded-xl search-box-main text-gray-500">
+                      <div className='w-full flex justify-between items-center py-0 pl-[12px] pr-[0px]'>
+                        <div className='w-1/2 pr-4 border border-t-[0px] border-l-[0px] border-b-[0px] border-[#697EF5] border-[2px]'>
+                          <input
+                            type="text"
+                            className="w-full outline-none focus:outline-none p-2 rounded focus:ring-0 focus:border-transparent"
+                            placeholder="Search by Job Title, Keywords, Company"
+                            onChange={(e: any) => setHint(e.target.value)}
+                          />
+                        </div>
+                        <div className='w-1/2 px-2'>
+                          <SearchBox
+                            // defaultRefinement={geoPosition.split(',')[1]}
+                            defaultRefinement={locatedin !== (null || undefined) ? locatedin + " " + hint : geoPosition + " " + hint}
+                            // translations={{ placeholder: `Search by Job Title, Keywords, Company in ${geoPosition}` }}
+                            autoFocus
+                          />
+                        </div>
                       </div>
+                      {/* <div className='flex justify-center w-[28px] p-2 bg-[#697EF5] rounded-full text-white'>
+                        <svg viewBox="64 64 896 896" focusable="false" data-icon="search" width="0.8em" height="0.8em" fill="currentColor" aria-hidden="true"><path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0011.6 0l43.6-43.5a8.2 8.2 0 000-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path></svg>
+                      </div> */}
                     </div>
                   </div>
+
 
                   <div className='flex justify-center items-center pb-8 mt-[60px]'>
                     <div className="flex justify-around items-center flex-wrap mt-2 mb-6 w-full sm:w-3/5">
