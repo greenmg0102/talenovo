@@ -16,7 +16,7 @@ var settings = {
     slidesToScroll: 1,
 };
 
-export default function Carousel() {
+export default function Carousel({ companyFilter, setCompanyFilter }: any) {
 
     const [industryList, setIndustryList] = useState([])
     const [messageApi, contextHolder] = message.useMessage();
@@ -39,7 +39,12 @@ export default function Carousel() {
         return {
             key: index.toString(),
             label: <p className='font-semibold'>{item.category}</p>,
-            children: <CarouselItem subResult={item.subResult} />
+            children: <CarouselItem
+                companyFilter={companyFilter}
+                setCompanyFilter={(companyName: any) => setCompanyFilter(companyName)}
+                // setCompanyFilter={(companyName: any) => console.log("####", companyName)}
+                subResult={item.subResult}
+            />
         }
     })
 

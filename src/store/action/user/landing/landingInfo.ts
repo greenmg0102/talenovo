@@ -76,7 +76,6 @@ export async function carouselIndustry({ list }: any) {
         const twoShuffledCompanyData = twoUniqueCompanyData.sort(() => Math.random() - 0.5);
         const twoRandomCompanyData = twoShuffledCompanyData.slice(0, 18);
 
-
         return {
             isOkay: true,
             companyCount: 3,
@@ -85,7 +84,11 @@ export async function carouselIndustry({ list }: any) {
                 {
                     category: "Featured Companies",
                     subResult: oneRandomCompanyData
-                }
+                },
+                {
+                    category: "Upgrowing Companies",
+                    subResult: twoRandomCompanyData
+                },
             ]
         }
     } catch (error) {
