@@ -26,14 +26,19 @@
     display: none !important;
 }
 
-.ant-spin-dot-item{
+.ant-spin-dot-item {
     background-color: white !important;
 }
 
-.ais-Stats-text{
+.ais-Stats-text {
     color: #cbd5e0;
 }
 
-.ais-SearchBox-input{
+.ais-SearchBox-input {
     color: #718096;
 }
+
+/* .changeble-input {
+    outline: none !important;
+    border: 0 !important;
+} */

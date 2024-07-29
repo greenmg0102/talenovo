@@ -27,92 +27,92 @@ const indexName = 'title';
 
 export async function GET(req: any, res: any) {
 
-  const client = new MeiliSearch({
-    host: host,
-    apiKey: apiKey,
-  });
+  // const client = new MeiliSearch({
+  //   host: host,
+  //   apiKey: apiKey,
+  // });
 
-  await adminAPIMiddleware(req, res);
+  // await adminAPIMiddleware(req, res);
   let { db } = await connectToDatabase();
 
-  console.log("scrapping-start");
+  // console.log("scrapping-start");
 
-  try {
-    const jobDataIndex = await client.getIndex(indexName);
-    console.log(`Index ${indexName} exists:`, jobDataIndex);
-  } catch (error) {
-    if (error.code === 'index_not_found') {
-      console.log(`Index ${indexName} does not exist.`);
-      await client.createIndex(indexName);
-    } else {
-      console.error('Error checking index existence:', error);
-    }
-  }
+  // try {
+  //   const jobDataIndex = await client.getIndex(indexName);
+  //   console.log(`Index ${indexName} exists:`, jobDataIndex);
+  // } catch (error) {
+  //   if (error.code === 'index_not_found') {
+  //     console.log(`Index ${indexName} does not exist.`);
+  //     await client.createIndex(indexName);
+  //   } else {
+  //     console.error('Error checking index existence:', error);
+  //   }
+  // }
 
-  console.log('2');
+  // console.log('2');
 
-  // let mailSendingResult = await sendEmail({ error: "", success: true })
-  // console.log("mailSendingResult", mailSendingResult);
-  // await JobAlertAutomation()
+  // // let mailSendingResult = await sendEmail({ error: "", success: true })
+  // // console.log("mailSendingResult", mailSendingResult);
+  // // await JobAlertAutomation()
 
-  // let linkedin = await linkedinScrapping();
-  let google = await googleScrapping();
-  // let indeed = await indeedScrapping();
-  // let kadoa = await KadoaScrapping();
-  let real = google
-  // let real = [...linkedin, ...kadoa]  4416
+  // // let linkedin = await linkedinScrapping();
+  // let google = await googleScrapping();
+  // // let indeed = await indeedScrapping();
+  // // let kadoa = await KadoaScrapping();
+  // let real = google
+  // // let real = [...linkedin, ...kadoa]  4416
 
-  console.log('saving to the melisearch!', real.length);
+  // console.log('saving to the melisearch!', real.length);
 
-  const chunkSize = 100;
-  const iterations = Math.ceil(real.length / chunkSize);
+  // const chunkSize = 100;
+  // const iterations = Math.ceil(real.length / chunkSize);
 
-  for (let i = 0; i < iterations; i++) {
+  // for (let i = 0; i < iterations; i++) {
 
-    if (i % 50 === 0) {
-      const health = await client.health();
-      console.log('Server health:', health);
-      console.log('Iterations-Index', i);
-    }
+  //   if (i % 50 === 0) {
+  //     const health = await client.health();
+  //     console.log('Server health:', health);
+  //     console.log('Iterations-Index', i);
+  //   }
 
-    const start = i * chunkSize;
-    const end = Math.min(start + chunkSize, real.length);
-    const list = real.slice(start, end);
+  //   const start = i * chunkSize;
+  //   const end = Math.min(start + chunkSize, real.length);
+  //   const list = real.slice(start, end);
 
-    await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });
-  }
+  //   await client.index(indexName).addDocuments(list, { primaryKey: 'jobId' });
+  // }
 
-  console.log("Updating the filtering attributes!");
+  // console.log("Updating the filtering attributes!");
 
-  await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId", "scrapedDate"]);
-  await client.index(indexName).updateSortableAttributes(["postStatus", "scrapedDate"]);
-  await client.index(indexName).updateDistinctAttribute("companyName");
+  // await client.index(indexName).updateFilterableAttributes(["title", "city", "country", "occupationType", "companyName", "skills", "tertiaryDescription", "insightsV2", "jobId", "postStatus", "recruiterId", "scrapedDate"]);
+  // await client.index(indexName).updateSortableAttributes(["postStatus", "scrapedDate"]);
+  // await client.index(indexName).updateDistinctAttribute("companyName");
 
-  console.log("Updating the filtering attributes ended!");
+  // console.log("Updating the filtering attributes ended!");
 
-  if (real.length > 0) {
-    console.log("There is some data today!");
-    let totalstatisticResult = await db.collection('totalstatistic').findOne({ type: "todayJob" }).then((result: any) => result)
+  // if (real.length > 0) {
+  //   console.log("There is some data today!");
+  //   let totalstatisticResult = await db.collection('totalstatistic').findOne({ type: "todayJob" }).then((result: any) => result)
 
-    if (totalstatisticResult) {
-      console.log("Today job was updated!");
-      let updateData = {
-        $set: {
-          type: "todayJob",
-          count: real.length
-        }
-      };
-      await db.collection("totalstatistic").findOneAndUpdate({ type: "todayJob" }, updateData);
-    } else {
-      await db
-        .collection("totalstatistic")
-        .insertOne({
-          type: "todayJob",
-          count: real.length
-        })
-        .then(async (result: any) => { return })
-    }
-  }
+  //   if (totalstatisticResult) {
+  //     console.log("Today job was updated!");
+  //     let updateData = {
+  //       $set: {
+  //         type: "todayJob",
+  //         count: real.length
+  //       }
+  //     };
+  //     await db.collection("totalstatistic").findOneAndUpdate({ type: "todayJob" }, updateData);
+  //   } else {
+  //     await db
+  //       .collection("totalstatistic")
+  //       .insertOne({
+  //         type: "todayJob",
+  //         count: real.length
+  //       })
+  //       .then(async (result: any) => { return })
+  //   }
+  // }
 
   // const response = await axios.post(
   //   `${host}/indexes/${indexName}/search`,
@@ -133,7 +133,7 @@ export async function GET(req: any, res: any) {
 
   // const citiesJSON = await fetch('https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/cities.json').then(response => response.json());
 
-  // var processedResult = citiesJSON.filter((item: any) => item.country_id === 233).map((item: any) => {
+  // var processedResult = citiesJSON.filter((item: any) => item.country_id === 39).map((item: any) => {
   //   return {
   //     location: item.name + ", " + item.state_name + ` (${item.state_code})` + ", " + item.country_name + ` (${item.country_code})`,
   //     value: item.name + ", " + item.state_name + ` (${item.state_code})` + ", " + item.country_name + ` (${item.country_code})`
@@ -149,7 +149,7 @@ export async function GET(req: any, res: any) {
   //     return
   //   })
 
-  // console.log('####');
+  console.log('####');
 
   return NextResponse.json({
     result: true,

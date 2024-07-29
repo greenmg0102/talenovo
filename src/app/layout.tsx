@@ -20,10 +20,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <ClerkProvider>
       <html suppressHydrationWarning lang="en">
+        
         <Head>
           <script async src="https://static.addtoany.com/menu/page.js"></script>
         </Head>
+
         <GoogleTagManager gtmId="G-RB86FVG2KZ" />
+
         <body className={`bg-[#FFFFFF] dark:bg-black ${inter.className}`}>
           <Providers>
             <Header />

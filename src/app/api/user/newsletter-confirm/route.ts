@@ -4,7 +4,6 @@ import { connectToDatabase } from "@/lib/mongodb";
 import createContract from '@/app/api/mail/util/createContractInList'
 import { currentUser } from '@clerk/nextjs';
 
-
 export async function POST(req: any, res: any) {
 
   const data:any = await req.json()
@@ -15,8 +14,6 @@ export async function POST(req: any, res: any) {
     listType: "all clients",
     email: data.email,
   })
-
-  console.log("result", result);
 
   return NextResponse.json(result);
 }
@@ -30,9 +27,8 @@ export async function GET(req: any, res: any) {
 
   let aboutResult = await db.collection('newsletter').findOne({ email: user.email, status: data.status }).then((result: any) => result)
 
-
   return NextResponse.json({
-    isOkay: true,
+    isOkay: true
   });
 
 }

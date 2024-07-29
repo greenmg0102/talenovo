@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import _ from 'lodash';
 import clsx from 'clsx'
 
-const SearchInput = ({ value, title, warningText, warn, type, onchange, list, formatList, pushList, isTtitle, isWarning = true }: any) => {
+const LandingSearchInput = ({ value, title, warningText, warn, type, onchange, list, formatList, pushList, isTtitle, firstLocatedin, isWarning = true }: any) => {
 
   const inputRef: any = useRef(null);
 
@@ -54,6 +54,13 @@ const SearchInput = ({ value, title, warningText, warn, type, onchange, list, fo
     delayedOnchange(inputRef.current.value);
   };
 
+
+  useEffect(() => {
+    if (firstLocatedin !== undefined) {
+      selsctValue(firstLocatedin)
+    }
+  }, [firstLocatedin])
+
   return (
     <div>
       {
@@ -65,7 +72,7 @@ const SearchInput = ({ value, title, warningText, warn, type, onchange, list, fo
       <div
         className={
           clsx(
-            'flex justify-between items-center transition-all rounded-[6px] px-2 border py-1',
+            'flex justify-between items-center transition-all rounded-[6px] px-2 py-1',
             warn[type].length === 0 ? "border-gray-200" : "border-red-500 bg-red-100"
           )
         }
@@ -83,12 +90,12 @@ const SearchInput = ({ value, title, warningText, warn, type, onchange, list, fo
 
       </div>
       <div className='relative z-[999]'>
-        <div className={clsx(list.length > 0 ? 'absolute bottom-0 transform translate-y-full w-full left-[0px] bg-gray-100 border border-gray-500 rounded-[4px]' : '')}>
+        <div className={clsx(list.length > 0 ? 'absolute bottom-0 transform translate-y-full w-full left-[0px] bg-white border border-gray-500 rounded-[4px]' : '')}>
           {list.length > 0 ?
             list.map((item: any, index: any) =>
               <p
                 key={index}
-                className='pb-1 p-1 text-[12px] border border-dashed border-t-0 border-l-0 border-r-0 cursor-pointer rounded-[4px] hover:bg-gray-200 transition-all'
+                className='pb-1 p-1 text-[14px] border border-dashed border-t-0 border-l-0 border-r-0 cursor-pointer rounded-[4px] hover:bg-gray-100 transition-all'
                 onClick={() => selsctValue(item['value'])}
               >
                 {item[type]}
@@ -110,4 +117,4 @@ const SearchInput = ({ value, title, warningText, warn, type, onchange, list, fo
   );
 };
 
-export default SearchInput;
+export default LandingSearchInput;

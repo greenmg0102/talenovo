@@ -119,7 +119,6 @@ export async function landingInfo() {
         const industryCount = 512;
         // const industryCount = Object.keys(facetDistribution.insightsV2).length;
         
-        console.log("companyCount", companyCount);
         return {
             isOkay: true,
             companyCount: companyCount,
