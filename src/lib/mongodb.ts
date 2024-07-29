@@ -2,8 +2,8 @@
 import { Db, MongoClient } from "mongodb";
 
 const MONGODB_DB = "talenovo";
-const uri = "mongodb+srv://talenovomongodb:AwguQp3KwfZmQNC@talenovo.kkiuj6e.mongodb.net/?retryWrites=true&w=majority&appName=talenovo"
-// const uri = "mongodb+srv://greenmg0102:PFjEt0dbZLqN16YI@cluster0.wj0ebxi.mongodb.net/?retryWrites=true&w=majority"
+// const uri = "mongodb+srv://talenovomongodb:AwguQp3KwfZmQNC@talenovo.kkiuj6e.mongodb.net/?retryWrites=true&w=majority&appName=talenovo"
+const uri = "mongodb+srv://greenmg0102:PFjEt0dbZLqN16YI@cluster0.wj0ebxi.mongodb.net/?retryWrites=true&w=majority"
 
 let cachedClient: MongoClient;
 let cachedDb: Db;
