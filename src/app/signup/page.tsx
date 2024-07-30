@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sign Up Page | We support your career with AI",
+  title: "Sign Up Page | Streamline your job search with intelligent technology that brings you the best-matched jobs, saving you time and effort",
   description: "This is Sign Up Page for Talenovo",
   // other metadata
 };

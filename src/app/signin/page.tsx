@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { SignIn } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
-  title: "Sign In Page | We support your career with AI",
+  title: "Sign In Page | Streamline your job search with intelligent technology that brings you the best-matched jobs, saving you time and effort",
   description: "This is Sign In Page for Talenovo",
   // other metadata
 };

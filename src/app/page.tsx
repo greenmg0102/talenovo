@@ -4,7 +4,7 @@ import Landing from '@/components/Landing'
 
 export const metadata: Metadata = {
   title: "Talenovo | Connecting Talent to Opportunity",
-  description: "We support your career with AI",
+  description: "Streamline your job search with intelligent technology that brings you the best-matched jobs, saving you time and effort",
   // other metadata
 };
 

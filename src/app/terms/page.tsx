@@ -1,7 +1,7 @@
 'use client'
 
 // export const metadata: Metadata = {
-//   title: "We support your career with AI",
+//   title: "Streamline your job search with intelligent technology that brings you the best-matched jobs, saving you time and effort",
 //   description: "This is Home for Talenovo",
 //   // other metadata
 // };

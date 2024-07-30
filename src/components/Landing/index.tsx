@@ -7,7 +7,7 @@ import LandingDetail from "@/components/Hero/landingDetail";
 
 export const metadata: Metadata = {
   title: "Landing Page for Talenovo",
-  description: "We support your career with AI",
+  description: "Streamline your job search with intelligent technology that brings you the best-matched jobs, saving you time and effort",
   // other metadata
 };
 

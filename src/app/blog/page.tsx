@@ -5,7 +5,7 @@ import Breadcrumb from "@/components/Common/Breadcrumb";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog Page | We support your career with AI",
+  title: "Blog Page | Streamline your job search with intelligent technology that brings you the best-matched jobs, saving you time and effort",
   description: "This is Blog Page for Talenovo",
   // other metadata
 };

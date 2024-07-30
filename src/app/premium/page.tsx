@@ -3,7 +3,7 @@ import Pricing from '@/components/Pricing'
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Talenovo Premium Features | We support your career with AI",
+  title: "Talenovo Premium Features | Streamline your job search with intelligent technology that brings you the best-matched jobs, saving you time and effort",
   description: "This is Talenovo Premium Features",
   // other metadata
 };
