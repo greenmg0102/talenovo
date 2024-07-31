@@ -47,34 +47,34 @@ export async function carouselIndustry({ list }: any) {
         const oneShuffledCompanyData = oneUniqueCompanyData.sort(() => Math.random() - 0.5);
         const oneRandomCompanyData = oneShuffledCompanyData.slice(0, 18);
 
-        const Two = await axios.post(
-            `${host}/indexes/${indexName}/search`,
-            {
-                attributesToRetrieve: ["companyName", "companyLogo"],
-                // filter: `insightsV2 = "Manufacturing"`,
-                facets: ["companyName"],
-                limit: 1000
-            },
-            { headers: { 'Authorization': `Bearer ${apiKey}` } }
-        );
+        // const Two = await axios.post(
+        //     `${host}/indexes/${indexName}/search`,
+        //     {
+        //         attributesToRetrieve: ["companyName", "companyLogo"],
+        //         // filter: `insightsV2 = "Manufacturing"`,
+        //         facets: ["companyName"],
+        //         limit: 1000
+        //     },
+        //     { headers: { 'Authorization': `Bearer ${apiKey}` } }
+        // );
 
-        const twoSearchResults = Two.data.hits;
+        // const twoSearchResults = Two.data.hits;
 
-        const twoUniqueCompanyNames = new Set();
-        const twoUniqueCompanyData: any = [];
+        // const twoUniqueCompanyNames = new Set();
+        // const twoUniqueCompanyData: any = [];
 
-        twoSearchResults.forEach((result: any) => {
-            if (!twoUniqueCompanyNames.has(result.companyName) && (result.companyLogo !== undefined)) {
-                twoUniqueCompanyNames.add(result.companyName);
-                twoUniqueCompanyData.push({
-                    companyName: result.companyName,
-                    companyLogo: result.companyLogo,
-                });
-            }
-        });
+        // twoSearchResults.forEach((result: any) => {
+        //     if (!twoUniqueCompanyNames.has(result.companyName) && (result.companyLogo !== undefined)) {
+        //         twoUniqueCompanyNames.add(result.companyName);
+        //         twoUniqueCompanyData.push({
+        //             companyName: result.companyName,
+        //             companyLogo: result.companyLogo,
+        //         });
+        //     }
+        // });
 
-        const twoShuffledCompanyData = twoUniqueCompanyData.sort(() => Math.random() - 0.5);
-        const twoRandomCompanyData = twoShuffledCompanyData.slice(0, 18);
+        // const twoShuffledCompanyData = twoUniqueCompanyData.sort(() => Math.random() - 0.5);
+        // const twoRandomCompanyData = twoShuffledCompanyData.slice(0, 18);
 
         return {
             isOkay: true,
@@ -85,10 +85,10 @@ export async function carouselIndustry({ list }: any) {
                     category: "Featured Companies",
                     subResult: oneRandomCompanyData
                 },
-                {
-                    category: "Upgrowing Companies",
-                    subResult: twoRandomCompanyData
-                },
+                // {
+                //     category: "Upgrowing Companies",
+                //     subResult: twoRandomCompanyData
+                // },
             ]
         }
     } catch (error) {

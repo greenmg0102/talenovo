@@ -5,30 +5,30 @@ const categoryData: Category[] = [
     id: 0,
     title: "User Admin",
   },
-  {
-    id: 1,
-    title: "Role Admin",
-  },
-  {
-    id: 2,
-    title: "Our Job Admin",
-  },
-  {
-    id: 3,
-    title: "Other Job Admin",
-  },
-  {
-    id: 4,
-    title: "Job Info",
-  },
-  {
-    id: 5,
-    title: "Payment Log",
-  },
-  {
-    id: 6,
-    title: "Subscription",
-  },
+  // {
+  //   id: 1,
+  //   title: "Role Admin",
+  // },
+  // {
+  //   id: 2,
+  //   title: "Our Job Admin",
+  // },
+  // {
+  //   id: 3,
+  //   title: "Other Job Admin",
+  // },
+  // {
+  //   id: 4,
+  //   title: "Job Info",
+  // },
+  // {
+  //   id: 5,
+  //   title: "Payment Log",
+  // },
+  // {
+  //   id: 6,
+  //   title: "Subscription",
+  // },
   {
     id: 7,
     title: "About Talenovo"

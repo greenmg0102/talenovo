@@ -30,12 +30,12 @@ const Admin = () => {
 
   const categoryObject = {
     0: <UserAdmin />,
-    1: <RoleAdmin />,
-    2: <OurJobPostAdmin />,
-    3: <OtherJobPostAdmin />,
-    4: <JobInfoAdmin />,
-    5: <Paylog />,
-    6: <Subscription />,
+    // 1: <RoleAdmin />,
+    // 2: <OurJobPostAdmin />,
+    // 3: <OtherJobPostAdmin />,
+    // 4: <JobInfoAdmin />,
+    // 5: <Paylog />,
+    // 6: <Subscription />,
     7: <About />,
     8: <AutomationStarting />,
     // 7: <News />

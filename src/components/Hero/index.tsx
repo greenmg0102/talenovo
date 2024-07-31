@@ -3,7 +3,6 @@ import '@/styles/landing.css'
 import '@/styles/refinementList.css'
 import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
-import { Divider } from 'antd';
 import CountUp from 'react-countup';
 import { landingJob } from '@/store/action/user/jobget/landingJob'
 import SuggestedJobCard from '@/components/Hero/job/SuggestedJobCard'
@@ -12,7 +11,7 @@ import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
 import JobCard from "@/components/Hero/job/jobCard";
 import { suggestJobs, newletterSubscribePost } from '@/store/action/user/landing/suggestion'
 import { landingInfo, paidJobGet } from '@/store/action/user/landing/landingInfo'
-import { message, Alert, Tooltip } from 'antd';
+import { message, Alert, Tooltip, Divider } from 'antd';
 import { jobLocationPut } from "@/store/action/user/jobInfo/jobLocation"
 import LandingSearchInput from '@/components/Common/Input/LandingSearchInput'
 import NewsLatterBox from "@/components/Contact/NewsLatterBox";
@@ -87,7 +86,7 @@ const Hero = ({ setIsDetail }: any) => {
   const [companyCount, setCompanyCount] = useState(0);
   const [industry, setIndustry] = useState(0);
   const [locatedin, setLocatedin] = useState<any>(undefined);
-  const [geoPosition, setGeoPosition] = useState("Globally");
+  const [geoPosition, setGeoPosition] = useState<any>(undefined);
   const [skil, setSkil] = useState(null);
   const [messageApi, contextHolder] = message.useMessage();
   const [hint, setHint] = useState("")
@@ -157,7 +156,7 @@ const Hero = ({ setIsDetail }: any) => {
   const returnBufferSetCompanyFilter = async () => {
     setCompanyFilter(undefined)
     const res: any = await fetch('https://us-central1-sodium-mountain-418120.cloudfunctions.net/geolocation', { method: 'GET' });
-    let result = await await res.json()
+    let result: any = await await res.json()
 
     setGeoPosition(result.region + ", " + result.country)
   }
@@ -248,6 +247,10 @@ const Hero = ({ setIsDetail }: any) => {
     )
   };
 
+  // console.log("locatedin", locatedin);
+  // console.log("geoPosition", geoPosition);
+  // console.log("user", user);
+
   return (
     <>
       <section
@@ -291,10 +294,14 @@ const Hero = ({ setIsDetail }: any) => {
                           <input
                             type="text"
                             className="w-full outline-none focus:outline-none p-2 rounded focus:ring-0 focus:border-transparent"
-                            placeholder="Search by Job Title, Keywords, Company"
+                            placeholder="City, Province or remote"
                             onChange={(e: any) => setLocatedin(e.target.value)}
                             // onChange={(e: any) => setHint(e.target.value)}
-                            value={locatedin !== (null || undefined) ? locatedin : geoPosition}
+                            // value={locatedin !== (null || undefined) ? locatedin : geoPosition}
+                            // value={locatedin !== null || locatedin !== undefined ? locatedin : geoPosition}
+                            // value={user === null || user === undefined ? geoPosition : locatedin !== null || locatedin !== undefined ? locatedin : geoPosition}
+
+                            value={locatedin !== undefined ? user === null || user === undefined ? geoPosition : locatedin : undefined}
                           // readOnly
                           />
 
@@ -414,14 +421,29 @@ const Hero = ({ setIsDetail }: any) => {
                         />
                         {companyFilter !== undefined ?
                           <div
-                            className='flex justify-end items-center text-[12px] mb-1 hover:text-red-600 cursor-pointer'
+                            className='my-1'
                             onClick={returnBufferSetCompanyFilter}
                           >
-                            <svg viewBox="64 64 896 896" focusable="false" data-icon="rollback" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M793 242H366v-74c0-6.7-7.7-10.4-12.9-6.3l-142 112a8 8 0 000 12.6l142 112c5.2 4.1 12.9.4 12.9-6.3v-74h415v470H175c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h618c35.3 0 64-28.7 64-64V306c0-35.3-28.7-64-64-64z"></path></svg>
-                            <p className='ml-1'>Return</p>
+                            <Alert
+                              message={
+                                <div className='flex justify-between items-center'>
+                                  <p className='text-green-600 w-full'>
+                                    See your results below, Press <span className='font-semibold underline'>Return</span> to start a new search
+                                  </p>
+                                  <div className='flex items-center text-green-400'>
+                                    <svg viewBox="64 64 896 896" focusable="false" data-icon="rollback" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M793 242H366v-74c0-6.7-7.7-10.4-12.9-6.3l-142 112a8 8 0 000 12.6l142 112c5.2 4.1 12.9.4 12.9-6.3v-74h415v470H175c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h618c35.3 0 64-28.7 64-64V306c0-35.3-28.7-64-64-64z"></path></svg>
+                                    <p className='ml-1 mb-0'>Return</p>
+                                  </div>
+                                </div>
+                              }
+                              className='cursor-pointer'
+                              type="success"
+                              showIcon
+                            />
                           </div>
                           : null
                         }
+
                         <div className="mb-4">
                           {/* {paidJobList.map((item: any, index: any) =>
                             <div

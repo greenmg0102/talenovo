@@ -74,6 +74,8 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
         return daysPassed
     }
 
+    console.log("isDetail", isDetail);
+    
     return (
         <div
             className={
@@ -280,11 +282,11 @@ export default function GoogleDetail({ isDetail, setIsDetail }: any) {
                                     </p>
                                     {/* <p className="text-gray-500 text-[12px] pt-4 text-center">{isDetail.insightsV2[0]}</p> */}
                                 </div>
-                                <div className="flex justify-center items-center">
+                                {/* <div className="flex justify-center items-center">
                                     <a href={isDetail.companyLinkedinUrl} target="_blank">
                                         <p className="px-8 py-2 border border-blue-600 rounded-full text-center text-blue-700 text-[14px]">View company</p>
                                     </a>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

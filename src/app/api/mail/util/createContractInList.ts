@@ -40,7 +40,7 @@ export default function createContract(total: any) {
 
                 console.log("createContract", data);
 
-                if (data.includes("A member already exists with the")) resolve({ result: true, message: "You are trying with an already existing email." });
+                if (data.includes("A member already exists with the")) resolve({ result: true, message: "This email address has already been registered." });
                 else resolve({ result: false, message: "Thank you for subscribing." });
                 // Resolve the promise when the response ends
             });

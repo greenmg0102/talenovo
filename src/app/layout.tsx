@@ -14,18 +14,19 @@ import useConsoleOverride from '@/util/frontend/useConsoleOverride'
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  
+
   // useConsoleOverride();
 
   return (
     <ClerkProvider>
       <html suppressHydrationWarning lang="en">
-        
+
         <Head>
           <script async src="https://static.addtoany.com/menu/page.js"></script>
         </Head>
 
         <GoogleTagManager gtmId="G-RB86FVG2KZ" />
+        <GoogleTagManager gtmId="309571683" />
 
         <body className={`bg-[#FFFFFF] dark:bg-black ${inter.className}`}>
           <Providers>
