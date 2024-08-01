@@ -148,6 +148,16 @@ const Hero = ({ setIsDetail }: any) => {
     }
   }
 
+  const bufferSetLocation = (locationInfo: any) => {
+
+    if (user === null || user === undefined) {
+      setGeoPosition(locationInfo);
+    } else {
+      setLocatedin(locationInfo)
+    }
+
+  }
+
   const bufferSetCompanyFilter = (companyFilter: any) => {
     setCompanyFilter(companyFilter)
     setGeoPosition("");
@@ -247,9 +257,8 @@ const Hero = ({ setIsDetail }: any) => {
     )
   };
 
-  // console.log("locatedin", locatedin);
-  // console.log("geoPosition", geoPosition);
-  // console.log("user", user);
+  console.log("locatedin", locatedin);
+  console.log("geoPosition", geoPosition);
 
   return (
     <>
@@ -295,7 +304,7 @@ const Hero = ({ setIsDetail }: any) => {
                             type="text"
                             className="w-full outline-none focus:outline-none p-2 rounded focus:ring-0 focus:border-transparent"
                             placeholder="City, Province or remote"
-                            onChange={(e: any) => setLocatedin(e.target.value)}
+                            onChange={(e: any) => bufferSetLocation(e.target.value)}
                             // onChange={(e: any) => setHint(e.target.value)}
                             // value={locatedin !== (null || undefined) ? locatedin : geoPosition}
                             // value={locatedin !== null || locatedin !== undefined ? locatedin : geoPosition}
@@ -328,7 +337,8 @@ const Hero = ({ setIsDetail }: any) => {
 
                   <SearchBox
                     // defaultRefinement={geoPosition.split(',')[1]}
-                    defaultRefinement={locatedin !== (null || undefined) ? locatedin + " " + hint : geoPosition + " " + hint}
+                    // defaultRefinement={locatedin !== (null || undefined) ? locatedin + " " + hint : geoPosition + " " + hint}
+                    defaultRefinement={locatedin !== undefined ? user === null || user === undefined ? geoPosition : locatedin : undefined}
                     // defaultRefinement={userInfo.locatedin !== (null || undefined) ? userInfo.locatedin + " " + hint : geoPosition + " " + hint}
                     // translations={{ placeholder: `Search by Job Title, Keywords, Company in ${geoPosition}` }}
                     autoFocus
