@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <script async src="https://static.addtoany.com/menu/page.js"></script>
         </Head>
 
-        <GoogleTagManager gtmId="G-PPX6J9VB" />
+        <GoogleTagManager gtmId="GTM-PPX6J9VB" />
 
         <body className={`bg-[#FFFFFF] dark:bg-black ${inter.className}`}>
           <Providers>
