@@ -168,7 +168,7 @@ const Hero = ({ setIsDetail }: any) => {
     const res: any = await fetch('https://us-central1-sodium-mountain-418120.cloudfunctions.net/geolocation', { method: 'GET' });
     let result: any = await await res.json()
 
-    setGeoPosition(result.region + ", " + result.country)
+    setGeoPosition(result.city + ", " + result.region + ", " + result.country)
   }
 
   useEffect(() => {
@@ -177,7 +177,7 @@ const Hero = ({ setIsDetail }: any) => {
       const res: any = await fetch('https://us-central1-sodium-mountain-418120.cloudfunctions.net/geolocation', { method: 'GET' });
       let result = await await res.json()
 
-      setGeoPosition(result.region + ", " + result.country)
+      setGeoPosition(result.city + ", " + result.region + ", " + result.country)
     }
     fetchGeo()
   }, [])

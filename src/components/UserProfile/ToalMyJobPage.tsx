@@ -41,7 +41,7 @@ const ToalMyJobPage = () => {
       let geoResult: any = await await res.json()
 
       const data = {
-        geoLocation: geoResult.city + ", " + geoResult.country
+        geoLocation: geoResult.city + ", " + geoResult.region + ", " + geoResult.country
       }
 
       let result = await userInitialInfo(data)
