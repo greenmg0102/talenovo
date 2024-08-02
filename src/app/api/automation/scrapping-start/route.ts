@@ -27,13 +27,14 @@ const indexName = 'title';
 
 export async function GET(req: any, res: any) {
 
+  // await adminAPIMiddleware(req, res);
+  let { db } = await connectToDatabase();
+
   const client = new MeiliSearch({
     host: host,
     apiKey: apiKey,
   });
 
-  // await adminAPIMiddleware(req, res);
-  let { db } = await connectToDatabase();
 
   console.log("scrapping-start");
 
@@ -133,10 +134,10 @@ export async function GET(req: any, res: any) {
 
   // const citiesJSON = await fetch('https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/cities.json').then(response => response.json());
 
-  // var processedResult = citiesJSON.filter((item: any) => item.country_id === 39).map((item: any) => {
+  // var processedResult = citiesJSON.filter((item: any) => item.country_id === 233).map((item: any) => {
   //   return {
-  //     location: item.name + ", " + item.state_name + ` (${item.state_code})` + ", " + item.country_name + ` (${item.country_code})`,
-  //     value: item.name + ", " + item.state_name + ` (${item.state_code})` + ", " + item.country_name + ` (${item.country_code})`
+  //     location: item.name + ", " + item.state_name + ", " + item.country_name,
+  //     value: item.name + ", " + item.state_name + ", " + item.country_name
   //   };
   // });
 

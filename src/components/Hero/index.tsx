@@ -257,9 +257,6 @@ const Hero = ({ setIsDetail }: any) => {
     )
   };
 
-  console.log("locatedin", locatedin);
-  console.log("geoPosition", geoPosition);
-
   return (
     <>
       <section

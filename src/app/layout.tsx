@@ -15,7 +15,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 
-  // useConsoleOverride();
+  useConsoleOverride();
 
   return (
     <ClerkProvider>
@@ -26,7 +26,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Head>
 
         <GoogleTagManager gtmId="G-RB86FVG2KZ" />
-        <GoogleTagManager gtmId="309571683" />
 
         <body className={`bg-[#FFFFFF] dark:bg-black ${inter.className}`}>
           <Providers>
