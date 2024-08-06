@@ -35,7 +35,6 @@ export async function GET(req: any, res: any) {
     apiKey: apiKey,
   });
 
-
   console.log("scrapping-start");
 
   try {
@@ -105,6 +104,7 @@ export async function GET(req: any, res: any) {
       };
       await db.collection("totalstatistic").findOneAndUpdate({ type: "todayJob" }, updateData);
     } else {
+      console.log("Today job was added!");
       await db
         .collection("totalstatistic")
         .insertOne({
