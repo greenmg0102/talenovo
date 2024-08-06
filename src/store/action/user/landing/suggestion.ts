@@ -20,7 +20,9 @@ export async function newletterSubscribeGet() {
 
 export async function suggestJobs(data: any) {
 
-    let originQuery = data.currentLocatedin ? [...data.currentLocatedin.split(", "), data.jobTitle, data.locatedin, ...data.skill] : []
+    let currentLocatedin = data.currentLocatedin ? data.currentLocatedin : ""
+
+    let originQuery = currentLocatedin ? [...currentLocatedin.split(", "), data.jobTitle, data.locatedin, ...data.skill] : []
 
     if (data.jobalertsetting === undefined) {
 
@@ -28,7 +30,7 @@ export async function suggestJobs(data: any) {
             const response = await axios.post(
                 `${host}/indexes/${indexName}/search`,
                 {
-                    q: `${[...data.currentLocatedin.split(", ")].join(" ")}`,
+                    q: `${[...currentLocatedin.split(", ")].join(" ")}`,
                     // q: "toronto canada",
                     limit: 15,
                     sort: ['postStatus:asc']
@@ -44,7 +46,7 @@ export async function suggestJobs(data: any) {
                 `${host}/indexes/${indexName}/search`,
                 {
                     // q: `${originQuery.join(" ")}`,
-                    q: `${[...data.currentLocatedin.split(", ")].join(" ")}`,
+                    q: `${[...currentLocatedin.split(", ")].join(" ")}`,
                     limit: 15,
                     sort: ['postStatus:asc']
                 },
@@ -66,7 +68,7 @@ export async function suggestJobs(data: any) {
             `${host}/indexes/${indexName}/search`,
             {
                 // q: queryList.join(" "),
-                q: `${[...data.currentLocatedin.split(", ")].join(" ")}`,
+                q: `${[...currentLocatedin.split(", ")].join(" ")}`,
                 // filter: [
                 //     [...skillSetFilter],
                 //     `city = "${cityInfo}"`,
