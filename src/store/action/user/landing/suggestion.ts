@@ -21,7 +21,6 @@ export async function newletterSubscribeGet() {
 export async function suggestJobs(data: any) {
 
     let currentLocatedin = data.currentLocatedin ? data.currentLocatedin : ""
-
     let originQuery = currentLocatedin ? [...currentLocatedin.split(", "), data.jobTitle, data.locatedin, ...data.skill] : []
 
     if (data.jobalertsetting === undefined) {

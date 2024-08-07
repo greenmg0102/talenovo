@@ -154,6 +154,8 @@ const Hero = ({ setIsDetail }: any) => {
       setGeoPosition(locationInfo);
     } else {
       setLocatedin(locationInfo)
+      
+      console.log("bufferSetLocation", locationInfo);
     }
 
   }
@@ -209,6 +211,8 @@ const Hero = ({ setIsDetail }: any) => {
 
     async function landingJobGetting() {
       let result: any = await landingJob()
+      console.log("landingJobGetting", result.currentLocatedin);
+      
       localStorage.setItem('talenovo-job-total', result.total)
       localStorage.setItem('talenovo-job-todayJob', result.todayJob)
 
@@ -257,6 +261,9 @@ const Hero = ({ setIsDetail }: any) => {
     )
   };
 
+  // console.log("locatedin", locatedin);
+  // console.log("geoPosition", geoPosition);
+  
   return (
     <>
       <section

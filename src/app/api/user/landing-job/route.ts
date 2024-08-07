@@ -14,15 +14,15 @@ export async function GET(req: any, res: any) {
   const user: any = await currentUser();
   let { db } = await connectToDatabase();
 
-  const ip = (req.headers.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0]
-  const localInfo: any = await axios.get(`https://api.findip.net/${ip === "::1" ? "8.230.6.196" : ip}/?token=988e48d25e534484b591149ce6a32c74`);
+  // const ip = (req.headers.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0]
+  // const localInfo: any = await axios.get(`https://api.findip.net/${ip === "::1" ? "8.230.6.196" : ip}/?token=988e48d25e534484b591149ce6a32c74`);
 
   let result = await client.index('title').getStats();
 
   let isMe: any = user === null ? null : await db.collection("userinfos").findOne({ userId: user.id });
 
   let totalstatisticResult = await db.collection('totalstatistic').findOne({ type: "todayJob" }).then((result: any) => result)
-  console.log("totalstatisticResult", totalstatisticResult);
+  console.log("isMe", isMe);
 
   let todayJobCount = 0
 
@@ -31,7 +31,8 @@ export async function GET(req: any, res: any) {
   return NextResponse.json({
     total: result.numberOfDocuments,
     todayJob: todayJobCount,
-    currentLocatedin: localInfo.data.city.names.en + ", " + localInfo.data.country.names.en,
+    // currentLocatedin: localInfo.data.city.names.en + ", " + localInfo.data.country.names.en,
+    currentLocatedin: isMe.locatedin,
     skill: isMe === null ? [] : isMe.skill,
     jobalertsetting: isMe === null ? null : isMe.jobalertsetting,
     ...isMe
