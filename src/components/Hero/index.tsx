@@ -309,13 +309,7 @@ const Hero = ({ setIsDetail }: any) => {
                             className="w-full outline-none focus:outline-none p-2 rounded focus:ring-0 focus:border-transparent"
                             placeholder="City, Province or remote"
                             onChange={(e: any) => bufferSetLocation(e.target.value)}
-                            // onChange={(e: any) => setHint(e.target.value)}
-                            // value={locatedin !== (null || undefined) ? locatedin : geoPosition}
-                            // value={locatedin !== null || locatedin !== undefined ? locatedin : geoPosition}
-                            // value={user === null || user === undefined ? geoPosition : locatedin !== null || locatedin !== undefined ? locatedin : geoPosition}
-
                             value={locatedin !== undefined ? user === null || user === undefined ? geoPosition : locatedin : undefined}
-                          // readOnly
                           />
 
                           {/* 

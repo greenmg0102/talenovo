@@ -28,11 +28,33 @@ export async function GET(req: any, res: any) {
 
   if (totalstatisticResult) todayJobCount = totalstatisticResult.count
 
+  if (isMe) {
+    return NextResponse.json({
+      total: result.numberOfDocuments,
+      todayJob: todayJobCount,
+      // currentLocatedin: localInfo.data.city.names.en + ", " + localInfo.data.country.names.en,
+      currentLocatedin: isMe.locatedin,
+      skill: isMe === null ? [] : isMe.skill,
+      jobalertsetting: isMe === null ? null : isMe.jobalertsetting,
+      ...isMe
+    });
+  } else {
+    return NextResponse.json({
+      total: result.numberOfDocuments,
+      todayJob: todayJobCount,
+      // currentLocatedin: localInfo.data.city.names.en + ", " + localInfo.data.country.names.en,
+      currentLocatedin: null,
+      skill: isMe === null ? [] : isMe.skill,
+      jobalertsetting: isMe === null ? null : isMe.jobalertsetting,
+      ...isMe
+    });
+  }
+
   return NextResponse.json({
     total: result.numberOfDocuments,
     todayJob: todayJobCount,
     // currentLocatedin: localInfo.data.city.names.en + ", " + localInfo.data.country.names.en,
-    currentLocatedin: isMe.locatedin,
+    currentLocatedin: isMe && isMe.locatedin === undefined ? undefined : isMe.locatedin,
     skill: isMe === null ? [] : isMe.skill,
     jobalertsetting: isMe === null ? null : isMe.jobalertsetting,
     ...isMe
