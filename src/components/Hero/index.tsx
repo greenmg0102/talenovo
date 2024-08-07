@@ -154,7 +154,7 @@ const Hero = ({ setIsDetail }: any) => {
       setGeoPosition(locationInfo);
     } else {
       setLocatedin(locationInfo)
-      
+
       console.log("bufferSetLocation", locationInfo);
     }
 
@@ -212,7 +212,7 @@ const Hero = ({ setIsDetail }: any) => {
     async function landingJobGetting() {
       let result: any = await landingJob()
       console.log("landingJobGetting", result.currentLocatedin);
-      
+
       localStorage.setItem('talenovo-job-total', result.total)
       localStorage.setItem('talenovo-job-todayJob', result.todayJob)
 
@@ -263,7 +263,7 @@ const Hero = ({ setIsDetail }: any) => {
 
   // console.log("locatedin", locatedin);
   // console.log("geoPosition", geoPosition);
-  
+
   return (
     <>
       <section
@@ -336,7 +336,7 @@ const Hero = ({ setIsDetail }: any) => {
                   <SearchBox
                     // defaultRefinement={geoPosition.split(',')[1]}
                     // defaultRefinement={locatedin !== (null || undefined) ? locatedin + " " + hint : geoPosition + " " + hint}
-                    defaultRefinement={locatedin !== undefined ? user === null || user === undefined ? geoPosition : locatedin : undefined}
+                    defaultRefinement={locatedin !== undefined ? user === null || user === undefined ? geoPosition + " " + hint : locatedin + " " + hint : undefined}
                     // defaultRefinement={userInfo.locatedin !== (null || undefined) ? userInfo.locatedin + " " + hint : geoPosition + " " + hint}
                     // translations={{ placeholder: `Search by Job Title, Keywords, Company in ${geoPosition}` }}
                     autoFocus
